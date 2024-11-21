@@ -6,11 +6,10 @@ using namespace std;
 class ConsoleMenu : public IMenu {
 public:
 
-    int nextCommand() {
+    string nextCommand() {
         string input;
-        std::cin >> input;
-        cout << input;
-        return 0;
+        getline(cin,input);
+        return input;
     }
 };
 int main() {
