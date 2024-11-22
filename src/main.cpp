@@ -1,11 +1,108 @@
 #include <cstdlib>
 #include <iostream>
-#include "ConsoleMenu.h"
+#include <fstream>
+#include <sstream>
+#include <map>
+#include <set>
 
+using namespace std;
+void printMapWithSet(const map<string, set<string> >& myMap) {
+    for (const auto& pair : myMap) {
+        // Print the key
+        cout << "Key: " << pair.first << endl;
 
+        // Access and print the set of values
+        const auto& values = pair.second;
+        cout << "    Values: ";
+        for (const auto& value : values) {
+            cout << value << " ";
+        }
+        cout << endl;
+    }
+}
+map<string, set<string> > createUserMap(ifstream& file) {
+    map<string, set<string> > users;
+    string line;
+    
+    while (getline(file, line)) {
+        istringstream stream(line);
+        string word;
+        string user;
+        set<string> movies;
+        int counter = 0;
+        
+        while (stream >> word) {
+            if (counter == 0) {
+                user = word; // First word is the user
+            } else {
+                movies.insert(word); // Remaining words are movies
+            }
+            counter++; // Increment the counter
+        }
+        
+        users[user] = movies;
+    }
+    
+    return users; // Return the map at the end
+}
+void add(vector<string> inputVector){
+    ifstream file("../data/userData.txt");
+    // If file in empty - just write into it
+    if (file.peek() == std::ifstream::traits_type::eof()) {
+        file.close();
+        ofstream file("../data/userData.txt", ios::app);
+        if(!file){
+            cerr << "error" << endl;
+        }
+        
+        int size = inputVector.size();
+        for(int i = 0; i < size; i++){
+            file << inputVector[i] + " ";
+        }
+        file << endl;
+        file.close();
+    // If file is not empty - create a map where each key is a user and he has a set of movies
+    } else {
+        map<string,set<string> > users = createUserMap(file);
+        ofstream file("../data/userData.txt", ios::app);
+        string user = inputVector[0];
+        // Check if the given user is already in the user map
+        if (users.find(user) != users.end()) // User is in the User map!
+        {
+            int size = inputVector.size();
+            // Iterate through the given movies of the user
+            for(int i = 1; i < size; i++){
+                // A movie that wasn't there before was detected -> add it to the set of that user
+                if(users[user].find(inputVector[i]) == users[user].end()) {
+                    users[user].insert(inputVector[i]);
+                }
+            }
+        // The given user was not in the map -> add him to the map
+        } else {
+            set<string> movies;
+            int size = inputVector.size();
+            for(int i = 1; i < size; i++){
+                movies.insert(inputVector[i]);
+            }
+            users[user] = movies;
+            for(int i = 0; i < size; i++){
+                file << inputVector[i] + " ";
+             }
+        file << endl;
+        }
+        file.close();
+        printMapWithSet(users);
+    }
+}
 int main() {
-    std:: cout << "hello world" << '\n';
-    ConsoleMenu test;
-    test.nextCommand();
-    return 1;
+    string input;
+    getline(cin, input);
+    istringstream stream(input);
+    string singleWord;
+    vector<string> inputVector;
+    while(stream >> singleWord){
+        inputVector.push_back(singleWord);
+    }
+    add(inputVector);
+    return 0;
 }
