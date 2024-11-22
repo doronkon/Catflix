@@ -4,6 +4,7 @@
 #include <sstream>
 #include <map>
 #include <set>
+#include "User.h"
 
 using namespace std;
 void printMapWithSet(const map<string, set<string> >& myMap) {
@@ -45,6 +46,37 @@ map<string, set<string> > createUserMap(ifstream& file) {
     
     return users; // Return the map at the end
 }
+void updateUserMovies(string user, map<string, set<string> > userMap){
+    ifstream inputFile("../data/userData.txt");
+    vector<string> lines;
+    string line;
+    int currentLine = 0;
+    int lineToChange = 0;
+    while (getline(inputFile, line)) {
+        istringstream stream(line);
+        string word;
+        stream >> word;
+        if(user == word) {
+            lineToChange = currentLine;
+        }
+        lines.push_back(line);
+        currentLine++;
+    }
+    inputFile.close();
+    string updatedLine = user + " ";
+    for(const auto& movie:userMap[user]){
+        updatedLine += movie + " ";
+    }
+    lines[lineToChange] = updatedLine;
+    
+    ofstream file("../data/userData.txt", ios::trunc);
+    int size = lines.size();
+    for(int i = 0; i < size; i ++){
+        file << lines[i] << endl;
+    }
+    file.close();
+}
+
 void add(vector<string> inputVector){
     ifstream file("../data/userData.txt");
     // If file in empty - just write into it
@@ -77,18 +109,17 @@ void add(vector<string> inputVector){
                     users[user].insert(inputVector[i]);
                 }
             }
+            updateUserMovies(user, users);
         // The given user was not in the map -> add him to the map
         } else {
             set<string> movies;
             int size = inputVector.size();
+            file << inputVector[0] + " ";
             for(int i = 1; i < size; i++){
                 movies.insert(inputVector[i]);
+                file << inputVector[i]+ " ";
             }
-            users[user] = movies;
-            for(int i = 0; i < size; i++){
-                file << inputVector[i] + " ";
-             }
-        file << endl;
+            file << endl;
         }
         file.close();
         printMapWithSet(users);
