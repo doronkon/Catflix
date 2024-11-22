@@ -4,7 +4,8 @@
 #include <sstream>
 #include <map>
 #include <set>
-#include "User.h"
+#include <vector>
+#define PATH "../data/userData.txt"
 
 using namespace std;
 void printMapWithSet(const map<string, set<string> >& myMap) {
@@ -21,17 +22,17 @@ void printMapWithSet(const map<string, set<string> >& myMap) {
         cout << endl;
     }
 }
+
 map<string, set<string> > createUserMap(ifstream& file) {
     map<string, set<string> > users;
     string line;
-    
+    string word;
+    string user;
+    set<string> movies;
+    int counter = 0;
     while (getline(file, line)) {
         istringstream stream(line);
-        string word;
-        string user;
-        set<string> movies;
-        int counter = 0;
-        
+        counter = 0;
         while (stream >> word) {
             if (counter == 0) {
                 user = word; // First word is the user
@@ -47,14 +48,16 @@ map<string, set<string> > createUserMap(ifstream& file) {
     return users; // Return the map at the end
 }
 void updateUserMovies(string user, map<string, set<string> > userMap){
-    ifstream inputFile("../data/userData.txt");
+    // Opening the file for reading
+    ifstream inputFile(PATH);
     vector<string> lines;
     string line;
+    string word;
     int currentLine = 0;
     int lineToChange = 0;
+    // Finding the line we want to update
     while (getline(inputFile, line)) {
         istringstream stream(line);
-        string word;
         stream >> word;
         if(user == word) {
             lineToChange = currentLine;
@@ -63,13 +66,14 @@ void updateUserMovies(string user, map<string, set<string> > userMap){
         currentLine++;
     }
     inputFile.close();
+    // Creating the updated line 
     string updatedLine = user + " ";
-    for(const auto& movie:userMap[user]){
+    for(const string movie:userMap[user]){
         updatedLine += movie + " ";
     }
     lines[lineToChange] = updatedLine;
-    
-    ofstream file("../data/userData.txt", ios::trunc);
+    // copying all line and the updated one
+    ofstream file(PATH, ios::trunc);
     int size = lines.size();
     for(int i = 0; i < size; i ++){
         file << lines[i] << endl;
@@ -77,27 +81,12 @@ void updateUserMovies(string user, map<string, set<string> > userMap){
     file.close();
 }
 
-void add(vector<string> inputVector){
-    ifstream file("../data/userData.txt");
-    // If file in empty - just write into it
-    if (file.peek() == std::ifstream::traits_type::eof()) {
-        file.close();
-        ofstream file("../data/userData.txt", ios::app);
-        if(!file){
-            cerr << "error" << endl;
-        }
-        
-        int size = inputVector.size();
-        for(int i = 0; i < size; i++){
-            file << inputVector[i] + " ";
-        }
-        file << endl;
-        file.close();
-    // If file is not empty - create a map where each key is a user and he has a set of movies
-    } else {
-        map<string,set<string> > users = createUserMap(file);
-        ofstream file("../data/userData.txt", ios::app);
+void add(vector<string> inputVector , map<string,set<string> > &users){
+
+        // Opening the file for writing
+        ofstream file(PATH, ios::app);
         string user = inputVector[0];
+
         // Check if the given user is already in the user map
         if (users.find(user) != users.end()) // User is in the User map!
         {
@@ -110,6 +99,7 @@ void add(vector<string> inputVector){
                 }
             }
             updateUserMovies(user, users);
+
         // The given user was not in the map -> add him to the map
         } else {
             set<string> movies;
@@ -122,10 +112,13 @@ void add(vector<string> inputVector){
             file << endl;
         }
         file.close();
-        printMapWithSet(users);
-    }
 }
 int main() {
+    // Creating the user map out of the file
+    ifstream file(PATH);
+    map<string, set<string> > users = createUserMap(file);
+    file.close();
+
     string input;
     getline(cin, input);
     istringstream stream(input);
@@ -134,6 +127,7 @@ int main() {
     while(stream >> singleWord){
         inputVector.push_back(singleWord);
     }
-    add(inputVector);
+    add(inputVector, users);
+    printMapWithSet(users);
     return 0;
 }
