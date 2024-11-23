@@ -63,7 +63,9 @@ int main()
         }
         string task = inputVector[0];
         inputVector.erase(inputVector.begin());
-        commands[task]->execute(inputVector,users);
+        if(inputVector.size() > 1){
+            commands[task]->execute(inputVector,users);
+        }
         
     }
 
