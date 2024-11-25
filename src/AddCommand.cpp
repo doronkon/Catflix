@@ -44,7 +44,7 @@ public:
     }
 
     // A function that looks for a user named 'user' in the vector, if it is found, return its index, else return -1
-    int findUser(string user, vector<User> &users){
+    int findUser (string user, vector<User> &users){
         int size = users.size();
         for(int i = 0; i < size; i++){
             if (user == users[i].getUserId())
@@ -55,7 +55,8 @@ public:
         return -1;
     }
 
-    void execute(vector<string> &inputVector, vector<User> &users)
+    void execute(vector<string>&& inputVector = vector<string>{}, 
+                          vector<User>&& users = vector<User>{})
     {
         // Opening the file for writing
         ofstream file(PATH, ios::app);
@@ -97,5 +98,9 @@ public:
             file << endl;
         }
         file.close();
+    }
+
+    void helpPrint() {
+        cout << "add [userid] [movieid1] [movieid2] ... [movieidn]" << endl;
     }
 };

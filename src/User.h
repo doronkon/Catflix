@@ -4,6 +4,7 @@
 #include <string>
 #include <set>
 #include "Movie.h"  // Including movie.h so that the Movie class can be used in User
+#include <vector>
 
 using namespace std;
 
