@@ -24,6 +24,7 @@ vector<User> createUserMap(ifstream &file)
     int counter = 0;
     while (getline(file, line))
     {
+        movies.clear();
         istringstream stream(line);
         counter = 0;
         while (stream >> word)
