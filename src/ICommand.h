@@ -7,10 +7,12 @@
 #include <map>
 #include <set>
 #include <vector>
+#include "User.h"
+
 using namespace std;
 class ICommand {
 public:
-    virtual void execute(vector<string> &inputVector, map<string, set<string> > &users) = 0; // Pure virtual function
+    virtual void execute(vector<string> &inputVector, vector<User> &users) = 0; // Pure virtual function
 };
 
 #endif // ICOMMAND_H

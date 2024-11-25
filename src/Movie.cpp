@@ -1,4 +1,4 @@
-#include "movie.h"
+#include "Movie.h"
 
 Movie::Movie(string t) : movieId(t){}
 

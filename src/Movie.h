@@ -8,7 +8,7 @@ class Movie {
 public:
     string movieId;
 
-    Movie(string t) : movieId(t){}  // Constructor
+    Movie(string t);
 };
 
 #endif
