@@ -101,6 +101,6 @@ public:
     }
 
     void helpPrint() {
-        cout << "add [userid] [movieid1] [movieid2] ... [movieidn]" << endl;
+        cout << "add [userid] [movieid1] [movieid2] ..." << endl;
     }
 };

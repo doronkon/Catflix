@@ -12,7 +12,11 @@ class Help : public Ihelp, public ICommand {
 
     void execute(vector<string>&& inputVector = vector<string>{}, 
                             vector<User>&& users = vector<User>{}) {
-                    this->printAllCommands();
+                                if (!inputVector.empty()) {
+                                    return;
+                                } else {
+                                    this->printAllCommands();
+                                }
     };
 
     void printAllCommands() {

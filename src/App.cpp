@@ -87,14 +87,15 @@ int main()
         }
         string task = inputVector[0];
         if (task == "help") {
-            commands[task]->execute();
+            commands[task]->execute(move(inputVector));
         }
         inputVector.erase(inputVector.begin());
         if (inputVector.size() > 1)
         {
-            commands[task]->execute(std::move(inputVector), std::move(users));
+            commands[task]->execute(move(inputVector),move(users));
         }
     }
     return 0;
 }
 };
+
