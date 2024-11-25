@@ -70,15 +70,20 @@ int main()
         inputVector.erase(inputVector.begin());
         if (inputVector.size() > 1)
         {
+            bool flag = true;
             int size=inputVector.size();
             vector<int> inputNumbers;
             for (int i = 0; i < size; i++)
             {
-                printf("%d\n",util::toNumber(inputVector[i]));
+                if (util::toNumber(inputVector[i])  ==  -1)
+                {
+                    flag=false;
+                }
                 inputNumbers.push_back(util::toNumber(inputVector[i]));
             }
-            
-            commands[task]->execute(inputNumbers, users);
+            if (flag){
+                commands[task]->execute(inputNumbers, users);
+            }
         }
     }
     return 0;

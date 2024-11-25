@@ -22,6 +22,7 @@ int util::toNumber(string  str)
     long long number=0;
     for (int i = 0; i < n; i++)
     {
+        //not a digit
         if (str[i] < '0' || str[i] > '9'){
             return -1;
         }
