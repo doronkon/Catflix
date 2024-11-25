@@ -43,6 +43,7 @@ public:
         file.close();
     }
 
+    // A function that looks for a user named 'user' in the vector, if it is found, return its index, else return -1
     int findUser(string user, vector<User> &users){
         int size = users.size();
         for(int i = 0; i < size; i++){
@@ -77,18 +78,20 @@ public:
             }
             updateUserMovies(user, users, userIndex);
 
-            // The given user was not in the map -> add him to the map
         }
+        // The given user was not in the map -> add him to the user vector
         else
         {
             vector<Movie> movies;
             int size = inputVector.size();
+            // iterate through the movies, print them to the data and add them to a movie vector
             file << inputVector[0] + " ";
             for (int i = 1; i < size; i++)
             {
                 movies.push_back(Movie(inputVector[i]));
                 file << inputVector[i] + " ";
             }
+            // create a new user with the created movie vector and add it to the user vector
             User userToAdd(user,movies);
             users.push_back(userToAdd);
             file << endl;
