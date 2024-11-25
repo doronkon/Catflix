@@ -12,7 +12,7 @@
 using namespace std;
 class ICommand {
 public:
-    virtual void execute(vector<string> &inputVector, vector<User> &users) = 0; // Pure virtual function
+    virtual void execute(vector<int> &inputVector, vector<User> &users) = 0; // Pure virtual function
 };
 
 #endif // ICOMMAND_H

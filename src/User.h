@@ -4,22 +4,23 @@
 #include <string>
 #include <set>
 #include "Movie.h"  // Including movie.h so that the Movie class can be used in User
+#include <vector>
 
 using namespace std;
 
 class User {
 private:
-    string userId;           // The ID for the user
+    int userId;           // The ID for the user
     vector<Movie> userMovies;   // vector of movies associated with the user
 
 public:
     // Constructor declaration
-    User(string userId, vector<Movie> userMovies);
+    User(int userId, vector<Movie> userMovies);
 
     // Method to add a movie to the user's set of movies
     void addMovie(const Movie& movie);
     
-    string getUserId();
+    int getUserId();
 
     vector<Movie> getUserMovies();
 

@@ -6,9 +6,9 @@ using namespace std;
 
 class Movie {
 public:
-    string movieId;
+    int movieId;
 
-    Movie(string t);
+    Movie(int t);
 };
 
 #endif

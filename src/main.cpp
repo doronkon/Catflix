@@ -9,6 +9,7 @@
 #include "AddCommand.cpp"
 #include "User.h"
 #include "Movie.h"
+#include "util.h"
 #define PATH "../data/userData.txt"
 
 using namespace std;
@@ -18,7 +19,7 @@ vector<User> createUserMap(ifstream &file)
     vector<User> users;
     string line;
     string word;
-    string user;
+    int user;
     vector<Movie> movies;
     int counter = 0;
     while (getline(file, line))
@@ -27,13 +28,14 @@ vector<User> createUserMap(ifstream &file)
         counter = 0;
         while (stream >> word)
         {
+            int current = util::toNumber(word);
             if (counter == 0)
             {
-                user = word; // First word is the user
+                user = current; // First word is the user
             }
             else
             {
-                movies.push_back(Movie(word)); // Remaining words are movies
+                movies.push_back(Movie(current)); // Remaining words are movies
             }
             counter++; // Increment the counter
         }
@@ -68,7 +70,15 @@ int main()
         inputVector.erase(inputVector.begin());
         if (inputVector.size() > 1)
         {
-            commands[task]->execute(inputVector, users);
+            int size=inputVector.size();
+            vector<int> inputNumbers;
+            for (int i = 0; i < size; i++)
+            {
+                printf("%d\n",util::toNumber(inputVector[i]));
+                inputNumbers.push_back(util::toNumber(inputVector[i]));
+            }
+            
+            commands[task]->execute(inputNumbers, users);
         }
     }
     return 0;

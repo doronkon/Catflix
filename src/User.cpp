@@ -1,11 +1,12 @@
 #include "User.h"  // Include the User header file (which includes movie.h)
+#include <vector>
 
-User::User(string userId, vector<Movie> userMovies) : userId(userId), userMovies(userMovies) {}
+User::User(int userId, vector<Movie> userMovies) : userId(userId), userMovies(userMovies) {}
 
 void User::addMovie(const Movie& movie) {
     userMovies.push_back(movie);  // Insert the movie into the user's set of movies
 }
-string User::getUserId(){
+int User::getUserId(){
     return this->userId;
 }
 
@@ -20,7 +21,6 @@ bool User::didIWatch(Movie &movie){
         {
             return true;
         }
-        
     }
     return false;
 }

@@ -1,9 +1,11 @@
 #include "ICommand.h"
+#include "util.h"
+
 #define PATH "../data/userData.txt"
 class AddCommand : public ICommand
 {
 public:
-    void updateUserMovies(string user, vector<User> userMap, int userIndex)
+    void updateUserMovies(int user, vector<User> userMap, int userIndex)
     {
         // Opening the file for reading
         ifstream inputFile(PATH);
@@ -17,7 +19,8 @@ public:
         {
             istringstream stream(line);
             stream >> word;
-            if (user == word)
+            int current = util::toNumber(word);
+            if (user == current)
             {
                 lineToChange = currentLine;
             }
@@ -27,10 +30,10 @@ public:
         inputFile.close();
 
         // Creating the updated line
-        string updatedLine = user + " ";
+        string updatedLine = to_string(user) + " ";
         int amountOfMovies = userMap[userIndex].getUserMovies().size();
         for(int i = 0; i < amountOfMovies; i++){
-            updatedLine += userMap[userIndex].getUserMovies()[i].movieId + " ";
+            updatedLine += to_string(userMap[userIndex].getUserMovies()[i].movieId) + " ";
         }
         lines[lineToChange] = updatedLine;
         // copying all line and the updated one
@@ -44,7 +47,7 @@ public:
     }
 
     // A function that looks for a user named 'user' in the vector, if it is found, return its index, else return -1
-    int findUser(string user, vector<User> &users){
+    int findUser(int user, vector<User> &users){
         int size = users.size();
         for(int i = 0; i < size; i++){
             if (user == users[i].getUserId())
@@ -55,11 +58,11 @@ public:
         return -1;
     }
 
-    void execute(vector<string> &inputVector, vector<User> &users)
+    void execute(vector<int> &inputVector, vector<User> &users)
     {
         // Opening the file for writing
         ofstream file(PATH, ios::app);
-        string user = inputVector[0];
+        int user = inputVector[0];
 
         // Check if the given user is already in the user map
         int userIndex = findUser(user,users);
@@ -85,11 +88,11 @@ public:
             vector<Movie> movies;
             int size = inputVector.size();
             // iterate through the movies, print them to the data and add them to a movie vector
-            file << inputVector[0] + " ";
+            file << to_string(inputVector[0]) + " ";
             for (int i = 1; i < size; i++)
             {
                 movies.push_back(Movie(inputVector[i]));
-                file << inputVector[i] + " ";
+                file << to_string(inputVector[i]) + " ";
             }
             // create a new user with the created movie vector and add it to the user vector
             User userToAdd(user,movies);
