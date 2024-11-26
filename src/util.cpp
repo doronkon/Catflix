@@ -2,36 +2,43 @@
 
 using namespace std;
 
-#define MAX_INT 2147483647
-
-//return -1 if not valid
-//else returns the number 1 -> MAX_INT
-int util::toNumber(string  str)
+//return false if not valid
+//else returns true and inserts into number
+bool util::toNumber(string  str, ID_TYPE & number)
 {
-    //bigger than max int or empty 
-    int n = str.length();
-    if (n > 10 || n==0){
-        return -1;
+    // Empty string is invalid
+    if (str.empty()){ 
+        return false;
     }
-    //starting with 0
     if (str[0] == '0')
     {
-        return -1;
-    }
-    //storing the number
-    long long number=0;
-    for (int i = 0; i < n; i++)
-    {
-        //not a digit
-        if (str[i] < '0' || str[i] > '9'){
-            return -1;
+        //actually 0
+        if (str.length()==1)
+        {
+            number =0;
+            return true;
         }
-        number*=10;
-        number+= str[i] - '0';
+        //starting 0 not 0
+        return false;
     }
-    //chcking if bigger than max int
-    if (number > MAX_INT){
-        return -1;
+    
+
+    ID_TYPE  maxAllowedNumber;
+     // Convert string to unsigned long int and check for non char or overflow
+    number = 0;
+    for (char c : str) {
+        //makes sure its a digit
+        if (!isdigit(c)) {
+            return false;
+        }
+        int digit = c - '0';
+        //the maximum allowed number for this digit
+        maxAllowedNumber = (ULONG_MAX - digit) / 10;
+        if (number > maxAllowedNumber) {
+            return false; // Overflow detected
+        }
+        number *= 10;
+        number += digit;
     }
-    return (int) number;
+    return true;
 }

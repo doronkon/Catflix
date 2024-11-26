@@ -2,13 +2,15 @@
 #define MOVIE_H
 
 #include <string>
+#include "definers.h"
+
 using namespace std;
 
 class Movie {
 public:
-    int movieId;
+    ID_TYPE movieId;
 
-    Movie(int t);
+    Movie(ID_TYPE t);
 };
 
 #endif

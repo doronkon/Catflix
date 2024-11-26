@@ -4,11 +4,15 @@
 #include <cstring>
 #include <cstdlib>
 #include <string>
+#include "definers.h"
+#include <climits> 
+
 using namespace std;
+
 
 class util {
 public:
-    static int toNumber(string  str);
+    static bool toNumber(string  str,ID_TYPE & number);
 };
 
 #endif

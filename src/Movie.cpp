@@ -1,4 +1,5 @@
 #include "Movie.h"
 
-Movie::Movie(int t) : movieId(t){}
+
+Movie::Movie(ID_TYPE t) : movieId(t){}
 

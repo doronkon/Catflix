@@ -5,7 +5,7 @@
 class AddCommand : public ICommand
 {
 public:
-    void updateUserMovies(int user, vector<User> userMap, int userIndex)
+    void updateUserMovies(ID_TYPE user, vector<User> userMap, int userIndex)
     {
         // Opening the file for reading
         ifstream inputFile(PATH);
@@ -19,7 +19,8 @@ public:
         {
             istringstream stream(line);
             stream >> word;
-            int current = util::toNumber(word);
+            ID_TYPE current;
+            util::toNumber(word,current);
             if (user == current)
             {
                 lineToChange = currentLine;
@@ -47,7 +48,7 @@ public:
     }
 
     // A function that looks for a user named 'user' in the vector, if it is found, return its index, else return -1
-    int findUser(int user, vector<User> &users){
+    int findUser(ID_TYPE user, vector<User> &users){
         int size = users.size();
         for(int i = 0; i < size; i++){
             if (user == users[i].getUserId())
@@ -58,11 +59,11 @@ public:
         return -1;
     }
 
-    void execute(vector<int> &inputVector, vector<User> &users)
+    void execute(vector<ID_TYPE> &inputVector, vector<User> &users)
     {
         // Opening the file for writing
         ofstream file(PATH, ios::app);
-        int user = inputVector[0];
+        ID_TYPE user = inputVector[0];
 
         // Check if the given user is already in the user map
         int userIndex = findUser(user,users);

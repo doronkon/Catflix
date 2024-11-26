@@ -10,17 +10,17 @@ using namespace std;
 
 class User {
 private:
-    int userId;           // The ID for the user
+    ID_TYPE userId;           // The ID for the user
     vector<Movie> userMovies;   // vector of movies associated with the user
 
 public:
     // Constructor declaration
-    User(int userId, vector<Movie> userMovies);
+    User(ID_TYPE userId, vector<Movie> userMovies);
 
     // Method to add a movie to the user's set of movies
     void addMovie(const Movie& movie);
     
-    int getUserId();
+    ID_TYPE getUserId();
 
     vector<Movie> getUserMovies();
 

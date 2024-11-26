@@ -10,7 +10,8 @@
 #include "User.h"
 #include "Movie.h"
 #include "util.h"
-#define PATH "../data/userData.txt"
+#include "definers.h"
+
 
 using namespace std;
 
@@ -19,7 +20,7 @@ vector<User> createUserMap(ifstream &file)
     vector<User> users;
     string line;
     string word;
-    int user;
+    ID_TYPE user;
     vector<Movie> movies;
     int counter = 0;
     while (getline(file, line))
@@ -29,7 +30,8 @@ vector<User> createUserMap(ifstream &file)
         counter = 0;
         while (stream >> word)
         {
-            int current = util::toNumber(word);
+            ID_TYPE current;
+            util::toNumber(word,current);
             if (counter == 0)
             {
                 user = current; // First word is the user
@@ -46,6 +48,19 @@ vector<User> createUserMap(ifstream &file)
 
     return users; // Return the map at the end
 }
+void helpPint(vector<User> users)
+{
+        for (int i = 0; i < users.size(); i++)
+    {
+        cout << "user: "  << to_string(users[i].getUserId()) <<endl;
+        vector<Movie> movies = users[i].getUserMovies();
+        for (int j = 0; j < movies.size(); j++)
+        {
+            cout << "movie " << movies[j].movieId << endl;
+        }
+        
+    }
+}
 
 int main()
 {
@@ -58,6 +73,8 @@ int main()
     commands["add"] = add;
     while (1)
     {
+
+        
         string input;
         getline(cin, input);
         istringstream stream(input);
@@ -73,14 +90,15 @@ int main()
         {
             bool flag = true;
             int size=inputVector.size();
-            vector<int> inputNumbers;
+            vector<ID_TYPE> inputNumbers;
             for (int i = 0; i < size; i++)
             {
-                if (util::toNumber(inputVector[i])  ==  -1)
+                ID_TYPE current;
+                if (! util::toNumber(inputVector[i],current))
                 {
                     flag=false;
                 }
-                inputNumbers.push_back(util::toNumber(inputVector[i]));
+                inputNumbers.push_back(current);
             }
             if (flag){
                 commands[task]->execute(inputNumbers, users);
