@@ -7,6 +7,7 @@
 #include <vector>
 #include "ICommand.h"
 #include "AddCommand.cpp"
+#include "RecommendCommand.cpp"
 #include "User.h"
 #include "Movie.h"
 #include "util.h"
@@ -71,11 +72,15 @@ int main()
     file.close();
     map<string, ICommand *> commands;
     ICommand *add = new AddCommand();
-    commands["add"] = add;
+    ICommand *recommend = new RecommendCommand();
     HelpCommand *help =new HelpCommand();
+    commands["add"] = add;
+    help->addCommand(add);
+    commands["recommend"] = recommend;
+    help->addCommand(recommend);
     commands["help"] = help;
+    help->addCommand(help);
     //adding to help
-    help->setCommands(commands);
 
     while (1)
     {
@@ -106,9 +111,8 @@ int main()
                 inputNumbers.push_back(current);
             }
             if (flag){
-                //help
-                commands["help"]->execute(inputNumbers, users);
                 commands[task]->execute(inputNumbers, users);
+                
             }
         }
     }

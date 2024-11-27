@@ -11,6 +11,7 @@ public:
     ID_TYPE movieId;
 
     Movie(ID_TYPE t);
+    bool bigger (Movie& other);
 };
 
 #endif
