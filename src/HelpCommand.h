@@ -11,6 +11,7 @@ class HelpCommand : public ICommand {
         void setCommands(map<string, ICommand *> CommandsInput);
         void execute(vector<ID_TYPE>& inputVector, vector<User>& users);
         void print();
+        bool isValid(vector<string>& inputVector);
 
 };
 

@@ -16,3 +16,10 @@ void HelpCommand::execute(vector<ID_TYPE>& inputVector, vector<User>& users) {
 void HelpCommand::print() {
     cout << "help" << endl;
 }
+
+bool HelpCommand::isValid(vector<string>& inputVector) {
+    if (! inputVector.empty()) {
+        return false;
+    }
+    return true;
+}

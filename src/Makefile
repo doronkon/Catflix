@@ -3,7 +3,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall
 
 # Source files
-SRC = main.cpp User.cpp Movie.cpp util.cpp
+SRC = main.cpp User.cpp Movie.cpp util.cpp HelpCommand.cpp
 
 # Output executable
 OUTPUT = Catflix.out

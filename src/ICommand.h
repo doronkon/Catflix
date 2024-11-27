@@ -16,6 +16,7 @@ class ICommand {
 public:
     virtual void execute(vector<ID_TYPE> &inputVector, vector<User> &users) = 0; // Pure virtual function
     virtual void print() = 0;
+    virtual bool isValid(vector<string> &inputVector) = 0;
 };
 
 #endif // ICOMMAND_H

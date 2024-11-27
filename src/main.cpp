@@ -51,11 +51,11 @@ vector<User> createUserMap(ifstream &file)
 }
 void helpPrint(vector<User> users)
 {
-        for (int i = 0; i < users.size(); i++)
+        for (long unsigned int i = 0; i < users.size(); i++)
     {
         cout << "user: "  << to_string(users[i].getUserId()) <<endl;
         vector<Movie> movies = users[i].getUserMovies();
-        for (int j = 0; j < movies.size(); j++)
+        for (long unsigned int j = 0; j < movies.size(); j++)
         {
             cout << "movie " << movies[j].movieId << endl;
         }
@@ -90,6 +90,7 @@ int main()
         }
         string task = inputVector[0];
         inputVector.erase(inputVector.begin());
+        // if commands[task]->isValid(inputVector)) {commands[task]->execute(...); } else {continue;}
         if (inputVector.size() > 1)
         {
             bool flag = true;
