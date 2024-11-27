@@ -155,7 +155,6 @@ public:
             return;
         }
         vector<Movie> MovieList = filtermovies(filteredUsers, movie);
-        //we might get weight from rhe function, wait for doron
         map <ID_TYPE , int> weights = findCommonMovies(user,filteredUsers);
         if(weights.empty()){
             return;
