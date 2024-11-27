@@ -30,6 +30,9 @@ public:
                     }
                     
                 }
+                if(weight[users[i].getUserId()] == 0){
+                    weight.erase(users[i].getUserId());
+                }
             }
         }
         return weight;
@@ -154,6 +157,9 @@ public:
         vector<Movie> MovieList = filtermovies(filteredUsers, movie);
         //we might get weight from rhe function, wait for doron
         map <ID_TYPE , int> weights = findCommonMovies(user,filteredUsers);
+        if(weights.empty()){
+            return;
+        }
         map <ID_TYPE , int> ratings = makingRatings(MovieList,filteredUsers,weights);
         
         //now we have the ratings map all we need is to sort the movies vector by it
