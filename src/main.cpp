@@ -12,6 +12,7 @@
 #include "Movie.h"
 #include "util.h"
 #include "definers.h"
+#include "HelpCommand.h"
 
 
 using namespace std;
@@ -49,7 +50,7 @@ vector<User> createUserMap(ifstream &file)
 
     return users; // Return the map at the end
 }
-void helpPint(vector<User> users)
+void helpPrint(vector<User> users)
 {
         for (int i = 0; i < users.size(); i++)
     {
@@ -74,10 +75,13 @@ int main()
     ICommand *recommend = new RecommendCommand();
     commands["add"] = add;
     commands["recommend"] = recommend;
+    HelpCommand *help =new HelpCommand();
+    commands["help"] = help;
+    //adding to help
+    help->setCommands(commands);
+
     while (1)
     {
-
-        
         string input;
         getline(cin, input);
         istringstream stream(input);
@@ -104,6 +108,8 @@ int main()
                 inputNumbers.push_back(current);
             }
             if (flag){
+                //help
+                commands["help"]->execute(inputNumbers, users);
                 commands[task]->execute(inputNumbers, users);
             }
         }

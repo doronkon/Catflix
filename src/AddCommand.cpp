@@ -102,4 +102,10 @@ public:
         }
         file.close();
     }
+
+    void print()
+    {
+        cout << "add [userid] [movieid1] [movieid2] …" << endl;
+    }
+
 };
