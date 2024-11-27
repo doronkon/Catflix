@@ -11,6 +11,7 @@
 #include "Movie.h"
 #include "util.h"
 #include "definers.h"
+#include "HelpCommand.h"
 
 
 using namespace std;
@@ -71,10 +72,13 @@ int main()
     map<string, ICommand *> commands;
     ICommand *add = new AddCommand();
     commands["add"] = add;
+    HelpCommand *help =new HelpCommand();
+    commands["help"] = help;
+    //adding to help
+    help->setCommands(commands);
+
     while (1)
     {
-
-        
         string input;
         getline(cin, input);
         istringstream stream(input);
@@ -101,6 +105,8 @@ int main()
                 inputNumbers.push_back(current);
             }
             if (flag){
+                //help
+                commands["help"]->execute(inputNumbers, users);
                 commands[task]->execute(inputNumbers, users);
             }
         }

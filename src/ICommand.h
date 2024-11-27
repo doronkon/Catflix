@@ -15,6 +15,7 @@ using namespace std;
 class ICommand {
 public:
     virtual void execute(vector<ID_TYPE> &inputVector, vector<User> &users) = 0; // Pure virtual function
+    virtual void print() = 0;
 };
 
 #endif // ICOMMAND_H
