@@ -11,6 +11,10 @@ public:
     ID_TYPE movieId;
 
     Movie(ID_TYPE t);
+
+    bool operator<(const Movie& other) const {
+        return this->movieId < other.movieId;
+    }
 };
 
 #endif

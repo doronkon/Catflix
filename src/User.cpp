@@ -24,3 +24,4 @@ bool User::didIWatch(Movie &movie){
     }
     return false;
 }
+

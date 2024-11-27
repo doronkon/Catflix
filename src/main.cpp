@@ -7,6 +7,7 @@
 #include <vector>
 #include "ICommand.h"
 #include "AddCommand.cpp"
+#include "RecommendCommand.cpp"
 #include "User.h"
 #include "Movie.h"
 #include "util.h"
@@ -70,7 +71,9 @@ int main()
     file.close();
     map<string, ICommand *> commands;
     ICommand *add = new AddCommand();
+    ICommand *recommend = new RecommendCommand();
     commands["add"] = add;
+    commands["recommend"] = recommend;
     while (1)
     {
 
