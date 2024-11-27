@@ -87,16 +87,19 @@ public:
         else
         {
             vector<Movie> movies;
+            User userToAdd(user,movies);
             int size = inputVector.size();
             // iterate through the movies, print them to the data and add them to a movie vector
             file << to_string(inputVector[0]) + " ";
             for (int i = 1; i < size; i++)
             {
-                movies.push_back(Movie(inputVector[i]));
-                file << to_string(inputVector[i]) + " ";
+                Movie curr(inputVector[i]);
+                if(!userToAdd.didIWatch(curr)){
+                    userToAdd.addMovie(curr);
+                    file << to_string(inputVector[i]) + " ";
+                }
             }
             // create a new user with the created movie vector and add it to the user vector
-            User userToAdd(user,movies);
             users.push_back(userToAdd);
             file << endl;
         }

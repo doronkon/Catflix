@@ -110,9 +110,6 @@ int main()
                 inputNumbers.push_back(current);
             }
             if (flag){
-                //help
-                //commands["help"]->execute(inputNumbers, users);
-                //commands["recommend"]->execute(inputNumbers,users);
                 commands[task]->execute(inputNumbers, users);
                 
             }
