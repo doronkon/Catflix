@@ -49,7 +49,7 @@ vector<User> createUserMap(ifstream &file)
 
     return users; // Return the map at the end
 }
-void helpPint(vector<User> users)
+void helpPrint(vector<User> users)
 {
         for (int i = 0; i < users.size(); i++)
     {
