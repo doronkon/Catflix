@@ -73,12 +73,14 @@ int main()
     map<string, ICommand *> commands;
     ICommand *add = new AddCommand();
     ICommand *recommend = new RecommendCommand();
-    commands["add"] = add;
-    commands["recommend"] = recommend;
     HelpCommand *help =new HelpCommand();
+    commands["add"] = add;
+    help->addCommand(add);
+    commands["recommend"] = recommend;
+    help->addCommand(recommend);
     commands["help"] = help;
+    help->addCommand(help);
     //adding to help
-    help->setCommands(commands);
 
     while (1)
     {

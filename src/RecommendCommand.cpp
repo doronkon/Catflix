@@ -8,33 +8,33 @@ public:
         cout << "recommend [userid] [movieid]" << endl;
     }
 
-    void findCommonMovies(User user, vector<User> &users){
+    map<ID_TYPE,int> findCommonMovies(User user, vector<User> &users){
+        map<ID_TYPE,int> weight;
         vector<Movie> userMovies = user.getUserMovies();
         int userSize = userMovies.size();
         int amountOfUsers = users.size();
-        int common;
         // go through all users
         for(int i = 0; i < amountOfUsers; i++){
-            common = 0;
             // we don't want to count the amount of common movies for the same user
             if(users[i].getUserId() == user.getUserId()){
                 continue;
             }
+            weight[users[i].getUserId()] = 0;
             // go though all of the movies we want to get a recommendation for
             for(int j = 0; j < user.getUserMovies().size(); j++){
                 // go through all movies of some user who is not the user we want to get a recommendation for
                 for (int k = 0; k < users[i].getUserMovies().size(); k++){
                     if (user.getUserMovies()[j].movieId == users[i].getUserMovies()[k].movieId)
                     {
-                       common++;
+                       weight[users[i].getUserId()]++;
                     }
                     
                 }
             }
         }
+        return weight;
     }
-
-    vector<User> filterUsers(Movie movie, User user, vector<User> &users){
+    vector<User> filterUsers(Movie movie, User& user, vector<User> &users){
         vector<User> filteredUsers;
         int size = users.size();
         for(int i = 0; i < size; i++){
@@ -69,24 +69,21 @@ public:
         }
         return filter;
     }
-
-    void execute(vector<ID_TYPE> &inputVector, vector<User> &users){
-        //here we need to check if user exists
-        User test = users[0];
-        //findCommonMovies(test,users);
-        Movie movie(104);
-        vector<User> filteredUsers = filterUsers(movie,users[0],users);
-        if (filteredUsers.empty())
+    int findUserByID(vector<ID_TYPE> &inputVector, vector<User> &users)
+    {
+        int size = users.size();
+        for (int i = 0; i < size; i++)
         {
-            return;
+            if (users[i].getUserId() == inputVector[0])
+            {
+                return i;
+            }
         }
-        //maybe change to ID_TYPE vector?
-        vector<Movie> MovieList = filtermovies(filteredUsers, movie);
-        //we might get weight from rhe function, wait for doron
-        map <User , int> weights;
-        map <ID_TYPE , int> ratings;
+        return -1;
+    }
+    map <ID_TYPE , int> makingRatings(vector<Movie> MovieList,vector<User>& filteredUsers ,map <ID_TYPE , int> weights){
+         map <ID_TYPE , int> ratings;
         //first we make all ratings zero
-
         for (Movie curMovie : MovieList){
             ratings[curMovie.movieId] = 0;
         }
@@ -100,14 +97,15 @@ public:
             // each movie in his list
             for (int j = 0; j < moviesSize; j++)
             {
-                //ratings[curMovie.movieId]+=weights[filteredUsers[i]]; 
+                Movie curMovie = userMovies[j];
+                ratings[curMovie.movieId]+=weights[filteredUsers[i].getUserId()]; 
             }
-            
         }
-        //now we have the ratings map all we need is to sort the movies vector by it
-
-        //first we bubble sort by ID
-        moviesSize = MovieList.size();
+        return ratings;
+    }
+    void sortingMovies(vector<Movie>& MovieList,map <ID_TYPE , int> ratings){
+        //first we sort by ID
+        int moviesSize = MovieList.size();
         for (int i = 0; i < moviesSize-1; i++)
         {
             for (int j = i+1; j < moviesSize; j++)
@@ -122,28 +120,50 @@ public:
             }
         }
         //now we sort by ratings
-        /*
         for (int i = 0; i < moviesSize-1; i++)
         {
-            for (int j = i+1; j < moviesSize; j++)
+            for (int j = 0; j < moviesSize - i - 1; j++)
             {
                 // swapping movie with  lower ID_TYPE to be 
-                if (ratings[MovieList[i].movieId]>ratings[MovieList[j].movieId])
+                if (ratings[MovieList[j].movieId]<ratings[MovieList[j+1].movieId])
                 {
                     //same swap
-                    Movie temp = MovieList[i];
-                    MovieList[i] = MovieList[j];
-                    MovieList[j] = temp;
+                    Movie temp = MovieList[j];
+                    MovieList[j] = MovieList[j+1];
+                    MovieList[j+1] = temp;
                 }
             }
         }
-        */
+
+    }
+
+    void execute(vector<ID_TYPE> &inputVector, vector<User> &users){
+        //here we need to check if user exists
+        int place = findUserByID(inputVector,users);
+        if (place == -1 )
+        {
+            return;
+        }
+        User user = users[place];
+        Movie movie(inputVector[1]);
+        vector<User> filteredUsers = filterUsers(movie,user,users);
+        if (filteredUsers.empty())
+        {
+            return;
+        }
+        vector<Movie> MovieList = filtermovies(filteredUsers, movie);
+        //we might get weight from rhe function, wait for doron
+        map <ID_TYPE , int> weights = findCommonMovies(user,filteredUsers);
+        map <ID_TYPE , int> ratings = makingRatings(MovieList,filteredUsers,weights);
+        
+        //now we have the ratings map all we need is to sort the movies vector by it
+        sortingMovies(MovieList,ratings);        
+        int moviesSize = MovieList.size();
         //now we print
         for(int i = 0; i < moviesSize; i ++){
-            cout << MovieList[i].movieId << " , ";
+            cout << MovieList[i].movieId << ' ';
         }
         cout << endl;
-        
 
     }
 };

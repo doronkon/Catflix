@@ -8,7 +8,8 @@ using namespace std;
 class HelpCommand : public ICommand {
     vector <ICommand *> commands;
     public:
-        void setCommands(map<string, ICommand *> CommandsInput);
+        void addCommand(ICommand * command);
+
         void execute(vector<ID_TYPE>& inputVector, vector<User>& users);
         void print();
 
