@@ -71,13 +71,79 @@ public:
     }
 
     void execute(vector<ID_TYPE> &inputVector, vector<User> &users){
+        //here we need to check if user exists
         User test = users[0];
         //findCommonMovies(test,users);
         Movie movie(104);
-        vector<User> stam = filterUsers(movie,users[0],users);
-        vector<Movie> stamStam = filtermovies(stam, movie);
-        for(int i = 0; i < stamStam.size(); i ++){
-            cout << stamStam[i].movieId << endl;
+        vector<User> filteredUsers = filterUsers(movie,users[0],users);
+        if (filteredUsers.empty())
+        {
+            return;
         }
+        //maybe change to ID_TYPE vector?
+        vector<Movie> MovieList = filtermovies(filteredUsers, movie);
+        //we might get weight from rhe function, wait for doron
+        map <User , int> weights;
+        map <ID_TYPE , int> ratings;
+        //first we make all ratings zero
+
+        for (Movie curMovie : MovieList){
+            ratings[curMovie.movieId] = 0;
+        }
+        //then we add all the ratings
+        int usersSize = filteredUsers.size();
+        int moviesSize;
+        for (int i =0; i < usersSize; i++)
+        {
+            vector<Movie> userMovies = filteredUsers[i].getUserMovies();
+            moviesSize = userMovies.size();
+            // each movie in his list
+            for (int j = 0; j < moviesSize; j++)
+            {
+                //ratings[curMovie.movieId]+=weights[filteredUsers[i]]; 
+            }
+            
+        }
+        //now we have the ratings map all we need is to sort the movies vector by it
+
+        //first we bubble sort by ID
+        moviesSize = MovieList.size();
+        for (int i = 0; i < moviesSize-1; i++)
+        {
+            for (int j = i+1; j < moviesSize; j++)
+            {
+                // swapping movie with  lower ID_TYPE to be 
+                if (MovieList[i].bigger(MovieList[j]))
+                {
+                    Movie temp = MovieList[i];
+                    MovieList[i] = MovieList[j];
+                    MovieList[j] = temp;
+                }
+            }
+        }
+        //now we sort by ratings
+        /*
+        for (int i = 0; i < moviesSize-1; i++)
+        {
+            for (int j = i+1; j < moviesSize; j++)
+            {
+                // swapping movie with  lower ID_TYPE to be 
+                if (ratings[MovieList[i].movieId]>ratings[MovieList[j].movieId])
+                {
+                    //same swap
+                    Movie temp = MovieList[i];
+                    MovieList[i] = MovieList[j];
+                    MovieList[j] = temp;
+                }
+            }
+        }
+        */
+        //now we print
+        for(int i = 0; i < moviesSize; i ++){
+            cout << MovieList[i].movieId << " , ";
+        }
+        cout << endl;
+        
+
     }
 };
