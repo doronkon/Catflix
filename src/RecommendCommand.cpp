@@ -1,4 +1,5 @@
 #include "ICommand.h"
+#include "util.h"
 #define PATH "../data/userData.txt"
 
 class RecommendCommand : public ICommand {
@@ -170,5 +171,30 @@ public:
         }
         cout << endl;
 
+    }
+
+    bool isValid(vector<string> &inputVector) {
+        if (inputVector.size() < 2) {
+            return false;
+        }
+        if (changeVectorType(inputVector).empty() && !inputVector.empty()) {
+            return false;
+        }
+        return true;
+    }
+
+        vector<ID_TYPE> changeVectorType(vector<string> inputStringVector) {
+        int size=inputStringVector.size();
+        vector<ID_TYPE> inputNumbers;
+        for (int i = 0; i < size; i++)
+            {
+                ID_TYPE current;
+                if (! util::toNumber(inputStringVector[i],current)) {
+                    inputNumbers.clear();
+                    return inputNumbers;
+                }
+                inputNumbers.push_back(current);
+            }
+        return inputNumbers;
     }
 };
