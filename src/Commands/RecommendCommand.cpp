@@ -1,15 +1,11 @@
-#include "ICommand.h"
-#include "util.h"
-#define PATH "../data/userData.txt"
+#include "RecommendCommand.h"
 
-class RecommendCommand : public ICommand {
-public:
-    void print()
+    void RecommendCommand::print()
     {
         cout << "recommend [userid] [movieid]" << endl;
     }
 
-    map<ID_TYPE,int> findCommonMovies(User user, vector<User> &users){
+    map<ID_TYPE,int> RecommendCommand::findCommonMovies(User user, vector<User> &users){
         map<ID_TYPE,int> weight;
         vector<Movie> userMovies = user.getUserMovies();
         int userSize = userMovies.size();
@@ -38,7 +34,7 @@ public:
         }
         return weight;
     }
-    vector<User> filterUsers(Movie movie, User& user, vector<User> &users){
+    vector<User> RecommendCommand::filterUsers(Movie movie, User& user, vector<User> &users){
         vector<User> filteredUsers;
         int size = users.size();
         for(int i = 0; i < size; i++){
@@ -54,7 +50,7 @@ public:
         return filteredUsers;
     }
 
-    vector<Movie> filtermovies(vector<User> filteredUsers, Movie movie){
+    vector<Movie> RecommendCommand::filtermovies(vector<User> filteredUsers, Movie movie){
         vector<Movie> filter;
         User emptyUser(0,filter);
         int size = filteredUsers.size();
@@ -73,7 +69,7 @@ public:
         }
         return filter;
     }
-    int findUserByID(vector<ID_TYPE> &inputVector, vector<User> &users)
+    int RecommendCommand::findUserByID(vector<ID_TYPE> &inputVector, vector<User> &users)
     {
         int size = users.size();
         for (int i = 0; i < size; i++)
@@ -85,7 +81,7 @@ public:
         }
         return -1;
     }
-    map <ID_TYPE , int> makingRatings(vector<Movie> MovieList,vector<User>& filteredUsers ,map <ID_TYPE , int> weights){
+    map <ID_TYPE , int> RecommendCommand::makingRatings(vector<Movie> MovieList,vector<User>& filteredUsers ,map <ID_TYPE , int> weights){
          map <ID_TYPE , int> ratings;
         //first we make all ratings zero
         for (Movie curMovie : MovieList){
@@ -107,7 +103,7 @@ public:
         }
         return ratings;
     }
-    void sortingMovies(vector<Movie>& MovieList,map <ID_TYPE , int> ratings){
+    void RecommendCommand::sortingMovies(vector<Movie>& MovieList,map <ID_TYPE , int> ratings){
         //first we sort by ID
         int moviesSize = MovieList.size();
         for (int i = 0; i < moviesSize-1; i++)
@@ -141,7 +137,7 @@ public:
 
     }
 
-    void execute(vector<ID_TYPE> &inputVector, vector<User> &users){
+    void RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users){
         //here we need to check if user exists
         int place = findUserByID(inputVector,users);
         if (place == -1 )
@@ -173,17 +169,7 @@ public:
 
     }
 
-    bool isValid(vector<string> &inputVector) {
-        if (inputVector.size() < 2) {
-            return false;
-        }
-        if (changeVectorType(inputVector).empty() && !inputVector.empty()) {
-            return false;
-        }
-        return true;
-    }
-
-        vector<ID_TYPE> changeVectorType(vector<string> inputStringVector) {
+    vector<ID_TYPE> RecommendCommand::changeVectorType(vector<string> inputStringVector) {
         int size=inputStringVector.size();
         vector<ID_TYPE> inputNumbers;
         for (int i = 0; i < size; i++)
@@ -197,4 +183,13 @@ public:
             }
         return inputNumbers;
     }
-};
+
+    bool RecommendCommand::isValid(vector<string> &inputVector) {
+        if (inputVector.size() < 2) {
+            return false;
+        }
+        if (changeVectorType(inputVector).empty() && !inputVector.empty()) {
+            return false;
+        }
+        return true;
+    };

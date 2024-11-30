@@ -1,11 +1,6 @@
-#include "ICommand.h"
-#include "util.h"
+#include "AddCommand.h"
 
-#define PATH "../data/userData.txt"
-class AddCommand : public ICommand
-{
-public:
-    void updateUserMovies(ID_TYPE user, vector<User> userMap, int userIndex)
+    void AddCommand::updateUserMovies(ID_TYPE user, vector<User> userMap, int userIndex)
     {
         // Opening the file for reading
         ifstream inputFile(PATH);
@@ -48,7 +43,7 @@ public:
     }
 
     // A function that looks for a user named 'user' in the vector, if it is found, return its index, else return -1
-    int findUser(ID_TYPE user, vector<User> &users){
+    int AddCommand::findUser(ID_TYPE user, vector<User> &users){
         int size = users.size();
         for(int i = 0; i < size; i++){
             if (user == users[i].getUserId())
@@ -59,7 +54,7 @@ public:
         return -1;
     }
 
-    void execute(vector<ID_TYPE> &inputVector, vector<User> &users)
+    void AddCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
     {
         // Opening the file for writing
         ofstream file(PATH, ios::app);
@@ -106,22 +101,12 @@ public:
         file.close();
     }
 
-    void print()
+    void AddCommand::print()
     {
         cout << "add [userid] [movieid1] [movieid2] …" << endl;
     }
 
-    bool isValid(vector<string> &inputVector) {
-        if (inputVector.size() <= 1) {
-            return false;
-        }
-        else if (changeVectorType(inputVector).empty() && !inputVector.empty()) {
-            return false;
-        }
-        return true;
-    }
-
-    vector<ID_TYPE> changeVectorType(vector<string> inputStringVector) {
+        vector<ID_TYPE> AddCommand::changeVectorType(vector<string> inputStringVector) {
         int size=inputStringVector.size();
         vector<ID_TYPE> inputNumbers;
         for (int i = 0; i < size; i++)
@@ -136,4 +121,12 @@ public:
         return inputNumbers;
     }
 
-};
+    bool AddCommand::isValid(vector<string> &inputVector) {
+        if (inputVector.size() <= 1) {
+            return false;
+        }
+        else if (changeVectorType(inputVector).empty() && !inputVector.empty()) {
+            return false;
+        }
+        return true;
+    };

@@ -1,0 +1,26 @@
+#ifndef ADDCOMMAND_H
+#define ADDCOMMAND_H
+
+#include "ICommand.h"
+#include "util.h"
+#include "User.h"
+#include "Movie.h"
+#include <vector>
+#include <string>
+#include <fstream>
+#include <sstream>
+
+#define PATH "../data/userData.txt"
+
+class AddCommand : public ICommand
+{
+public:
+    void updateUserMovies(ID_TYPE user, vector<User> userMap, int userIndex);
+    int findUser(ID_TYPE user, vector<User> &users);
+    void execute(vector<ID_TYPE> &inputVector, vector<User> &users);
+    void print();
+    bool isValid(vector<string> &inputVector);
+    vector<ID_TYPE> changeVectorType(vector<string> inputStringVector);
+};
+
+#endif // ADDCOMMAND_H
