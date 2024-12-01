@@ -83,11 +83,9 @@ int App::run()
         string task = inputVector[0];
         inputVector.erase(inputVector.begin());
         // if commands[task]->isValid(inputVector)) {commands[task]->execute(...); } else {continue;}
-        if (task == "add" || task == "recommend" || task == "help") {
-            if (commands[task]->isValid(inputVector)) {
-                vector<ID_TYPE> inputNumbers = changeVectorType(inputVector);
-                commands[task]->execute(inputNumbers, users);
-            }
+        if (commands[task] && commands[task]->isValid(inputVector)) {
+            vector<ID_TYPE> inputNumbers = changeVectorType(inputVector);
+            commands[task]->execute(inputNumbers, users);
         }
     }
     return 0;

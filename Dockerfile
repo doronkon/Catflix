@@ -1,10 +1,28 @@
-FROM gcc:latest
+# Use a more recent Ubuntu base image
+FROM ubuntu:22.04
 
-COPY . /usr/src/Catflix
-WORKDIR /usr/src/Catflix
+# Install GCC, make, and other build tools
+RUN apt-get update && apt-get install -y \
+    g++ \
+    make \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN g++ -o Catflix main.cpp 
+# Set the working directory
+WORKDIR /app
 
-CMD ["./Catflix"]
+# Copy only necessary files into the container
+COPY Makefile ./
+COPY src ./src
+COPY bin ./bin
 
-## docker run -it
+# Exclude .git, .DS_Store, and data directory
+COPY .gitignore ./
+
+# Create a volume for runtime data
+VOLUME ["/app/data"]
+
+# Run make to build the project
+RUN make
+
+# Set the binary as the default command
+CMD ["./bin/catflix"]

@@ -3,6 +3,6 @@
 
 
 #define ID_TYPE unsigned long int
-#define PATH "../data/userData.txt"
+#define PATH "/app/data/userData.txt"
 
 #endif
