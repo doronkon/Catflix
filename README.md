@@ -13,9 +13,9 @@
 
 ## 2. Help command - 
 ### 1. help initiates all "print" functions which every command has including itself, execute initiate exactly that and addCommand add a given comand to the command list of Help
-![help initiates all "print" functions which every command has including itself, execute initiate exactly that and addCommand add a given comand to the command list of Help](./help-1.png)
+![help initiates all "print" functions which every command has including itself, execute initiate exactly that and addCommand add a given comand to the command list of Help](./photos/help-1.png)
 ### 2. isValid validates the arguments given to help command
-![isValid validates the arguments given to help command](./help-2.png)
+![isValid validates the arguments given to help command](./photos/help-2.png)
 
 ## 3. Recommend Command - 
 ## 1. print function - used by help
