@@ -127,7 +127,7 @@
 
     void RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users){
         //here we need to check if user exists
-        int place = Util::findUserByID(users,inputVector[0]);
+        int place = util::findUserByID(users,inputVector[0]);
         if (place == -1 )
         {
             return;
