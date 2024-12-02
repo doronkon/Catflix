@@ -42,3 +42,30 @@ bool util::toNumber(string  str, ID_TYPE & number)
     }
     return true;
 }
+
+int util::findUserByID(vector<User> &users , ID_TYPE user)
+{
+    int size = users.size();
+    for(int i = 0; i < size; i++){
+        if (users[i].getUserId() == user)
+        {
+            return i;
+        }  
+    }
+    return -1;
+}
+
+vector<ID_TYPE> util::changeVectorType(vector<string> inputStringVector) {
+    int size=inputStringVector.size();
+    vector<ID_TYPE> inputNumbers;
+    for (int i = 0; i < size; i++)
+        {
+            ID_TYPE current;
+            if (! util::toNumber(inputStringVector[i],current)) {
+                inputNumbers.clear();
+                return inputNumbers;
+            }
+            inputNumbers.push_back(current);
+        }
+    return inputNumbers;
+}

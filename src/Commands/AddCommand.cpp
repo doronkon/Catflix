@@ -42,17 +42,6 @@
         file.close();
     }
 
-    // A function that looks for a user named 'user' in the vector, if it is found, return its index, else return -1
-    int AddCommand::findUser(ID_TYPE user, vector<User> &users){
-        int size = users.size();
-        for(int i = 0; i < size; i++){
-            if (user == users[i].getUserId())
-            {
-                return i;
-            }  
-        }
-        return -1;
-    }
 
     void AddCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
     {
@@ -61,7 +50,7 @@
         ID_TYPE user = inputVector[0];
 
         // Check if the given user is already in the user map
-        int userIndex = findUser(user,users);
+        int userIndex = util::findUserByID(users,user);
         if (userIndex != -1) // User is in the User map!
         {
             int size = inputVector.size();
@@ -106,26 +95,12 @@
         cout << "add [userid] [movieid1] [movieid2] …" << endl;
     }
 
-        vector<ID_TYPE> AddCommand::changeVectorType(vector<string> inputStringVector) {
-        int size=inputStringVector.size();
-        vector<ID_TYPE> inputNumbers;
-        for (int i = 0; i < size; i++)
-            {
-                ID_TYPE current;
-                if (! util::toNumber(inputStringVector[i],current)) {
-                    inputNumbers.clear();
-                    return inputNumbers;
-                }
-                inputNumbers.push_back(current);
-            }
-        return inputNumbers;
-    }
 
     bool AddCommand::isValid(vector<string> &inputVector) {
         if (inputVector.size() <= 1) {
             return false;
         }
-        else if (changeVectorType(inputVector).empty() && !inputVector.empty()) {
+        else if (util::changeVectorType(inputVector).empty() && !inputVector.empty()) {
             return false;
         }
         return true;
