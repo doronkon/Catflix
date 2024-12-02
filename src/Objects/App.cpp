@@ -84,26 +84,10 @@ int App::run()
         inputVector.erase(inputVector.begin());
         // if commands[task]->isValid(inputVector)) {commands[task]->execute(...); } else {continue;}
         if (commands[task] && commands[task]->isValid(inputVector)) {
-            vector<ID_TYPE> inputNumbers = changeVectorType(inputVector);
+            vector<ID_TYPE> inputNumbers = util::changeVectorType(inputVector);
             commands[task]->execute(inputNumbers, users);
         }
     }
     return 0;
 }
 
-
-// Function to change vector type, currently to usigned long int.
-vector<ID_TYPE> App::changeVectorType(vector<string> inputStringVector) {
-        int size=inputStringVector.size();
-        vector<ID_TYPE> inputNumbers;
-        for (int i = 0; i < size; i++)
-            {
-                ID_TYPE current;
-                if (! util::toNumber(inputStringVector[i],current)) {
-                    inputNumbers.clear();
-                    return inputNumbers;
-                }
-                inputNumbers.push_back(current);
-            }
-        return inputNumbers;
-    }

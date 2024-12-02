@@ -23,7 +23,6 @@ class App {
         vector<User> createUserMap(ifstream &file);
         void helpPrint(vector<User> users);
         int run();
-        vector<ID_TYPE> changeVectorType(vector<string> inputStringVector);
 };
 
 #endif
