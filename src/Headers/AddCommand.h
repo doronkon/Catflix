@@ -19,7 +19,6 @@ public:
     void execute(vector<ID_TYPE> &inputVector, vector<User> &users);
     void print();
     bool isValid(vector<string> &inputVector);
-    vector<ID_TYPE> changeVectorType(vector<string> inputStringVector);
 };
 
 #endif // ADDCOMMAND_H

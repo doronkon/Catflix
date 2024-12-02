@@ -157,26 +157,12 @@
 
     }
 
-    vector<ID_TYPE> RecommendCommand::changeVectorType(vector<string> inputStringVector) {
-        int size=inputStringVector.size();
-        vector<ID_TYPE> inputNumbers;
-        for (int i = 0; i < size; i++)
-            {
-                ID_TYPE current;
-                if (! util::toNumber(inputStringVector[i],current)) {
-                    inputNumbers.clear();
-                    return inputNumbers;
-                }
-                inputNumbers.push_back(current);
-            }
-        return inputNumbers;
-    }
 
     bool RecommendCommand::isValid(vector<string> &inputVector) {
         if (inputVector.size() < 2) {
             return false;
         }
-        if (changeVectorType(inputVector).empty() && !inputVector.empty()) {
+        if (util::changeVectorType(inputVector).empty() && !inputVector.empty()) {
             return false;
         }
         return true;

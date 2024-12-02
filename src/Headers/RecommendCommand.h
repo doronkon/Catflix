@@ -23,7 +23,6 @@ public:
     void sortingMovies(vector<Movie> &MovieList, map<ID_TYPE, int> ratings);
     void execute(vector<ID_TYPE> &inputVector, vector<User> &users);
     bool isValid(vector<string> &inputVector);
-    vector<ID_TYPE> changeVectorType(vector<string> inputStringVector);
 };
 
 #endif // RECOMMENDCOMMAND_H

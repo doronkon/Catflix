@@ -95,26 +95,12 @@
         cout << "add [userid] [movieid1] [movieid2] …" << endl;
     }
 
-        vector<ID_TYPE> AddCommand::changeVectorType(vector<string> inputStringVector) {
-        int size=inputStringVector.size();
-        vector<ID_TYPE> inputNumbers;
-        for (int i = 0; i < size; i++)
-            {
-                ID_TYPE current;
-                if (! util::toNumber(inputStringVector[i],current)) {
-                    inputNumbers.clear();
-                    return inputNumbers;
-                }
-                inputNumbers.push_back(current);
-            }
-        return inputNumbers;
-    }
 
     bool AddCommand::isValid(vector<string> &inputVector) {
         if (inputVector.size() <= 1) {
             return false;
         }
-        else if (changeVectorType(inputVector).empty() && !inputVector.empty()) {
+        else if (util::changeVectorType(inputVector).empty() && !inputVector.empty()) {
             return false;
         }
         return true;
