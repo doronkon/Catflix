@@ -9,7 +9,6 @@ class HelpCommand : public ICommand {
     vector <ICommand *> commands;
     public:
         void addCommand(ICommand * command);
-
         void execute(vector<ID_TYPE>& inputVector, vector<User>& users);
         void print();
         bool isValid(vector<string>& inputVector);

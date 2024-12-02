@@ -42,17 +42,6 @@
         file.close();
     }
 
-    // A function that looks for a user named 'user' in the vector, if it is found, return its index, else return -1
-    int AddCommand::findUser(ID_TYPE user, vector<User> &users){
-        int size = users.size();
-        for(int i = 0; i < size; i++){
-            if (user == users[i].getUserId())
-            {
-                return i;
-            }  
-        }
-        return -1;
-    }
 
     void AddCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
     {
@@ -61,7 +50,7 @@
         ID_TYPE user = inputVector[0];
 
         // Check if the given user is already in the user map
-        int userIndex = findUser(user,users);
+        int userIndex = util::findUserByID(users,user);
         if (userIndex != -1) // User is in the User map!
         {
             int size = inputVector.size();

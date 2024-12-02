@@ -13,6 +13,7 @@ using namespace std;
 class util {
 public:
     static bool toNumber(string  str,ID_TYPE & number);
+    int findUserByID(vector<User> &users , ID_TYPE user);
 };
 
 #endif

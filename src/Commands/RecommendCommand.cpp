@@ -69,18 +69,6 @@
         }
         return filter;
     }
-    int RecommendCommand::findUserByID(vector<ID_TYPE> &inputVector, vector<User> &users)
-    {
-        int size = users.size();
-        for (int i = 0; i < size; i++)
-        {
-            if (users[i].getUserId() == inputVector[0])
-            {
-                return i;
-            }
-        }
-        return -1;
-    }
     map <ID_TYPE , int> RecommendCommand::makingRatings(vector<Movie> MovieList,vector<User>& filteredUsers ,map <ID_TYPE , int> weights){
          map <ID_TYPE , int> ratings;
         //first we make all ratings zero
@@ -139,7 +127,7 @@
 
     void RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users){
         //here we need to check if user exists
-        int place = findUserByID(inputVector,users);
+        int place = Util::findUserByID(users,inputVector[0]);
         if (place == -1 )
         {
             return;
