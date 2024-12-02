@@ -23,4 +23,19 @@
 //     vec.Push_back(200);
 //     EXPECT_EQ(util::findUserByID(vec, 201),true);
 // }
+// TEST(utills, ChangeVectorTest1)
+// {
+//     vector<string> strings;
+//     strings.Push_back("80");
+//     vector<ID_TYPE> vec=util::changeVectorType(strings);
+//     EXPECT_EQ(vec[0],80);
+
+// }
+// TEST(utills, findUserTest2)
+// {
+//     vector<string> strings;
+//     strings.Push_back("aba");
+//     vector<ID_TYPE> vec=util::changeVectorType(strings);
+//     EXPECT_EQ(vec.empty(), true);
+// }
 
