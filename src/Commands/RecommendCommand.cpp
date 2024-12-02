@@ -50,7 +50,7 @@
         return filteredUsers;
     }
 
-    vector<Movie> RecommendCommand::filtermovies(vector<User> filteredUsers, Movie movie){
+    vector<Movie> RecommendCommand::filtermovies(vector<User> filteredUsers, Movie movie , User user){
         vector<Movie> filter;
         User emptyUser(0,filter);
         int size = filteredUsers.size();
@@ -61,7 +61,7 @@
             amountOfMovies = curr.size();
             // adding movies to filtered movies with no duplications
             for(int j = 0; j < amountOfMovies; j++){
-                if(movie.movieId != curr[j].movieId && !emptyUser.didIWatch(curr[j])) {
+                if(movie.movieId != curr[j].movieId && !emptyUser.didIWatch(curr[j]) && !user.didIWatch(curr[j])) {
                     filter.push_back(curr[j]);
                     emptyUser.addMovie(curr[j]);
                 }
@@ -151,7 +151,7 @@
         {
             return;
         }
-        vector<Movie> MovieList = filtermovies(filteredUsers, movie);
+        vector<Movie> MovieList = filtermovies(filteredUsers, movie,user);
         map <ID_TYPE , int> weights = findCommonMovies(user,filteredUsers);
         if(weights.empty()){
             return;
