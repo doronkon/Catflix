@@ -68,13 +68,16 @@ int App::run()
     // adding to help
 
     while (true) {
-    string input;
-    getline(cin, input);
-    istringstream stream(input);
-    string singleWord;
-    vector<string> inputVector;
+        string input;
+        getline(cin, input);
+        if (input.empty() || input.find('\t') != std::string::npos)
+        {
+            continue;
+        }
+        istringstream stream(input);
+        string singleWord;
+        vector<string> inputVector;
 
-    try {
         while (stream >> singleWord) {
             inputVector.push_back(singleWord);
         }
@@ -88,9 +91,6 @@ int App::run()
                 commands[task]->execute(inputNumbers, users);
             }
         }
-    } catch (const std::exception& e) {
-        continue;
     }
-}
     return 0;
 }
