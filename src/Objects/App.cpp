@@ -1,6 +1,5 @@
 #include "../Headers/App.h"
 
-
 using namespace std;
 
 vector<User> App::createUserMap(ifstream &file)
@@ -20,7 +19,7 @@ vector<User> App::createUserMap(ifstream &file)
         while (stream >> word)
         {
             ID_TYPE current;
-            util::toNumber(word,current);
+            util::toNumber(word, current);
             if (counter == 0)
             {
                 user = current; // First word is the user
@@ -31,7 +30,7 @@ vector<User> App::createUserMap(ifstream &file)
             }
             counter++; // Increment the counter
         }
-        User userToAdd(user,movies);
+        User userToAdd(user, movies);
         users.push_back(userToAdd);
     }
 
@@ -39,15 +38,14 @@ vector<User> App::createUserMap(ifstream &file)
 }
 void App::helpPrint(vector<User> users)
 {
-        for (long unsigned int i = 0; i < users.size(); i++)
+    for (long unsigned int i = 0; i < users.size(); i++)
     {
-        cout << "user: "  << to_string(users[i].getUserId()) <<endl;
+        cout << "user: " << to_string(users[i].getUserId()) << endl;
         vector<Movie> movies = users[i].getUserMovies();
         for (long unsigned int j = 0; j < movies.size(); j++)
         {
             cout << "movie " << movies[j].movieId << endl;
         }
-        
     }
 }
 
@@ -60,34 +58,39 @@ int App::run()
     map<string, ICommand *> commands;
     ICommand *add = new AddCommand();
     ICommand *recommend = new RecommendCommand();
-    HelpCommand *help =new HelpCommand();
+    HelpCommand *help = new HelpCommand();
     commands["add"] = add;
     help->addCommand(add);
     commands["recommend"] = recommend;
     help->addCommand(recommend);
     commands["help"] = help;
     help->addCommand(help);
-    //adding to help
+    // adding to help
 
-    while (1)
-    {
-        string input;
-        getline(cin, input);
-        istringstream stream(input);
-        string singleWord;
-        vector<string> inputVector;
-        while (stream >> singleWord)
-        {
+    while (true) {
+    string input;
+    getline(cin, input);
+    istringstream stream(input);
+    string singleWord;
+    vector<string> inputVector;
+
+    try {
+        while (stream >> singleWord) {
             inputVector.push_back(singleWord);
         }
-        string task = inputVector[0];
-        inputVector.erase(inputVector.begin());
-        // if commands[task]->isValid(inputVector)) {commands[task]->execute(...); } else {continue;}
-        if (commands[task] && commands[task]->isValid(inputVector)) {
-            vector<ID_TYPE> inputNumbers = util::changeVectorType(inputVector);
-            commands[task]->execute(inputNumbers, users);
+
+        if (!inputVector.empty()) {
+            string task = inputVector[0];
+            inputVector.erase(inputVector.begin());
+
+            if (commands.find(task) != commands.end() && commands[task] && commands[task]->isValid(inputVector)) {
+                vector<ID_TYPE> inputNumbers = util::changeVectorType(inputVector);
+                commands[task]->execute(inputNumbers, users);
+            }
         }
+    } catch (const std::exception& e) {
+        continue;
     }
+}
     return 0;
 }
-

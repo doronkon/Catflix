@@ -5,14 +5,22 @@ using namespace std;
 TEST(utils, toNumberTest1)
 {
     ID_TYPE number;
-    EXPECT_EQ(util::toNumber("89", number), 89);
+    EXPECT_EQ(util::toNumber("89", number), true);
 }
 
 // Negative test case
 TEST(utils, toNumberTest2)
 {
     ID_TYPE number;
-    EXPECT_EQ(util::toNumber("sffsdfd", number), -1);
+    EXPECT_EQ(util::toNumber("sffsdfd", number), false);
+}
+
+// Positive test case
+TEST(utils, toNumberTest3)
+{
+    ID_TYPE number;
+    util::toNumber("89", number);
+    EXPECT_EQ(number,89);
 }
 
 // Positive test case
@@ -22,7 +30,7 @@ TEST(utills, findUserTest1)
     ID_TYPE id = 200;
     // Creating a User object with both parameters
     users.push_back(User(id, {})); // Use empty movie list for now
-    EXPECT_EQ(util::findUserByID(users, 200), true);
+    EXPECT_EQ(util::findUserByID(users, 200), 0);
 }
 
 // Negative test case
@@ -31,7 +39,7 @@ TEST(utills, findUserTest2)
     vector<User> users;
     ID_TYPE id = 200;
     users.push_back(User(id, {}));
-    EXPECT_EQ(util::findUserByID(users, 201), false); // Corrected: should expect false
+    EXPECT_EQ(util::findUserByID(users, 201), -1); // Corrected: should expect false
 }
 
 // Positive test case
@@ -106,4 +114,3 @@ TEST(Users, didIWatchTest2)
     Movie movie1(id + 1);
     EXPECT_EQ(user1.didIWatch(movie1), false);
 }
-

@@ -10,7 +10,6 @@
 #include <string>
 #include <iostream>
 
-#define PATH "../data/userData.txt"
 
 class RecommendCommand : public ICommand
 {
