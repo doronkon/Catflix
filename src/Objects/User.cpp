@@ -1,4 +1,4 @@
-#include "User.h"  // Include the User header file (which includes movie.h)
+#include "../Headers/User.h"  // Include the User header file (which includes movie.h)
 #include <vector>
 
 User::User(ID_TYPE userId, vector<Movie> userMovies) : userId(userId), userMovies(userMovies) {}

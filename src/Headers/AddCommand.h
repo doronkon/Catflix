@@ -10,8 +10,6 @@
 #include <fstream>
 #include <sstream>
 
-#define PATH "../data/userData.txt"
-
 class AddCommand : public ICommand
 {
 public:

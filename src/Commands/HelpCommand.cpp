@@ -1,4 +1,4 @@
-#include "HelpCommand.h"
+#include "../Headers/HelpCommand.h"
 
 /**
  * Adds a command to the list of commands managed by the HelpCommand.
