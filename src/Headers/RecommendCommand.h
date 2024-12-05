@@ -21,7 +21,8 @@ public:
     map<ID_TYPE, int> makingRatings(vector<Movie> MovieList, vector<User>& filteredUsers, map<ID_TYPE, int> weights);
     void sortingMovies(vector<Movie> &MovieList, map<ID_TYPE, int> ratings);
     void execute(vector<ID_TYPE> &inputVector, vector<User> &users);
-    bool isValid(vector<string> &inputVector, vector<User> &users);
+    int isValid(vector<string> &inputVector, vector<User> &users);
+    string getName();
 };
 
 #endif // RECOMMENDCOMMAND_H

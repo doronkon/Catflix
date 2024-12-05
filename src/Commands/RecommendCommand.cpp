@@ -5,7 +5,7 @@
  */
 void RecommendCommand::print()
 {
-    cout << "recommend [userid] [movieid]" << endl;
+    cout << "GET, arguments: [userid] [movieid]" << endl;
 }
 
 /**
@@ -194,17 +194,9 @@ void RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users
 {
     // here we need to check if user exists
     int place = util::findUserByID(users, inputVector[0]);
-    if (place == -1)
-    {
-        return;
-    }
     User user = users[place];
     Movie movie(inputVector[1]);
     vector<User> filteredUsers = filterUsers(movie, user, users);
-    if (filteredUsers.empty())
-    {
-        return;
-    }
     vector<Movie> MovieList = filtermovies(filteredUsers, movie, user);
     map<ID_TYPE, int> weights = findCommonMovies(user, filteredUsers);
     if (weights.empty())
@@ -233,15 +225,31 @@ void RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users
  * @param inputVector A vector of strings representing user input.
  * @return true if the input is valid, false otherwise.
  */
-bool RecommendCommand::isValid(vector<string> &inputVector, vector<User> &users)
+int RecommendCommand::isValid(vector<string> &inputVector, vector<User> &users)
 {
-    if (inputVector.size() < 2)
+    vector <ID_TYPE> inputAfterConversion = util::changeVectorType(inputVector);
+    if (inputVector.size() != 2)
     {
-        return false;
+        return 400;
     }
-    if (util::changeVectorType(inputVector).empty() && !inputVector.empty())
+    if (inputAfterConversion.empty() && !inputVector.empty())
     {
-        return false;
+        return 400;
     }
-    return true;
+    if(util::findUserByID(users, inputAfterConversion[0]) == -1){
+        return 404;
+    }
+    int place = util::findUserByID(users, inputAfterConversion[0]);
+    User user = users[place];
+    Movie movie(inputAfterConversion[1]);
+    vector<User> filteredUsers = filterUsers(movie, user, users);
+    if (filteredUsers.empty() && !user.didIWatch(movie))
+    {
+        return 404;
+    }
+    return 0;
+};
+
+string RecommendCommand::getName() {
+    return "GET";
 };

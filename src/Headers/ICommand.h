@@ -9,6 +9,7 @@
 #include <vector>
 #include "User.h"
 #include "definers.h"
+#include <algorithm>
 
 
 using namespace std;
@@ -16,7 +17,8 @@ class ICommand {
 public:
     virtual void execute(vector<ID_TYPE> &inputVector, vector<User> &users) = 0; // Pure virtual function
     virtual void print() = 0;
-    virtual bool isValid(vector<string> &inputVector, vector<User> &users) = 0;
+    virtual int isValid(vector<string> &inputVector, vector<User> &users) = 0;
+    virtual string getName() = 0;
 };
 
 #endif // ICOMMAND_H

@@ -10,7 +10,11 @@ public:
     void execute(std::vector<ID_TYPE> &inputVector, std::vector<User> &users) override;
 
     // Override the isValid function for specific behavior
-    bool isValid(std::vector<std::string> &inputVector, std::vector<User> &users) override;
+    int isValid(std::vector<std::string> &inputVector, std::vector<User> &users) override;
+
+    void print() override;
+
+    string getName() override;
 };
 
 #endif // POSTCOMMAND_H

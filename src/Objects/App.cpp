@@ -55,6 +55,41 @@ int App::run()
     ifstream file(PATH);
     vector<User> users = createUserMap(file);
     file.close();
+    map<string, ICommand *> commands = makeCommandsMap();
+    map<int, std::string> errors = {{400, "400 Bad Request"},{404, "404 Not Found"},{0,""}};
+    // adding to help
+
+    while (true) {
+        string input;
+        getline(cin, input);
+        if (input.empty() || input.find('\t') != std::string::npos)
+        {
+            cout << errors[400] << endl; 
+            continue;
+        }
+        istringstream stream(input);
+        string singleWord;
+        vector<string> inputVector;
+
+        while (stream >> singleWord) {
+            inputVector.push_back(singleWord);
+        }
+        string task = inputVector[0];
+        inputVector.erase(inputVector.begin());
+
+        if (commands[task] && commands[task]->isValid(inputVector, users) == 0) {
+            vector<ID_TYPE> inputNumbers = util::changeVectorType(inputVector);
+            commands[task]->execute(inputNumbers, users);
+        } else if (!commands[task]) {
+            cout << errors[400] << endl;
+        } else {
+            cout << errors[commands[task]->isValid(inputVector, users)] << endl;
+        }
+    }
+    return 0;
+}
+
+map<string, ICommand *> App::makeCommandsMap() {
     map<string, ICommand *> commands;
     ICommand *post = new PostCommand();
     ICommand *patch = new PatchCommand();
@@ -71,32 +106,5 @@ int App::run()
     help->addCommand(recommend);
     commands["help"] = help;
     help->addCommand(help);
-    // adding to help
-
-    while (true) {
-        string input;
-        getline(cin, input);
-        if (input.empty() || input.find('\t') != std::string::npos)
-        {
-            continue;
-        }
-        istringstream stream(input);
-        string singleWord;
-        vector<string> inputVector;
-
-        while (stream >> singleWord) {
-            inputVector.push_back(singleWord);
-        }
-
-        if (!inputVector.empty()) {
-            string task = inputVector[0];
-            inputVector.erase(inputVector.begin());
-
-            if (commands[task] && commands[task]->isValid(inputVector, users)) {
-                vector<ID_TYPE> inputNumbers = util::changeVectorType(inputVector);
-                commands[task]->execute(inputNumbers, users);
-            }
-        }
-    }
-    return 0;
+    return commands;
 }

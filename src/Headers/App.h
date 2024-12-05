@@ -26,6 +26,7 @@ class App {
         vector<User> createUserMap(ifstream &file);
         void helpPrint(vector<User> users);
         int run();
+        map<string, ICommand *> makeCommandsMap();
 };
 
 #endif

@@ -1,25 +1,33 @@
 #include "../Headers/PatchCommand.h"
 
-bool PatchCommand::isValid(vector<string> &inputVector, vector<User> &users)
+int PatchCommand::isValid(vector<string> &inputVector, vector<User> &users)
 {
     vector <ID_TYPE> inputAfterConversion = util::changeVectorType(inputVector);
     if (inputVector.size() <= 1)
     {
-        return false;
+        return 400;
     }
     else if (inputAfterConversion.empty() && !inputVector.empty())
     {
-        return false;
+        return 400;
     }
     // the user does not exist in the system
     if(util::findUserByID(users, inputAfterConversion[0]) == -1){
-        return false;
+        return 404;
     }
-    return true;
+    return 0;
 };
 
 void PatchCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users){
     AddCommand::execute(inputVector, users);
-        cout << to_string(inputVector[0]) << " No Content" << endl;
+        cout << "204 No Content" << endl;
     
 }
+
+void PatchCommand::print(){
+    cout << "patch, arguments: [existinguserid] [movieid1] [movieid2] ..." << endl;
+};
+
+string PatchCommand::getName() {
+    return "patch";
+};

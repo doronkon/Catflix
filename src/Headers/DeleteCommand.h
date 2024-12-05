@@ -14,8 +14,9 @@ class DeleteCommand : public ICommand
 {
 public: 
     void execute(std::vector<ID_TYPE> &inputVector, std::vector<User> &users);
-    bool isValid(std::vector<std::string> &inputVector, std::vector<User> &users);
+    int isValid(std::vector<std::string> &inputVector, std::vector<User> &users);
     void print();
+    string getName();
 };
 
 #endif // DELETECOMMAND_H

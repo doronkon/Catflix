@@ -1,25 +1,33 @@
 #include "../Headers/PostCommand.h"
 
-bool PostCommand::isValid(vector<string> &inputVector, vector<User> &users)
+int PostCommand::isValid(vector<string> &inputVector, vector<User> &users)
 {
     vector <ID_TYPE> inputAfterConversion = util::changeVectorType(inputVector);
     if (inputVector.size() <= 1)
     {
-        return false;
+        return 400;
     }
     else if (inputAfterConversion.empty() && !inputVector.empty())
     {
-        return false;
+        return 400;
     }
     // the user already exist in the system
     if(util::findUserByID(users, inputAfterConversion[0]) != -1){
-        return false;
+        return 404;
     }
-    return true;
+    return 0;
 };
 
 void PostCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users){
     AddCommand::execute(inputVector, users);
-        cout << to_string(inputVector[0]) << " Created" << endl;
+        cout << "201 Created" << endl;
     
 }
+
+void PostCommand::print(){
+    cout << "post, arguments: [non-existinguserid] [movieid1] [movieid2] ..." << endl;
+};
+
+string PostCommand::getName() {
+    return "post";
+};

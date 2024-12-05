@@ -23,8 +23,10 @@ public:
     // Print function
     void print();
 
+    virtual string getName();
+
     // Virtual isValid function to allow overriding
-    virtual bool isValid(std::vector<std::string> &inputVector, std::vector<User> &users);
+    virtual int isValid(std::vector<std::string> &inputVector, std::vector<User> &users);
 };
 
 #endif // ADDCOMMAND_H

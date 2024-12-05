@@ -18,11 +18,25 @@ void HelpCommand::addCommand(ICommand *command)
  */
 void HelpCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
 {
+    // Sort commands alphabetically, but keep "help" last
+    std::sort(this->commands.begin(), this->commands.end(),
+              [](ICommand *a, ICommand *b) {
+                  std::string nameA = a->getName(); // Assuming ICommand has a getName() method
+                  std::string nameB = b->getName();
+                  
+                  if (nameA == "help") return false; // "help" should always go last
+                  if (nameB == "help") return true;
+                  
+                  return nameA < nameB; // Standard alphabetical comparison
+              });
+
+    // Print the commands
     for (ICommand *command : this->commands)
     {
         command->print();
     }
 }
+
 
 /**
  * Prints the usage instructions for the HelpCommand.
@@ -38,11 +52,15 @@ void HelpCommand::print()
  * @param inputVector A vector of strings representing user input.
  * @return true if the input vector is empty, false otherwise.
  */
-bool HelpCommand::isValid(vector<string> &inputVector, vector<User> &users)
+int HelpCommand::isValid(vector<string> &inputVector, vector<User> &users)
 {
     if (!inputVector.empty())
     {
-        return false;
+        return 400;
     }
-    return true;
+    return 0;
+}
+
+string HelpCommand::getName() {
+    return "help";
 }

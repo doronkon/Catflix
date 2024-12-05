@@ -68,15 +68,19 @@ void AddCommand::print()
  * @param inputVector A vector of strings representing user input.
  * @return true if the input is valid, false otherwise.
  */
-bool AddCommand::isValid(vector<string> &inputVector, std::vector<User> &users)
+int AddCommand::isValid(vector<string> &inputVector, std::vector<User> &users)
 {
     if (inputVector.size() <= 1)
     {
-        return false;
+        return 400;
     }
     else if (util::changeVectorType(inputVector).empty() && !inputVector.empty())
     {
-        return false;
+        return 400;
     }
-    return true;
+    return 0;
+}
+
+string AddCommand::getName() {
+    return "add";
 };
