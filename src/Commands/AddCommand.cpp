@@ -33,7 +33,6 @@ void AddCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
     // The given user was not in the map -> add him to the user vector
     else
     {
-        cout << "entered here "<< endl;
         vector<Movie> movies;
         User userToAdd(user, movies);
         int size = inputVector.size();
