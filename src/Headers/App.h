@@ -12,6 +12,7 @@
 #include "ICommand.h"
 #include "AddCommand.h"
 #include "RecommendCommand.h"
+#include "PostCommand.h"
 #include "User.h"
 #include "Movie.h"
 #include "util.h"

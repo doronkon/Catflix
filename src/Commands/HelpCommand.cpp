@@ -38,7 +38,7 @@ void HelpCommand::print()
  * @param inputVector A vector of strings representing user input.
  * @return true if the input vector is empty, false otherwise.
  */
-bool HelpCommand::isValid(vector<string> &inputVector)
+bool HelpCommand::isValid(vector<string> &inputVector, vector<User> &users)
 {
     if (!inputVector.empty())
     {

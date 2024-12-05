@@ -47,6 +47,7 @@ add_executable(Catflix_app
     src/Commands/HelpCommand.cpp    # Add HelpCommand.cpp
     src/Commands/AddCommand.cpp     # Add AddCommand.cpp
     src/Commands/RecommendCommand.cpp # Add RecommendCommand.cpp
+    src/Commands/PostCommand.cpp
 )
 
 # Include directories for your app

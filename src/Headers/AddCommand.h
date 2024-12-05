@@ -13,10 +13,19 @@
 class AddCommand : public ICommand
 {
 public:
-    void updateUserMovies(ID_TYPE user, vector<User> userMap, int userIndex);
-    void execute(vector<ID_TYPE> &inputVector, vector<User> &users);
+    virtual ~AddCommand() {}
+
+    // Function to update user movies
+    void updateUserMovies(ID_TYPE user, std::vector<User> userMap, int userIndex);
+
+    // Virtual execute function to allow overriding
+    virtual void execute(std::vector<ID_TYPE> &inputVector, std::vector<User> &users);
+
+    // Print function
     void print();
-    bool isValid(vector<string> &inputVector);
+
+    // Virtual isValid function to allow overriding
+    virtual bool isValid(std::vector<std::string> &inputVector, std::vector<User> &users);
 };
 
 #endif // ADDCOMMAND_H

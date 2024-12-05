@@ -56,11 +56,11 @@ int App::run()
     vector<User> users = createUserMap(file);
     file.close();
     map<string, ICommand *> commands;
-    ICommand *add = new AddCommand();
+    ICommand *post = new PostCommand();
     ICommand *recommend = new RecommendCommand();
     HelpCommand *help = new HelpCommand();
-    commands["add"] = add;
-    help->addCommand(add);
+    commands["post"] = post;
+    help->addCommand(post);
     commands["recommend"] = recommend;
     help->addCommand(recommend);
     commands["help"] = help;
@@ -86,7 +86,7 @@ int App::run()
             string task = inputVector[0];
             inputVector.erase(inputVector.begin());
 
-            if (commands.find(task) != commands.end() && commands[task] && commands[task]->isValid(inputVector)) {
+            if (commands.find(task) != commands.end() && commands[task] && commands[task]->isValid(inputVector, users)) {
                 vector<ID_TYPE> inputNumbers = util::changeVectorType(inputVector);
                 commands[task]->execute(inputNumbers, users);
             }

@@ -231,7 +231,7 @@ void RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users
  * @param inputVector A vector of strings representing user input.
  * @return true if the input is valid, false otherwise.
  */
-bool RecommendCommand::isValid(vector<string> &inputVector)
+bool RecommendCommand::isValid(vector<string> &inputVector, vector<User> &users)
 {
     if (inputVector.size() < 2)
     {
