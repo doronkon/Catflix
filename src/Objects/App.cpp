@@ -57,11 +57,14 @@ int App::run()
     file.close();
     map<string, ICommand *> commands;
     ICommand *post = new PostCommand();
+    ICommand *patch = new PatchCommand();
     ICommand *recommend = new RecommendCommand();
     ICommand* deleteC = new DeleteCommand();
     HelpCommand *help = new HelpCommand();
     commands["post"] = post;
     help->addCommand(post);
+    commands["patch"] = patch;
+    help->addCommand(patch);
     commands["DELETE"] = deleteC;
     help->addCommand(deleteC);
     commands["GET"] = recommend;
