@@ -19,6 +19,8 @@ public:
 
     // Method to add a movie to the user's set of movies
     void addMovie(const Movie& movie);
+
+    void removeMovie( Movie& movie);
     
     ID_TYPE getUserId();
 

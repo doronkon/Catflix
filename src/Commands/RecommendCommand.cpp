@@ -216,6 +216,8 @@ void RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users
     // now we have the ratings map all we need is to sort the movies vector by it
     sortingMovies(MovieList, ratings);
     int moviesSize = MovieList.size();
+    //targil 2 print
+    cout<<"200 Ok"<<endl <<endl;
     // now we print
     for (int i = 0; i < moviesSize; i++)
     {

@@ -58,10 +58,13 @@ int App::run()
     map<string, ICommand *> commands;
     ICommand *post = new PostCommand();
     ICommand *recommend = new RecommendCommand();
+    ICommand* deleteC = new DeleteCommand();
     HelpCommand *help = new HelpCommand();
     commands["post"] = post;
     help->addCommand(post);
-    commands["recommend"] = recommend;
+    commands["DELETE"] = deleteC;
+    help->addCommand(deleteC);
+    commands["GET"] = recommend;
     help->addCommand(recommend);
     commands["help"] = help;
     help->addCommand(help);
@@ -86,7 +89,7 @@ int App::run()
             string task = inputVector[0];
             inputVector.erase(inputVector.begin());
 
-            if (commands.find(task) != commands.end() && commands[task] && commands[task]->isValid(inputVector, users)) {
+            if (commands[task] && commands[task]->isValid(inputVector, users)) {
                 vector<ID_TYPE> inputNumbers = util::changeVectorType(inputVector);
                 commands[task]->execute(inputNumbers, users);
             }

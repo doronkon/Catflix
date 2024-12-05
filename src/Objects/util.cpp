@@ -69,3 +69,53 @@ vector<ID_TYPE> util::changeVectorType(vector<string> inputStringVector) {
         }
     return inputNumbers;
 }
+
+/**
+ * Updates the movie list for a specific user in the data file.
+ *
+ * @param user The ID of the user to update.
+ * @param userMap A vector of User objects containing user data.
+ * @param userIndex The index of the user in userMap.
+ */
+void util::updateUserMovies(ID_TYPE user, vector<User> userMap, int userIndex)
+{
+    // Opening the file for reading
+    ifstream inputFile(PATH);
+    vector<string> lines;
+    string line;
+    string word;
+    int currentLine = 0;
+    int lineToChange = 0;
+    // Finding the line we want to update
+    while (getline(inputFile, line))
+    {
+        istringstream stream(line);
+        stream >> word;
+        ID_TYPE current;
+        util::toNumber(word, current);
+        if (user == current)
+        {
+            lineToChange = currentLine;
+        }
+        lines.push_back(line);
+        currentLine++;
+    }
+    inputFile.close();
+
+    // Creating the updated line
+    string updatedLine = to_string(user) + " ";
+    int amountOfMovies = userMap[userIndex].getUserMovies().size();
+    for (int i = 0; i < amountOfMovies; i++)
+    {
+        updatedLine += to_string(userMap[userIndex].getUserMovies()[i].movieId) + " ";
+    }
+    lines[lineToChange] = updatedLine;
+    // copying all line and the updated one
+    ofstream file(PATH, ios::trunc);
+    int size = lines.size();
+    for (int i = 0; i < size; i++)
+    {
+        file << lines[i] << endl;
+    }
+    file.close();
+}

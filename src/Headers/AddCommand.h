@@ -15,8 +15,7 @@ class AddCommand : public ICommand
 public:
     virtual ~AddCommand() {}
 
-    // Function to update user movies
-    void updateUserMovies(ID_TYPE user, std::vector<User> userMap, int userIndex);
+
 
     // Virtual execute function to allow overriding
     virtual void execute(std::vector<ID_TYPE> &inputVector, std::vector<User> &users);

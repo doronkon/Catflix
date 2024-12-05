@@ -18,6 +18,7 @@
 #include "util.h"
 #include "definers.h"
 #include "HelpCommand.h"
+#include "DeleteCommand.h"
 
 class App {
     public:
