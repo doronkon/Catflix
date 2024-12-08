@@ -51,7 +51,6 @@ int main()
 
     while (true)
     {
-
         // receiving data from the client
         char buffer[4096];
         int expected_data_len = sizeof(buffer);
