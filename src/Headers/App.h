@@ -22,11 +22,21 @@
 #include "DeleteCommand.h"
 
 class App {
+    private:
+        vector<User> users;
+        map<string, ICommand *> commands;
+        map<int, std::string> errors;
+
     public:
+        App();
         vector<User> createUserMap(ifstream &file);
         void helpPrint(vector<User> users);
         int run();
         map<string, ICommand *> makeCommandsMap();
+        string handler(string input);
+        vector<User> getUserVector();
+        map<string, ICommand *> getCommands();
+        map<int, std::string> getErrors();
 };
 
 #endif

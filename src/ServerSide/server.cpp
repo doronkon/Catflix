@@ -6,11 +6,14 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
+#include "../Headers/App.h"
+
 
 using namespace std;
 
 int main()
 {
+    App myApp;
     // create a socket that will listen at 5555 port that uses TCP and IPv4
     const int server_port = 7070;
 
@@ -66,7 +69,7 @@ int main()
         }
         else
         {
-            cout << buffer;
+            myApp.handler(buffer);
         }
 
         // sending back to the client the data they sent and closing the sockets.

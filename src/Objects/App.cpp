@@ -49,6 +49,48 @@ void App::helpPrint(vector<User> users)
     }
 }
 
+App::App()
+{
+    // Creating the user map out of the file
+    ifstream file(PATH);
+    this->users = createUserMap(file);
+    file.close();
+    this->commands = makeCommandsMap();
+    this->errors = {{400, "400 Bad Request"}, {404, "404 Not Found"}, {0, ""}};
+}
+
+string App::handler(string input)
+{
+    if (input.empty() || input.find('\t') != std::string::npos)
+    {
+        cout << errors[400] << endl;
+    }
+    istringstream stream(input);
+    string singleWord;
+    vector<string> inputVector;
+
+    while (stream >> singleWord)
+    {
+        inputVector.push_back(singleWord);
+    }
+    string task = inputVector[0];
+    inputVector.erase(inputVector.begin());
+
+    if (commands[task] && commands[task]->isValid(inputVector, users) == 0)
+    {
+        vector<ID_TYPE> inputNumbers = util::changeVectorType(inputVector);
+        commands[task]->execute(inputNumbers, users);
+    }
+    else if (!commands[task])
+    {
+        cout << errors[400] << endl;
+    }
+    else
+    {
+        cout << errors[commands[task]->isValid(inputVector, users)] << endl;
+    }
+    return "";
+}
 int App::run()
 {
     // Creating the user map out of the file
@@ -56,45 +98,53 @@ int App::run()
     vector<User> users = createUserMap(file);
     file.close();
     map<string, ICommand *> commands = makeCommandsMap();
-    map<int, std::string> errors = {{400, "400 Bad Request"},{404, "404 Not Found"},{0,""}};
+    map<int, std::string> errors = {{400, "400 Bad Request"}, {404, "404 Not Found"}, {0, ""}};
     // adding to help
 
-    while (true) {
+    while (true)
+    {
         string input;
         getline(cin, input);
         if (input.empty() || input.find('\t') != std::string::npos)
         {
-            cout << errors[400] << endl; 
+            cout << errors[400] << endl;
             continue;
         }
         istringstream stream(input);
         string singleWord;
         vector<string> inputVector;
 
-        while (stream >> singleWord) {
+        while (stream >> singleWord)
+        {
             inputVector.push_back(singleWord);
         }
         string task = inputVector[0];
         inputVector.erase(inputVector.begin());
 
-        if (commands[task] && commands[task]->isValid(inputVector, users) == 0) {
+        if (commands[task] && commands[task]->isValid(inputVector, users) == 0)
+        {
             vector<ID_TYPE> inputNumbers = util::changeVectorType(inputVector);
             commands[task]->execute(inputNumbers, users);
-        } else if (!commands[task]) {
+        }
+        else if (!commands[task])
+        {
             cout << errors[400] << endl;
-        } else {
+        }
+        else
+        {
             cout << errors[commands[task]->isValid(inputVector, users)] << endl;
         }
     }
     return 0;
 }
 
-map<string, ICommand *> App::makeCommandsMap() {
+map<string, ICommand *> App::makeCommandsMap()
+{
     map<string, ICommand *> commands;
     ICommand *post = new PostCommand();
     ICommand *patch = new PatchCommand();
     ICommand *recommend = new RecommendCommand();
-    ICommand* deleteC = new DeleteCommand();
+    ICommand *deleteC = new DeleteCommand();
     HelpCommand *help = new HelpCommand();
     commands["post"] = post;
     help->addCommand(post);
