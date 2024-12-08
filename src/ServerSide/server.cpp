@@ -15,7 +15,7 @@ int main()
 {
     App myApp;
     // create a socket that will listen at 5555 port that uses TCP and IPv4
-    const int server_port = 7070;
+    const int server_port = 7071;
 
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0)
@@ -55,9 +55,10 @@ int main()
     while (true)
     {
         // receiving data from the client
-        char buffer[4096];
+        char buffer[4096] = {'\0'};
         int expected_data_len = sizeof(buffer);
         int read_bytes = recv(client_sock, buffer, expected_data_len, 0);
+        //fflush(stdout);
         if (read_bytes == 0)
         {
             break;

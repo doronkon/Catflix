@@ -8,7 +8,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 dest_ip = '127.0.0.1'
 
 # The server will listen to 12345 port
-dest_port = 7070
+dest_port = 7071
 
 # Create a TCP connection with the given port and ip
 s.connect((dest_ip, dest_port))
