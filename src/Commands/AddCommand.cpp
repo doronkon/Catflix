@@ -7,7 +7,7 @@
  * @param inputVector A vector containing the user ID and the list of movie IDs to add.
  * @param users A reference to the vector of User objects to update or expand.
  */
-void AddCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
+string AddCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
 {
     // Opening the file for writing
     ofstream file(PATH, ios::app);
@@ -52,14 +52,15 @@ void AddCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
         file << endl;
     }
     file.close();
+    return "";
 }
 
 /**
  * Prints the usage instructions for the AddCommand. Will be used over at "Help" command
  */
-void AddCommand::print()
+string AddCommand::print()
 {
-    cout << "add [userid] [movieid1] [movieid2] …" << endl;
+    return "add [userid] [movieid1] [movieid2] …\n";
 }
 
 /**

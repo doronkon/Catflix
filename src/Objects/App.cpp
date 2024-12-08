@@ -56,14 +56,14 @@ App::App()
     this->users = createUserMap(file);
     file.close();
     this->commands = makeCommandsMap();
-    this->errors = {{400, "400 Bad Request"}, {404, "404 Not Found"}, {0, ""}};
+    this->errors = {{400, "400 Bad Request\n"}, {404, "404 Not Found\n"}, {0, "\n"}};
 }
 
 string App::handler(string input)
 {
     if (input.empty() || input.find('\t') != std::string::npos)
     {
-        cout << errors[400] << endl;
+        return errors[400];
     }
     istringstream stream(input);
     string singleWord;
@@ -79,15 +79,15 @@ string App::handler(string input)
     if (commands[task] && commands[task]->isValid(inputVector, users) == 0)
     {
         vector<ID_TYPE> inputNumbers = util::changeVectorType(inputVector);
-        commands[task]->execute(inputNumbers, users);
+        return commands[task]->execute(inputNumbers, users);
     }
     else if (!commands[task])
     {
-        cout << errors[400] << endl;
+        return errors[400];
     }
     else
     {
-        cout << errors[commands[task]->isValid(inputVector, users)] << endl;
+        return errors[commands[task]->isValid(inputVector, users)];
     }
     return "";
 }

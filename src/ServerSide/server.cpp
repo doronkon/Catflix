@@ -59,6 +59,7 @@ int main()
         int expected_data_len = sizeof(buffer);
         int read_bytes = recv(client_sock, buffer, expected_data_len, 0);
         //fflush(stdout);
+        string response ="for amsalem";
         if (read_bytes == 0)
         {
             break;
@@ -70,11 +71,11 @@ int main()
         }
         else
         {
-            myApp.handler(buffer);
+            response = myApp.handler(buffer);
         }
 
         // sending back to the client the data they sent and closing the sockets.
-        int sent_bytes = send(client_sock, buffer, read_bytes, 0);
+        int sent_bytes = send(client_sock, response.c_str(), response.size() , 0);
 
         if (sent_bytes < 0)
         {

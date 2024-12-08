@@ -18,14 +18,14 @@ int PostCommand::isValid(vector<string> &inputVector, vector<User> &users)
     return 0;
 };
 
-void PostCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users){
+string PostCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users){
     AddCommand::execute(inputVector, users);
-        cout << "201 Created" << endl;
+        return "201 Created\n";
     
 }
 
-void PostCommand::print(){
-    cout << "post, arguments: [non-existinguserid] [movieid1] [movieid2] ..." << endl;
+string PostCommand::print(){
+    return  "post, arguments: [non-existinguserid] [movieid1] [movieid2] ...\n";
 };
 
 string PostCommand::getName() {

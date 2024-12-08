@@ -3,9 +3,9 @@
 /**
  * Prints the usage instructions for the RecommendCommand.
  */
-void RecommendCommand::print()
+string RecommendCommand::print()
 {
-    cout << "GET, arguments: [userid] [movieid]" << endl;
+    return "GET, arguments: [userid] [movieid]\n";
 }
 
 /**
@@ -190,7 +190,7 @@ void RecommendCommand::sortingMovies(vector<Movie> &MovieList, map<ID_TYPE, int>
  * @param inputVector A vector containing the user ID and movie ID to base the recommendations on.
  * @param users A reference to a vector of all users for finding common movie preferences.
  */
-void RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
+string RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
 {
     // here we need to check if user exists
     int place = util::findUserByID(users, inputVector[0]);
@@ -201,7 +201,7 @@ void RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users
     map<ID_TYPE, int> weights = findCommonMovies(user, filteredUsers);
     if (weights.empty())
     {
-        return;
+        return "\n";
     }
     map<ID_TYPE, int> ratings = makingRatings(MovieList, filteredUsers, weights);
 
@@ -209,13 +209,14 @@ void RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users
     sortingMovies(MovieList, ratings);
     int moviesSize = MovieList.size();
     //targil 2 print
-    cout<<"200 Ok"<<endl <<endl;
+    string returnValue ="200 Ok\n\n";
     // now we print
     for (int i = 0; i < moviesSize; i++)
     {
-        cout << MovieList[i].movieId << ' ';
+        returnValue.append(to_string( MovieList[i].movieId) + ' ');
     }
-    cout << endl;
+    returnValue.append("\n");
+    return returnValue;
 }
 
 /**

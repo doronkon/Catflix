@@ -18,10 +18,10 @@ public:
 
 
     // Virtual execute function to allow overriding
-    virtual void execute(std::vector<ID_TYPE> &inputVector, std::vector<User> &users);
+    virtual string execute(std::vector<ID_TYPE> &inputVector, std::vector<User> &users);
 
     // Print function
-    void print();
+    string print();
 
     virtual string getName();
 

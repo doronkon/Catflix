@@ -16,7 +16,7 @@ void HelpCommand::addCommand(ICommand *command)
  * @param inputVector Unused in this implementation.
  * @param users Unused in this implementation.
  */
-void HelpCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
+string HelpCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
 {
     // Sort commands alphabetically, but keep "help" last
     std::sort(this->commands.begin(), this->commands.end(),
@@ -31,19 +31,21 @@ void HelpCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
               });
 
     // Print the commands
+    string returnValue="";
     for (ICommand *command : this->commands)
     {
-        command->print();
+        returnValue.append(command->print());
     }
+    return returnValue;
 }
 
 
 /**
  * Prints the usage instructions for the HelpCommand.
  */
-void HelpCommand::print()
+string HelpCommand::print()
 {
-    cout << "help" << endl;
+    return "help\n";
 }
 
 /**

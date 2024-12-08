@@ -18,14 +18,14 @@ int PatchCommand::isValid(vector<string> &inputVector, vector<User> &users)
     return 0;
 };
 
-void PatchCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users){
+string PatchCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users){
     AddCommand::execute(inputVector, users);
-        cout << "204 No Content" << endl;
+        return "204 No Content\n";
     
 }
 
-void PatchCommand::print(){
-    cout << "patch, arguments: [existinguserid] [movieid1] [movieid2] ..." << endl;
+string PatchCommand::print(){
+    return "patch, arguments: [existinguserid] [movieid1] [movieid2] ...\n";
 };
 
 string PatchCommand::getName() {

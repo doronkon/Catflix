@@ -10,13 +10,14 @@
 #include "User.h"
 #include "definers.h"
 #include <algorithm>
+#include <string.h>
 
 
 using namespace std;
 class ICommand {
 public:
-    virtual void execute(vector<ID_TYPE> &inputVector, vector<User> &users) = 0; // Pure virtual function
-    virtual void print() = 0;
+    virtual string execute(vector<ID_TYPE> &inputVector, vector<User> &users) = 0; // Pure virtual function
+    virtual string print() = 0;
     virtual int isValid(vector<string> &inputVector, vector<User> &users) = 0;
     virtual string getName() = 0;
 };

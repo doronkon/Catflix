@@ -14,13 +14,13 @@
 class RecommendCommand : public ICommand
 {
 public:
-    void print();
+    string print();
     map<ID_TYPE, int> findCommonMovies(User user, vector<User> &users);
     vector<User> filterUsers(Movie movie, User &user, vector<User> &users);
     vector<Movie> filtermovies(vector<User> filteredUsers, Movie movie,User user);
     map<ID_TYPE, int> makingRatings(vector<Movie> MovieList, vector<User>& filteredUsers, map<ID_TYPE, int> weights);
     void sortingMovies(vector<Movie> &MovieList, map<ID_TYPE, int> ratings);
-    void execute(vector<ID_TYPE> &inputVector, vector<User> &users);
+    string execute(vector<ID_TYPE> &inputVector, vector<User> &users);
     int isValid(vector<string> &inputVector, vector<User> &users);
     string getName();
 };

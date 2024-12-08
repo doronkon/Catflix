@@ -7,12 +7,12 @@ class PostCommand : public AddCommand
 {
 public:
     // Override the execute function with additional functionality
-    void execute(std::vector<ID_TYPE> &inputVector, std::vector<User> &users) override;
+    string execute(std::vector<ID_TYPE> &inputVector, std::vector<User> &users) override;
 
     // Override the isValid function for specific behavior
     int isValid(std::vector<std::string> &inputVector, std::vector<User> &users) override;
 
-    void print() override;
+    string print() override;
 
     string getName() override;
 };
