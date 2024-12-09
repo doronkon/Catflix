@@ -1,14 +1,16 @@
 # Import socket module, AF_INET means we use IPv4 and SOCK_DGRAM means we use UDP protocol
+import sys
 import socket
 
 # Create a socket that uses IPv4 and TCP protocol
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # The destenation ip is ourselvs
-dest_ip = '127.0.0.1'
+dest_ip =  sys.argv[1]
 
 # The server will listen to 12345 port
-dest_port = 7071
+dest_port = int(sys.argv[2])
+
 
 # Create a TCP connection with the given port and ip
 s.connect((dest_ip, dest_port))

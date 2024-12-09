@@ -2,6 +2,15 @@
 
 ## Instructions
 
+running server:
+cd Catflix
+g++ -std=c++17 -I./include -o server $(find src -name "*.cpp")
+./server
+
+running client:
+cd /Catflix/src/ClientSide
+python3 client.py 127.0.0.1 7071
+
 1. Clone the repository -
   ```
   git clone https://github.com/doronkon/catflix.git
