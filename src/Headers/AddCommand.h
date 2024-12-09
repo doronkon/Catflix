@@ -9,6 +9,8 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "definers.h"
+#include <unistd.h>
 
 class AddCommand : public ICommand
 {

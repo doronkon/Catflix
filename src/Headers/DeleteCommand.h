@@ -9,6 +9,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "definers.h"
 
 class DeleteCommand : public ICommand
 {

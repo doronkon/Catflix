@@ -12,14 +12,17 @@ int DeleteCommand::isValid(vector<string> &inputVector, vector<User> &users)
     {
         return 400;
     }
+    global_mutex.lock();
     // the user doesn't exist in the system
     if(util::findUserByID(users, inputAfterConversion[0]) == -1){
+        global_mutex.unlock();
         return 404;
     }
     int place = util::findUserByID(users, inputAfterConversion[0]);
     User user = users[place];
     Movie movie(inputAfterConversion[1]);
     if (!user.didIWatch(movie)) { 
+        global_mutex.unlock();
         return 400;
     }
     int size =  inputAfterConversion.size();
@@ -28,9 +31,11 @@ int DeleteCommand::isValid(vector<string> &inputVector, vector<User> &users)
         Movie cur(inputAfterConversion[i]);
         if (! users[place].didIWatch(cur))
         {
+            global_mutex.unlock();
             return 404;
         }
     }
+    global_mutex.unlock();
     return 0;
 };
 
@@ -39,6 +44,7 @@ string DeleteCommand::print()
     return "DELETE, arguments [userid] [movieid1] [movieid2] ...\n";
 }
 string DeleteCommand::execute(std::vector<ID_TYPE> &inputVector, std::vector<User> &users){
+    global_mutex.lock();
     // Opening the file for writing
     ofstream file(PATH, ios::app);
     ID_TYPE user = inputVector[0];
@@ -53,6 +59,7 @@ string DeleteCommand::execute(std::vector<ID_TYPE> &inputVector, std::vector<Use
         users[userIndex].removeMovie(cur);
     }
     util::updateUserMovies(user, users, userIndex);
+    global_mutex.unlock();
     return "204 No Content\n";
 }
 

@@ -9,6 +9,7 @@
  */
 string AddCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
 {
+    global_mutex.lock();
     // Opening the file for writing
     ofstream file(PATH, ios::app);
     ID_TYPE user = inputVector[0];
@@ -52,6 +53,7 @@ string AddCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
         file << endl;
     }
     file.close();
+    global_mutex.unlock();
     return "";
 }
 

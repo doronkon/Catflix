@@ -12,9 +12,12 @@ int PatchCommand::isValid(vector<string> &inputVector, vector<User> &users)
         return 400;
     }
     // the user does not exist in the system
+    global_mutex.lock();
     if(util::findUserByID(users, inputAfterConversion[0]) == -1){
+        global_mutex.unlock();
         return 404;
     }
+    global_mutex.unlock();
     return 0;
 };
 

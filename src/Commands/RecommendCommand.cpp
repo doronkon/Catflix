@@ -192,11 +192,14 @@ void RecommendCommand::sortingMovies(vector<Movie> &MovieList, map<ID_TYPE, int>
  */
 string RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
 {
+    global_mutex.lock();
     // here we need to check if user exists
     int place = util::findUserByID(users, inputVector[0]);
     User user = users[place];
     Movie movie(inputVector[1]);
     vector<User> filteredUsers = filterUsers(movie, user, users);
+    global_mutex.unlock();
+
     vector<Movie> MovieList = filtermovies(filteredUsers, movie, user);
     map<ID_TYPE, int> weights = findCommonMovies(user, filteredUsers);
     if (weights.empty())
@@ -237,13 +240,17 @@ int RecommendCommand::isValid(vector<string> &inputVector, vector<User> &users)
     {
         return 400;
     }
+
+    global_mutex.lock();
     if(util::findUserByID(users, inputAfterConversion[0]) == -1){
+        global_mutex.unlock();
         return 404;
     }
     int place = util::findUserByID(users, inputAfterConversion[0]);
     User user = users[place];
     Movie movie(inputAfterConversion[1]);
     vector<User> filteredUsers = filterUsers(movie, user, users);
+    global_mutex.unlock();
     if (filteredUsers.empty() && !user.didIWatch(movie))
     {
         return 404;

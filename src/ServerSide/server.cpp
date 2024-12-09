@@ -8,13 +8,14 @@
 #include <string.h>
 #include "../Headers/App.h"
 #include <thread>
+#include "../Headers/definers.h"
 
+std::mutex global_mutex; 
 
 using namespace std;
 
-void handlingThread(App& myApp, int sock)
+int create_connection(int sock)
 {
-    // create a struct in order to receive data from the client
     struct sockaddr_in client_sin;
     unsigned int addr_len = sizeof(client_sin);
     int client_sock = accept(sock, (struct sockaddr *)&client_sin, &addr_len);
@@ -22,7 +23,20 @@ void handlingThread(App& myApp, int sock)
     if (client_sock < 0)
     {
         perror("error accepting client");
+        return -1;
     }
+    return client_sock;
+}
+
+void handlingThread(App& myApp, int sock)
+{
+    // create a struct in order to receive data from the client
+    int client_sock = create_connection(sock);
+    if (client_sock == -1)
+    {
+        return;
+    }
+
     while (true)
     {
         // receiving data from the client
@@ -30,10 +44,11 @@ void handlingThread(App& myApp, int sock)
         int expected_data_len = sizeof(buffer);
         int read_bytes = recv(client_sock, buffer, expected_data_len, 0);
         //fflush(stdout);
-        string response ="for amsalem";
+        string response ="";
         if (read_bytes == 0)
         {
-            break;
+            client_sock = create_connection(sock);
+            continue;
         }
         else if (read_bytes < 0)
         {
@@ -82,21 +97,20 @@ int main()
     }
 
     // wait for a connection, 5 can wait in line at max in any given time
-    if (listen(sock, 3) < 0)
+    if (listen(sock, MAX_CLIENTS) < 0)
     {
         perror("error listening to a socket");
     }
 
-    thread threads[3];
-    for (int i = 0; i < 3; i++)
+    thread threads[MAX_CLIENTS];
+    for (int i = 0; i < MAX_CLIENTS; i++)
     {
         threads[i] = thread(handlingThread , ref(myApp) , sock);
     }
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < MAX_CLIENTS; i++)
     {
         threads[i].join();
     }
     close(sock);
-
     return 0;
 }
