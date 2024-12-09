@@ -7,9 +7,54 @@
 #include <unistd.h>
 #include <string.h>
 #include "../Headers/App.h"
+#include <thread>
 
 
 using namespace std;
+
+void handlingThread(App& myApp, int sock)
+{
+    // create a struct in order to receive data from the client
+    struct sockaddr_in client_sin;
+    unsigned int addr_len = sizeof(client_sin);
+    int client_sock = accept(sock, (struct sockaddr *)&client_sin, &addr_len);
+
+    if (client_sock < 0)
+    {
+        perror("error accepting client");
+    }
+    while (true)
+    {
+        // receiving data from the client
+        char buffer[4096] = {'\0'};
+        int expected_data_len = sizeof(buffer);
+        int read_bytes = recv(client_sock, buffer, expected_data_len, 0);
+        //fflush(stdout);
+        string response ="for amsalem";
+        if (read_bytes == 0)
+        {
+            break;
+        }
+        else if (read_bytes < 0)
+        {
+            perror("error reciving message");
+            break;
+        }
+        else
+        {
+            response = myApp.handler(buffer);
+        }
+
+        // sending back to the client the data they sent and closing the sockets.
+        int sent_bytes = send(client_sock, response.c_str(), response.size() , 0);
+
+        if (sent_bytes < 0)
+        {
+            perror("error sending to client");
+        }
+    }
+    close(client_sock);
+}
 
 int main()
 {
@@ -42,47 +87,15 @@ int main()
         perror("error listening to a socket");
     }
 
-    // create a struct in order to receive data from the client
-    struct sockaddr_in client_sin;
-    unsigned int addr_len = sizeof(client_sin);
-    int client_sock = accept(sock, (struct sockaddr *)&client_sin, &addr_len);
-
-    if (client_sock < 0)
+    thread threads[3];
+    for (int i = 0; i < 3; i++)
     {
-        perror("error accepting client");
+        threads[i] = thread(handlingThread , ref(myApp) , sock);
     }
-
-    while (true)
+    for (int i = 0; i < 3; i++)
     {
-        // receiving data from the client
-        char buffer[4096] = {'\0'};
-        int expected_data_len = sizeof(buffer);
-        int read_bytes = recv(client_sock, buffer, expected_data_len, 0);
-        //fflush(stdout);
-        string response ="for amsalem";
-        if (read_bytes == 0)
-        {
-            break;
-        }
-        else if (read_bytes < 0)
-        {
-            perror("error reciving message");
-            break;
-        }
-        else
-        {
-            response = myApp.handler(buffer);
-        }
-
-        // sending back to the client the data they sent and closing the sockets.
-        int sent_bytes = send(client_sock, response.c_str(), response.size() , 0);
-
-        if (sent_bytes < 0)
-        {
-            perror("error sending to client");
-        }
+        threads[i].join();
     }
-    close(client_sock);
     close(sock);
 
     return 0;
