@@ -35,6 +35,8 @@ target_include_directories(runTests PRIVATE
     src/Commands
     src/Objects
     src/tests
+    src/ServerSide
+    src/ClientSide
 )
 
 # Add the main app executable (correct path to main.cpp)
@@ -48,6 +50,9 @@ add_executable(Catflix_app
     src/Commands/AddCommand.cpp     # Add AddCommand.cpp
     src/Commands/RecommendCommand.cpp # Add RecommendCommand.cpp
     src/Commands/PostCommand.cpp
+    src/Commands/DeleteCommand.cpp
+    src/Commands/PatchCommand.cpp
+    src/ServerSide/server.cpp
 )
 
 # Include directories for your app

@@ -1,0 +1,12 @@
+FROM python:3
+
+WORKDIR /Catflix_client
+
+# Copy the client code into the container (ensure the path is correct)
+COPY src/ClientSide/client.py /Catflix_client/client.py
+
+# Command to run the Python client (ensure the path to client.py is correct)
+ENTRYPOINT ["python3"]
+
+# Default command for the client to connect to the server
+CMD ["client.py", "127.0.0.1", "7071"]
