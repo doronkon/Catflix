@@ -6,6 +6,12 @@ docker-compose up server --build
 opens a new client:
 docker-compose run -it client
 
+
+build tests:
+docker build -t catflix-tests -f Dockerfile.tests .
+run tests:
+docker run catflix-tests
+
 running server:
 cd Catflix
 g++ -std=c++17 -I./include -o server $(find src -name "*.cpp")
