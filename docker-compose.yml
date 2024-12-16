@@ -21,19 +21,6 @@ services:
     stdin_open: true   # Allows interactive input
     tty: true          # Allocates a pseudo-TTY
 
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile  # Use the same Dockerfile that builds tests
-    container_name: catflix_tests
-    command: ["/Catflix/tests/test_runner"]  # Run the compiled test binary
-    networks:
-      - catflix_network
-    depends_on:
-      - server
-    stdin_open: true   # Keep the stdin open
-    tty: true
-
 networks:
   catflix_network:
     driver: bridge
