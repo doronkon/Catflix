@@ -1,6 +1,10 @@
 # Catflix (TM)
 
 ## Instructions
+running server:
+docker-compose up server --build
+opens a new client:
+docker-compose run -it client
 
 running server:
 cd Catflix
