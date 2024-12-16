@@ -19,12 +19,6 @@ int DeleteCommand::isValid(vector<string> &inputVector, vector<User> &users)
         return 404;
     }
     int place = util::findUserByID(users, inputAfterConversion[0]);
-    User user = users[place];
-    Movie movie(inputAfterConversion[1]);
-    if (!user.didIWatch(movie)) { 
-        global_mutex.unlock();
-        return 400;
-    }
     int size =  inputAfterConversion.size();
     for (int i = 1; i < size; i++)
     {

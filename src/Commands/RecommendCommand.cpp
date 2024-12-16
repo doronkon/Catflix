@@ -198,16 +198,21 @@ string RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &use
     User user = users[place];
     Movie movie(inputVector[1]);
     vector<User> filteredUsers = filterUsers(movie, user, users);
-    global_mutex.unlock();
+    if (filteredUsers.empty() && !user.didIWatch(movie))
+    {
+        global_mutex.unlock();
+        return "200 Ok\n\n\n";
+    }
+    
 
     vector<Movie> MovieList = filtermovies(filteredUsers, movie, user);
     map<ID_TYPE, int> weights = findCommonMovies(user, filteredUsers);
     if (weights.empty())
     {
-        return "\n";
+        global_mutex.unlock();
+        return "200 Ok\n\n\n";
     }
     map<ID_TYPE, int> ratings = makingRatings(MovieList, filteredUsers, weights);
-
     // now we have the ratings map all we need is to sort the movies vector by it
     sortingMovies(MovieList, ratings);
     int moviesSize = MovieList.size();
@@ -218,6 +223,7 @@ string RecommendCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &use
     {
         returnValue.append(to_string( MovieList[i].movieId) + ' ');
     }
+    global_mutex.unlock();
     returnValue.append("\n");
     return returnValue;
 }
@@ -246,15 +252,8 @@ int RecommendCommand::isValid(vector<string> &inputVector, vector<User> &users)
         global_mutex.unlock();
         return 404;
     }
-    int place = util::findUserByID(users, inputAfterConversion[0]);
-    User user = users[place];
-    Movie movie(inputAfterConversion[1]);
-    vector<User> filteredUsers = filterUsers(movie, user, users);
     global_mutex.unlock();
-    if (filteredUsers.empty() && !user.didIWatch(movie))
-    {
-        return 404;
-    }
+
     return 0;
 };
 

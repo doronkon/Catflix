@@ -2,6 +2,7 @@
 import sys
 import socket
 
+
 # Create a socket that uses IPv4 and TCP protocol
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 

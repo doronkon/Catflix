@@ -31,7 +31,7 @@ string HelpCommand::execute(vector<ID_TYPE> &inputVector, vector<User> &users)
               });
 
     // Print the commands
-    string returnValue="";
+    string returnValue="200 ok\n\n";
     for (ICommand *command : this->commands)
     {
         returnValue.append(command->print());
