@@ -7,7 +7,7 @@
 //#define PATH "data/userData.txt"
  #define PATH "/Catflix/data/userData.txt"
 
- #define MAX_CLIENTS 3
+ #define MAX_CLIENTS 20
 
 
 
