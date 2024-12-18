@@ -100,9 +100,9 @@ map<string, ICommand *> App::makeCommandsMap()
     ICommand *recommend = new RecommendCommand();
     ICommand *deleteC = new DeleteCommand();
     HelpCommand *help = new HelpCommand();
-    commands["post"] = post;
+    commands["POST"] = post;
     help->addCommand(post);
-    commands["patch"] = patch;
+    commands["PATCH"] = patch;
     help->addCommand(patch);
     commands["DELETE"] = deleteC;
     help->addCommand(deleteC);

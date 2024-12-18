@@ -12,25 +12,36 @@
 ## Instructions
 
 1. Clone the repository -
-  
+  ```
   git clone https://github.com/doronkon/catflix.git
-  
+  ```
 2. Enter the file -
-   
+   ```
    cd Catflix
-   
-3. Create an image -
-  
-  docker build -t catflix .
-  
-4. To run the tests -
-   
-   docker run catflix /Catflix/build/runTests
-   
-5. To run the app -
-   
-   docker run -it catflix /Catflix/build/Catflix_app
-   
+   ```
+3. running server:
+   ```
+   docker-compose up server --build
+   ```
+4. opens a new client:
+   4.1 - Open a new terminal
+   4.2 Enter the file -
+   ```
+   cd Catflix
+   ```
+   4.3 - Run the new client
+   ```
+   docker-compose run -it client
+   ```
+5. build tests:
+   ```
+   docker build -t catflix-tests -f Dockerfile.tests .
+   ```
+6. run tests:
+   ```
+   docker run catflix-tests
+   ```
+* All commands are upper case except help command.
 
 ## 1. Add Command
 
