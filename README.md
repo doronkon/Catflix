@@ -24,7 +24,9 @@
    docker-compose up server --build
    ```
 4. opens a new client:
+
    4.1 - Open a new terminal
+   
    4.2 Enter the file -
    ```
    cd Catflix
