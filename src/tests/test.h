@@ -16,5 +16,15 @@
 
 #include "../Headers/Movie.h"
 
+#include "../Headers/DeleteCommand.h"
+
+#include "../Headers/HelpCommand.h"
+
+#include "../Headers/PatchCommand.h"
+
+#include "../Headers/PostCommand.h"
+
+#include "../Headers/RecommendCommand.h"
+
 
 #endif

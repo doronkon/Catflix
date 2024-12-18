@@ -22,6 +22,14 @@ add_executable(runTests
     src/Objects/User.cpp
     src/Objects/Movie.cpp
     src/Objects/util.cpp
+    src/Commands/DeleteCommand.cpp
+    src/Commands/HelpCommand.cpp
+    src/Commands/PatchCommand.cpp
+    src/Commands/PostCommand.cpp
+    src/Commands/AddCommand.cpp
+    src/Commands/RecommendCommand.cpp
+    src/Objects/App.cpp   
+
 )
 
 # Link gtest and gtest_main to the test executable
