@@ -1,18 +1,23 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const Movie = require('./movie');
+
 const schema = mongoose.Schema;
 const Category = new schema({
-    name:{
+    name: {
         type: String,
-        required : true
+        required: true
     },
-    movies:{
-        type: [String],
-        default: []
-    },
-    promoted:{
+    movies: [
+        {
+            type: ObjectId,
+            ref: "Movie"
+        }
+    ],
+    promoted: {
         type: Boolean,
         default: false
     }
 });
 
-module.exports = mongoose.model('Category',Category);
+module.exports = mongoose.model('Category', Category);
