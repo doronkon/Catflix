@@ -1,5 +1,7 @@
 const Movie = require('../models/movie');
 const Category = require('./category')
+const User = require('../models/user');  // Import the User model
+
 
 const createMovie = async (name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
     const categoryObject = await Category.getCategoryById(category);
@@ -103,6 +105,17 @@ const updateMovie = async(id,name, category, date, actors, director, thumbnail, 
 };
 
 const deleteMovie = async (id) => {
+    //find users who watched my movieid 
+    // Find users who watched the movie
+    const usersWhoWatched = await User.find({ moviesWatched: id });
+    if(usersWhoWatched)
+    {
+        for (const user of usersWhoWatched) {
+            user.moviesWatched.pull(id)
+            await user.save()// Call deleteMovie function for each movie
+        }
+    }
+
     const deletedMovie = await Movie.findById(id);
     if(!deletedMovie){
         return null;
