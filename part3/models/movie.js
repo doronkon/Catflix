@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const Category = require('./category');
 const schema = mongoose.Schema;
 const Movie = new schema({
     name:{
@@ -6,7 +8,8 @@ const Movie = new schema({
         required : true
     },
     category:{
-        type: String,
+        type: ObjectId,
+        ref: "Category",
         required : true
     },
     published:{

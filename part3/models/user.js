@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const Movie = require('./movie');
+
 const schema = mongoose.Schema;
 const User = new schema({
     name:{
@@ -16,10 +19,12 @@ const User = new schema({
     image:{
         type: String
     },
-    moviesWatched:{
-        type: [String],
-        default: []
-    }
+    moviesWatched:[
+        {
+            type: ObjectId,
+            ref: "Movie"
+        }
+    ]
 });
 
 module.exports = mongoose.model('User',User);

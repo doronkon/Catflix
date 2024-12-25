@@ -33,6 +33,7 @@ const updateUser = async(id, name, password, email, image, movie) => {
         user.image = image;
     }
     if(movie && !user.moviesWatched.includes(movie)) {
+        //code
         user.moviesWatched.push(movie);
     }
     await user.save();

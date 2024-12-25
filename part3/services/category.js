@@ -24,9 +24,6 @@ const updateCategory = async(id,name,movie,promoted) => {
     if(name){
         updatedCategory.name = name;
     }
-    if(movie && !updatedCategory.movies.includes(movie)){
-        updatedCategory.movies.push(movie);
-    }
     if(promoted != null){
         updatedCategory.promoted = promoted;
     }

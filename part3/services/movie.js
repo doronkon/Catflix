@@ -1,7 +1,15 @@
+const movie = require('../models/movie');
 const Movie = require('../models/movie');
+const Category = require('./category')
 
 const createMovie = async (name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
+    const categoryObject = await Category.getCategoryById(category);
+    if (!categoryObject)
+    {
+        return null
+    }
     const movie = new Movie({ name : name, category : category });
+
     if (catflixOriginal != null) {
         movie.catflixOriginal = catflixOriginal;
     }
@@ -26,7 +34,10 @@ const createMovie = async (name, category, date, actors, director, thumbnail, le
     if (minimalAge) {
         movie.minimalAge = minimalAge;
     }
-    return await movie.save();
+    await movie.save();
+    categoryObject.movies.push(movie.id)
+    await categoryObject.save();
+    return movie;
 };
 
 const getMovieById = async(id) => {
@@ -46,7 +57,25 @@ const updateMovie = async(id,name, category, date, actors, director, thumbnail, 
         updatedMovie.name = name;
     }
     if(category){
+        const categoryObject = await Category.getCategoryById(category);
+        if (!categoryObject)
+        {
+            return null
+        }
+        //removing from category list the movie id
+        const categoryOld = await Category.getCategoryById(updatedMovie.category);
+        if (!categoryOld)
+        {
+            return null
+        }
+        await Category.updateOne(
+            { _id: categoryOld._id },
+            { $pull: { movies: id } }
+        );
+        //adding the movie to category and vise versa
+        categoryObject.movies.push(id)
         updatedMovie.category = category;
+        await categoryObject.save();
     }
     if (catflixOriginal != null) {
         updatedMovie.catflixOriginal = catflixOriginal;
@@ -91,7 +120,27 @@ const putMovie = async (id,name, category, date, actors, director, thumbnail, le
         return null;
     }
     movie.name = name;
+
+    const categoryObject = await Category.getCategoryById(category);
+    if (!categoryObject)
+    {
+        return null
+    }
+    //removing from category list the movie id
+    const categoryOld = await Category.getCategoryById(movie.category);
+    if (!categoryOld)
+    {
+        return null
+    }
+    await Category.updateOne(
+        { _id: categoryOld._id },
+        { $pull: { movies: id } }
+    );
+    //adding the movie to category and vise versa
+    categoryObject.movies.push(id)
     movie.category = category;
+    await categoryObject.save();
+
     if (catflixOriginal != null) {
         movie.catflixOriginal = catflixOriginal;
     } else {
