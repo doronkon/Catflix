@@ -105,21 +105,29 @@ const updateMovie = async(id,name, category, date, actors, director, thumbnail, 
 };
 
 const deleteMovie = async (id) => {
-    //find users who watched my movieid 
-    // Find users who watched the movie
+    //getting the movie
+    const deletedMovie = await Movie.findById(id);
+    if(!deletedMovie){
+        return null;
+    }
+    //deleting the movie from the category list
+    const categoryObject = await Category.getCategoryById(deletedMovie.category);
+    if (!categoryObject)
+    {
+        return null
+    }
+    categoryObject.movies.pull(id);
+    await categoryObject.save();
+    //find users who watched my movieid and delete me from them 
     const usersWhoWatched = await User.find({ moviesWatched: id });
     if(usersWhoWatched)
     {
         for (const user of usersWhoWatched) {
             user.moviesWatched.pull(id)
-            await user.save()// Call deleteMovie function for each movie
+            await user.save()
         }
     }
-
-    const deletedMovie = await Movie.findById(id);
-    if(!deletedMovie){
-        return null;
-    }
+    //finally deleting the movie
     await deletedMovie.deleteOne();
     return deletedMovie;
 };
