@@ -5,6 +5,17 @@ const User = new schema({
         type: String,
         required : true
     },
+    password:{
+        type: String,
+        required : true
+    },
+    email:{
+        type: String,
+        //required : true
+    },
+    image:{
+        type: String
+    },
     moviesWatched:{
         type: [String],
         default: []

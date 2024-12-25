@@ -5,7 +5,8 @@ const router = express.Router();
 
 
 router.route('/')
-    .post(userController.createUser);
+    .post(userController.createUser)
+    .get(userController.getUsers);
 router.route('/:id')
     .get(userController.getUser)
     .delete(userController.deleteUser)

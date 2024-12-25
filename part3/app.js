@@ -22,5 +22,7 @@ mongoose.connect(process.env.CONNECTION_STRING)
 
 const users = require('./routes/user');
 app.use('/api/users',users);
+const categories = require('./routes/category');
+app.use('/api/categories',categories);
 
 app.listen(process.env.PORT);

@@ -1,7 +1,7 @@
 const userService = require('../services/user');
 
 const createUser = async (req, res) => {
-    const user = await userService.createUser(req.body.name, req.body.moviesWatched);
+    const user = await userService.createUser(req.body.name, req.body.password, req.body.email, req.body.image);
     res.json(user);
 };
 
@@ -19,7 +19,7 @@ const getUser = async (req, res) => {
 };
 
 const updateUser = async (req,res) => {
-    const updatedUser = await userService.updateUser(req.params.id, req.body.name, req.body.moviesWatched);
+    const updatedUser = await userService.updateUser(req.params.id, req.body.name, req.body.password, req.body.email, req.body.image, req.body.movie);
     if(!updatedUser){
         return res.status(404).json({ errors: ['User not found'] });
     }
@@ -27,7 +27,7 @@ const updateUser = async (req,res) => {
 };
 
 const deleteUser = async (req,res) => {
-    const deletedUser = await updateUser.deleteUser(req.params.id);
+    const deletedUser = await userService.deleteUser(req.params.id);
     if(!deleteUser){
         return res.status(404).json({ errors: ['User not found'] });
     }
@@ -42,4 +42,4 @@ const updateUserMovies = async (req,res) => {
     res.json({ message: 'User movies updated successfully', user: updatedUser});
 }
 
-module.exports = {createUser, getUsers, getUser, updateUser, deleteUser, updateUserMovies}
+module.exports = {createUser, getUsers, getUser, updateUser, deleteUser,updateUserMovies }

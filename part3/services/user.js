@@ -1,9 +1,12 @@
 const User = require('../models/user');
 
-const createUser = async (name, movieArray) => {
-    const user = new User({name : name});
-    if(movieArray) {
-        user.moviesWatched = movieArray;
+const createUser = async (name, password, email, image) => {
+    const user = new User({name : name, password : password});
+    if(email) {
+        user.email = email;
+    }
+    if(image) {
+        user.image = image;
     }
     return await user.save();
 };
@@ -12,16 +15,25 @@ const getUserById = async (id) => {return await User.findById(id);};
 
 const getUsers = async () => {return await User.find({});};
 
-const updateUser = async(id, name, movie) => {
+const updateUser = async(id, name, password, email, image, movie) => {
     const user = await getUserById(id);
     if(!user){
         return null;
     }
-    user.name = name;
-    if(movie){
-        if(!user.moviesWatched.includes(movie)){
-            user.moviesWatched.push(movie);
-        }
+    if(name){
+        user.name = name;
+    }
+    if(password){
+        user.password = password;
+    }
+    if(email){
+        user.email = email;
+    }
+    if(image){
+        user.image = image;
+    }
+    if(movie && !user.moviesWatched.includes(movie)) {
+        user.moviesWatched.push(movie);
     }
     await user.save();
     return user;
@@ -47,4 +59,4 @@ const updateUserMovies = async (id, movie) => {
     return user;
 };
 
-module.exports = {createUser,getUserById,getUsers,updateUser,deleteUser,updateUserMovies}
+module.exports = {createUser, getUserById, getUsers, updateUser, deleteUser, updateUserMovies}
