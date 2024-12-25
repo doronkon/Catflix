@@ -1,0 +1,138 @@
+const Movie = require('../models/movie');
+
+const createMovie = async (name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
+    const movie = new Movie({ name : name, category : category });
+    if (catflixOriginal != null) {
+        movie.catflixOriginal = catflixOriginal;
+    }
+    if (date) {
+        movie.published = date;
+    }
+    if (actors) {
+        movie.actors = actors;
+    }
+    if (director) {
+        movie.director = director;
+    }
+    if (thumbnail) {
+        movie.thumbnail = thumbnail;
+    }
+    if (length) {
+        movie.length = length;
+    }
+    if (description) {
+        movie.description = description;
+    }
+    if (minimalAge) {
+        movie.minimalAge = minimalAge;
+    }
+    return await movie.save();
+};
+
+const getMovieById = async(id) => {
+    return await Movie.findById(id);
+};
+
+const getMovies = async() =>{
+    return await Movie.find({});
+};
+
+const updateMovie = async(id,name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
+    const updatedMovie = await Movie.findById(id);
+    if(!updatedMovie){
+        return null;
+    }
+    if(name){
+        updatedMovie.name = name;
+    }
+    if(category){
+        updatedMovie.category = category;
+    }
+    if (catflixOriginal != null) {
+        updatedMovie.catflixOriginal = catflixOriginal;
+    }
+    if (date) {
+        updatedMovie.published = date;
+    }
+    if (actors) {
+        updatedMovie.actors = actors;
+    }
+    if (director) {
+        updatedMovie.director = director;
+    }
+    if (thumbnail) {
+        updatedMovie.thumbnail = thumbnail;
+    }
+    if (length) {
+        updatedMovie.length = length;
+    }
+    if (description) {
+        updatedMovie.description = description;
+    }
+    if (minimalAge) {
+        updatedMovie.minimalAge = minimalAge;
+    }
+    await updatedMovie.save();
+    return updatedMovie;
+};
+
+const deleteMovie = async (id) => {
+    const deletedMovie = await Movie.findById(id);
+    if(!deletedMovie){
+        return null;
+    }
+    await deletedMovie.deleteOne();
+    return deletedMovie;
+};
+
+const putMovie = async (id,name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
+    const movie = await Movie.findById(id);
+    if(!movie){
+        return null;
+    }
+    movie.name = name;
+    movie.category = category;
+    if (catflixOriginal != null) {
+        movie.catflixOriginal = catflixOriginal;
+    } else {
+        movie.catflixOriginal = false;
+    }
+    if(date){
+        movie.published = date;
+    } else {
+        movie.published = null;
+    }
+    if (actors) {
+        movie.actors = actors;
+    } else {
+        movie.actors = null;
+    }
+    if (director) {
+        movie.director = director;
+    } else {
+        movie.director = null;
+    }
+    if (thumbnail) {
+        movie.thumbnail = thumbnail;
+    } else {
+        movie.thumbnail = null;
+    }
+    if (length) {
+        movie.length = length;
+    } else {
+        movie.length = null;
+    }
+    if (description) {
+        movie.description = description;
+    } else {
+        movie.description = null;
+    }
+    if (minimalAge) {
+        movie.minimalAge = minimalAge;
+    } else {
+        movie.minimalAge = null;
+    }
+    return await movie.save();
+}
+
+module.exports = { createMovie, getMovieById, updateMovie, getMovies, deleteMovie, putMovie };

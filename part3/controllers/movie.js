@@ -1,0 +1,45 @@
+const movieService = require('../services/movie');
+
+const createMovie = async (req, res) => {
+    const movie = await movieService.createMovie( req.body.name, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
+    return res.status(201).json(movie);
+};
+
+const getMovies = async (req, res) => {
+    const movies = await movieService.getMovies();
+    res.json(movies);
+};
+
+const getMovie = async (req, res) => {
+    const movie = await movieService.getMovieById(req.params.id);
+    if (!movie) {
+        return res.status(404).json({ errors: ['Movie not found or invalid ID'] });
+    }
+    res.json(movie);
+};
+
+const updateMovie = async (req, res) => {
+    const updatedMovie = await movieService.updateMovie(req.params.id, req.body.name, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
+    if (!updatedMovie) {
+        return res.status(404).json({ errors: ['Movie not found or invalid ID'] });
+    }
+    res.json(updatedMovie);
+};
+
+const deleteMovie = async (req, res) => {
+    const deletedMovie = await movieService.deleteMovie(req.params.id);
+    if (!deletedMovie) {
+        return res.status(404).json({ errors: ['Movie not found or invalid ID'] });
+    }
+    res.json(deletedMovie);
+};
+
+const putMovie = async(req,res) => {
+    const movie = await movieService.putMovie(req.params.id, req.body.name, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
+    if (!movie) {
+        return res.status(404).json({ errors: ['Movie not found or invalid ID'] });
+    }
+    res.json(movie);
+}
+
+module.exports = { createMovie, getMovies, getMovie, updateMovie, deleteMovie, putMovie };

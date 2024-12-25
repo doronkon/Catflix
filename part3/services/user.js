@@ -44,7 +44,7 @@ const deleteUser = async(id) => {
     if(!user){
         return null;
     }
-    await user.deleteOne({_id:id});
+    await user.deleteOne();
     return user;
 }
 

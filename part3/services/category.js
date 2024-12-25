@@ -1,11 +1,8 @@
 const Category = require('../models/category');
 
-const createCategory = async (name, movies, promoted) => {
+const createCategory = async (name, promoted) => {
     const category = new Category({ name });
-    if(movies){
-        category.movies = movies;
-    }
-    if (promoted) {
+    if (promoted != null) {
         category.promoted = promoted;
     }
     return await category.save();
@@ -42,7 +39,7 @@ const deleteCategory = async (id) => {
     if(!deletedCategory){
         return null;
     }
-    await deletedCategory.deleteOne({_id:id});
+    await deletedCategory.deleteOne();
     return deletedCategory;
 };
 
