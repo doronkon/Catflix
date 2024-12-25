@@ -1,4 +1,3 @@
-const movie = require('../models/movie');
 const Movie = require('../models/movie');
 const Category = require('./category')
 
@@ -68,10 +67,8 @@ const updateMovie = async(id,name, category, date, actors, director, thumbnail, 
         {
             return null
         }
-        await Category.updateOne(
-            { _id: categoryOld._id },
-            { $pull: { movies: id } }
-        );
+        categoryOld.movies.pull(id);
+        await categoryOld.save();
         //adding the movie to category and vise versa
         categoryObject.movies.push(id)
         updatedMovie.category = category;
@@ -132,10 +129,8 @@ const putMovie = async (id,name, category, date, actors, director, thumbnail, le
     {
         return null
     }
-    await Category.updateOne(
-        { _id: categoryOld._id },
-        { $pull: { movies: id } }
-    );
+    categoryOld.movies.pull(id);
+    await categoryOld.save();
     //adding the movie to category and vise versa
     categoryObject.movies.push(id)
     movie.category = category;
