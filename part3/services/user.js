@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Movie = require('./movie')
 
 const createUser = async (name, password, email, image) => {
     const user = new User({name : name, password : password});
@@ -33,7 +34,12 @@ const updateUser = async(id, name, password, email, image, movie) => {
         user.image = image;
     }
     if(movie && !user.moviesWatched.includes(movie)) {
-        //code
+        //making sure the movie is in the data base
+        const movieObject = await Movie.getMovieById(movie);
+        if (!movieObject)
+        {
+            return null
+        }
         user.moviesWatched.push(movie);
     }
     await user.save();
@@ -49,15 +55,4 @@ const deleteUser = async(id) => {
     return user;
 }
 
-const updateUserMovies = async (id, movie) => {
-    const user = await getUserById(id);
-    if(!user){
-        return null;
-    }
-    if(!user.moviesWatched.includes(movie)) {
-        user.moviesWatched.push(movie);
-    }
-    return user;
-};
-
-module.exports = {createUser, getUserById, getUsers, updateUser, deleteUser, updateUserMovies}
+module.exports = {createUser, getUserById, getUsers, updateUser, deleteUser}

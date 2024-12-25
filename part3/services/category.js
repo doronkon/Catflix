@@ -1,4 +1,6 @@
 const Category = require('../models/category');
+const Movie = require('./movie');
+
 
 const createCategory = async (name, promoted) => {
     const category = new Category({ name });
@@ -32,10 +34,17 @@ const updateCategory = async(id,name,movie,promoted) => {
 };
 
 const deleteCategory = async (id) => {
+
     const deletedCategory = await Category.findById(id);
     if(!deletedCategory){
         return null;
     }
+    //delete all movies in category
+    await Promise.all(deletedCategory.movies.map(async (movieId) => {
+        await Movie.deleteMovie(movieId);  // Make sure deleteMovie is asynchronous
+    }));
+    //deletedCategory.movies.forEach((movie) => {Movie.deleteMovie(movie)});
+    //delete movies
     await deletedCategory.deleteOne();
     return deletedCategory;
 };
