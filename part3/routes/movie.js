@@ -1,6 +1,9 @@
 const movieController = require('../controllers/movie');
+const recommendController = require('../controllers/recommend');
 const express = require('express');
 var router = express.Router();
+
+
 
 router.route('/')
     //admin
@@ -14,5 +17,11 @@ router.route('/:id')
     .patch(movieController.updateMovie)
     .delete(movieController.deleteMovie)
     .put(movieController.putMovie);
-    
+
+//recommend 
+router.route('/:id/recommend')
+    .get(recommendController.getRecommendation)
+    .post(recommendController.addMovie)
+
+
 module.exports = router;
