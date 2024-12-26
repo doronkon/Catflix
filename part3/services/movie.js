@@ -1,6 +1,7 @@
 const Movie = require('../models/movie');
-const Category = require('./category')
-const User = require('../models/user');  // Import the User model
+const Category = require('./category');
+const modelCategory = require('../models/category');
+const User = require('../models/user'); 
 
 
 const createMovie = async (name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
@@ -45,9 +46,64 @@ const getMovieById = async(id) => {
     return await Movie.findById(id);
 };
 
-const getMovies = async() =>{
-    return await Movie.find({});
+const promotedCategories = async (watchedMovies) => {
+
+    // Get the movies in all promoted categories
+    const promoted = await modelCategory.find({ promoted: true }).populate('movies');
+    const promotedMovies = promoted.flatMap(category => category.movies);
+
+    // Filter out the movies that the current user has already watched
+    const unwatchedMovies = promotedMovies.filter(movie => !watchedMovies.includes(movie._id.toString()));
+
+    // Randomize the array of unwatched promoted movies
+    const randomMovies = unwatchedMovies.sort(() => Math.random() - 0.5);
+
+    // Return 20 random unwatched promoted movies (adjust slice count as needed)
+    return randomMovies.slice(0, 20);
 };
+
+const userMovies = async (currentUser, watchedMovies) => {
+    const newCategoryName = "categoryFor-" + currentUser;
+    
+    // Assuming createCategory is an asynchronous function, await it
+    const userCategory = await Category.createCategory(newCategoryName, false);
+    // Loop through watchedMovies and add each movie to the new category
+    const lastTwenty = watchedMovies.slice(-20);
+    for (const movie of lastTwenty) {
+        userCategory.movies.push(movie);
+    }
+    userCategory.movies.sort(() => Math.random() - 0.5);
+    await userCategory.save();
+    return userCategory;
+};
+
+
+const getMovies = async (currentUser) => {
+    if (!currentUser) {
+        return null;
+    }
+    
+    // Get the movies the current user has watched and extract their _id values
+    const user = await User.findById(currentUser).populate('moviesWatched');
+    const watchedMovies = user.moviesWatched.map(movie => movie._id.toString());
+    
+    // Fetch both promoted categories and user movies concurrently
+    const [promotedMovies, alreadyWatched] = await Promise.all([
+        promotedCategories(watchedMovies),
+        userMovies(currentUser, watchedMovies)
+    ]);
+    
+    // Return the results in an object
+    return {
+        promotedMovies,
+        alreadyWatched
+    };
+};
+
+const deleteFictive = async (currentUser) => {
+    const newCategoryName = "categoryFor-" + currentUser;
+    await modelCategory.deleteOne({name : newCategoryName});
+}
 
 const updateMovie = async(id,name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
     const updatedMovie = await Movie.findById(id);
@@ -200,4 +256,4 @@ const putMovie = async (id,name, category, date, actors, director, thumbnail, le
     return await movie.save();
 }
 
-module.exports = { createMovie, getMovieById, updateMovie, getMovies, deleteMovie, putMovie };
+module.exports = { createMovie, getMovieById, updateMovie, getMovies, deleteMovie, putMovie, deleteFictive };

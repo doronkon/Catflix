@@ -49,4 +49,5 @@ const deleteCategory = async (id) => {
     return deletedCategory;
 };
 
+
 module.exports = { createCategory, getCategories, getCategoryById, updateCategory, deleteCategory };
