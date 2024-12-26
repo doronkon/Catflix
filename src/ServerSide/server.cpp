@@ -43,7 +43,6 @@ void handlingThread(App& myApp, int sock)
         char buffer[4096] = {'\0'};
         int expected_data_len = sizeof(buffer);
         int read_bytes = recv(client_sock, buffer, expected_data_len, 0);
-        //fflush(stdout);
         string response ="";
         if (read_bytes == 0)
         {
@@ -90,8 +89,9 @@ int main()
     sin.sin_addr.s_addr = INADDR_ANY;
     sin.sin_port = htons(server_port);
 
+
     // bind the created socket to the given ip and port
-    if (bind(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
+    if (::bind(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0)
     {
         perror("error binding socket");
     }
