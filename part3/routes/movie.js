@@ -3,11 +3,14 @@ const express = require('express');
 var router = express.Router();
 
 router.route('/')
+    //admin
     .post(movieController.createMovie)
-    // should work on .get
+    //current user
     .get(movieController.getMovies);
 router.route('/:id')
+    //everyone
     .get(movieController.getMovie)
+    //admin
     .patch(movieController.updateMovie)
     .delete(movieController.deleteMovie)
     .put(movieController.putMovie);
