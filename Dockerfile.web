@@ -1,0 +1,30 @@
+# Use Node.js official image as base
+FROM node:18
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+# Copy package.json and package-lock.json first for better caching
+COPY package*.json ./
+
+RUN npm install
+
+# Copy the entire application
+COPY . .
+
+# Create config directory and set default environment
+RUN mkdir -p config
+
+# Set environment variables
+ENV NODE_ENV=development
+ENV PORT=7071
+
+# Create .env.development in config directory
+RUN echo "PORT=7071\nCONNECTION_STRING=mongodb://mongodb:27017/catflix" > ./config/.env.development
+
+# Expose the port the app runs on
+EXPOSE 7071
+
+# Command to run the application
+CMD [ "node", "app.js" ]
