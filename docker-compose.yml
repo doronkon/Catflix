@@ -31,6 +31,28 @@ services:
       - ./:/usr/src/app
       - /usr/src/app/node_modules
 
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: catflix_web
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=development
+      - PORT=8080
+      - API_URL=http://server:7071
+    depends_on:
+      - server
+    restart: unless-stopped
+    volumes:
+      - ./part3:/usr/src/app
+      - /usr/src/app/node_modules
+    working_dir: /usr/src/app # Sets the working directory for the container
+    command: "node app.js" # Explicitly runs 'app.js' from the mapped directory
+    networks:
+      - catflix_network
+
 networks:
   catflix_network:
     driver: bridge

@@ -1,30 +1,20 @@
 # Use Node.js official image as base
 FROM node:18
 
-# Create app directory
+# Set working directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
-# Copy package.json and package-lock.json first for better caching
-COPY package*.json ./
+# Copy package.json and package-lock.json first to leverage Docker layer caching
+COPY ./part3/package*.json ./
 
+# Install dependencies
 RUN npm install
 
-# Copy the entire application
-COPY . .
+# Copy the rest of the application files
+COPY ./part3 .
 
-# Create config directory and set default environment
-RUN mkdir -p config
-
-# Set environment variables
-ENV NODE_ENV=development
-ENV PORT=7071
-
-# Create .env.development in config directory
-RUN echo "PORT=7071\nCONNECTION_STRING=mongodb://mongodb:27017/catflix" > ./config/.env.development
-
-# Expose the port the app runs on
-EXPOSE 7071
+# Expose the port
+EXPOSE 8080
 
 # Command to run the application
-CMD [ "node", "app.js" ]
+CMD ["node", "app.js"]
