@@ -19,7 +19,7 @@ services:
     ports:
       - "7071:7071"
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=local
       - CONNECTION_STRING=mongodb://mongodb:27017/catflix
       - PORT=7071
     depends_on:
@@ -39,7 +39,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=local
       - PORT=8080
       - API_URL=http://server:7071
     depends_on:

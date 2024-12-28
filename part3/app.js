@@ -32,6 +32,6 @@ app.use('/api/movies',movies);
 const tokens = require('./routes/token');
 app.use('/api/tokens',tokens);
 
-const search = require('./routes/query');
+const search = require('./routes/search');
 
 app.listen(process.env.PORT);
