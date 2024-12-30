@@ -2,6 +2,10 @@ const categoryService = require('../services/category');
 
 const createCategory = async (req, res) => {
     const category = await categoryService.createCategory(req.body.name, req.body.promoted);
+    if(!category)
+    {
+        return res.status(404).json({ errors: ['Category already exists'] });
+    }
     return res.status(201).json(category);
 };
 

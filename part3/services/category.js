@@ -2,12 +2,20 @@ const Category = require('../models/category');
 
 
 const createCategory = async (name, promoted) => {
+    const existing = await getCategoryByName(name);
+    if (existing)
+    {
+        return null
+    }
     const category = new Category({ name });
     if (promoted != null) {
         category.promoted = promoted;
     }
     return await category.save();
 };
+
+const getCategoryByName = async (name) => {return await Category.findOne({name});};
+
 
 const getCategoryById = async(id) => {
     return await Category.findById(id);

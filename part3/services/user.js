@@ -12,6 +12,11 @@ const findMaxId = async() =>{
 }
 
 const createUser = async (name, password, email, image) => {
+    const existing = await getUserByName(name);
+    if (existing)
+    {
+        return null
+    }
     const user = new User({name : name, password : password});
     if(email) {
         user.email = email;
@@ -23,6 +28,9 @@ const createUser = async (name, password, email, image) => {
     user.userId = futureId + 1;
     return await user.save();
 };
+
+const getUserByName = async (name) => {return await User.findOne({name});};
+
 
 const getUserById = async (id) => {return await User.findById(id);};
 
