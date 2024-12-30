@@ -3,6 +3,15 @@ const Category = require('./category');
 const modelCategory = require('../models/category');
 const User = require('../models/user'); 
 
+const maxIdMovie = async() =>{
+    const maxIdMovie = await Movie.find({}).sort({movieId: -1}).limit(1);
+    // database is still empty
+    if(maxIdMovie.length === 0){
+        return 0;
+    } else {
+        return maxIdMovie[0].movieId;
+    }
+}
 
 const createMovie = async (name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
     const categoryObject = await Category.getCategoryById(category);
@@ -11,6 +20,9 @@ const createMovie = async (name, category, date, actors, director, thumbnail, le
         return null
     }
     const movie = new Movie({ name : name, category : category });
+
+    const futureMovieId = await maxIdMovie();
+    movie.movieId = futureMovieId + 1;
 
     if (catflixOriginal != null) {
         movie.catflixOriginal = catflixOriginal;

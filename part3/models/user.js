@@ -24,7 +24,11 @@ const User = new schema({
             type: ObjectId,
             ref: "Movie"
         }
-    ]
+    ],
+    userId: {
+        type: Number
+    }
+
 });
 
 module.exports = mongoose.model('User',User);

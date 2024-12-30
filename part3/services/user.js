@@ -1,6 +1,16 @@
 const User = require('../models/user');
 const Movie = require('./movie')
 
+const findMaxId = async() =>{
+    const maxIdUser = await User.find({}).sort({userId: -1}).limit(1);
+    // database is still empty
+    if(maxIdUser.length === 0){
+        return 0;
+    } else {
+        return maxIdUser[0].userId;
+    }
+}
+
 const createUser = async (name, password, email, image) => {
     const user = new User({name : name, password : password});
     if(email) {
@@ -9,6 +19,8 @@ const createUser = async (name, password, email, image) => {
     if(image) {
         user.image = image;
     }
+    const futureId = await findMaxId();
+    user.userId = futureId + 1;
     return await user.save();
 };
 

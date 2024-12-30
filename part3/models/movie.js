@@ -12,6 +12,9 @@ const Movie = new schema({
         ref: "Category",
         required : true
     },
+    movieId:{
+        type: Number
+    },
     published:{
         type:Date,
         default:Date.now
