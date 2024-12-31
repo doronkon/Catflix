@@ -1,3 +1,4 @@
+#DEPRECATED
 FROM python:3
 
 WORKDIR /Catflix_client

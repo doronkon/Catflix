@@ -7,9 +7,14 @@ const createMovie = async (req, res) => {
 
 const getMovies = async (req, res) => {
     const currentUser = req.headers['user'];
+    if (!currentUser) {
+        // no such user
+        return res.status(400).json({ errors: ['Bad request'] });
+    }
     const movies = await movieService.getMovies(currentUser);
     if(!movies){
-        return res.status(400).json({ errors: ['Bad request'] });
+        // No movies for user
+        return res.status(404).json({ errors: ['Movie not found'] });
     }
     res.json(movies);
         // add deletion of fictive category
