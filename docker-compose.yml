@@ -1,26 +1,61 @@
+version: '3.8'
+
 services:
-  server:
-    build:
-      context: .
-      dockerfile: Dockerfile  # Use the updated Dockerfile
-    container_name: catflix_server
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
     ports:
-      - "7071:7071"  # Expose the server's port
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
     networks:
       - catflix_network
 
-  client:
+  server:
     build:
       context: .
-      dockerfile: Dockerfile.client
+      dockerfile: Dockerfile
+    container_name: catflix_server
+    ports:
+      - "7071:7071"
+    environment:
+      - NODE_ENV=local
+      - CONNECTION_STRING=mongodb://mongodb:27017/catflix
+      - PORT=7071
+    depends_on:
+      - mongodb
+    restart: unless-stopped
     networks:
       - catflix_network
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: catflix_web
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=local
+      - PORT=8080
+      - API_URL=http://server:7071
     depends_on:
       - server
-    entrypoint: ["python3", "client.py", "catflix_server", "7071"]
-    stdin_open: true   # Allows interactive input
-    tty: true          # Allocates a pseudo-TTY
+    restart: unless-stopped
+    volumes:
+      - ./part3:/usr/src/app
+      - /usr/src/app/node_modules
+    working_dir: /usr/src/app # Sets the working directory for the container
+    command: "node app.js" # Explicitly runs 'app.js' from the mapped directory
+    networks:
+      - catflix_network
 
 networks:
   catflix_network:
     driver: bridge
+
+volumes:
+  mongodb_data:
