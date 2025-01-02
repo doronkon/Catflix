@@ -29,6 +29,7 @@ add_executable(runTests
     src/Commands/AddCommand.cpp
     src/Commands/RecommendCommand.cpp
     src/Objects/App.cpp   
+    src/ServerSide/server.cpp
 
 )
 
