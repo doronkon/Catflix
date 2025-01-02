@@ -1,12 +1,12 @@
 const Movie = require('../models/movie');
 const Category = require('./category');
 const modelCategory = require('../models/category');
-const User = require('../models/user'); 
+const User = require('../models/user');
 
-const maxIdMovie = async() =>{
-    const maxIdMovie = await Movie.find({}).sort({movieId: -1}).limit(1);
+const maxIdMovie = async () => {
+    const maxIdMovie = await Movie.find({}).sort({ movieId: -1 }).limit(1);
     // database is still empty
-    if(maxIdMovie.length === 0){
+    if (maxIdMovie.length === 0) {
         return 0;
     } else {
         return maxIdMovie[0].movieId;
@@ -15,11 +15,10 @@ const maxIdMovie = async() =>{
 
 const createMovie = async (name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
     const categoryObject = await Category.getCategoryById(category);
-    if (!categoryObject)
-    {
+    if (!categoryObject) {
         return null
     }
-    const movie = new Movie({ name : name, category : category });
+    const movie = new Movie({ name: name, category: category });
 
     const futureMovieId = await maxIdMovie();
     movie.movieId = futureMovieId + 1;
@@ -54,57 +53,80 @@ const createMovie = async (name, category, date, actors, director, thumbnail, le
     return movie;
 };
 
-const getMovieById = async(id) => {
+const getMovieById = async (id) => {
     return await Movie.findById(id);
 };
 
 const promotedCategories = async (watchedMovies) => {
+    // Fetch all categories with their movies populated
+    const categories = await modelCategory.find().populate('movies');
 
-    // Get the movies in all promoted categories
-    const promoted = await modelCategory.find({ promoted: true }).populate('movies');
-    const promotedMovies = promoted.flatMap(category => category.movies);
+    // Convert watchedMovies to a Set for faster lookups
+    const watchedMovieIds = new Set(watchedMovies.map(movie => String(movie._id)));
 
-    // Filter out the movies that the current user has already watched
-    const unwatchedMovies = promotedMovies.filter(movie => !watchedMovies.includes(movie._id.toString()));
+    // Process each category
+    const result = categories
+        .filter(category => category.promoted) // Only consider promoted categories
+        .map(category => {
+            // Filter out watched movies
+            const filteredMovies = category.movies.filter(movie =>
+                !watchedMovieIds.has(String(movie._id))
+            );
 
-    // Randomize the array of unwatched promoted movies
-    const randomMovies = unwatchedMovies.sort(() => Math.random() - 0.5);
+            // Shuffle the remaining movies
+            const shuffledMovies = filteredMovies.sort(() => 0.5 - Math.random());
 
-    // Return 20 random unwatched promoted movies (adjust slice count as needed)
-    return randomMovies.slice(0, 20);
+            // Take up to 20 movies
+            const randomMovies = shuffledMovies.slice(0, 20);
+
+            return {
+                categoryName: category.name,
+                movies: randomMovies
+            };
+        });
+
+    return result;
 };
 
 const userMovies = async (currentUser, watchedMovies) => {
     const newCategoryName = "categoryFor-" + currentUser;
-    
+
     // Assuming createCategory is an asynchronous function, await it
     const userCategory = await Category.createCategory(newCategoryName, false);
+
     // Loop through watchedMovies and add each movie to the new category
-    const lastTwenty = watchedMovies.slice(-20);
+    const lastTwenty = watchedMovies.slice(-20); // Get the last 20 movies
     for (const movie of lastTwenty) {
         userCategory.movies.push(movie);
     }
-    userCategory.movies.sort(() => Math.random() - 0.5);
-    await userCategory.save();
-    return userCategory;
-};
 
+    // Shuffle the movies
+    userCategory.movies.sort(() => Math.random() - 0.5);
+
+    // Save the category
+    await userCategory.save();
+
+    // Populate the movies field to return the movie details
+    const populatedCategory = await modelCategory.findById(userCategory._id).populate('movies');
+
+    return populatedCategory.movies; // Return the populated movies array
+};
 
 const getMovies = async (currentUser) => {
     if (!currentUser) {
         return null;
     }
-    
+
     // Get the movies the current user has watched and extract their _id values
     const user = await User.findById(currentUser).populate('moviesWatched');
     const watchedMovies = user.moviesWatched.map(movie => movie._id.toString());
-    
+
     // Fetch both promoted categories and user movies concurrently
     const [promotedMovies, alreadyWatched] = await Promise.all([
         promotedCategories(watchedMovies),
         userMovies(currentUser, watchedMovies)
     ]);
-    
+
     // Return the results in an object
     return {
         promotedMovies,
@@ -114,27 +136,25 @@ const getMovies = async (currentUser) => {
 
 const deleteFictive = async (currentUser) => {
     const newCategoryName = "categoryFor-" + currentUser;
-    await modelCategory.deleteOne({name : newCategoryName});
+    await modelCategory.deleteOne({ name: newCategoryName });
 }
 
-const updateMovie = async(id,name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
+const updateMovie = async (id, name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
     const updatedMovie = await Movie.findById(id);
-    if(!updatedMovie){
+    if (!updatedMovie) {
         return null;
     }
-    if(name){
+    if (name) {
         updatedMovie.name = name;
     }
-    if(category){
+    if (category) {
         const categoryObject = await Category.getCategoryById(category);
-        if (!categoryObject)
-        {
+        if (!categoryObject) {
             return null
         }
         //removing from category list the movie id
         const categoryOld = await Category.getCategoryById(updatedMovie.category);
-        if (!categoryOld)
-        {
+        if (!categoryOld) {
             return null
         }
         categoryOld.movies.pull(id);
@@ -175,21 +195,19 @@ const updateMovie = async(id,name, category, date, actors, director, thumbnail, 
 const deleteMovie = async (id) => {
     //getting the movie
     const deletedMovie = await Movie.findById(id);
-    if(!deletedMovie){
+    if (!deletedMovie) {
         return null;
     }
     //deleting the movie from the category list
     const categoryObject = await Category.getCategoryById(deletedMovie.category);
-    if (!categoryObject)
-    {
+    if (!categoryObject) {
         return null
     }
     categoryObject.movies.pull(id);
     await categoryObject.save();
     //find users who watched my movieid and delete me from them 
     const usersWhoWatched = await User.find({ moviesWatched: id });
-    if(usersWhoWatched)
-    {
+    if (usersWhoWatched) {
         for (const user of usersWhoWatched) {
             user.moviesWatched.pull(id)
             await user.save()
@@ -200,22 +218,20 @@ const deleteMovie = async (id) => {
     return deletedMovie;
 };
 
-const putMovie = async (id,name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
+const putMovie = async (id, name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
     const movie = await Movie.findById(id);
-    if(!movie){
+    if (!movie) {
         return null;
     }
     movie.name = name;
 
     const categoryObject = await Category.getCategoryById(category);
-    if (!categoryObject)
-    {
+    if (!categoryObject) {
         return null
     }
     //removing from category list the movie id
     const categoryOld = await Category.getCategoryById(movie.category);
-    if (!categoryOld)
-    {
+    if (!categoryOld) {
         return null
     }
     categoryOld.movies.pull(id);
@@ -230,7 +246,7 @@ const putMovie = async (id,name, category, date, actors, director, thumbnail, le
     } else {
         movie.catflixOriginal = false;
     }
-    if(date){
+    if (date) {
         movie.published = date;
     } else {
         movie.published = null;
