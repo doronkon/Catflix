@@ -21,6 +21,15 @@ const sendToServer = (message) => {
         });
     });
 }
+addMovieTest = async () => {
+    const userId = 1;
+    const movieId = 2;
+    var response = await sendToServer('PATCH ' + userId + ' ' + movieId + '\n');
+    if(response[0] == '4'){
+         response = await sendToServer('POST ' + userId + ' ' + movieId + '\n');
+    }
+    return response;
+}
 
 const splitString = async (response) => {
     
@@ -63,7 +72,8 @@ const getRecommendation = async (currUser,currMovie) => {
     }
     return splitString(response);
 }
-const addMovie = async (currUser,currMovie) => {
+const 
+addMovie = async (currUser,currMovie) => {
     const user = await User.findOne({_id:currUser});
     const movie = await Movie.findOne({_id:currMovie});
     // the user we want to recommend to or the movie we want to recommend on does not exist
@@ -78,4 +88,4 @@ const addMovie = async (currUser,currMovie) => {
     }
     return response;
 }
-module.exports = {addMovie, getRecommendation , sendToServer}
+module.exports = {addMovie, getRecommendation , sendToServer,addMovieTest}

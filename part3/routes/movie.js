@@ -5,6 +5,8 @@ const express = require('express');
 var router = express.Router();
 
 
+router.route('/test')
+    .get(recommendController.TestCPP)
 
 router.route('/')
     //admin

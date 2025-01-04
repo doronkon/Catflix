@@ -1,6 +1,10 @@
 const recommendService = require('../services/recommend');
 const tokenService = require('../services/token');
 
+const TestCPP = async (req, res) => {
+    const response = await recommendService.addMovieTest()
+    res.status(parseInt(response.slice(0, 3))).json();
+}
 
 const getRecommendation = async (req,res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
@@ -34,4 +38,4 @@ const addMovie = async (req,res) => {
 
 }
 
-module.exports = {addMovie,getRecommendation}
+module.exports = {addMovie,getRecommendation,TestCPP}
