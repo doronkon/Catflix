@@ -8,7 +8,15 @@ const createMovie = async (req, res) => {
     {
         return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
     }
+    if (!req.body.name || !req.body.category)
+    {
+        return res.status(400).json({ errors: ['Bad request no name or category'] });
+    }
     const movie = await movieService.createMovie( req.body.name, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
+    if (!movie)
+    {
+        return res.status(404).json({ errors: ['Category not found'] });
+    }
     return res.status(201).json(movie);
 };
 
@@ -73,9 +81,13 @@ const putMovie = async(req,res) => {
     {
         return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
     }
+    if(!req.body.name)
+    {
+        return res.status(400).json({ errors: ['Bad request no name'] });
+    }
     const movie = await movieService.putMovie(req.params.id, req.body.name, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
     if (!movie) {
-        return res.status(404).json({ errors: ['Movie not found or invalid ID'] });
+        return res.status(404).json({ errors: ['Movie not found or invalid ID or Category not found'] });
     }
     res.json(movie);
 }

@@ -3,6 +3,11 @@ const tokenService = require('../services/token');
 
 
 const search = async (req, res) => {
+    const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
+    if (!headersUser)
+    {
+        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+    }
     try {
         const searchResult = await searchService.getSearchResult(req.params.query);
         res.json(searchResult);

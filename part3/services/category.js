@@ -18,7 +18,13 @@ const getCategoryByName = async (name) => {return await Category.findOne({name})
 
 
 const getCategoryById = async(id) => {
-    return await Category.findById(id);
+    try{
+        return await Category.findById(id);
+    }
+    catch
+    {
+        return null
+    }
 };
 
 const getCategories = async() =>{
@@ -26,7 +32,7 @@ const getCategories = async() =>{
 };
 
 const updateCategory = async(id,name,movie,promoted) => {
-    const updatedCategory = await Category.findById(id);
+    const updatedCategory = await getCategoryById(id);
     if(!updatedCategory){
         return null;
     }
@@ -42,7 +48,7 @@ const updateCategory = async(id,name,movie,promoted) => {
 
 const deleteCategory = async (id) => {
     const { deleteMovie } = require('./movie');
-    const deletedCategory = await Category.findById(id);
+    const deletedCategory = await getCategoryById(id);
     if(!deletedCategory){
         return null;
     }

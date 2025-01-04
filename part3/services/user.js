@@ -32,7 +32,14 @@ const createUser = async (name, password, email, image) => {
 const getUserByName = async (name) => {return await User.findOne({name});};
 
 
-const getUserById = async (id) => {return await User.findById(id);};
+const getUserById = async (id) => {
+    try{
+        return await User.findById(id);
+    }
+    catch{
+        return null
+    }
+};
 
 const getUsers = async () => {return await User.find({});};
 

@@ -2,6 +2,7 @@ const Movie = require('../models/movie');
 const Category = require('./category');
 const modelCategory = require('../models/category');
 const User = require('../models/user');
+const category = require('../models/category');
 
 const maxIdMovie = async () => {
     const maxIdMovie = await Movie.find({}).sort({ movieId: -1 }).limit(1);
@@ -54,7 +55,12 @@ const createMovie = async (name, category, date, actors, director, thumbnail, le
 };
 
 const getMovieById = async (id) => {
-    return await Movie.findById(id);
+    try {
+        return await Movie.findById(id);
+    }
+    catch{
+        return null
+    }
 };
 
 const promotedCategories = async (watchedMovies) => {
@@ -140,7 +146,7 @@ const deleteFictive = async (currentUser) => {
 }
 
 const updateMovie = async (id, name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
-    const updatedMovie = await Movie.findById(id);
+    const updatedMovie = await getMovieById(id);
     if (!updatedMovie) {
         return null;
     }
@@ -194,7 +200,7 @@ const updateMovie = async (id, name, category, date, actors, director, thumbnail
 
 const deleteMovie = async (id) => {
     //getting the movie
-    const deletedMovie = await Movie.findById(id);
+    const deletedMovie = await getMovieById(id);
     if (!deletedMovie) {
         return null;
     }
@@ -219,7 +225,7 @@ const deleteMovie = async (id) => {
 };
 
 const putMovie = async (id, name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
-    const movie = await Movie.findById(id);
+    const movie = await getMovieById(id);
     if (!movie) {
         return null;
     }

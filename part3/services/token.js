@@ -3,7 +3,13 @@ const User = require('../models/user');
 
 const validateHeadersUser = async (id) => {
     //currently just checking if exists
-    return await User.findById(id);
+    try{
+        return await User.findById(id)
+    }
+    catch
+    {
+        return null;
+    }
 }
 
 const validateUser = async (name, password) => {

@@ -97,5 +97,7 @@ const searchForMinimalAge = async(query) => {
 }
 
 
+module.exports = {searchForMinimalAge, searchForCatflixOriginal , searchForDescription,
+    searchForLength,searchForActors,searchForThumbnail,searchForDirector,getSearchResult,searchForPublished,searchForCategory,searchForName}
 
 // const promoted = await modelCategory.find({ promoted: true }).populate('movies');
