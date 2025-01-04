@@ -1,6 +1,13 @@
 const categoryService = require('../services/category');
+const tokenService = require('../services/token');
+
 
 const createCategory = async (req, res) => {
+    const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
+    if (!headersUser)
+    {
+        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+    }
     const category = await categoryService.createCategory(req.body.name, req.body.promoted);
     if(!category)
     {
@@ -10,6 +17,11 @@ const createCategory = async (req, res) => {
 };
 
 const getCategories = async (req, res) => {
+    const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
+    if (!headersUser)
+    {
+        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+    }
     const categories = await categoryService.getCategories();
     res.json(categories);
 };
@@ -23,6 +35,11 @@ const getCategory = async(req, res) => {
 };
 
 const updateCategory = async (req, res) => {
+    const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
+    if (!headersUser)
+    {
+        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+    }
     const updatedCategory = await categoryService.updateCategory(req.params.id, req.body.name, req.body.movie, req.body.promoted);
     if(!updatedCategory){
         return res.status(404).json({ errors: ['Category not found or invalid ID'] });
@@ -31,6 +48,11 @@ const updateCategory = async (req, res) => {
 };
 
 const deleteCategory = async(req, res) => {
+    const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
+    if (!headersUser)
+    {
+        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+    }
     const deletedCategory = await categoryService.deleteCategory(req.params.id);
     if(!deletedCategory){
         return res.status(404).json({ errors: ['Category not found or invalid ID'] });

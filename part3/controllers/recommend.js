@@ -1,6 +1,13 @@
 const recommendService = require('../services/recommend');
+const tokenService = require('../services/token');
+
 
 const getRecommendation = async (req,res) => {
+    const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
+    if (!headersUser)
+    {
+        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+    }
     const UserID = req.headers['user']
     const MovieID = req.params.id
     if (!UserID || !MovieID) {
@@ -11,6 +18,11 @@ const getRecommendation = async (req,res) => {
     res.json(response)
 }
 const addMovie = async (req,res) => {
+    const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
+    if (!headersUser)
+    {
+        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+    }
     const UserID = req.headers['user']
     const MovieID = req.params.id
     if (!UserID || !MovieID) {

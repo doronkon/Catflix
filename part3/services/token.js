@@ -1,5 +1,11 @@
 const User = require('../models/user');
 
+
+const validateHeadersUser = async (id) => {
+    //currently just checking if exists
+    return await User.findById(id);
+}
+
 const validateUser = async (name, password) => {
     const user = await User.findOne({name,password});
     if(!user)
@@ -15,4 +21,4 @@ const validateUser = async (name, password) => {
 
 };
 
-module.exports = {validateUser}
+module.exports = {validateUser,validateHeadersUser}

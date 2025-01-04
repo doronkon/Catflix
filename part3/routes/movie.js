@@ -20,6 +20,7 @@ router.route('/:id')
 
 //recommend 
 router.route('/:id/recommend')
+    //current user
     .get(recommendController.getRecommendation)
     .post(recommendController.addMovie)
 
