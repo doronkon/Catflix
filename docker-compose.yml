@@ -39,7 +39,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - NODE_ENV=local
+      - NODE_ENV=docker
       - PORT=8080
       - API_URL=http://server:7071
     depends_on:

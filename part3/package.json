@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "npx kill-port 12345 && cross-env NODE_ENV=local node app.js",
-    "test": "npx kill-port 12345 && cross-env NODE_ENV=test node app.js"
+    "docker": "npx kill-port 12345 && cross-env NODE_ENV=docker node app.js"
   },
   "devDependencies": {
     "cross-env": "^7.0.3"
