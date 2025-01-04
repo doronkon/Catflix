@@ -3,6 +3,7 @@ const Category = require('./category');
 const modelCategory = require('../models/category');
 const User = require('../models/user');
 const category = require('../models/category');
+const cppConnector = require("./recommend");
 
 const maxIdMovie = async () => {
     const maxIdMovie = await Movie.find({}).sort({ movieId: -1 }).limit(1);
@@ -217,6 +218,8 @@ const deleteMovie = async (id) => {
         for (const user of usersWhoWatched) {
             user.moviesWatched.pull(id)
             await user.save()
+            const deleteMessage = "DELETE " + user.userId + " " + deletedMovie.movieId;
+            cppConnector.sendToServer(deleteMessage);
         }
     }
     //finally deleting the movie
