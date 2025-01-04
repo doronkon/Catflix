@@ -2,7 +2,6 @@ const Movie = require('../models/movie');
 const Category = require('./category');
 const modelCategory = require('../models/category');
 const User = require('../models/user');
-const category = require('../models/category');
 const cppConnector = require("./recommend");
 
 const maxIdMovie = async () => {
