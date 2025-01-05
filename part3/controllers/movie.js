@@ -37,8 +37,8 @@ const getMovies = async (req, res) => {
         return res.status(404).json({ errors: ['Movie not found'] });
     }
     res.json(movies);
-        // add deletion of fictive category
-        await movieService.deleteFictive(currentUser);
+    // add deletion of fictive category
+    await movieService.deleteFictive(currentUser);
 };
 
 const getMovie = async (req, res) => {

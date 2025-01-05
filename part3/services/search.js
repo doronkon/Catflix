@@ -1,51 +1,83 @@
 const category = require('../models/category');
+const movie = require('../models/movie');
 const Movie = require('../models/movie');
-const { all } = require('../routes/user');
+
+
+
+const insertMovies = async(currentMovies,MoviesResult) => {
+    //existing ID set
+    const existingIds = new Set(MoviesResult.map(movie => movie._id.toString()));
+
+    for (const movie of currentMovies) {
+        if (!existingIds.has(movie._id.toString())) {
+            MoviesResult.push(movie); // Add the movie to the result array
+            existingIds.add(movie._id.toString()); // Track the ID to avoid duplicates
+        }
+    }
+}
+
+
 
 const getSearchResult = async(query) => {
-    const searchFields = ['Name', 'category', 'published', 'director', 'actors', 'thumbnail', 'length', 'description', 'catflixOriginal', 'minimalAge'];
-    const searchResult = [];
-    let i = 0;
-
-    searchFields.forEach(field => {
-        const funcName = 'searchFor' + field;
-        if (typeof global[funcName] === 'function') {
-            const val = null;
-            val = global[funcName](query);
-            if (val != null) {
-                searchResult[i] = val;
-                i++;
-            }
-        } else {
-            console.log("ShE Is A WOmAn AnD He hAs BRiStLEs")
-        }
-    });
-
-    return searchResult;
+    const MoviesResult = [];
+    //array of ids
+    current = await searchForName(query);
+    if(current)
+    {
+        insertMovies(current,MoviesResult)
+    }
+    current = await searchForDirector(query);
+    if(current)
+    {
+        insertMovies(current,MoviesResult)
+    }
+    current = await searchForCategory(query);
+    if(current)
+    {
+        insertMovies(current,MoviesResult)
+    }
+    current = await searchForActors(query);
+    if(current)
+    {
+        insertMovies(current,MoviesResult)
+    }
+    current = await searchForThumbnail(query);
+    if(current)
+    {
+        insertMovies(current,MoviesResult)
+    }
+    current = await searchForLength(query);
+    if(current)
+    {
+        insertMovies(current,MoviesResult)
+    }
+    current = await searchForMinimalAge(query);
+    if(current)
+    {
+        insertMovies(current,MoviesResult)
+    }
+    return MoviesResult;
 }
 
 
 const searchForName = async(query) => {
     // Create a case-insensitive regex pattern that matches the start of strings
     const regexPattern = new RegExp(query, 'i');
-    
     // Search for movies where the name matches the regex pattern
     const finds = await Movie.find({ name: regexPattern });
+
     return finds;
 }
 const searchForCategory = async(query) => {
     const regexPattern = new RegExp(query, 'i');
-    
-    const finds = await Movie.find({ category: regexPattern });
-    return finds;
+    try{
+    return await Movie.find({ category: regexPattern });
+    }
+    catch{
+        return null;
+    }
 }
 
-const searchForPublished = async(query) => {
-    const regexPattern = new RegExp(query, 'i');
-    
-    const finds = await Movie.find({ published: regexPattern });
-    return finds;
-}
 
 const searchForDirector = async(query) => {
     const regexPattern = new RegExp(query, 'i');
@@ -82,12 +114,6 @@ const searchForDescription = async(query) => {
     return finds;
 }
 
-const searchForCatflixOriginal = async(query) => {
-    const regexPattern = new RegExp(query, 'i');
-    
-    const finds = await Movie.find({ catflixOriginal: regexPattern });
-    return finds;
-}
 
 const searchForMinimalAge = async(query) => {
     const regexPattern = new RegExp(query, 'i');
@@ -97,7 +123,7 @@ const searchForMinimalAge = async(query) => {
 }
 
 
-module.exports = {searchForMinimalAge, searchForCatflixOriginal , searchForDescription,
-    searchForLength,searchForActors,searchForThumbnail,searchForDirector,getSearchResult,searchForPublished,searchForCategory,searchForName}
+module.exports = {searchForMinimalAge , searchForDescription,
+    searchForLength,searchForActors,searchForThumbnail,searchForDirector,getSearchResult,searchForCategory,searchForName}
 
 // const promoted = await modelCategory.find({ promoted: true }).populate('movies');
