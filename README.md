@@ -115,7 +115,7 @@
    ```
 ![*Get categories* - Getting all categories](./photos/get-category.png)
 
-4. *Delete category* - Delete a category
+4. *Delete category* - Delete a category **deleteing a category deletes every movie in it - which is deleted form every user who watched it and from the cpp recommendation system**
    ```
    curl -i -X DELETE http://localhost:12345/api/categories/<Mongo_ID_of_the_category_to_delete> \
     -H "user: <Mongo_ID_of_the_user>" \
@@ -148,7 +148,7 @@
     -H "Content-Type: application/json"
    ```
 
-4. *Delete Movie* - Delete a Movie
+4. *Delete Movie* - Delete a Movie ** deleting a movie deletes it from every user who watched, the category it belongs to and from the cpp recommendation system
    ```
     curl -i -X DELETE http://localhost:12345/api/movies/<ID_of_the_movie> \
     -H "user: <ID_of_a_user_in_mongo>" \
