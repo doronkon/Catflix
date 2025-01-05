@@ -1,6 +1,7 @@
 const net = require('net');
-const User = require('./user');
-const Movie = require('./movie')
+const User = require('../models/user')
+const Movie = require('../models/movie')
+
 
 const sendToServer = (message) => {
     return new Promise((resolve, reject) => {
@@ -35,9 +36,9 @@ const sendToServer = (message) => {
     });
 };
 
-addMovieTest = async () => {
-    const userId = 1;
-    const movieId = 2;
+const addMovieTest = async () => {
+    const userId = 100;
+    const movieId = 200;
     var response = await sendToServer('PATCH ' + userId + ' ' + movieId + '\n');
     if(response[0] == '4'){
          response = await sendToServer('POST ' + userId + ' ' + movieId + '\n');
@@ -49,7 +50,7 @@ const splitString = async (response) => {
     
     // Match everything between the second \n and the last \n
     const match = response.match(/(?<=\n\n)(.*)/);
-    if (!match) {
+    if (!match || match == "200 Ok\n") {
         return []; // Return empty array if no match
     }
     
@@ -65,15 +66,16 @@ const splitString = async (response) => {
     
     // Iterate through the movie IDs and fetch the corresponding movies
     for (let movieId of actualMovieId) {
-        const currMovie = await Movie.getMovieById( movieId );
+        const currMovie = await Movie.findOne({ movieId: movieId });
         moviesToReturn.push(currMovie);
     }
     return moviesToReturn;
 };
 
 const getRecommendation = async (currUser,currMovie) => {
-    const user = await User.getUserById(currUser);
-    const movie = await Movie.getMovieById(currMovie);
+    try{
+    const user = await User.findById(currUser);
+    const movie = await Movie.findById(currMovie);
     // the user we want to recommend to or the movie we want to recommend on does not exist
     if(!user || !movie){
         return null;
@@ -85,11 +87,17 @@ const getRecommendation = async (currUser,currMovie) => {
         return response;
     }
     return splitString(response);
+    }
+    catch
+    {
+        return null
+    }
 }
-const 
-addMovie = async (currUser,currMovie) => {
-    const user = await User.getUserById(currUser);
-    const movie = await Movie.getMovieById(currMovie);
+const addMovie = async (currUser,currMovie) => {
+    try
+    {
+    const user = await User.findById(currUser);
+    const movie = await Movie.findById(currMovie);
     // the user we want to recommend to or the movie we want to recommend on does not exist
     if(!user || !movie){
         return null;
@@ -98,8 +106,13 @@ addMovie = async (currUser,currMovie) => {
     const movieId = movie.movieId;
     var response = await sendToServer('PATCH ' + userId + ' ' + movieId + '\n');
     if(response[0] == '4'){
-         response = await sendToServer('POST ' + userId + ' ' + movieId + '\n');
+        response = await sendToServer('POST ' + userId + ' ' + movieId + '\n');
     }
     return response;
+    }
+    catch
+    {
+        return null
+    }
 }
 module.exports = {addMovie, getRecommendation , sendToServer,addMovieTest}

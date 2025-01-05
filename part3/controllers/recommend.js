@@ -23,6 +23,10 @@ const getRecommendation = async (req,res) => {
     {
         return res.status(404).json({ errors: ['Movie not found'] });
     }
+    if(response.length===0)
+    {
+        return res.status(204).json({ message: ['No movies to recommend'] });
+    }
     res.json(response)
 }
 const addMovie = async (req,res) => {
