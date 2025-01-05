@@ -122,7 +122,7 @@
    ```
 ![*Delete category* - Delete a category](./photos/delete-category.png)
 
-## 4. Movie Commands
+## 3. Movie Commands
 
 1. *Create Movie* - creates a new movie
    ```
@@ -164,7 +164,7 @@
     -d '{"name": "<new_name>" , ...}'
    ```
 
-## 5. Recommend command
+## 4. Recommend command
 
 1. *Post* - inserts a movie for a given user into the cpp recommensation system
    ```
