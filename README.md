@@ -6,6 +6,7 @@
 - [2. Category Commands](#2-category-commands)
 - [3. Movie Commands](#3-movie-commands)
 - [4. Recommend Commands](#4-recommend-commands)
+- [5. Our schemas](#5-Our-schemas)
 
 ## Instructions
 
@@ -182,5 +183,16 @@
    ```
 ![*Get* - Get a recommendation for a given user and a given movie from the cpp server](./photos/get-recommendation.png)
 
+
+## 5. Our schemas
+1. *category schema*
+![*category schema*](./photos/category-schema.png)
+
+2. *user schema*
+![*user schema*](./photos/user-schema.png)
+
+3. *movie schema*
+![*movie schema*](./photos/movie-schema.png)
+![*movie schema*](./photos/movie-schema2.png)
    
 ### Repository Link - [https://github.com/doronkon/catflix.git]
