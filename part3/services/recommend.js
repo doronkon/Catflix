@@ -4,23 +4,37 @@ const Movie = require('./movie')
 
 const sendToServer = (message) => {
     return new Promise((resolve, reject) => {
-        // Get the destination IP and port
-        const destIp = '127.0.0.1';
+        const destIp = 'cpp_server';
+        const localDestIp = '127.0.0.1'
         const destPort = 7071;
 
-        // Create a TCP socket
         const client = new net.Socket();
-        client.connect(destPort, destIp, () => {
+
+        const connectWithRetry = () => {
+            client.connect(destPort, destIp, () => {
+                client.write(message);
+            });
+        };
+
+        client.on('connect', () => {
             client.write(message); // Send the message
         });
 
-        // Handle data from the server
         client.on('data', (data) => {
-            resolve(data.toString()); // Resolve the response with the data
-            client.end(); // Close the connection
+            resolve(data.toString());
+            client.end();
         });
+
+        client.on('error', (err) => {
+            console.error('Connection error:', err);
+            // Retry after a delay
+            setTimeout(connectWithRetry, 1000);
+        });
+
+        connectWithRetry(); // initial connection attempt
     });
-}
+};
+
 addMovieTest = async () => {
     const userId = 1;
     const movieId = 2;
