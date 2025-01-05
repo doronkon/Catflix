@@ -97,7 +97,7 @@
    ```
 ![*Create Category* - creates a new category ](./photos/create-category.png)
 
-3. *Patch category* - patching a category
+2. *Patch category* - patching a category
    ```
    curl -i -X PATCH http://localhost:12345/api/categories/<ID_of_the_category_to_change> \
     -H "user: <Mongo_ID_of_the_user>" \
@@ -106,7 +106,7 @@
    ```
 ![*Patch user* - patching a user](./photos/patch-category.png)
 
-5. *Get categories* - Getting all categories
+3. *Get categories* - Getting all categories
    ```
    curl -i http://localhost:12345/api/categories \
     -H "user: <Mongo_ID_of_the_user>" \
@@ -114,7 +114,7 @@
    ```
 ![*Get categories* - Getting all categories](./photos/get-category.png)
 
-6. *Delete category* - Delete a category
+4. *Delete category* - Delete a category
    ```
    curl -i -X DELETE http://localhost:12345/api/categories/<Mongo_ID_of_the_category_to_delete> \
     -H "user: <Mongo_ID_of_the_user>" \
@@ -133,7 +133,7 @@
    ```
 ![*Create Movie* - creates a new movie ](./photos/create-movie.png)
 
-3. *Get recommendation for movies* - Get recommendation for movies
+2. *Get recommendation for movies* - Get recommendation for movies
    ```
     curl -i http://localhost:12345/api/movies \    
     -H "user: <Mongo_ID_of_the_user>" \
@@ -141,14 +141,13 @@
    ```
 ![Get recommendation for movies](./photos/get-movie.png)
 
-5. *Get movie* - Getting a specific movies
+3. *Get movie* - Getting a specific movies
    ```
     curl -i http://localhost:12345/api/movies/<ID_of_the_movie> \    
     -H "Content-Type: application/json"
    ```
-![*Get movie* - Getting a specific movies](./photos/get-specific_movie.png)
 
-7. *Delete Movie* - Delete a Movie
+4. *Delete Movie* - Delete a Movie
    ```
     curl -i -X DELETE http://localhost:12345/api/movies/<ID_of_the_movie> \
     -H "user: <ID_of_a_user_in_mongo>" \
@@ -175,7 +174,7 @@
    ```
 ![*Post* - inserts a movie for a given user into the cpp recommensation system](./photos/recommend-post.png)
 
-3. *Get* - Get a recommendation for a given user and a given movie from the cpp server
+2. *Get* - Get a recommendation for a given user and a given movie from the cpp server
    ```
     curl -i http://localhost:12345/api/movies/<movie_id>/recommend \
     -H "user: <user_id_to_get_recommendation_for>" \
