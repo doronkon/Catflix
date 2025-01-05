@@ -164,7 +164,7 @@
     -d '{"name": "<new_name>" , ...}'
    ```
 
-## 4. Recommend command
+## 4. Recommend commands
 
 1. *Post* - inserts a movie for a given user into the cpp recommensation system
    ```
