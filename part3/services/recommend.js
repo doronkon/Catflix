@@ -1,6 +1,6 @@
 const net = require('net');
-const User = require('../models/user');
-const Movie = require('../models/movie')
+const User = require('./user');
+const Movie = require('./movie')
 
 const sendToServer = (message) => {
     return new Promise((resolve, reject) => {
@@ -51,15 +51,15 @@ const splitString = async (response) => {
     
     // Iterate through the movie IDs and fetch the corresponding movies
     for (let movieId of actualMovieId) {
-        const currMovie = await Movie.findOne({ movieId: movieId });
+        const currMovie = await Movie.getMovieById( movieId );
         moviesToReturn.push(currMovie);
     }
     return moviesToReturn;
 };
 
 const getRecommendation = async (currUser,currMovie) => {
-    const user = await User.findOne({_id:currUser});
-    const movie = await Movie.findOne({_id:currMovie});
+    const user = await User.getUserById(currUser);
+    const movie = await Movie.getMovieById(currMovie);
     // the user we want to recommend to or the movie we want to recommend on does not exist
     if(!user || !movie){
         return null;
@@ -74,8 +74,8 @@ const getRecommendation = async (currUser,currMovie) => {
 }
 const 
 addMovie = async (currUser,currMovie) => {
-    const user = await User.findOne({_id:currUser});
-    const movie = await Movie.findOne({_id:currMovie});
+    const user = await User.getUserById(currUser);
+    const movie = await Movie.getMovieById(currMovie);
     // the user we want to recommend to or the movie we want to recommend on does not exist
     if(!user || !movie){
         return null;
