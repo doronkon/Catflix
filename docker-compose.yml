@@ -31,7 +31,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - NODE_ENV=docker
+      - CONNECTION_STRING=mongodb://mongodb:27017
       - PORT=8080
       - API_URL=http://server:7071
     depends_on:

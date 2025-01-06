@@ -23,9 +23,13 @@ const getRecommendation = async (req,res) => {
     {
         return res.status(404).json({ errors: ['Movie not found'] });
     }
-    if(response.length===0)
+    if(response[0]=='4')
     {
-        return res.status(204).json({ message: ['No movies to recommend'] });
+        return res.status(400).json({ errors: ['Not published Movie for this User'] });
+    }
+    if(response.length === 0)
+    {
+        res.status(204).json()
     }
     res.json(response)
 }
@@ -44,7 +48,7 @@ const addMovie = async (req,res) => {
     const response = await recommendService.addMovie(UserID,MovieID)
     if(!response)
     {
-        return res.status(404).json({ errors: ['Movie not found'] });
+        return res.status(404).json({ errors: ['Movie not found or the user didn\'t watch the movie'] });
     }
     res.status(parseInt(response.slice(0, 3))).json();
 

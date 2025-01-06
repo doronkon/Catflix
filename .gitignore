@@ -1,5 +1,6 @@
 obj
 part3/node_modules
+config
 <<<<<<< HEAD
 .DS_Store
 Dockerfile.client

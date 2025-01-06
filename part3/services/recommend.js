@@ -2,7 +2,6 @@ const net = require('net');
 const User = require('../models/user')
 const Movie = require('../models/movie')
 
-
 const sendToServer = (message) => {
     return new Promise((resolve, reject) => {
         const destIp = 'cpp_server';
@@ -50,8 +49,8 @@ const splitString = async (response) => {
     
     // Match everything between the second \n and the last \n
     const match = response.match(/(?<=\n\n)(.*)/);
-    if (!match || match == "200 Ok\n") {
-        return []; // Return empty array if no match
+    if (!match || !match[0].trim() || match[0].trim() === "200 Ok") {
+        return []; // Return an empty array
     }
     
     const moviesString = match[0].trim();  // Get the matched string and remove any leading/trailing spaces
@@ -108,6 +107,10 @@ const addMovie = async (currUser,currMovie) => {
     }
     const userId = user.userId;
     const movieId = movie.movieId;
+    if(!user.moviesWatched.includes(movie._id))
+    {
+        return null
+    }
     var response = await sendToServer('PATCH ' + userId + ' ' + movieId + '\n');
     if(response[0] == '4'){
         response = await sendToServer('POST ' + userId + ' ' + movieId + '\n');
