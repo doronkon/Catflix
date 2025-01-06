@@ -6,7 +6,8 @@
 - [2. Category Commands](#2-category-commands)
 - [3. Movie Commands](#3-movie-commands)
 - [4. Recommend Commands](#4-recommend-commands)
-- [5. Our schemas](#5-Our-schemas)
+- [4. Search command](#4-search-command)
+- [6. Our schemas](#6-Our-schemas)
 
 ## Instructions
 
@@ -34,7 +35,7 @@
     -H "Content-Type: application/json" \
     -d '{"name": "<give_a_user_name>", "password":"<give_a_password>"}'
    ```
-![*Create user* - creates a new user](./photos/create-user.png)
+![*Create user* - creates a new user](./photos/create-user-new.jpeg)
 
 
 2. *Patch user* - patching a user
@@ -187,7 +188,17 @@
 ![*Get* - Get a recommendation for a given user and a given movie from the cpp server](./photos/get-recommendation.png)
 
 
-## 5. Our schemas
+## 5. search commands
+
+1. *Search Command* - Search for a movie
+   ```
+   curl -i http://localhost:12345/api/movies/search/<query> \
+   -H "Content-Type: application/json" \
+   -H "user: <user_id>" 
+   ```
+![*Search Command* - Search for a movie](./photos/search.jpeg)
+
+## 6. Our schemas
 1. *category schema*
 ![*category schema*](./photos/category-schema.png)
 
