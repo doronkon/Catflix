@@ -6,7 +6,7 @@
 - [2. Category Commands](#2-category-commands)
 - [3. Movie Commands](#3-movie-commands)
 - [4. Recommend Commands](#4-recommend-commands)
-- [4. Search command](#4-search-command)
+- [5. Search command](#5-search-command)
 - [6. Our schemas](#6-Our-schemas)
 
 ## Instructions
