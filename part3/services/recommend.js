@@ -67,7 +67,11 @@ const splitString = async (response) => {
     // Iterate through the movie IDs and fetch the corresponding movies
     for (let movieId of actualMovieId) {
         const currMovie = await Movie.findOne({ movieId: movieId });
-        moviesToReturn.push(currMovie);
+        //for not empty userdata.txt
+        if(currMovie)
+        {
+            moviesToReturn.push(currMovie);
+        }
     }
     return moviesToReturn;
 };
