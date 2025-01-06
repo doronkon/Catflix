@@ -12,7 +12,7 @@ const createUser = async (req, res) => {
     {
         return res.status(404).json({ errors: ['User already exists'] });
     }
-    res.json(user);
+    res.status(201).json(user);
 };
 
 const getUsers = async (req, res) => {
@@ -46,7 +46,7 @@ const updateUser = async (req,res) => {
     }
     const updatedUser = await userService.updateUser(req.params.id, req.body.name, req.body.password, req.body.email, req.body.image, req.body.movie);
     if(!updatedUser){
-        return res.status(404).json({ errors: ['User not found'] });
+        return res.status(404).json({ errors: ['User not found or Movie not found'] });
     }
     res.json(updatedUser);
 };
@@ -64,12 +64,5 @@ const deleteUser = async (req,res) => {
     res.json({ message: 'User deleted successfully', user: deletedUser});
 };
 
-const updateUserMovies = async (req,res) => {
-    const updatedUser = await userService.updateUserMovies(req.params.id, req.body.movie);
-    if(!updatedUser){
-        return res.status(404).json({ errors: ['User not found'] });
-    }
-    res.json({ message: 'User movies updated successfully', user: updatedUser});
-}
 
-module.exports = {createUser, getUsers, getUser, updateUser, deleteUser,updateUserMovies }
+module.exports = {createUser, getUsers, getUser, updateUser, deleteUser }

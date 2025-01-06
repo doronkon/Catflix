@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   mongodb:
     image: mongo:latest
@@ -15,21 +13,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: catflix_server
+    container_name: cpp_server
     ports:
       - "7071:7071"
     environment:
-      - NODE_ENV=local
-      - CONNECTION_STRING=mongodb://mongodb:27017/catflix
-      - PORT=7071
+      - MONGO_URI=mongodb://mongodb:27017/catflix
     depends_on:
       - mongodb
-    restart: unless-stopped
     networks:
       - catflix_network
-    volumes:
-      - ./:/usr/src/app
-      - /usr/src/app/node_modules
 
   web:
     build:
@@ -48,8 +40,8 @@ services:
     volumes:
       - ./part3:/usr/src/app
       - /usr/src/app/node_modules
-    working_dir: /usr/src/app # Sets the working directory for the container
-    command: "node app.js" # Explicitly runs 'app.js' from the mapped directory
+    working_dir: /usr/src/app
+    command: "node app.js"
     networks:
       - catflix_network
 

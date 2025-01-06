@@ -16,9 +16,17 @@ const getRecommendation = async (req,res) => {
     const MovieID = req.params.id
     if (!UserID || !MovieID) {
         // no such user
-        return res.status(400).json({ errors: ['Bad request'] });
+        return res.status(400).json({ errors: ['Bad request no Movie ID'] });
     }
     const response = await recommendService.getRecommendation(UserID,MovieID)
+    if(!response)
+    {
+        return res.status(404).json({ errors: ['Movie not found'] });
+    }
+    if(response.length===0)
+    {
+        return res.status(204).json({ message: ['No movies to recommend'] });
+    }
     res.json(response)
 }
 const addMovie = async (req,res) => {
@@ -31,9 +39,13 @@ const addMovie = async (req,res) => {
     const MovieID = req.params.id
     if (!UserID || !MovieID) {
         // no such user
-        return res.status(400).json({ errors: ['Bad request'] });
+        return res.status(400).json({ errors: ['Bad request no Movie ID'] });
     }
     const response = await recommendService.addMovie(UserID,MovieID)
+    if(!response)
+    {
+        return res.status(404).json({ errors: ['Movie not found'] });
+    }
     res.status(parseInt(response.slice(0, 3))).json();
 
 }
