@@ -21,7 +21,7 @@ const sendToServer = (message) => {
         });
     });
 }
-addMovieTest = async () => {
+const addMovieTest = async () => {
     const userId = 1;
     const movieId = 2;
     var response = await sendToServer('PATCH ' + userId + ' ' + movieId + '\n');
@@ -72,8 +72,7 @@ const getRecommendation = async (currUser,currMovie) => {
     }
     return splitString(response);
 }
-const 
-addMovie = async (currUser,currMovie) => {
+const addMovie = async (currUser,currMovie) => {
     const user = await User.getUserById(currUser);
     const movie = await Movie.getMovieById(currMovie);
     // the user we want to recommend to or the movie we want to recommend on does not exist
