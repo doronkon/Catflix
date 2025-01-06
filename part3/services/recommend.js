@@ -1,29 +1,44 @@
 const net = require('net');
-const User = require('./user');
-const Movie = require('./movie')
+const User = require('../models/user')
+const Movie = require('../models/movie')
+
 
 const sendToServer = (message) => {
     return new Promise((resolve, reject) => {
-        // Get the destination IP and port
-        const destIp = '127.0.0.1';
+        const destIp = 'cpp_server';
+        const localDestIp = '127.0.0.1'
         const destPort = 7071;
 
-        // Create a TCP socket
         const client = new net.Socket();
-        client.connect(destPort, destIp, () => {
+
+        const connectWithRetry = () => {
+            client.connect(destPort, destIp, () => {
+                client.write(message);
+            });
+        };
+
+        client.on('connect', () => {
             client.write(message); // Send the message
         });
 
-        // Handle data from the server
         client.on('data', (data) => {
-            resolve(data.toString()); // Resolve the response with the data
-            client.end(); // Close the connection
+            resolve(data.toString());
+            client.end();
         });
+
+        client.on('error', (err) => {
+            console.error('Connection error:', err);
+            // Retry after a delay
+            setTimeout(connectWithRetry, 1000);
+        });
+
+        connectWithRetry(); // initial connection attempt
     });
-}
+};
+
 const addMovieTest = async () => {
-    const userId = 1;
-    const movieId = 2;
+    const userId = 100;
+    const movieId = 200;
     var response = await sendToServer('PATCH ' + userId + ' ' + movieId + '\n');
     if(response[0] == '4'){
          response = await sendToServer('POST ' + userId + ' ' + movieId + '\n');
@@ -35,7 +50,7 @@ const splitString = async (response) => {
     
     // Match everything between the second \n and the last \n
     const match = response.match(/(?<=\n\n)(.*)/);
-    if (!match) {
+    if (!match || match == "200 Ok\n") {
         return []; // Return empty array if no match
     }
     
@@ -51,15 +66,16 @@ const splitString = async (response) => {
     
     // Iterate through the movie IDs and fetch the corresponding movies
     for (let movieId of actualMovieId) {
-        const currMovie = await Movie.getMovieById( movieId );
+        const currMovie = await Movie.findOne({ movieId: movieId });
         moviesToReturn.push(currMovie);
     }
     return moviesToReturn;
 };
 
 const getRecommendation = async (currUser,currMovie) => {
-    const user = await User.getUserById(currUser);
-    const movie = await Movie.getMovieById(currMovie);
+    try{
+    const user = await User.findById(currUser);
+    const movie = await Movie.findById(currMovie);
     // the user we want to recommend to or the movie we want to recommend on does not exist
     if(!user || !movie){
         return null;
@@ -71,10 +87,17 @@ const getRecommendation = async (currUser,currMovie) => {
         return response;
     }
     return splitString(response);
+    }
+    catch
+    {
+        return null
+    }
 }
 const addMovie = async (currUser,currMovie) => {
-    const user = await User.getUserById(currUser);
-    const movie = await Movie.getMovieById(currMovie);
+    try
+    {
+    const user = await User.findById(currUser);
+    const movie = await Movie.findById(currMovie);
     // the user we want to recommend to or the movie we want to recommend on does not exist
     if(!user || !movie){
         return null;
@@ -83,8 +106,13 @@ const addMovie = async (currUser,currMovie) => {
     const movieId = movie.movieId;
     var response = await sendToServer('PATCH ' + userId + ' ' + movieId + '\n');
     if(response[0] == '4'){
-         response = await sendToServer('POST ' + userId + ' ' + movieId + '\n');
+        response = await sendToServer('POST ' + userId + ' ' + movieId + '\n');
     }
     return response;
+    }
+    catch
+    {
+        return null
+    }
 }
 module.exports = {addMovie, getRecommendation , sendToServer,addMovieTest}

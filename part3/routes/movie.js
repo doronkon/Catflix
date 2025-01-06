@@ -6,7 +6,7 @@ var router = express.Router();
 
 
 router.route('/test')
-    .get(recommendController.TestCPP)
+    .get(recommendController.TestCPP);
 
 router.route('/')
     //admin
@@ -25,7 +25,7 @@ router.route('/:id')
 router.route('/:id/recommend')
     //current user
     .get(recommendController.getRecommendation)
-    .post(recommendController.addMovie)
+    .post(recommendController.addMovie);
 
 //search
 router.route('/search/:query')
