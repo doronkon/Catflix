@@ -20,31 +20,13 @@
    ```
 3. running server:
    ```
-   docker-compose up server --build
+   Docker-compose up --build
    ```
-4. opens a new client:
+4. opens a new terminal and run curl commands
 
-   4.1 - Open a new terminal
-   
-   4.2 Enter the file -
-   ```
-   cd Catflix
-   ```
-   4.3 - Run the new client
-   ```
-   docker-compose run -it client
-   ```
-5. build tests:
-   ```
-   docker build -t catflix-tests -f Dockerfile.tests .
-   ```
-6. run tests:
-   ```
-   docker run catflix-tests
-   ```
-* All commands are upper case except help command.
 
 ## 1. user commands
+
 
 1. *Create user* - creates a new user
    ```
@@ -53,6 +35,7 @@
     -d '{"name": "<give_a_user_name>", "password":"<give_a_password>"}'
    ```
 ![*Create user* - creates a new user](./photos/create-user.png)
+
 
 2. *Patch user* - patching a user
    ```
@@ -63,6 +46,7 @@
    ```
 ![*Patch user* - patching a user](./photos/patch-user.png)
 
+
 3. *Get specific user* - Getting a specific user
    ```
     curl -i http://localhost:12345/api/users/<Mongo_Id_of_user> \
@@ -70,6 +54,7 @@
     -H "Content-Type: application/json"
    ```
 ![*Get specific user* - Getting a specific user](./photos/get-specific-user.png)
+
 
 4. *Get all user* - Getting all user
    ```
@@ -79,6 +64,7 @@
    ```
 ![*Get specific user* - Getting a specific user](./photos/get-user.png)
 
+
 5. *Delete user* - Delete a user
    ```
    curl -i -X DELETE http://localhost:12345/api/users/<Mongo_ID_of_the_user_to_delete> \
@@ -87,7 +73,9 @@
    ```
 ![*Delete user* - Delete a user](./photos/delete-user.png)
 
+
 ## 2. Category commands
+
 
 1. *Create Category* - creates a new category
    ```
@@ -98,6 +86,7 @@
    ```
 ![*Create Category* - creates a new category ](./photos/create-category.png)
 
+
 2. *Patch category* - patching a category
    ```
    curl -i -X PATCH http://localhost:12345/api/categories/<ID_of_the_category_to_change> \
@@ -107,6 +96,7 @@
    ```
 ![*Patch user* - patching a user](./photos/patch-category.png)
 
+
 3. *Get categories* - Getting all categories
    ```
    curl -i http://localhost:12345/api/categories \
@@ -114,6 +104,7 @@
     -H "Content-Type: application/json"
    ```
 ![*Get categories* - Getting all categories](./photos/get-category.png)
+
 
 4. *Delete category* - Delete a category
    **deleteing a category deletes every movie in it - which is deleted form every user who watched it and from the cpp recommendation system**
@@ -124,7 +115,9 @@
    ```
 ![*Delete category* - Delete a category](./photos/delete-category.png)
 
+
 ## 3. Movie Commands
+
 
 1. *Create Movie* - creates a new movie
    ```
@@ -135,6 +128,7 @@
    ```
 ![*Create Movie* - creates a new movie ](./photos/create-movie.png)
 
+
 2. *Get recommendation for movies* - Get recommendation for movies
    ```
     curl -i http://localhost:12345/api/movies \    
@@ -142,6 +136,7 @@
     -H "Content-Type: application/json"
    ```
 ![Get recommendation for movies](./photos/get-movie.png)
+
 
 3. *Get movie* - Getting a specific movies
    ```
@@ -158,6 +153,7 @@
    ```
 ![*Delete Movie* - Delete a Movie](./photos/delete-movie.png)
 
+
 5. *Patch Movie* - Patch a Movie
    ```
     curl -i -X PATCH http://localhost:12345/api/movies/<ID_of_the_movie> \
@@ -165,8 +161,10 @@
     -H "Content-Type: application/json" \
     -d '{"name": "<new_name>" , ...}'
    ```
+   
 
 ## 4. Recommend commands
+
 
 1. *Post* - inserts a movie for a given user into the cpp recommensation system
    ```
@@ -175,7 +173,9 @@
     -H "Content-Type: application/json"
 
    ```
+   
 ![*Post* - inserts a movie for a given user into the cpp recommensation system](./photos/recommend-post.png)
+
 
 2. *Get* - Get a recommendation for a given user and a given movie from the cpp server
    ```
@@ -183,6 +183,7 @@
     -H "user: <user_id_to_get_recommendation_for>" \
     -H "Content-Type: application/json"
    ```
+   
 ![*Get* - Get a recommendation for a given user and a given movie from the cpp server](./photos/get-recommendation.png)
 
 
