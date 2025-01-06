@@ -188,7 +188,7 @@
 ![*Get* - Get a recommendation for a given user and a given movie from the cpp server](./photos/get-recommendation.png)
 
 
-## 5. search commands
+## 5. search command
 
 1. *Search Command* - Search for a movie
    ```
