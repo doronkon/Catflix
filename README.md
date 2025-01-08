@@ -31,7 +31,7 @@
 
 1. *Create user* - creates a new user
    ```
-   curl -i -X POST http://localhost:12345/api/users \
+   curl -i -X POST http://localhost:8080/api/users \
     -H "Content-Type: application/json" \
     -d '{"name": "<give_a_user_name>", "password":"<give_a_password>"}'
    ```
@@ -40,7 +40,7 @@
 
 2. *Patch user* - patching a user
    ```
-    curl -i -X PATCH http://localhost:12345/api/users/<mongo_ID_of_the_user_to_patch> \
+    curl -i -X PATCH http://localhost:8080/api/users/<mongo_ID_of_the_user_to_patch> \
     -H "user: <mongo_ID_of_user>" \
     -H "Content-Type: application/json" \
     -d '{"name": "<a_new_name>" "movie" : "<ID_Of_a_movie_to_add> ... }'
@@ -50,7 +50,7 @@
 
 3. *Get specific user* - Getting a specific user
    ```
-    curl -i http://localhost:12345/api/users/<Mongo_Id_of_user> \
+    curl -i http://localhost:8080/api/users/<Mongo_Id_of_user> \
     -H "user: <Mongo_Id_of_user>" \
     -H "Content-Type: application/json"
    ```
@@ -59,7 +59,7 @@
 
 4. *Get all user* - Getting all user
    ```
-   curl -i -X GET http://localhost:12345/api/users \
+   curl -i -X GET http://localhost:8080/api/users \
     -H "user: <actual_mongo_user_id>" \
     -H "Content-Type: application/json"
    ```
@@ -68,7 +68,7 @@
 
 5. *Delete user* - Delete a user
    ```
-   curl -i -X DELETE http://localhost:12345/api/users/<Mongo_ID_of_the_user_to_delete> \
+   curl -i -X DELETE http://localhost:8080/api/users/<Mongo_ID_of_the_user_to_delete> \
     -H "user: <Mongo_ID_of_the_user>" \
     -H "Content-Type: application/json"
    ```
@@ -80,7 +80,7 @@
 
 1. *Create Category* - creates a new category
    ```
-   curl -i -X POST http://localhost:12345/api/categories \
+   curl -i -X POST http://localhost:8080/api/categories \
     -H "user: <Mongo_ID_of_the_user>" \
     -H "Content-Type: application/json" \
     -d '{"name": "<name_of_the_category>", "promoted": <true/false>}'
@@ -90,7 +90,7 @@
 
 2. *Patch category* - patching a category
    ```
-   curl -i -X PATCH http://localhost:12345/api/categories/<ID_of_the_category_to_change> \
+   curl -i -X PATCH http://localhost:8080/api/categories/<ID_of_the_category_to_change> \
     -H "user: <Mongo_ID_of_the_user>" \
     -H "Content-Type: application/json" \
     -d '{"name": "New Category Name"...}'
@@ -100,7 +100,7 @@
 
 3. *Get categories* - Getting all categories
    ```
-   curl -i http://localhost:12345/api/categories \
+   curl -i http://localhost:8080/api/categories \
     -H "user: <Mongo_ID_of_the_user>" \
     -H "Content-Type: application/json"
    ```
@@ -110,7 +110,7 @@
 4. *Delete category* - Delete a category
    **deleteing a category deletes every movie in it - which is deleted form every user who watched it and from the cpp recommendation system**
    ```
-   curl -i -X DELETE http://localhost:12345/api/categories/<Mongo_ID_of_the_category_to_delete> \
+   curl -i -X DELETE http://localhost:8080/api/categories/<Mongo_ID_of_the_category_to_delete> \
     -H "user: <Mongo_ID_of_the_user>" \
     -H "Content-Type: application/json"
    ```
@@ -122,7 +122,7 @@
 
 1. *Create Movie* - creates a new movie
    ```
-    curl -i -X POST http://localhost:12345/api/movies \    
+    curl -i -X POST http://localhost:8080/api/movies \    
     -H "user: <Mongo_ID_of_the_user>" \
     -H "Content-Type: application/json" \
     -d '{"name": "<name_of_the_film>", "category": "<Mongo_ID_of_the_category>" , ...}'
@@ -132,7 +132,7 @@
 
 2. *Get recommendation for movies* - Get recommendation for movies
    ```
-    curl -i http://localhost:12345/api/movies \    
+    curl -i http://localhost:8080/api/movies \    
     -H "user: <Mongo_ID_of_the_user>" \
     -H "Content-Type: application/json"
    ```
@@ -141,14 +141,14 @@
 
 3. *Get movie* - Getting a specific movies
    ```
-    curl -i http://localhost:12345/api/movies/<ID_of_the_movie> \    
+    curl -i http://localhost:8080/api/movies/<ID_of_the_movie> \    
     -H "Content-Type: application/json"
    ```
 
 4. *Delete Movie* - Delete a Movie
    ** deleting a movie deletes it from every user who watched, the category it belongs to and from the cpp recommendation system
    ```
-    curl -i -X DELETE http://localhost:12345/api/movies/<ID_of_the_movie> \
+    curl -i -X DELETE http://localhost:8080/api/movies/<ID_of_the_movie> \
     -H "user: <ID_of_a_user_in_mongo>" \
     -H "Content-Type: application/json"
    ```
@@ -157,7 +157,7 @@
 
 5. *Patch Movie* - Patch a Movie
    ```
-    curl -i -X PATCH http://localhost:12345/api/movies/<ID_of_the_movie> \
+    curl -i -X PATCH http://localhost:8080/api/movies/<ID_of_the_movie> \
     -H "user: <ID_of_a_user_in_mongo>" \
     -H "Content-Type: application/json" \
     -d '{"name": "<new_name>" , ...}'
@@ -169,7 +169,7 @@
 
 1. *Post* - inserts a movie for a given user into the cpp recommensation system
    ```
-    curl -i -X POST http://localhost:12345/api/movies/<ID_of_movie>/recommend \
+    curl -i -X POST http://localhost:8080/api/movies/<ID_of_movie>/recommend \
     -H "user: <ID_of_a_user_in_mongo>" \
     -H "Content-Type: application/json"
 
@@ -180,7 +180,7 @@
 
 2. *Get* - Get a recommendation for a given user and a given movie from the cpp server
    ```
-    curl -i http://localhost:12345/api/movies/<movie_id>/recommend \
+    curl -i http://localhost:8080/api/movies/<movie_id>/recommend \
     -H "user: <user_id_to_get_recommendation_for>" \
     -H "Content-Type: application/json"
    ```
@@ -192,7 +192,7 @@
 
 1. *Search Command* - Search for a movie
    ```
-   curl -i http://localhost:12345/api/movies/search/<query> \
+   curl -i http://localhost:8080/api/movies/search/<query> \
    -H "Content-Type: application/json" \
    -H "user: <user_id>" 
    ```
