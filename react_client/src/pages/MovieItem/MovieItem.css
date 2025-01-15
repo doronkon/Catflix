@@ -1,66 +1,42 @@
-/* Movie Item Styling */
+/* MovieItem.css */
+
 .movieItem {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 20px;
-    background-color: #141414;
-    border-radius: 5px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  
-  .movieItem:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-  }
-  
-  /* Add a background image */
-  .movieItem_contents {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
-    border-radius: 5px;
-    color: white;
-  }
-  
-  .movieTitle {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-  }
-  
-  .movieCategory, .movieDetails {
-    font-size: 1rem;
-    margin: 5px 0;
-  }
-  
-  .movieCategory strong, .movieDetails strong {
-    color: #e50914; /* Netflix red */
-  }
-  
-  .movieDescription {
-    font-size: 1rem;
-    margin-top: 15px;
-    color: #b3b3b3;
-    line-height: 1.4;
-  }
-  
-  .movieExtraDetails {
-    margin-top: 20px;
-  }
-  
-  .movieExtraDetails p {
-    font-size: 0.9rem;
-    margin: 5px 0;
-  }
-  
-  /* Styling for hover effect */
-  .movieItem:hover .movieItem_contents {
-    background-color: rgba(0, 0, 0, 0.9);
-  }
-  
-  /* Optional: Add a shadow for movie item card */
-  .movieItem {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  
+  position: relative;
+  width: 200px; /* Fixed width for uniformity */
+  height: 300px; /* Fixed height for uniformity */
+  margin: 10px; /* Spacing between items */
+  overflow: hidden; /* Ensures content doesn't spill out */
+  border-radius: 10px; /* Optional: rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for effect */
+  cursor: pointer; /* Hand cursor on hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.movieItem:hover {
+  transform: scale(1.05); /* Slightly zoom in on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Enhance shadow on hover */
+}
+
+.movieItem_contents {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover; /* Cover the entire div */
+  background-position: center; /* Center the image */
+  display: flex;
+  align-items: flex-end; /* Align content to the bottom */
+  padding: 10px; /* Padding for the text */
+  color: white; /* Text color */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* Text shadow for readability */
+  background-blend-mode: darken; /* Darkens the background */
+}
+
+.movieTitle {
+  font-size: 16px; /* Title size */
+  font-weight: bold; /* Bold text */
+  text-align: left; /* Align text to the left */
+  width: 100%; /* Ensure text spans the container */
+  word-wrap: break-word; /* Wrap long movie names */
+}

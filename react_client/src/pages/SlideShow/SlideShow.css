@@ -1,0 +1,126 @@
+/* Slideshow styles */
+.slideshow {
+  margin: 20px 0;
+  position: relative;
+  width: 95vw; /* Full width of the viewport */
+  height: 300px; /* Set a fixed height for the slideshow */
+  overflow: hidden;
+  background-color: black; /* Optional: background color for the slideshow */
+}
+
+.slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gradient overlay */
+.slideshow .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
+}
+
+/* Content positioning inside the slideshow */
+.slideshow .content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.slideshow .content h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.slideshow .content p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #e0e0e0;
+}
+
+.slideshow button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #e50914;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.slideshow button:hover {
+  background-color: #f40612;
+}
+
+/* Slideshow container */
+.slideshow .slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%; /* Full width of the slideshow container */
+  height: 100%; /* Full height of the slideshow container */
+}
+
+/* Individual slide */
+.slideshow .slide {
+  display: flex;
+  flex: 0 0 100%; /* Each slide takes up the full width of the container */
+  justify-content: space-between; /* Space movies evenly within a slide */
+  align-items: center; /* Vertically align content */
+  gap: 10px; /* Spacing between movies */
+}
+
+/* Movie item styling */
+.slideshow .movieItem {
+  flex: 1 1 calc(33.33% - 20px); /* Ensure each movie takes up 1/3 of the slide width */
+  height: 80%; /* Set movie block height to fit the slide height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: calc(33.33% - 20px); /* Ensure blocks stay consistent */
+}
+
+/* Movie image styling (ensure image fits within the block) */
+.slideshow .movieItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Navigation buttons */
+.slideshow button.prev,
+.slideshow button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slideshow button.prev {
+  left: 20px;
+}
+
+.slideshow button.next {
+  right: 20px;
+}
+
+.slideshow button.prev:hover,
+.slideshow button.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

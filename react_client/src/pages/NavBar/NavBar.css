@@ -1,0 +1,24 @@
+/* Logo */
+header img.logo {
+    height: 40px;
+    margin-right: 20px;
+  }
+  
+  /* Navigation styles */
+  header nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Navigation link styles */
+  header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+  
+  header nav a:hover {
+    color: #e50914; /* Netflix red */
+  }

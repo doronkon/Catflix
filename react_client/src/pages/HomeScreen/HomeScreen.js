@@ -1,6 +1,7 @@
-import './App.css';
+import './HomeScreen.css';
 import React, { useState, useEffect } from 'react';
-import MovieItem from '../MovieItem/MovieItem'
+import Slideshow from '../SlideShow/SlidShow';
+import NavBar from '../NavBar/NavBar';
 
 const Movies = () => {
   const [recommendedMovies, setMovies] = useState([]);
@@ -23,7 +24,7 @@ const Movies = () => {
         }
 
         const data = await response.json();
-        setMovies(data.alreadyWatched);
+        setMovies(data.promotedMovies.flatMap(category => category.movies));
         setAlreadyWatchedMovies(data.alreadyWatched);
 
       } catch (error) {
@@ -40,22 +41,32 @@ const Movies = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <h2>We recommend</h2>
-      <ul>
-        {recommendedMovies.map((movie, index) => (
-          <MovieItem key={index} {...movie} />
-        ))}
-      </ul>
-      <h2>Watch again!</h2>
-      <ul>
-        {alreadyWatchedMovies.map((movie, index) => (
-          <MovieItem key={index} {...movie} />
-        ))}
-      </ul>
+    <div className="moviesContainer">
+      <header>
+      <NavBar />
+      </header>
+
+      <section className="movieRow">
+        <h2>We recommend</h2>
+        <div className="movieRow_posters">
+          {/* Slideshow for Recommended Movies */}
+          <Slideshow movies={recommendedMovies} />
+        </div>
+      </section>
+
+      <section className="movieRow">
+        <h2>Watch again!</h2>
+        <div className="movieRow_posters">
+          {/* Slideshow for Already Watched Movies */}
+          <Slideshow movies={alreadyWatchedMovies} />
+        </div>
+      </section>
+
+      <footer>
+        <p>&copy; 2025 Catflix, Inc. All Rights Reserved</p>
+      </footer>
     </div>
   );
 };
 
 export default Movies;
-
