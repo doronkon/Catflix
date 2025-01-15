@@ -4,7 +4,15 @@ const Movie = require('./movie');
 
 const schema = mongoose.Schema;
 const User = new schema({
+    admin:{
+        type: Boolean,
+        default: false
+    },
     name:{
+        type: String,
+        required : true
+    },
+    userName:{
         type: String,
         required : true
     },

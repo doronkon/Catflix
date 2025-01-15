@@ -3,11 +3,11 @@ const tokenService = require('../services/token');
 
 
 const createUser = async (req, res) => {
-    if(!req.body.name || !req.body.password)
+    if(!req.body.name || !req.body.password || !req.body.userName)
     {
         return res.status(400).json({ errors: ['Missing name or password from body'] });
     }
-    const user = await userService.createUser(req.body.name, req.body.password, req.body.email, req.body.image);
+    const user = await userService.createUser(req.body.name, req.body.userName, req.body.password, req.body.email, req.body.image, req.body.admin);
     if(!user)
     {
         return res.status(404).json({ errors: ['User already exists'] });

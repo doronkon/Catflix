@@ -11,18 +11,30 @@ const findMaxId = async() =>{
     }
 }
 
-const createUser = async (name, password, email, image) => {
+const verifyPassword = (password) =>{
+    const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return regex.test(password);
+}
+
+const createUser = async (name, userName, password, email, image, admin) => {
     const existing = await getUserByName(name);
     if (existing)
     {
         return null
     }
-    const user = new User({name : name, password : password});
+    if(!verifyPassword(password)){
+        return null;
+    }
+    const user = new User({name : name, password : password, userName : userName, admin : admin});
     if(email) {
         user.email = email;
     }
     if(image) {
         user.image = image;
+    } else if(!image) {
+        const randomNum = Math.floor(Math.random() * 6) + 1;
+        const pathToImage = "../public/userLogos/userlogo" + randomNum + ".png";
+        user.image = pathToImage;
     }
     const futureId = await findMaxId();
     user.userId = futureId + 1;
