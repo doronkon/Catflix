@@ -14,7 +14,6 @@ const User = new schema({
     },
     displayName:{
         type: String,
-        required : true
     },
     password:{
         type: String,
