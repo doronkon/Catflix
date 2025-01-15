@@ -1,6 +1,6 @@
 const express = require('express');
 var app = express();
-
+app.use("/media", express.static("./public"));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());

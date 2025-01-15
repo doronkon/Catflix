@@ -1,0 +1,66 @@
+/* Movie Item Styling */
+.movieItem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 20px;
+    background-color: #141414;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .movieItem:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
+  /* Add a background image */
+  .movieItem_contents {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+    border-radius: 5px;
+    color: white;
+  }
+  
+  .movieTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  
+  .movieCategory, .movieDetails {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+  .movieCategory strong, .movieDetails strong {
+    color: #e50914; /* Netflix red */
+  }
+  
+  .movieDescription {
+    font-size: 1rem;
+    margin-top: 15px;
+    color: #b3b3b3;
+    line-height: 1.4;
+  }
+  
+  .movieExtraDetails {
+    margin-top: 20px;
+  }
+  
+  .movieExtraDetails p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+  
+  /* Styling for hover effect */
+  .movieItem:hover .movieItem_contents {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  /* Optional: Add a shadow for movie item card */
+  .movieItem {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  

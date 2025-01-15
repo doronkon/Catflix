@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import MovieItem from '../MovieItem/MovieItem'
 
 const Movies = () => {
-  const [movies, setMovies] = useState([]);
+  const [recommendedMovies, setMovies] = useState([]);
+  const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -23,6 +24,7 @@ const Movies = () => {
 
         const data = await response.json();
         setMovies(data.alreadyWatched);
+        setAlreadyWatchedMovies(data.alreadyWatched);
 
       } catch (error) {
         setError(error);
@@ -39,9 +41,15 @@ const Movies = () => {
 
   return (
     <div>
-      <h1>Movies List</h1>
+      <h2>We recommend</h2>
       <ul>
-        {movies.map((movie, index) => (
+        {recommendedMovies.map((movie, index) => (
+          <MovieItem key={index} {...movie} />
+        ))}
+      </ul>
+      <h2>Watch again!</h2>
+      <ul>
+        {alreadyWatchedMovies.map((movie, index) => (
           <MovieItem key={index} {...movie} />
         ))}
       </ul>
