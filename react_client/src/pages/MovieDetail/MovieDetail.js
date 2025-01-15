@@ -41,7 +41,7 @@ const MovieDetail = () => {
       <p>{movie.description}</p>
       <p>Category: {movie.category}</p>
       <p>Director: {movie.director}</p>
-      <p>Actors: {movie.actors.join(', ')}</p>
+      <p>Actors: {movie.actors}</p>
       <p>Duration: {movie.length} mins</p>
       {/* Add other movie details as necessary */}
     </div>

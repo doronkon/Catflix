@@ -1,5 +1,6 @@
 import './HomeScreen.css';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Slideshow from '../SlideShow/SlidShow';
 import NavBar from '../NavBar/NavBar';
 
@@ -8,6 +9,7 @@ const Movies = () => {
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -37,6 +39,10 @@ const Movies = () => {
     fetchMovies();
   }, []);
 
+  const handleMovieClick = (movieId) => {
+    navigate(`/movie/${movieId}`); // Navigate to the movie detail page
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -50,7 +56,9 @@ const Movies = () => {
         <h2>We recommend</h2>
         <div className="movieRow_posters">
           {/* Slideshow for Recommended Movies */}
-          <Slideshow movies={recommendedMovies} />
+          <Slideshow
+           movies={recommendedMovies}
+           onMovieClick={handleMovieClick} />
         </div>
       </section>
 
@@ -58,7 +66,9 @@ const Movies = () => {
         <h2>Watch again!</h2>
         <div className="movieRow_posters">
           {/* Slideshow for Already Watched Movies */}
-          <Slideshow movies={alreadyWatchedMovies} />
+          <Slideshow
+          movies={alreadyWatchedMovies}
+          onMovieClick={handleMovieClick}/>
         </div>
       </section>
 
