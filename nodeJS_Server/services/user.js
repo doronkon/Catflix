@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Movie = require('./movie')
+const {write64File} = require('../Utills/utills')
 
 const findMaxId = async() =>{
     const maxIdUser = await User.find({}).sort({userId: -1}).limit(1);
@@ -16,21 +17,27 @@ const verifyPassword = (password) =>{
     return regex.test(password);
 }
 
-const createUser = async (name, userName, password, email, image, admin) => {
+const createUser = async (name, displayName, password, email, image, admin) => {
     const existing = await getUserByName(name);
     if (existing)
     {
         return null
     }
-    if(!verifyPassword(password)){
-        return null;
-    }
-    const user = new User({name : name, password : password, userName : userName, admin : admin});
+    const user = new User({name : name, password : password, displayName : displayName, admin : admin});
     if(email) {
         user.email = email;
     }
     if(image) {
-        user.image = image;
+        const fileName = write64File(user._id,image,"userLogos","png")
+        if(fileName)
+        {
+            user.image = fileName;
+        }
+        else
+        {
+            return null;
+        }
+
     } else if(!image) {
         const randomNum = Math.floor(Math.random() * 6) + 1;
         const pathToImage = "../public/userLogos/userlogo" + randomNum + ".png";
@@ -94,4 +101,4 @@ const deleteUser = async(id) => {
     return user;
 }
 
-module.exports = {createUser, getUserById, getUsers, updateUser, deleteUser}
+module.exports = {createUser, getUserById, getUsers, updateUser, deleteUser,verifyPassword}

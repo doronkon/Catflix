@@ -71,5 +71,6 @@
         "ratio": "cpp",
         "stack": "cpp",
         "variant": "cpp"
-    }
+    },
+    "git.ignoreLimitWarning": true
 }
