@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './MovieDetail.css'
 
 const MovieDetail = () => {
   const { id } = useParams(); // Get the movie ID from the URL
@@ -43,7 +44,7 @@ const MovieDetail = () => {
       <p>Director: {movie.director}</p>
       <p>Actors: {movie.actors}</p>
       <p>Duration: {movie.length} mins</p>
-      {/* Add other movie details as necessary */}
+      <p> minimal age :{movie.minimalAge}</p>
     </div>
   );
 };
