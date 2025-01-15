@@ -1,9 +1,8 @@
-import Movies from "../HomeScreen/App";
 import MovieItem from "../MovieItem/MovieItem";
 
-function MovieListResults({videos}) {
+function MovieListResults({movies}) {
 
-    const movieList = Movies.map((movie, key) => {
+    const movieList = movies.map((movie, key) => {
         return <MovieItem {...movie} key={key} />
     });
 
@@ -14,4 +13,4 @@ function MovieListResults({videos}) {
     );
 }
 
-export default VideoListResults
+export default MovieListResults;

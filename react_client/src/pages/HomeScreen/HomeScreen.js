@@ -3,13 +3,20 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Slideshow from '../SlideShow/SlidShow';
 import NavBar from '../NavBar/NavBar';
+import Search from '../Search/Search';
+import movies from '../MovieItem/movies'
 
 const Movies = () => {
+  const [movieList, setMovieList] = useState('movies');
   const [recommendedMovies, setMovies] = useState([]);
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  const doSearch = function(q){
+    setMovieList(movies.filter((movie) => movie.title.includes(q)));
+  }
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -17,7 +24,7 @@ const Movies = () => {
         const response = await fetch('http://localhost:8080/api/movies', {
           method: 'GET',
           headers: {
-            'user': '677a54356d967d3400baaf7f',
+            'user': '6788015b5663cd3ac3605751',
             'Content-Type': 'application/json',
           },
         });
@@ -48,6 +55,7 @@ const Movies = () => {
 
   return (
     <div className="moviesContainer">
+      <Search doSearch={doSearch}/>
       <header>
       <NavBar />
       </header>
@@ -70,6 +78,7 @@ const Movies = () => {
           movies={alreadyWatchedMovies}
           onMovieClick={handleMovieClick}/>
         </div>
+          <MovieListResult movies = {movieList}/>
       </section>
 
       <footer>
