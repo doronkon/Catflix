@@ -1,8 +1,5 @@
 obj
 nodeJS_Server/node_modules
+nodeJS_Server/public/actualMovies
+nodeJS_Server/public/movieThumbnails
 config
-<<<<<<< HEAD
-.DS_Store
-Dockerfile.client
-=======
->>>>>>> search_branch

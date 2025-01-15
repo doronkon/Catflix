@@ -14,12 +14,12 @@ const maxIdMovie = async () => {
     }
 }
 
-const createMovie = async (name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
+const createMovie = async (name , pathToMovie, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
     const categoryObject = await Category.getCategoryById(category);
     if (!categoryObject) {
         return null
     }
-    const movie = new Movie({ name: name, category: category });
+    const movie = new Movie({ name: name, pathToMovie : pathToMovie, category: category });
 
     const futureMovieId = await maxIdMovie();
     movie.movieId = futureMovieId + 1;

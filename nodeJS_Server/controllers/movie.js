@@ -12,7 +12,7 @@ const createMovie = async (req, res) => {
     {
         return res.status(400).json({ errors: ['Bad request no name or category'] });
     }
-    const movie = await movieService.createMovie( req.body.name, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
+    const movie = await movieService.createMovie( req.body.name, req.body.pathToMovie, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
     if (!movie)
     {
         return res.status(404).json({ errors: ['Category not found'] });

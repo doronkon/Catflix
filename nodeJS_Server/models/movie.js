@@ -3,6 +3,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const Category = require('./category');
 const schema = mongoose.Schema;
 const Movie = new schema({
+    pathToMovie:{
+        type: String,
+        required : true
+    },
     name:{
         type: String,
         required : true

@@ -1,6 +1,6 @@
 const express = require('express');
 var app = express();
-
+app.use("/media", express.static("./public"));
 const bodyParser = require('body-parser');
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));

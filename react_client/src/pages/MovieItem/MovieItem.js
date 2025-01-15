@@ -1,17 +1,19 @@
-function MovieItem({name,category,published,director,actors,length,description,catflixOriginal,minimalAge}){
-    console.log({ name, category, published, director, actors, length, description, catflixOriginal, minimalAge });  // Log the props
-    return(
-        <div>
-            <h5>name - {name}</h5>
-            <h5>belongs to category {category}</h5>
-            <h5>published at - {published}</h5>
-            <h5>the director is - {director}</h5>
-            <h5>actors are - {actors}</h5>
-            <h5>the length is - {length}</h5>
-            <h5>movie description - {description}</h5>
-            <h5>catflixOriginal - {catflixOriginal}</h5>
-            <h5> 18+?{minimalAge}</h5>
+import React from 'react';
+import './MovieItem.css'; // Import the CSS file
+
+function MovieItem({ _id, name, thumbnail, onClick }) {
+    const pathToThumbnail = "http://localhost:8080/media/movieThumbnails/" + thumbnail;
+
+    return (
+        <div className="movieItem" onClick={() => onClick(_id)}> {/* Use _id as movie ID */}
+            <div
+                className="movieItem_contents"
+                style={{ backgroundImage: `url(${pathToThumbnail})` }} // Set the thumbnail as background
+            >
+                <h2 className="movieTitle">{name}</h2>
+            </div>
         </div>
-    )
+    );
 }
+
 export default MovieItem;
