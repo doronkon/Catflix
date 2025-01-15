@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import UserNamePassword from '../components/UserNamePassword';  // Import the new component
 import SaveImage from '../components/SaveImage';  // Import the new component
 
@@ -13,18 +13,20 @@ const SignUp = () => {
     const [image, setImage] = useState('');
 
 
-
     const [loading, setLoading] = useState(false);
     const [errorMessage, setError] = useState('');
 
-    useEffect(()=>{
-        console.log(image)
-    },[image])
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent form default submission
-        setLoading(true); // Show loading state
         setError('');
+        if(password !== confirmPassword)
+        {
+            setError("Confirm password must equal password")
+            return;
+        }
+        setLoading(true); // Show loading state
+
 
 
         try {
@@ -37,7 +39,7 @@ const SignUp = () => {
                     displayName : dispalyName,
                     name: user,  // Add user data
                     password: password,  // Add password data
-                    image
+                    image: image,
                   }),
             });
             console.log({ user }, { password })

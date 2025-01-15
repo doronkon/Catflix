@@ -7,6 +7,10 @@ const createUser = async (req, res) => {
     {
         return res.status(400).json({ errors: ['Missing name or password from body'] });
     }
+    if(!userService.verifyPassword(req.body.password))
+    {
+        return res.status(400).json({ errors: ['Password should have: one Upper case letter, one lower case letter, one digit and a special char - @$!%*?& and length 8 or more '] });
+    }
     const user = await userService.createUser(req.body.name, req.body.displayName, req.body.password, req.body.email, req.body.image, req.body.admin);
     if(!user)
     {

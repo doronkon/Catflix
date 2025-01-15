@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+
 const UserNamePassword = ({ user, password, setUser, setPassword }) => {
   return (
     <div>
@@ -12,6 +14,7 @@ const UserNamePassword = ({ user, password, setUser, setPassword }) => {
         />
       </div>
       <div>
+
         <label>Password:</label>
         <input
           type="password"

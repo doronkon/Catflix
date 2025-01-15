@@ -23,9 +23,6 @@ const createUser = async (name, displayName, password, email, image, admin) => {
     {
         return null
     }
-    if(!verifyPassword(password)){
-        return null;
-    }
     const user = new User({name : name, password : password, displayName : displayName, admin : admin});
     if(email) {
         user.email = email;
@@ -104,4 +101,4 @@ const deleteUser = async(id) => {
     return user;
 }
 
-module.exports = {createUser, getUserById, getUsers, updateUser, deleteUser}
+module.exports = {createUser, getUserById, getUsers, updateUser, deleteUser,verifyPassword}
