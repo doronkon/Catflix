@@ -12,7 +12,7 @@ const User = new schema({
         type: String,
         required : true
     },
-    userName:{
+    displayName:{
         type: String,
         required : true
     },

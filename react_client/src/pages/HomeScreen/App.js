@@ -13,7 +13,7 @@ const Movies = () => {
         const response = await fetch('http://localhost:8080/api/movies', {
           method: 'GET',
           headers: {
-            'user': '677a54356d967d3400baaf7f',
+            'user': '67728ac573c187d360dae3d1',
             'Content-Type': 'application/json',
           },
         });

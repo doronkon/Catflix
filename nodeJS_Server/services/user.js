@@ -16,7 +16,7 @@ const verifyPassword = (password) =>{
     return regex.test(password);
 }
 
-const createUser = async (name, userName, password, email, image, admin) => {
+const createUser = async (name, displayName, password, email, image, admin) => {
     const existing = await getUserByName(name);
     if (existing)
     {
@@ -25,7 +25,7 @@ const createUser = async (name, userName, password, email, image, admin) => {
     if(!verifyPassword(password)){
         return null;
     }
-    const user = new User({name : name, password : password, userName : userName, admin : admin});
+    const user = new User({name : name, password : password, displayName : displayName, admin : admin});
     if(email) {
         user.email = email;
     }
