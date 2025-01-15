@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Movies from './pages/HomeScreen/App';
+import Movies from './pages/Login/Login';
 import Login from './pages/Login/Login';
 
 
