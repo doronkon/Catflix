@@ -17,11 +17,12 @@ const Movies = () => {
         const response = await fetch('http://localhost:8080/api/movies', {
           method: 'GET',
           headers: {
-            'user': '677a54356d967d3400baaf7f',
+            'user': '678814a2dc9bf54c07843caa',
             'Content-Type': 'application/json',
           },
         });
         if (!response.ok) {
+          console.log(response)
           throw new Error('Network response was not ok');
         }
 

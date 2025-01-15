@@ -3,11 +3,15 @@ const tokenService = require('../services/token');
 
 
 const createUser = async (req, res) => {
-    if(!req.body.name || !req.body.password || !req.body.userName)
+    if(!req.body.name || !req.body.password || !req.body.displayName)
     {
         return res.status(400).json({ errors: ['Missing name or password from body'] });
     }
-    const user = await userService.createUser(req.body.name, req.body.userName, req.body.password, req.body.email, req.body.image, req.body.admin);
+    if(!userService.verifyPassword(req.body.password))
+    {
+        return res.status(400).json({ errors: ['Password should have: one Upper case letter, one lower case letter, one digit and a special char - @$!%*?& and length 8 or more '] });
+    }
+    const user = await userService.createUser(req.body.name, req.body.displayName, req.body.password, req.body.email, req.body.image, req.body.admin);
     if(!user)
     {
         return res.status(404).json({ errors: ['User already exists'] });
