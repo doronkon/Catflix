@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Movie = require('./movie')
+const {write64File} = require('../Utills/utills')
 
 const findMaxId = async() =>{
     const maxIdUser = await User.find({}).sort({userId: -1}).limit(1);
@@ -30,7 +31,16 @@ const createUser = async (name, displayName, password, email, image, admin) => {
         user.email = email;
     }
     if(image) {
-        user.image = image;
+        const fileName = write64File(user._id,image,"userLogos","png")
+        if(fileName)
+        {
+            user.image = fileName;
+        }
+        else
+        {
+            return null;
+        }
+
     } else if(!image) {
         const randomNum = Math.floor(Math.random() * 6) + 1;
         const pathToImage = "../public/userLogos/userlogo" + randomNum + ".png";

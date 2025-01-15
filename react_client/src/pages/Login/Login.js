@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import UserNamePassword from '../components/UserNamePassword';  // Import the new component
 
 const Login = () => {
     const [user, setUser] = useState('');
@@ -6,12 +7,16 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [errorMessage, setError] = useState('');
     const [currentToken, setToken] = useState('');
+    const [isAdmin, setAdmin] = useState(false);
+
 
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent form default submission
         setLoading(true); // Show loading state
         setError('');
+        setAdmin(false)
+        setToken('')
 
 
         try {
@@ -33,8 +38,9 @@ const Login = () => {
             }
 
             const data = await response.json();
-            console.log('response:', data);
-            
+            setToken(data.token)
+            setAdmin(data.admin)
+
 
             // Additional logic after successful login can be added here
         } catch (error) {
@@ -48,26 +54,20 @@ const Login = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>UserName:</label>
-                    <input
-                        value={user}
-                        onChange={(e) => setUser(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
+            <UserNamePassword
+                    user={user}
+                    password={password}
+                    setUser={setUser}
+                    setPassword={setPassword}
+                />
                 <button type="submit">Login</button>
             </form>
             {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}
+            {isAdmin && <div>hi admin :X , token: {currentToken}</div>}
+            {currentToken && !isAdmin && <div>hi user   {currentToken}</div>}
+
+
+
         </div>
 
     );
