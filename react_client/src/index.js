@@ -5,7 +5,6 @@ import './index.css';
 //import Movies from './pages/HomeScreen/App';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
-import SaveImageLocally from './pages/components/SaveImage'
 
 
 import HomeScreen from './pages/HomeScreen/HomeScreen';
@@ -18,6 +17,8 @@ root.render(
   <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
+        <Route path='/signup' element ={<SignUp/>}/>
+        <Route path='/login' element ={<Login/>}/>
       </Routes>
   </React.StrictMode>
   </Router>
