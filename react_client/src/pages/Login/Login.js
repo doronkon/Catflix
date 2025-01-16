@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import UserNamePassword from '../components/UserNamePassword';  // Import the new component
+import NavBar from '../NavBar/NavBar';
 
-const Login = () => {
+const Login = ({setIsAdmin,setCurrentUser}) => {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -24,9 +25,8 @@ const Login = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    user: user, // Add user as a header
-                    password: password, // Add password as a header
                 },
+                body : JSON.stringify({user,password})
             });
             console.log({ user }, { password })
 
@@ -40,7 +40,10 @@ const Login = () => {
             const data = await response.json();
             setToken(data.token)
             setAdmin(data.admin)
-
+            localStorage.setItem('Token',data.token)
+            setIsAdmin(data.admin)
+            setCurrentUser(data.id)
+            console.log(data)
 
             // Additional logic after successful login can be added here
         } catch (error) {
@@ -53,6 +56,7 @@ const Login = () => {
 
     return (
         <div>
+            <NavBar/>
             <form onSubmit={handleSubmit}>
             <UserNamePassword
                     user={user}

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Slideshow from '../SlideShow/SlidShow';
 import NavBar from '../NavBar/NavBar';
 
-const Movies = () => {
+const Movies = ({currentUser}) => {
   const [recommendedMovies, setMovies] = useState([]);
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +17,7 @@ const Movies = () => {
         const response = await fetch('http://localhost:8080/api/movies', {
           method: 'GET',
           headers: {
-            'user': '677a54356d967d3400baaf7f',
+            'user': '678819b6dc9bf54c07843e43',
             'Content-Type': 'application/json',
           },
         });

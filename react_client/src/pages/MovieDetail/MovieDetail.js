@@ -15,7 +15,7 @@ const MovieDetail = () => {
           method: 'GET', // Set the method (GET by default)
           headers: {
             'Content-Type': 'application/json',
-            'user': '677a54356d967d3400baaf7f', 
+            'user': '678819b6dc9bf54c07843e43', 
           },
         });
 

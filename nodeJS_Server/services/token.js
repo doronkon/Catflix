@@ -27,7 +27,7 @@ const validateUser = async (name, password) => {
         process.env.SECRET_KEY, // Secret key from environment variable
         { expiresIn: '1h' } // Token expiration time (optional)
     );
-    return {"token":token,"admin":user.admin}
+    return {"token":token,"admin":user.admin,"id":user._id}
 
 };
 
