@@ -17,7 +17,7 @@ const Movies = () => {
         const response = await fetch('http://localhost:8080/api/movies', {
           method: 'GET',
           headers: {
-            'user': '678814a2dc9bf54c07843caa',
+            'user': '677a54356d967d3400baaf7f',
             'Content-Type': 'application/json',
           },
         });

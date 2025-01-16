@@ -34,6 +34,8 @@ app.use('/api/movies',movies);
 const tokens = require('./routes/token');
 app.use('/api/tokens',tokens);
 
+const videoPlayer = require('./routes/videoPlayer');
+app.use('/api/videoPlayer',videoPlayer);
 
 
 app.listen(process.env.PORT);

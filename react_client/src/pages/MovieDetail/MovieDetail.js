@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './MovieDetail.css'
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
+
 
 const MovieDetail = () => {
   const { id } = useParams(); // Get the movie ID from the URL
@@ -38,6 +40,7 @@ const MovieDetail = () => {
   return (
     <div className="movie-detail">
       <h1>{movie.name}</h1>
+      <VideoPlayer />
       <img src={`http://localhost:8080/media/movieThumbnails/${movie.thumbnail}`} alt={movie.name} />
       <p>{movie.description}</p>
       <p>Category: {movie.category}</p>
