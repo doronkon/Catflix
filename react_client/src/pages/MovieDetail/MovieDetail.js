@@ -15,7 +15,7 @@ const MovieDetail = () => {
           method: 'GET', // Set the method (GET by default)
           headers: {
             'Content-Type': 'application/json',
-            'user': '678819b6dc9bf54c07843e43', 
+            'user': localStorage.getItem('Token'), 
           },
         });
 

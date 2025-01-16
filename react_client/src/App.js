@@ -5,6 +5,10 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import HomeScreen from './pages/HomeScreen/HomeScreen';
 import MovieDetail from './pages/MovieDetail/MovieDetail';
+import SaveImage from './pages/components/SaveImage';
+import SaveMovie from './pages/components/SaveMovie';
+import Error404 from './pages/Error404/Error404';
+
 
 
 function App() {
@@ -25,9 +29,11 @@ function App() {
             <Router>
                 <Routes>
                     <Route path="/" element={ currentUser ? <HomeScreen currentUser = {currentUser}/> : <SignUp />} />
-                    <Route path="/movie/:id" element={<MovieDetail />} />
-                    <Route path='/signup' element={<SignUp />} />
-                    <Route path='/login' element={<Login setIsAdmin = {setIsAdmin} setCurrentUser = {setCurrentUser} />} />
+                    <Route path="/movie/:id" element={currentUser ?<MovieDetail /> : <Error404/>}  />
+                    <Route path='/login' element={currentUser ? <Error404/> : <Login setIsAdmin = {setIsAdmin} setCurrentUser = {setCurrentUser} />} />
+
+                    <Route path='/test' element={<SaveMovie/>} />
+
                 </Routes>
             </Router>
 

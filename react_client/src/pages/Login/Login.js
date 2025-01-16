@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import UserNamePassword from '../components/UserNamePassword';  // Import the new component
 import NavBar from '../NavBar/NavBar';
 
+import { useNavigate } from 'react-router-dom';
+
 const Login = ({setIsAdmin,setCurrentUser}) => {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
@@ -9,6 +11,7 @@ const Login = ({setIsAdmin,setCurrentUser}) => {
     const [errorMessage, setError] = useState('');
     const [currentToken, setToken] = useState('');
     const [isAdmin, setAdmin] = useState(false);
+    const navigate = useNavigate(); // Hook for navigation
 
 
 
@@ -44,6 +47,8 @@ const Login = ({setIsAdmin,setCurrentUser}) => {
             setIsAdmin(data.admin)
             setCurrentUser(data.id)
             console.log(data)
+            navigate('/');
+
 
             // Additional logic after successful login can be added here
         } catch (error) {
@@ -67,8 +72,6 @@ const Login = ({setIsAdmin,setCurrentUser}) => {
                 <button type="submit">Login</button>
             </form>
             {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}
-            {isAdmin && <div>hi admin :X , token: {currentToken}</div>}
-            {currentToken && !isAdmin && <div>hi user   {currentToken}</div>}
 
 
 
