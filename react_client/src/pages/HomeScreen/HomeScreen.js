@@ -40,8 +40,8 @@ const Movies = ({currentUser}) => {
     fetchMovies();
   }, []);
 
-  const handleMovieClick = (movieId) => {
-    navigate(`/movie/${movieId}`); // Navigate to the movie detail page
+  const handleMovieClick = (movieId,currentUser) => {
+    navigate(`/movie/${movieId}`, { state: { currentUser } }); // Navigate to the movie detail page
   };
 
   if (loading) return <p>Loading...</p>;
@@ -58,6 +58,7 @@ const Movies = ({currentUser}) => {
         <div className="movieRow_posters">
           {/* Slideshow for Recommended Movies */}
           <Slideshow
+          currentUser = {currentUser}
            movies={recommendedMovies}
            onMovieClick={handleMovieClick} />
         </div>
