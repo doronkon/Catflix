@@ -13,7 +13,7 @@ const validateHeadersUser = async (token) => {
         }
         // Log or use the decoded information
         try {
-            return await User.findById('678819b6dc9bf54c07843e43')
+            return await User.findById(decoded.id)
         }
         catch {
             return null;
