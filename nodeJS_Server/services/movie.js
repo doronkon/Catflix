@@ -3,6 +3,8 @@ const Category = require('./category');
 const modelCategory = require('../models/category');
 const User = require('../models/user');
 const cppConnector = require("./recommend");
+const {write64File} = require('../Utills/utills')
+
 
 const maxIdMovie = async () => {
     const maxIdMovie = await Movie.find({}).sort({ movieId: -1 }).limit(1);
@@ -19,7 +21,18 @@ const createMovie = async (name , pathToMovie, category, date, actors, director,
     if (!categoryObject) {
         return null
     }
+
     const movie = new Movie({ name: name, pathToMovie : pathToMovie, category: category });
+
+    const fileName = write64File(movie._id,pathToMovie,"actualMovies","mp4")
+    if(fileName)
+    {
+        movie.pathToMovie = fileName;
+    }
+    else
+    {
+        return null;
+    }
 
     const futureMovieId = await maxIdMovie();
     movie.movieId = futureMovieId + 1;
