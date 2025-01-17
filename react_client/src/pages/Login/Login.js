@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import UserNamePassword from '../components/UserNamePassword';  // Import the new component
+import './Login.css'
 
 const Login = () => {
     const [user, setUser] = useState('');
@@ -52,7 +53,7 @@ const Login = () => {
     if (loading) return <p>Loading...</p>;
 
     return (
-        <div>
+        <div class='login-container'>
             <form onSubmit={handleSubmit}>
             <UserNamePassword
                     user={user}

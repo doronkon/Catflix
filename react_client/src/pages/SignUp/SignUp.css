@@ -1,0 +1,132 @@
+#signup-logo {
+    position: relative;
+    height: 140px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-right: 13px;
+    opacity: 0.85;
+}
+
+#signup-logo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+#signup-logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); /* Overlay color and opacity */
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    margin: 0 auto;
+    font-size: 1.2rem;      
+    text-align: center;     
+    gap: 15px;              
+    color: white;
+    width: 90%; /* Container width for alignment */
+    max-width: 500px; /* Limit the container width */
+}
+
+.background {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../../public/assets/img/catflix-bg-hero.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+    
+.background::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.77); /* Adjust opacity here */
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .signup-info {
+        margin-top: 20px; /* Adjust spacing below the logo */
+        background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+        padding: 20px; /* Add padding for a cleaner look */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+    }
+    
+    .text {
+        font-size: 1.8rem; /* Slightly larger font size */
+        font-weight: 500;  /* Add a slight weight for emphasis */
+        color: #e6e6e6;    /* Softer white for less strain on the eyes */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add subtle shadow for depth */
+    }
+
+    input {
+        font-size: 1rem;
+        padding: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.8); /* White border with some transparency */
+        border-radius: 15px;
+        outline: none;
+        width: 100%; /* Full width within the container */
+        max-width: 400px; /* Limit the width */
+        margin: 0; /* Remove extra margin */
+        background-color: transparent; /* Makes the input field transparent */
+        color: white; /* Text color inside the input */
+        box-sizing: border-box; /* Ensures padding doesn't affect width */
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus effect */
+    }
+    
+    input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+    
+    input:focus {
+        border-color: #ff3300; 
+        box-shadow: 0 0 5px rgba(255, 153, 0, 0.5); 
+    }
+    
+    button {
+        background-color: #ff3300; /* Bright, eye-catching button */
+        color: white;
+        margin-top: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+        background-color: #a80d08; /* Darker shade on hover */
+    }
+
+        @font-face {
+        font-family: 'catfont';
+        src: url('../../../public/assets/fonts/catflix.otf') format('opentype');
+        font-weight: 900;
+        font-style: normal; 
+     }
+
+    body, .signup-container {
+        font-family: 'catfont';
+    }

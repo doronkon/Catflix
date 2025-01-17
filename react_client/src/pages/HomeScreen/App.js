@@ -13,7 +13,7 @@ const Movies = () => {
         const response = await fetch('http://localhost:8080/api/movies', {
           method: 'GET',
           headers: {
-            'user': '6787c65b2e439331e3d77dc6',
+            'user': '67883e78ab6ce47b38adae1f',
             'Content-Type': 'application/json',
           },
         });
@@ -50,4 +50,6 @@ const Movies = () => {
 };
 
 export default Movies;
+
+
 

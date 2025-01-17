@@ -4,9 +4,12 @@ function Search({doSearch}) {
 
     const searchBox = useRef(null);
 
-    const search = function(){
-        doSearch(searchBox.current.value);
-    }
+    const search = function () {
+        if (searchBox.current && searchBox.current.value.trim() !== "") {
+          doSearch(searchBox.current.value);
+        }
+      };
+
     return(
         <div className="row bg-white justify-content-center">
             <div className="col-10">

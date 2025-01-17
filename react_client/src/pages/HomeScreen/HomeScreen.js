@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import Slideshow from '../SlideShow/SlidShow';
 import NavBar from '../NavBar/NavBar';
 import Search from '../Search/Search';
-import movis from '../MovieItem/movis'
 import MovieListResults from '../MovieListResults/MovieListResults';
 
 const Movies = () => {
-  const [movieList, setMovieList] = useState('movis');
+  const [movieList, setMovieList] = useState([]);
   const [recommendedMovies, setMovies] = useState([]);
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,8 +15,32 @@ const Movies = () => {
   const navigate = useNavigate();
 
   const doSearch = function(q){
-    setMovieList(movis.filter((movie) => movie.title.includes(q)));
-  }
+      const fetchMovies = async () => {
+        try {
+          const response = await fetch('http://localhost:8080/api/movies/search/' + q, {
+            method: 'GET',
+            headers: {
+              'user': '67883e78ab6ce47b38adae1f',
+              'Content-Type': 'application/json',
+            },
+          });
+          if (!response.ok) {
+            console.log(response)
+            throw new Error('Network response was not ok');
+          }
+
+          const data = await response.json();
+        setMovieList(data);
+
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovies();
+  };
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -80,7 +103,7 @@ const Movies = () => {
           movies={alreadyWatchedMovies}
           onMovieClick={handleMovieClick}/>
         </div>
-        <MovieListResults movis = {movieList}/>
+        <MovieListResults movies={movieList} onMovieClick={handleMovieClick}/>
       </section>
 
       <footer>
