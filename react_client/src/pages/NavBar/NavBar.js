@@ -1,15 +1,17 @@
-import './NavBar.css'
+import { Link } from 'react-router-dom'; // Import Link from React Router
+import './NavBar.css';
 
 function NavBar() {
     return (
-      <header>
-        <img className="logo" src="http://localhost:8080/media/userLogos/Catflix.jpg" alt="Catflix Logo" />
-        <nav>
-          <a href="/">Home</a>
-          <a href="/profile">Profile</a>
-          <a href="/search">Search</a>
-        </nav>
-      </header>
+        <header>
+            <img className="logo" src="http://localhost:8080/media/userLogos/Catflix.jpg" alt="Catflix Logo" />
+            <nav>
+                <Link to="/">Home</Link>
+                <Link to="/profile">Profile</Link>
+                <Link to="/search">Search</Link>
+            </nav>
+        </header>
     );
-  }
-export default NavBar;  
+}
+
+export default NavBar;

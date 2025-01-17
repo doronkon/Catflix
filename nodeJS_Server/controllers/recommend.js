@@ -12,7 +12,7 @@ const getRecommendation = async (req,res) => {
     {
         return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
     }
-    const UserID = req.headers['user']
+    const UserID = headersUser._id
     const MovieID = req.params.id
     if (!UserID || !MovieID) {
         // no such user
@@ -39,7 +39,7 @@ const addMovie = async (req,res) => {
     {
         return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
     }
-    const UserID = req.headers['user']
+    const UserID = headersUser._id
     const MovieID = req.params.id
     if (!UserID || !MovieID) {
         // no such user

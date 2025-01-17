@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import UserNamePassword from '../components/UserNamePassword'; // Import the new component
-import SaveImage from '../components/SaveImage'; // Import the new component
-import './SignUp.css';
+import UserNamePassword from '../components/UserNamePassword';  // Import the new component
+import SaveImage from '../components/SaveImage';  // Import the new component
+import NavBar from '../NavBar/NavBar';
+
+
 
 const SignUp = () => {
     const [user, setUser] = useState('');

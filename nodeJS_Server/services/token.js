@@ -1,15 +1,29 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 
-const validateHeadersUser = async (id) => {
-    //currently just checking if exists
+
+const validateHeadersUser = async (token) => {
     try {
-        return await User.findById(id)
+        // Decode the JWT token (synchronously)
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        if (!decoded || !decoded.id) {
+            return null
+        }
+        // Log or use the decoded information
+        try {
+            return await User.findById(decoded.id)
+        }
+        catch {
+            return null;
+        }
+    } catch (error) {
+
+        return null
     }
-    catch {
-        return null;
-    }
+
+
 }
 
 const validateUser = async (name, password) => {
@@ -27,7 +41,7 @@ const validateUser = async (name, password) => {
         process.env.SECRET_KEY, // Secret key from environment variable
         { expiresIn: '1h' } // Token expiration time (optional)
     );
-    return {"token":token,"admin":user.admin}
+    return { "token": token, "admin": user.admin, "id": user._id }
 
 };
 

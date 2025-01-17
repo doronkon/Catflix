@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './SlideShow.css';
 import MovieItem from '../MovieItem/MovieItem'; // Import your MovieItem component
 
-function Slideshow({ movies, moviesPerSlide = 7, onMovieClick }) {
+function Slideshow({ currentUser,movies, moviesPerSlide = 7, onMovieClick }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Group movies into slides based on `moviesPerSlide`
@@ -31,6 +31,7 @@ function Slideshow({ movies, moviesPerSlide = 7, onMovieClick }) {
           <div className="slide" key={index}>
             {slide.map((movie, idx) => (
               <MovieItem
+              currentUser = {currentUser}
                 key={idx}
                 {...movie}
                 onClick={onMovieClick}

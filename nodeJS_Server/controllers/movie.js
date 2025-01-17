@@ -26,19 +26,14 @@ const getMovies = async (req, res) => {
     {
         return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
     }
-    const currentUser = req.headers['user'];
-    if (!currentUser) {
-        // no such user
-        return res.status(400).json({ errors: ['Bad request'] });
-    }
-    const movies = await movieService.getMovies(currentUser);
+    const movies = await movieService.getMovies(headersUser._id);
     if(!movies){
         // No movies for user
         return res.status(404).json({ errors: ['Movie not found'] });
     }
     res.json(movies);
     // add deletion of fictive category
-    await movieService.deleteFictive(currentUser);
+    await movieService.deleteFictive(headersUser._id);
 };
 
 const getMovie = async (req, res) => {

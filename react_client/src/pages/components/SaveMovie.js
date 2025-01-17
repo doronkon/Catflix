@@ -1,11 +1,11 @@
-const SaveImage = ({setImage}) => {
+const SaveMovie = ({setMovie}) => {
 
     const handleFileSelect = (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = () => {
-                setImage(reader.result);
+                setMovie(reader.result);
             };
             reader.readAsDataURL(file);
         }
@@ -13,9 +13,9 @@ const SaveImage = ({setImage}) => {
 
     return (
         <div>
-            <input type="file" accept="image/*" onChange={handleFileSelect} />
+            <input type="file" accept="video/*" onChange={handleFileSelect} />
         </div>
     );
 };
 
-export default SaveImage;
+export default SaveMovie;

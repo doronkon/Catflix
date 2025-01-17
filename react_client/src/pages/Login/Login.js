@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import UserNamePassword from '../components/UserNamePassword';  // Import the new component
-import './Login.css'
+import NavBar from '../NavBar/NavBar';
 
-const Login = () => {
+import { useNavigate } from 'react-router-dom';
+
+const Login = ({setIsAdmin,setCurrentUser}) => {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [errorMessage, setError] = useState('');
     const [currentToken, setToken] = useState('');
     const [isAdmin, setAdmin] = useState(false);
+    const navigate = useNavigate(); // Hook for navigation
 
 
 
@@ -25,9 +28,8 @@ const Login = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    user: user, // Add user as a header
-                    password: password, // Add password as a header
                 },
+                body : JSON.stringify({user,password})
             });
             console.log({ user }, { password })
 
@@ -41,6 +43,11 @@ const Login = () => {
             const data = await response.json();
             setToken(data.token)
             setAdmin(data.admin)
+            localStorage.setItem('Token',data.token)
+            setIsAdmin(data.admin)
+            setCurrentUser(data.id)
+            console.log(data)
+            navigate('/');
 
 
             // Additional logic after successful login can be added here
@@ -53,7 +60,7 @@ const Login = () => {
     if (loading) return <p>Loading...</p>;
 
     return (
-        <div class='login-container'>
+        <div>
             <form onSubmit={handleSubmit}>
             <UserNamePassword
                     user={user}
@@ -64,8 +71,6 @@ const Login = () => {
                 <button type="submit">Login</button>
             </form>
             {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}
-            {isAdmin && <div>hi admin :X , token: {currentToken}</div>}
-            {currentToken && !isAdmin && <div>hi user   {currentToken}</div>}
 
 
 

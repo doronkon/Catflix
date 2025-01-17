@@ -6,8 +6,7 @@ import NavBar from '../NavBar/NavBar';
 import Search from '../Search/Search';
 import MovieListResults from '../MovieListResults/MovieListResults';
 
-const Movies = () => {
-  const [movieList, setMovieList] = useState([]);
+const Movies = ({currentUser}) => {
   const [recommendedMovies, setMovies] = useState([]);
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -48,7 +47,7 @@ const Movies = () => {
         const response = await fetch('http://localhost:8080/api/movies', {
           method: 'GET',
           headers: {
-            'user': '678958f33426083f43e2d881',
+            'user': localStorage.getItem('Token'), 
             'Content-Type': 'application/json',
           },
         });
@@ -71,8 +70,8 @@ const Movies = () => {
     fetchMovies();
   }, []);
 
-  const handleMovieClick = (movieId) => {
-    navigate(`/movie/${movieId}`); // Navigate to the movie detail page
+  const handleMovieClick = (movieId,currentUser) => {
+    navigate(`/movie/${movieId}`, { state: { currentUser } }); // Navigate to the movie detail page
   };
 
   if (loading) return <p>Loading...</p>;
@@ -90,6 +89,7 @@ const Movies = () => {
         <div className="movieRow_posters">
           {/* Slideshow for Recommended Movies */}
           <Slideshow
+          currentUser = {currentUser}
            movies={recommendedMovies}
            onMovieClick={handleMovieClick} />
         </div>
