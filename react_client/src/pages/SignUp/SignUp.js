@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import UserNamePassword from '../components/UserNamePassword';  // Import the new component
 import SaveImage from '../components/SaveImage';  // Import the new component
+import { useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 
 
@@ -14,6 +15,9 @@ const SignUp = () => {
     const [image, setImage] = useState('');
     const [loading, setLoading] = useState(false);
     const [errorMessage, setError] = useState('');
+    const navigate = useNavigate(); // Hook for navigation
+    
+
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent form default submission
@@ -48,6 +52,7 @@ const SignUp = () => {
 
             const data = await response.json();
             console.log(data);
+            navigate('/login')
 
             // Additional logic after successful login can be added here
         } catch (error) {
@@ -108,8 +113,12 @@ const SignUp = () => {
                         <label className='signup-fields' class='text'>Image: </label>
                         <SaveImage setImage={setImage} />
                     </div>
+                    <div class='buttons-container'>
+
+                    <button type='button' onClick={()=>{navigate('/login');}}>Login</button>
 
                     <button type="submit">Sign Up</button>
+                    </div>
                 </form>
                 {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}
             </div>
