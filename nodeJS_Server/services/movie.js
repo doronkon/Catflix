@@ -50,7 +50,8 @@ const createMovie = async (name , pathToMovie, category, date, actors, director,
         movie.director = director;
     }
     if (thumbnail) {
-        movie.thumbnail = thumbnail;
+        const fileName = write64File(movie._id,thumbnail,"movieThumbnails","png")
+        movie.thumbnail = fileName;
     }
     if (length) {
         movie.length = length;
