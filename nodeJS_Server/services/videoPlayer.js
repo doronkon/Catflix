@@ -2,12 +2,16 @@ const fs = require('fs');
 const path = require('path');
 
 const playVideo = async (id, range) => {
-
     const videoPath = path.join(__dirname, '..', 'public', 'actualMovies', id + '.mp4');
 
     try {
-            const videoSize = fs.statSync(videoPath).size;
-            
+        // Check if the video exists
+        if (!fs.existsSync(videoPath)) {
+            throw new Error('Video file not found');
+        }
+
+        const videoSize = fs.statSync(videoPath).size;
+
         // Parse the range header
         const parts = range.replace(/bytes=/, "").split("-");
         const start = parseInt(parts[0], 10);
@@ -20,7 +24,7 @@ const playVideo = async (id, range) => {
         end = Math.min(end, videoSize - 1);
 
         if (start >= videoSize || end >= videoSize || start < 0 || end < 0) {
-            return ["ab",null];
+            return ["ab", null];
         }
 
         const stream = fs.createReadStream(videoPath, { start, end });
@@ -34,8 +38,11 @@ const playVideo = async (id, range) => {
         };
         return [head, stream];
     } catch (err) {
+        // Log the error (e.g., for debugging)
         console.error("Error playing video: ", err);
-        return [null,"ab"];
+
+        // Return a response indicating the error, such as a 404 status
+        return [null, "Video not found or error occurred"];
     }
 };
 

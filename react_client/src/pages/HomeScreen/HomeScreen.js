@@ -63,7 +63,7 @@ const Movies = ({ currentUser }) => {
       </header>
 
       <section className="movieRow">
-        <VideoBanner randomMovie={randomMovieForBanner} handleMovieClick={handleMovieClick} />
+        {recommendedMovies && <VideoBanner randomMovie={randomMovieForBanner} handleMovieClick={handleMovieClick} currentUser={currentUser} />}
         <h2>We recommend</h2>
         <div className="movieRow_posters">
           {/* Slideshow for Recommended Movies */}

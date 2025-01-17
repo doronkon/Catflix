@@ -2,11 +2,9 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 import './VideoBanner.css'; // Import external CSS file for styling
 
-const VideoBanner = ({ randomMovie, handleMovieClick }) => {
+const VideoBanner = ({ randomMovie, handleMovieClick, currentUser }) => {
   const [movieData, setMovieData] = useState(null); // State to store movie data
-  const location = useLocation(); // Get the location object from React Router
-  const { currentUser } = location.state || {}; // Destructure currentUser from location.state
-  
+
   const id = randomMovie._id;
 
   useEffect(() => {
