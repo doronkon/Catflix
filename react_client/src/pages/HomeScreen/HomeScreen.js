@@ -20,7 +20,7 @@ const Movies = () => {
           const response = await fetch('http://localhost:8080/api/movies/search/' + q, {
             method: 'GET',
             headers: {
-              'user': '67883e78ab6ce47b38adae1f',
+              'user': localStorage.getItem('Token'), 
               'Content-Type': 'application/json',
             },
           });
@@ -48,7 +48,7 @@ const Movies = () => {
         const response = await fetch('http://localhost:8080/api/movies', {
           method: 'GET',
           headers: {
-            'user': '67883e78ab6ce47b38adae1f',
+            'user': '678958f33426083f43e2d881',
             'Content-Type': 'application/json',
           },
         });
