@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import UserNamePassword from '../components/UserNamePassword';  // Import the new component
-import NavBar from '../NavBar/NavBar';
-
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../NavBar/NavBar';
+import './Login.css';
+
+
 
 const Login = ({setIsAdmin,setCurrentUser}) => {
     const [user, setUser] = useState('');
@@ -60,23 +62,24 @@ const Login = ({setIsAdmin,setCurrentUser}) => {
     if (loading) return <p>Loading...</p>;
 
     return (
-        <div>
-            <NavBar/>
-            <form onSubmit={handleSubmit}>
-            <UserNamePassword
-                    user={user}
-                    password={password}
-                    setUser={setUser}
-                    setPassword={setPassword}
-                />
-                <button type="submit">Login</button>
-            </form>
+        <div className="login-container">
+            <div className="background"></div> {/* Add background div */}
+                <div class='input-container'>
+                    <form onSubmit={handleSubmit}>
+                        <UserNamePassword
+                            user={user}
+                            password={password}
+                            setUser={setUser}
+                            setPassword={setPassword}
+                            />
+                            <div class='buttons-container'>
+                                <button type="submit">Login</button>
+                                <button type='button' onClick={()=>{navigate('/');}}>SignUp</button>
+                            </div>
+                    </form>
+                </div>
             {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}
-
-
-
         </div>
-
     );
 };
 

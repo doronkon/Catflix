@@ -3,13 +3,44 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Slideshow from '../SlideShow/SlidShow';
 import NavBar from '../NavBar/NavBar';
+import Search from '../Search/Search';
+import MovieListResults from '../MovieListResults/MovieListResults';
 
 const Movies = ({currentUser}) => {
   const [recommendedMovies, setMovies] = useState([]);
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [movieList, setMovieList] = useState([]);
   const navigate = useNavigate();
+
+  const doSearch = function(q){
+      const fetchMovies = async () => {
+        try {
+          const response = await fetch('http://localhost:8080/api/movies/search/' + q, {
+            method: 'GET',
+            headers: {
+              'user': localStorage.getItem('Token'), 
+              'Content-Type': 'application/json',
+            },
+          });
+          if (!response.ok) {
+            console.log(response)
+            throw new Error('Network response was not ok');
+          }
+
+          const data = await response.json();
+        setMovieList(data);
+
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovies();
+  };
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -49,6 +80,7 @@ const Movies = ({currentUser}) => {
 
   return (
     <div className="moviesContainer">
+      <Search doSearch={doSearch}/>
       <header>
       <NavBar />
       </header>
@@ -72,6 +104,7 @@ const Movies = ({currentUser}) => {
           movies={alreadyWatchedMovies}
           onMovieClick={handleMovieClick}/>
         </div>
+        <MovieListResults movies={movieList} onMovieClick={handleMovieClick}/>
       </section>
 
       <footer>

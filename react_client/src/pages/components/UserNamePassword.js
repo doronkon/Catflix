@@ -1,4 +1,5 @@
 import React from 'react';
+import '../SignUp/SignUp.css';
 
 
 
@@ -6,7 +7,7 @@ const UserNamePassword = ({ user, password, setUser, setPassword }) => {
   return (
     <div>
       <div>
-        <label>UserName:</label>
+        <label class='text'>UserName:</label>
         <input
           value={user}
           onChange={(e) => setUser(e.target.value)}
@@ -15,7 +16,7 @@ const UserNamePassword = ({ user, password, setUser, setPassword }) => {
       </div>
       <div>
 
-        <label>Password:</label>
+        <label class='text'>Password:</label>
         <input
           type="password"
           value={password}
