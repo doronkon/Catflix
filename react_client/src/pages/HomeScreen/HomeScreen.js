@@ -3,46 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Slideshow from '../SlideShow/SlidShow';
 import NavBar from '../NavBar/NavBar';
-import Search from '../Search/Search';
-import MovieListResults from '../MovieListResults/MovieListResults';
 import VideoBanner from '../VideoBanner/VideoBanner';
 
 const Movies = ({ currentUser }) => {
-  const [recommendedMovies, setMovies] = useState([]);
+  const [promotedMovies, setPromotedMovies] = useState([]); // Store categories with movies
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [randomMovieForBanner, setRandomMovieForBanner] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [movieList, setMovieList] = useState([]);
   const navigate = useNavigate();
-
-  const doSearch = function(q){
-      const fetchMovies = async () => {
-        try {
-          const response = await fetch('http://localhost:8080/api/movies/search/' + q, {
-            method: 'GET',
-            headers: {
-              'user': localStorage.getItem('Token'), 
-              'Content-Type': 'application/json',
-            },
-          });
-          if (!response.ok) {
-            console.log(response)
-            throw new Error('Network response was not ok');
-          }
-
-          const data = await response.json();
-        setMovieList(data);
-
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchMovies();
-  };
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -54,22 +23,22 @@ const Movies = ({ currentUser }) => {
             'Content-Type': 'application/json',
           },
         });
+
         if (!response.ok) {
           console.log(response);
           throw new Error('Network response was not ok');
         }
 
         const data = await response.json();
-        const flattenedMovies = data.promotedMovies.flatMap(
+        setPromotedMovies(data.promotedMovies); // Store all categories and their movies
+        setAlreadyWatchedMovies(data.alreadyWatched);
+
+        // Calculate a random movie from the flattened list of all promoted movies
+        const allMovies = data.promotedMovies.flatMap(
           (category) => category.movies
         );
-        setMovies(flattenedMovies);
-
-        // Calculate the random movie AFTER movies are set
-        const randomNum = Math.floor(Math.random() * flattenedMovies.length);
-        setRandomMovieForBanner(flattenedMovies[randomNum]);
-
-        setAlreadyWatchedMovies(data.alreadyWatched);
+        const randomNum = Math.floor(Math.random() * allMovies.length);
+        setRandomMovieForBanner(allMovies[randomNum]);
       } catch (error) {
         setError(error);
       } finally {
@@ -89,35 +58,45 @@ const Movies = ({ currentUser }) => {
 
   return (
     <div className="moviesContainer">
-      <Search doSearch={doSearch}/>
       <header>
         <NavBar />
       </header>
 
       <section className="movieRow">
-        {recommendedMovies && <VideoBanner randomMovie={randomMovieForBanner} handleMovieClick={handleMovieClick} currentUser={currentUser} />}
-        <h2>We recommend</h2>
-        <div className="movieRow_posters">
-          {/* Slideshow for Recommended Movies */}
-          <Slideshow
+        {/* Display the video banner */}
+        {randomMovieForBanner && (
+          <VideoBanner
+            randomMovie={randomMovieForBanner}
+            handleMovieClick={handleMovieClick}
             currentUser={currentUser}
-            movies={recommendedMovies}
-            onMovieClick={handleMovieClick}
           />
-        </div>
+        )}
       </section>
 
+      {/* Slideshow for each category in promotedMovies */}
+      {promotedMovies.map((category, index) => (
+        <section key={index} className="movieRow">
+          <h2>{category.categoryName}</h2>
+          <div className="movieRow_posters">
+            <Slideshow
+              currentUser={currentUser}
+              movies={category.movies}
+              onMovieClick={handleMovieClick}
+            />
+          </div>
+        </section>
+      ))}
+
+      {/* Slideshow for already watched movies */}
       <section className="movieRow">
         <h2>Watch again!</h2>
         <div className="movieRow_posters">
-          {/* Slideshow for Already Watched Movies */}
           <Slideshow
             currentUser={currentUser}
             movies={alreadyWatchedMovies}
             onMovieClick={handleMovieClick}
           />
         </div>
-        <MovieListResults movies={movieList} onMovieClick={handleMovieClick}/>
       </section>
 
       <footer>
