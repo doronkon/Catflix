@@ -6,8 +6,8 @@ const playVideo = async (id, range) => {
     const videoPath = path.join(__dirname, '..', 'public', 'actualMovies', id + '.mp4');
 
     try {
-        const videoSize = fs.statSync(videoPath).size;
-
+            const videoSize = fs.statSync(videoPath).size;
+            
         // Parse the range header
         const parts = range.replace(/bytes=/, "").split("-");
         const start = parseInt(parts[0], 10);
