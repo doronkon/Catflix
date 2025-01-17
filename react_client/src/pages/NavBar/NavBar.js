@@ -9,6 +9,8 @@ function NavBar() {
                 <Link to="/">Home</Link>
                 <Link to="/profile">Profile</Link>
                 <Link to="/search">Search</Link>
+                {<Link to="/UploadMovie">Upload just test all hard coded</Link>}
+
             </nav>
         </header>
     );
