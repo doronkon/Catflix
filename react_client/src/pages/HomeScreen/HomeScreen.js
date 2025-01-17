@@ -11,6 +11,7 @@ const Movies = ({currentUser}) => {
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [movieList, setMovieList] = useState([]);
   const navigate = useNavigate();
 
   const doSearch = function(q){
