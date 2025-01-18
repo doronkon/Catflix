@@ -3,6 +3,10 @@ import SaveImage from '../components/SaveImage';  // Import the new component
 import SaveMovie from '../components/SaveMovie';  // Import the new component
 import NavBar from '../NavBar/NavBar';
 import CategoryList from '../components/CategoryList';
+import UploadCategory from '../components/UploadCategory/UploadCategory';
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 
@@ -17,6 +21,10 @@ const UploadMovie = () => {
     const [catflixOriginal, setCatflixOriginal] = useState(false);
     const [image, setImage] = useState('');
     const [video, setVideo] = useState('');
+    const navigate = useNavigate(); // Hook for navigation
+
+
+
 
 
     const [loading, setLoading] = useState(false);
@@ -78,10 +86,6 @@ const UploadMovie = () => {
     return (
         <div>
             <NavBar/>
-            {/*                      name,
-                    category:'67881611dc9bf54c07843cd4',
-                    pathToMovie: video,
-                    director,actors,description,minimalAge,catflixOriginal, */}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>name:</label>
@@ -141,8 +145,12 @@ const UploadMovie = () => {
                     <label>False</label>
                 </div>
                 <div>
-                    <label>Category:</label>
+                    <label>Select from existing Categories:</label>
                     <CategoryList setCategory ={setCategory}/>
+                </div>
+
+                <div>
+                    <button type='button' onClick={() => navigate('/uploadCategory')}>Add a new Category:</button>
                 </div>
 
                 <div>
@@ -154,8 +162,9 @@ const UploadMovie = () => {
                     <SaveImage setImage ={setImage}/>
                 </div>
 
-                <button type="submit">Login</button>
+                <button type="submit">Create Movie</button>
             </form>
+
             {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}
 
         </div>
