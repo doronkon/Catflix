@@ -5,7 +5,7 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import UploadMovie from './pages/UploadMovie/UploadMovie';
 import UploadCategory from './pages/components/UploadCategory/UploadCategory';
-
+import DeleteCategory from './pages/DeletCategory/DeleteCategory';
 import HomeScreen from './pages/HomeScreen/HomeScreen';
 import MovieDetail from './pages/MovieDetail/MovieDetail';
 import SaveImage from './pages/components/SaveImage';
@@ -40,8 +40,9 @@ function App() {
                     <Route path="/profile" element={currentUser ?<Profile currentUser = {currentUser}/> : <Error404/>}  />
                     <Route path='/login' element={currentUser ? <Error404/> : <Login setIsAdmin = {setIsAdmin} setCurrentUser = {setCurrentUser} />} />
 
-                    <Route path='/uploadMovie' element={ isAdmin ?  <UploadMovie/>:<Error404/>} />
-                    <Route path='/uploadCategory' element={ isAdmin ?  <UploadCategoryPage/>:<Error404/>} />
+                    <Route path='/uploadMovie' element={ !isAdmin ?  <UploadMovie/>:<Error404/>} />
+                    <Route path='/uploadCategory' element={ !isAdmin ?  <UploadCategoryPage/>:<Error404/>} />
+                    <Route path='/deleteCategory' element={ !isAdmin ?  <DeleteCategory/>:<Error404/>} />
 
 
 

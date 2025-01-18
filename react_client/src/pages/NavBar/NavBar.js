@@ -12,6 +12,8 @@ function NavBar() {
                 <Link to="/search">Search</Link>
                 {<Link to="/UploadMovie">Upload Movie</Link>}
                 {<Link to="/UploadCategory">Upload Category</Link>}
+                {<Link to="/deleteCategory">Delete Category</Link>}
+
 
 
             </nav>
