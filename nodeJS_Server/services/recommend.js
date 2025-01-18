@@ -85,10 +85,17 @@ const getRecommendation = async (currUser,currMovie) => {
     }
     const userId = user.userId;
     const movieId = movie.movieId;
+    console.log("USERID: "+userId)
+    console.log("MOVIEID:"+movieId)
+    console.log("1")
     const response =  await sendToServer('GET ' + userId + ' ' + movieId + '\n');
+    console.log("response: "+response)
     if(response[0] == '4'){
+    console.log("2")
+
         return response;
     }
+    console.log("3")
     return splitString(response);
     }
     catch
@@ -107,7 +114,6 @@ const addMovie = async (currUser,currMovie) => {
     }
     const userId = user.userId;
     const movieId = movie.movieId;
-    console.log("1")
     if(!user.moviesWatched.includes(movie._id))
     {
         return null
@@ -116,7 +122,6 @@ const addMovie = async (currUser,currMovie) => {
     if(response[0] == '4'){
         response = await sendToServer('POST ' + userId + ' ' + movieId + '\n');
     }
-    console.log("2")
     return response;
     }
     catch

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './MovieDetail.css';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
+import CppRecommend from '../components/CppRecommend/CppRecommend';
 
-const MovieDetail = () => {
+const MovieDetail = ({currentUser}) => {
   const { id } = useParams(); // Get the movie ID from the URL
   const [movie, setMovie] = useState(null);
   const [category, setCategory] = useState(null);
@@ -77,6 +78,7 @@ const MovieDetail = () => {
       <p>Actors: {movie.actors}</p>
       <p>Duration: {movie.length} mins</p>
       <p>Minimal age: {movie.minimalAge}</p>
+      <CppRecommend currentUser={currentUser}/>
     </div>
   );
 };

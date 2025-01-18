@@ -36,12 +36,13 @@ function App() {
             <Router>
                 <Routes>
                     <Route path="/" element={ currentUser ? <HomeScreen currentUser = {currentUser}/> : <SignUp />} />
-                    <Route path="/movie/:id" element={currentUser ?<MovieDetail /> : <Error404/>}  />
+                    <Route path="/movie/:id" element={currentUser ?<MovieDetail currentUser = {currentUser} /> : <Error404/>}  />
                     <Route path="/profile" element={currentUser ?<Profile currentUser = {currentUser}/> : <Error404/>}  />
                     <Route path='/login' element={currentUser ? <Error404/> : <Login setIsAdmin = {setIsAdmin} setCurrentUser = {setCurrentUser} />} />
 
                     <Route path='/uploadMovie' element={ isAdmin ?  <UploadMovie/>:<Error404/>} />
                     <Route path='/uploadCategory' element={ isAdmin ?  <UploadCategoryPage/>:<Error404/>} />
+
 
 
                 </Routes>
