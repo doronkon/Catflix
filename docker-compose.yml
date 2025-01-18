@@ -38,7 +38,7 @@ services:
       - server
     restart: unless-stopped
     volumes:
-      - ./part3:/usr/src/app
+      - ./nodeJS_Server:/usr/src/app
       - /usr/src/app/node_modules
     working_dir: /usr/src/app
     command: "node app.js"

@@ -107,6 +107,7 @@ const addMovie = async (currUser,currMovie) => {
     }
     const userId = user.userId;
     const movieId = movie.movieId;
+    console.log("1")
     if(!user.moviesWatched.includes(movie._id))
     {
         return null
@@ -115,6 +116,7 @@ const addMovie = async (currUser,currMovie) => {
     if(response[0] == '4'){
         response = await sendToServer('POST ' + userId + ' ' + movieId + '\n');
     }
+    console.log("2")
     return response;
     }
     catch

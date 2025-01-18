@@ -8,10 +8,12 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 const cors = require('cors');
 app.use(cors());
 
-const customEnv = require('custom-env');
-customEnv.env(process.env.NODE_ENV,'./config');
-//process.env.CONNECTION_STRING =  "mongodb://mongodb:27017"
-//process.env.PORT=8080
+// const customEnv = require('custom-env');
+// customEnv.env(process.env.NODE_ENV,'./config');
+process.env.CONNECTION_STRING =  "mongodb://mongodb:27017"
+process.env.PORT=8080
+process.env.SECRET_KEY="nod-im-sod-homo"
+
 console.log(process.env.CONNECTION_STRING);
 console.log(process.env.PORT);
 

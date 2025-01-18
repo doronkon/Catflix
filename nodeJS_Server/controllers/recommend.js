@@ -12,7 +12,7 @@ const getRecommendation = async (req,res) => {
     {
         return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
     }
-    const UserID = headersUser._id
+    const UserID = headersUser._id.toString()
     const MovieID = req.params.id
     if (!UserID || !MovieID) {
         // no such user
@@ -39,13 +39,16 @@ const addMovie = async (req,res) => {
     {
         return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
     }
-    const UserID = headersUser._id
+    const UserID = headersUser._id.toString()
     const MovieID = req.params.id
+    console.log(UserID)
+    console.log(MovieID)
     if (!UserID || !MovieID) {
         // no such user
         return res.status(400).json({ errors: ['Bad request no Movie ID'] });
     }
     const response = await recommendService.addMovie(UserID,MovieID)
+    console.log("came back from the service")
     if(!response)
     {
         return res.status(404).json({ errors: ['Movie not found or the user didn\'t watch the movie'] });

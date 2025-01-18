@@ -12,6 +12,8 @@ const VideoPlayer = () => {
   const handlePlayClick = async () => {
     setShowVideo(true); // Show the video
 
+    
+
     try {
       const response = await fetch('http://localhost:8080/api/users/'+currentUser, {
           method: 'PATCH',
@@ -31,6 +33,24 @@ const VideoPlayer = () => {
     }catch (error) {
       throw new Error("Server not running!")
   } 
+
+  try {
+    const response = await fetch('http://localhost:8080/api/movies/'+id+'/recommend', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',  // Set the correct content type header
+            'user': localStorage.getItem('Token'), 
+
+          },
+    });
+    if (!response.ok) {
+        return;
+    }
+  }catch (error) {
+    throw new Error("Server not running!")
+} 
+
+
 
 
 
