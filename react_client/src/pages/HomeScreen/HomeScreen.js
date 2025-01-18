@@ -50,7 +50,7 @@ const Movies = ({ currentUser }) => {
   }, []);
 
   const handleMovieClick = (movieId, currentUser) => {
-    navigate(`/movie/${movieId}`, { state: { currentUser } }); // Navigate to the movie detail page
+    navigate(`/movie/${movieId}`, { state: { currentUser } });
   };
 
   if (loading) return <p>Loading...</p>;
