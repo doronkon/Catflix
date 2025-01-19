@@ -13,6 +13,11 @@ const UpdateCategory = ({logout}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent form default submission
+        if(!category)
+        {
+            setError('Choose a category');
+            return;
+        }
         setError('');
         setLoading(true); // Show loading state
 
@@ -32,6 +37,10 @@ const UpdateCategory = ({logout}) => {
             });
 
             if (!response.ok) {
+                if (response.status === 403) {
+                    logout();
+                    return
+                  }
                 const errorResponse = await response.json(); // Parse error details from response
                 console.log(errorResponse.errors)
                 setError(errorResponse.errors);
