@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'; // Import Link from React Router
 import './NavBar.css';
 
-function NavBar() {
+function NavBar({isAdmin}) {
 
     return (
         <header>
@@ -10,12 +10,7 @@ function NavBar() {
                 <Link to="/">Home</Link>
                 <Link to="/profile">Profile</Link>
                 <Link to="/search">Search</Link>
-                {<Link to="/UploadMovie">Upload Movie</Link>}
-                {<Link to="/UploadCategory">Upload Category</Link>}
-                {<Link to="/deleteCategory">Delete Category</Link>}
-
-
-
+                {!isAdmin && <Link to ="/Admin">Admin</Link>}
             </nav>
         </header>
     );
