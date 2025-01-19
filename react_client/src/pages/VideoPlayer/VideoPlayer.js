@@ -28,9 +28,11 @@ const VideoPlayer = () => {
       });
 
       if (!response.ok) {
+
           return;
       }
     }catch (error) {
+
       throw new Error("Server not running!")
   } 
 

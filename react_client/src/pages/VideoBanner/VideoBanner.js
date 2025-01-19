@@ -10,7 +10,7 @@ const VideoBanner = ({ randomMovie, handleMovieClick, currentUser }) => {
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/movies/677a61885943c0925fe7d24c`, {
+        const response = await fetch(`http://localhost:8080/api/movies/`+id, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json', // Set the correct content type header
@@ -40,7 +40,7 @@ const VideoBanner = ({ randomMovie, handleMovieClick, currentUser }) => {
   return (
     <div className="video-banner-container">
       <video
-        src={`http://localhost:8080/api/videoPlayer/677a61885943c0925fe7d24c`}
+        src={`http://localhost:8080/api/videoPlayer/`+id}
         autoPlay
         muted
         loop

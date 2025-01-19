@@ -91,8 +91,7 @@ const getRecommendation = async (currUser,currMovie) => {
     const response =  await sendToServer('GET ' + userId + ' ' + movieId + '\n');
     console.log("response: "+response)
     if(response[0] == '4'){
-    console.log("2")
-
+        console.log("2")
         return response;
     }
     console.log("3")

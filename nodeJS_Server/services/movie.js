@@ -109,27 +109,22 @@ const promotedCategories = async (watchedMovies) => {
 };
 
 const userMovies = async (currentUser, watchedMovies) => {
-    const newCategoryName = "categoryFor-" + currentUser;
-
-    // Assuming createCategory is an asynchronous function, await it
-    const userCategory = await Category.createCategory(newCategoryName, false);
-
-    // Loop through watchedMovies and add each movie to the new category
+    try{
     const lastTwenty = watchedMovies.slice(-20); // Get the last 20 movies
-    for (const movie of lastTwenty) {
-        userCategory.movies.push(movie);
-    }
 
+    //make an array of mongo Items wit Movie model (watched movies is an array of Mongo IDs)
+    const itemsArray = await Movie.find({ _id: { $in: lastTwenty } });
+    
     // Shuffle the movies
-    userCategory.movies.sort(() => Math.random() - 0.5);
-
-    // Save the category
-    await userCategory.save();
+    itemsArray.sort(() => Math.random() - 0.5);
 
     // Populate the movies field to return the movie details
-    const populatedCategory = await modelCategory.findById(userCategory._id).populate('movies');
 
-    return populatedCategory.movies; // Return the populated movies array
+    return itemsArray; // Return the populated movies array
+    }
+    catch(error){
+        return [];
+    }
 };
 
 const getMovies = async (currentUser) => {

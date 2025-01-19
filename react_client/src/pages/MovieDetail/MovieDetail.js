@@ -4,6 +4,7 @@ import './MovieDetail.css';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import CppRecommend from '../components/CppRecommend/CppRecommend';
 import DeleteMovie from '../components/DeleteMovie/DeleteMovie';
+import NavBar from '../NavBar/NavBar';
 
 
 const MovieDetail = ({currentUser,isAdmin}) => {
@@ -71,6 +72,7 @@ const MovieDetail = ({currentUser,isAdmin}) => {
 
   return (
     <div className="movie-detail">
+      <NavBar/>
       <h1>{movie.name}</h1>
       <VideoPlayer />
       <img src={`http://localhost:8080/media/movieThumbnails/${movie.thumbnail}`} alt={movie.name} />
@@ -80,7 +82,7 @@ const MovieDetail = ({currentUser,isAdmin}) => {
       <p>Actors: {movie.actors}</p>
       <p>Duration: {movie.length} mins</p>
       <p>Minimal age: {movie.minimalAge}</p>
-      {/*<CppRecommend currentUser={currentUser}/>*/}
+      <CppRecommend currentUser={currentUser}/>
       {!isAdmin && <DeleteMovie/>}
     </div>
   );

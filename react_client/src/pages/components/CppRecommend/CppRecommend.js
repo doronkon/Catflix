@@ -13,6 +13,7 @@ const CppRecommend = ({ currentUser }) => {
 
   useEffect(() => {
     const fetchMovies = async () => {
+      console.log("111")
       try {
         const response = await fetch('http://localhost:8080/api/movies/'+id+'/recommend', {
           method: 'GET',
@@ -23,27 +24,36 @@ const CppRecommend = ({ currentUser }) => {
         });
 
         if (!response.ok) {
-          console.log(response);
-          throw new Error('Network response was not ok');
+          console.log("printer start")
+          console.log("response: "+response);
+          console.log("printer end")
+          setRecodMovies([]); // Store all categories and their movies
         }
-
+        try{
         const data = await response.json();
-        console.log("doron: "+data)
+
+        console.log("data: "+data)
         setRecodMovies(data); // Store all categories and their movies
 
-        // Calculate a random movie from the flattened list of all promoted movies
-        const allMovies = data.flatMap(
-          (movie) => movie._id
-        );
+        //Calculate a random movie from the flattened list of all promoted movies
+      } catch (error)
+      {
+        console.log("333")
+        setRecodMovies([]); // Store all categories and their movies
+      }
       } catch (error) {
-        setError(error);
+        console.log("222")
+        setRecodMovies([]); // Store all categories and their movies
+        throw new Error("Server not running!")
+
+        //setError(error);
       } finally {
         setLoading(false);
       }
     };
 
     fetchMovies();
-  }, []);
+  }, [id]);
 
   const handleMovieClick = (movieId, currentUser) => {
     navigate(`/movie/${movieId}`, { state: { currentUser } });

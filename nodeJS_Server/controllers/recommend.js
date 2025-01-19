@@ -22,21 +22,23 @@ const getRecommendation = async (req,res) => {
     }
     const response = await recommendService.getRecommendation(UserID,MovieID)
     console.log("came back from the service")
-    if(!response)
+    if(!response || response === null || response === undefined)
     {
         return res.status(404).json({ errors: ['Movie not found'] });
     }
+    console.log("Response type:", typeof response);
+    console.log("Response value:", response);
     if(response[0]=='4')
     {
         console.log("hey")
         return res.status(400).json({ errors: ['Not published Movie for this User'] });
     }
-    if(response.length === 0)
+    if(response.length === 0 || Object.keys(response).length === 0)
     {
-        res.status(204).json()
+        return res.status(204).json()
     }
-    console.log(response)
-    res.json(response)
+    console.log("cntorller response: "+response)
+    return res.status(200).json(response)
 }
 const addMovie = async (req,res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
@@ -56,7 +58,7 @@ const addMovie = async (req,res) => {
     {
         return res.status(404).json({ errors: ['Movie not found or the user didn\'t watch the movie'] });
     }
-    res.status(parseInt(response.slice(0, 3))).json();
+    return res.status(parseInt(response.slice(0, 3))).json();
 
 }
 
