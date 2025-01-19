@@ -5,7 +5,7 @@ import Slideshow from '../SlideShow/SlidShow';
 import NavBar from '../NavBar/NavBar';
 import VideoBanner from '../VideoBanner/VideoBanner';
 
-const Movies = ({ currentUser }) => {
+const Movies = ({ currentUser, isAdmin }) => {
   const [promotedMovies, setPromotedMovies] = useState([]); // Store categories with movies
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [randomMovieForBanner, setRandomMovieForBanner] = useState(null);
@@ -59,7 +59,7 @@ const Movies = ({ currentUser }) => {
   return (
     <div className="moviesContainer">
       <header>
-        <NavBar />
+        <NavBar isAdmin={isAdmin}/>
       </header>
 
       <section className="movieRow">

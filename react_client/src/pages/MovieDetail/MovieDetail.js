@@ -83,7 +83,7 @@ const MovieDetail = ({currentUser,isAdmin}) => {
       <p>Duration: {movie.length} mins</p>
       <p>Minimal age: {movie.minimalAge}</p>
       <CppRecommend currentUser={currentUser}/>
-      {!isAdmin && <DeleteMovie/>}
+      {isAdmin && <DeleteMovie/>}
     </div>
   );
 };

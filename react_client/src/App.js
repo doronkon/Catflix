@@ -14,6 +14,9 @@ import Error404 from './pages/Error404/Error404';
 import CategoryList from './pages/components/CategoryList';
 import Profile from './pages/Profile/Profile';
 import UploadCategoryPage from './pages/UploadCategoryPage/UploadCategoryPage';
+import AdminTerminal from './pages/AdminTerminal/AdminTerminal';
+import NavBar from './pages/NavBar/NavBar';
+import UpdateCategory from './pages/UpdateCategory/UpdateCategory';
 
 
 
@@ -35,16 +38,15 @@ function App() {
         <div className="App">
             <Router>
                 <Routes>
-                    <Route path="/" element={ currentUser ? <HomeScreen currentUser = {currentUser}/> : <SignUp />} />
-                    <Route path="/movie/:id" element={currentUser ?<MovieDetail currentUser = {currentUser} /> : <Error404/>}  />
+                    <Route path="/" element={ currentUser ? <HomeScreen currentUser = {currentUser} isAdmin = {isAdmin}/> : <SignUp />} />
+                    <Route path="/movie/:id" element={currentUser ?<MovieDetail currentUser = {currentUser} isAdmin = {isAdmin}/> : <Error404/>}  />
                     <Route path="/profile" element={currentUser ?<Profile currentUser = {currentUser}/> : <Error404/>}  />
                     <Route path='/login' element={currentUser ? <Error404/> : <Login setIsAdmin = {setIsAdmin} setCurrentUser = {setCurrentUser} />} />
-
                     <Route path='/uploadMovie' element={ !isAdmin ?  <UploadMovie/>:<Error404/>} />
                     <Route path='/uploadCategory' element={ !isAdmin ?  <UploadCategoryPage/>:<Error404/>} />
                     <Route path='/deleteCategory' element={ !isAdmin ?  <DeleteCategory/>:<Error404/>} />
-
-
+                    <Route path='/Admin' element={!isAdmin ? <AdminTerminal logout={logout}/>:<Error404/>} />
+                    <Route path='/UpdateCategory' element={!isAdmin ?<UpdateCategory logout={logout}/>:<Error404/>} />
 
                 </Routes>
             </Router>
