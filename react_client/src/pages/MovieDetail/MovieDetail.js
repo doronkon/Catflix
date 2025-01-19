@@ -7,7 +7,7 @@ import DeleteMovie from '../components/DeleteMovie/DeleteMovie';
 import NavBar from '../NavBar/NavBar';
 
 
-const MovieDetail = ({currentUser,isAdmin}) => {
+const MovieDetail = ({currentUser,isAdmin,logout}) => {
   const { id } = useParams(); // Get the movie ID from the URL
   const [movie, setMovie] = useState(null);
   const [category, setCategory] = useState(null);
@@ -25,6 +25,10 @@ const MovieDetail = ({currentUser,isAdmin}) => {
         });
 
         if (!response.ok) {
+          if (response.status === 403) {
+            logout();
+            return
+          }
           throw new Error('Failed to fetch movie details');
         }
 
@@ -52,6 +56,10 @@ const MovieDetail = ({currentUser,isAdmin}) => {
           });
 
           if (!response.ok) {
+            if (response.status === 403) {
+              logout();
+              return
+            }
             throw new Error('Failed to fetch category details');
           }
 
@@ -74,7 +82,7 @@ const MovieDetail = ({currentUser,isAdmin}) => {
     <div className="movie-detail">
       <NavBar/>
       <h1>{movie.name}</h1>
-      <VideoPlayer />
+      <VideoPlayer logout={logout} />
       <img src={`http://localhost:8080/media/movieThumbnails/${movie.thumbnail}`} alt={movie.name} />
       <p>{movie.description}</p>
       <p>Category: {category ? category.name : 'Loading category...'}</p>
@@ -82,8 +90,8 @@ const MovieDetail = ({currentUser,isAdmin}) => {
       <p>Actors: {movie.actors}</p>
       <p>Duration: {movie.length} mins</p>
       <p>Minimal age: {movie.minimalAge}</p>
-      <CppRecommend currentUser={currentUser}/>
-      {!isAdmin && <DeleteMovie/>}
+      <CppRecommend logout={logout} currentUser={currentUser}/>
+      {!isAdmin && <DeleteMovie logout={logout}/>}
     </div>
   );
 };

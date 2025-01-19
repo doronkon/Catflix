@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const CategoryList = ({setCategory}) => {
+const CategoryList = ({setCategory,logout}) => {
         const [categories, setCategories] = useState([]);
 
         const [selectedCategory, setSelectedCategory] = useState(''); // State for selected category
@@ -22,6 +22,10 @@ const CategoryList = ({setCategory}) => {
               },
             });
             if (!response.ok) {
+              if (response.status === 403) {
+                logout();
+                return
+              }
               console.log(response)
               throw new Error('Network response was not ok');
             }

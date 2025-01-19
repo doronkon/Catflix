@@ -10,7 +10,7 @@ const getRecommendation = async (req,res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const UserID = headersUser._id.toString()
     const MovieID = req.params.id
@@ -44,7 +44,7 @@ const addMovie = async (req,res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const UserID = headersUser._id.toString()
     const MovieID = req.params.id

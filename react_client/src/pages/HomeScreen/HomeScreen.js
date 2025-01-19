@@ -5,7 +5,7 @@ import Slideshow from '../SlideShow/SlidShow';
 import NavBar from '../NavBar/NavBar';
 import VideoBanner from '../VideoBanner/VideoBanner';
 
-const Movies = ({ currentUser }) => {
+const Movies = ({ currentUser, logout }) => {
   const [promotedMovies, setPromotedMovies] = useState([]); // Store categories with movies
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [randomMovieForBanner, setRandomMovieForBanner] = useState(null);
@@ -25,6 +25,10 @@ const Movies = ({ currentUser }) => {
         });
 
         if (!response.ok) {
+          if (response.status === 403) {
+            logout();
+            return
+          }
           console.log(response);
           throw new Error('Network response was not ok');
         }
@@ -66,6 +70,7 @@ const Movies = ({ currentUser }) => {
         {/* Display the video banner */}
         {randomMovieForBanner && (
           <VideoBanner
+            logout={logout}
             randomMovie={randomMovieForBanner}
             handleMovieClick={handleMovieClick}
             currentUser={currentUser}

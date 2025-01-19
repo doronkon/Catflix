@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams,useNavigate } from 'react-router-dom';
 
-const DeleteMovie = () => {
+const DeleteMovie = ({logout}) => {
     const { id } = useParams(); // Get the movie ID from the URL
     const [loading, setLoading] = useState(false);
     const [errorMessage, setError] = useState('');
@@ -25,6 +25,10 @@ const DeleteMovie = () => {
             });
 
             if (!response.ok) {
+                if (response.status === 403) {
+                    logout();
+                    return
+                  }
                 const errorResponse = await response.json(); // Parse error details from response
                 console.log(errorResponse.errors)
                 setError(errorResponse.errors);

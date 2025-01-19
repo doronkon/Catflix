@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Slideshow from '../../SlideShow/SlidShow';
 
 
-const CppRecommend = ({ currentUser }) => {
+const CppRecommend = ({ currentUser,logout }) => {
     const { id } = useParams(); // Get the movie ID from the URL
   const [recoMovies, setRecodMovies] = useState([]); // Store categories with movies
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,6 @@ const CppRecommend = ({ currentUser }) => {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      console.log("111")
       try {
         const response = await fetch('http://localhost:8080/api/movies/'+id+'/recommend', {
           method: 'GET',
@@ -24,9 +23,10 @@ const CppRecommend = ({ currentUser }) => {
         });
 
         if (!response.ok) {
-          console.log("printer start")
-          console.log("response: "+response);
-          console.log("printer end")
+          if (response.status === 403) {
+            logout();
+            return
+          }
           setRecodMovies([]); // Store all categories and their movies
         }
         try{
@@ -38,11 +38,9 @@ const CppRecommend = ({ currentUser }) => {
         //Calculate a random movie from the flattened list of all promoted movies
       } catch (error)
       {
-        console.log("333")
         setRecodMovies([]); // Store all categories and their movies
       }
       } catch (error) {
-        console.log("222")
         setRecodMovies([]); // Store all categories and their movies
         throw new Error("Server not running!")
 

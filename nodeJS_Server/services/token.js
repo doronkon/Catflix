@@ -45,4 +45,27 @@ const validateUser = async (name, password) => {
 
 };
 
-module.exports = { validateUser, validateHeadersUser }
+const validateToken = async (token) => {
+    try {
+        // Decode the JWT token (synchronously)
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+        if (!decoded || !decoded.id) {
+            return null
+        }
+        // Log or use the decoded information
+        try {
+             const user = await User.findById(decoded.id)
+             return {"admin": user.admin, "id": user._id }
+        }
+        catch {
+            return null;
+        }
+    } catch (error) {
+
+        return null
+    }
+
+
+}
+
+module.exports = { validateUser, validateHeadersUser ,validateToken}

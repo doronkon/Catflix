@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 
 
-const UploadCategory = () => {
+const UploadCategory = ({logout}) => {
     const [name, setName] = useState('');
     const [promoted, setPromoted] = useState(false);
 
@@ -34,6 +34,10 @@ const UploadCategory = () => {
             });
 
             if (!response.ok) {
+                if (response.status === 403) {
+                    logout();
+                    return;
+                  }
                 const errorResponse = await response.json(); // Parse error details from response
                 console.log(errorResponse.errors)
                 setError(errorResponse.errors);

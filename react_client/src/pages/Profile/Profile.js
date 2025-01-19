@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SaveImage from '../components/SaveImage';
 
-const Profile = ({ currentUser }) => {
+const Profile = ({ currentUser,logout }) => {
     const [user, setUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);  // State to toggle form visibility
     const [displayName, setDisplayName] = useState('');
@@ -25,6 +25,10 @@ const Profile = ({ currentUser }) => {
                     });
 
                     if (!response.ok) {
+                        if (response.status === 403) {
+                            logout();
+                            return
+                          }
                         throw new Error('Failed to fetch user details');
                     }
 
@@ -58,6 +62,10 @@ const Profile = ({ currentUser }) => {
             });
 
             if (!response.ok) {
+                if (response.status === 403) {
+                    logout();
+                    return
+                  }
                 throw new Error('Failed to update user details');
             }
 

@@ -22,27 +22,66 @@ function App() {
     const [currentUser, setCurrentUser] = useState();
     const [isAdmin, setIsAdmin] = useState(false);
 
+    
+    const handleToken = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/api/tokens', {
+                method: 'GET',
+                headers: {
+                    token: localStorage.getItem('Token'),
+                    'Content-Type': 'application/json', // Set the correct content type header
+                },                    
+            });
+            if (!response.ok) {
+                return null; // Return null on failure
+            }
+            const data = await response.json();
+            setIsAdmin(data.admin)
+            setCurrentUser(data.id)
+            console.log(data)
+            return data;
+        } catch (error) {
+            return null;
+        }
+    };
+
     useEffect(()=>{
-        localStorage.removeItem('Token')
-    },[])
+        const checkToken = async () => {
+            if (localStorage.getItem('Token')!=null) {
+                const success =await handleToken();
+                if(!success)
+                {
+                    logout();
+                }
+            }
+            else
+            {
+                logout()
+            }
+        };
+        checkToken();
+        },[])
     const logout=()=>{
         setCurrentUser(null)
         setIsAdmin(false)
         localStorage.removeItem('Token')
+        console.log('Logged out');
     }
 
     return (
         <div className="App">
+            <button onClick={logout}>logout</button>
+
             <Router>
                 <Routes>
-                    <Route path="/" element={ currentUser ? <HomeScreen currentUser = {currentUser}/> : <SignUp />} />
-                    <Route path="/movie/:id" element={currentUser ?<MovieDetail currentUser = {currentUser} /> : <Error404/>}  />
-                    <Route path="/profile" element={currentUser ?<Profile currentUser = {currentUser}/> : <Error404/>}  />
+                    <Route path="/" element={ currentUser ? <HomeScreen currentUser = {currentUser} logout = {logout}/> : <SignUp />} />
+                    <Route path="/movie/:id" element={currentUser ?<MovieDetail currentUser = {currentUser} logout = {logout} /> : <Error404/>}  />
+                    <Route path="/profile" element={currentUser ?<Profile currentUser = {currentUser} logout={logout}/> : <Error404/>}  />
                     <Route path='/login' element={currentUser ? <Error404/> : <Login setIsAdmin = {setIsAdmin} setCurrentUser = {setCurrentUser} />} />
 
-                    <Route path='/uploadMovie' element={ !isAdmin ?  <UploadMovie/>:<Error404/>} />
-                    <Route path='/uploadCategory' element={ !isAdmin ?  <UploadCategoryPage/>:<Error404/>} />
-                    <Route path='/deleteCategory' element={ !isAdmin ?  <DeleteCategory/>:<Error404/>} />
+                    <Route path='/uploadMovie' element={ !isAdmin ?  <UploadMovie logout = {logout}/>:<Error404/>} />
+                    <Route path='/uploadCategory' element={ !isAdmin ?  <UploadCategoryPage logout = {logout}/>:<Error404/>} />
+                    <Route path='/deleteCategory' element={ !isAdmin ?  <DeleteCategory logout = {logout}/>:<Error404/>} />
 
 
 

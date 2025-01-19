@@ -19,7 +19,7 @@ const createUser = async (req, res) => {
 const getUsers = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser) {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const users = await userService.getUsers();
     res.json(users);
@@ -28,7 +28,7 @@ const getUsers = async (req, res) => {
 const getUser = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser) {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const user = await userService.getUserById(req.params.id);
     if (!user) {
@@ -40,7 +40,7 @@ const getUser = async (req, res) => {
 const updateUser = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser) {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     if (req.body.password && !userService.verifyPassword(req.body.password)) {
         return res.status(400).json({ errors: ['Password should have: one Upper case letter, one lower case letter, one digit and a special char - @$!%*?& and length 8 or more '] });
@@ -55,7 +55,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser) {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const deletedUser = await userService.deleteUser(req.params.id);
     if (!deletedUser) {

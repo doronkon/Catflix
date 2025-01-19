@@ -6,7 +6,7 @@ const createCategory = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const category = await categoryService.createCategory(req.body.name, req.body.promoted);
     if(!category)
@@ -20,7 +20,7 @@ const getCategories = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const categories = await categoryService.getCategories();
     res.json(categories);
@@ -38,7 +38,7 @@ const updateCategory = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const updatedCategory = await categoryService.updateCategory(req.params.id, req.body.name, req.body.movie, req.body.promoted);
     if(!updatedCategory){
@@ -51,7 +51,7 @@ const deleteCategory = async(req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const deletedCategory = await categoryService.deleteCategory(req.params.id);
     if(!deletedCategory){

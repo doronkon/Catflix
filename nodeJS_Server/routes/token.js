@@ -5,5 +5,7 @@ var router = express.Router();
 router.route('/')
     //everyone
     .post(tokenController.validateUser)
+    .get(tokenController.validateToken)
+
     
 module.exports = router;

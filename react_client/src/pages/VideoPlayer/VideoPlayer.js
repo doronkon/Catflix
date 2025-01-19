@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useParams,useLocation } from 'react-router-dom';
 
 
-const VideoPlayer = () => {
+const VideoPlayer = ({logout}) => {
   const { id } = useParams(); // Get the movie ID from the URL
   const [showVideo, setShowVideo] = useState(false); // State to toggle video visibility
   const videoRef = useRef(null); // Reference to the video element
@@ -28,6 +28,9 @@ const VideoPlayer = () => {
       });
 
       if (!response.ok) {
+        if (response.status === 403) {
+          logout();
+        }
 
           return;
       }
@@ -46,6 +49,11 @@ const VideoPlayer = () => {
           },
     });
     if (!response.ok) {
+      if (response.status === 403) {
+        logout();
+        return
+      }
+        
         return;
     }
   }catch (error) {

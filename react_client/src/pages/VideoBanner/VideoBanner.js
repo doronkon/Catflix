@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 import './VideoBanner.css'; // Import external CSS file for styling
 
-const VideoBanner = ({ randomMovie, handleMovieClick, currentUser }) => {
+const VideoBanner = ({ randomMovie, handleMovieClick, currentUser,logout }) => {
   const [movieData, setMovieData] = useState(null); // State to store movie data
 
   const id = randomMovie._id;
@@ -19,6 +19,10 @@ const VideoBanner = ({ randomMovie, handleMovieClick, currentUser }) => {
         });
 
         if (!response.ok) {
+          if (response.status === 403) {
+            logout();
+            return
+          }
           throw new Error('Failed to fetch movie data');
         }
 

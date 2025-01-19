@@ -2,7 +2,7 @@ import CategoryList from '../components/CategoryList';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const DeleteCategory = () => {
+const DeleteCategory = ({logout}) => {
     const [category, setCategory] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate(); // Hook for navigation
@@ -24,6 +24,10 @@ const DeleteCategory = () => {
             });
 
             if (!response.ok) {
+                if (response.status === 403) {
+                    logout();
+                    return
+                  }
                 return;
             }
             setLoading(false);
@@ -41,7 +45,7 @@ const DeleteCategory = () => {
             <form onSubmit={handleSubmit}>
             <div>
                     <label>Select Category:</label>
-                    <CategoryList setCategory ={setCategory}/>
+                    <CategoryList setCategory ={setCategory} logout={logout}/>
                     <button type="submit">Delete Category</button>
 
                 </div>

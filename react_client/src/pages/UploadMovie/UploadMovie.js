@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const UploadMovie = () => {
+const UploadMovie = ({logout}) => {
     const [name, setName] = useState('');
     const [director, setDirector] = useState('');
     const [actors, setActors] = useState('');
@@ -64,6 +64,10 @@ const UploadMovie = () => {
             });
 
             if (!response.ok) {
+                if (response.status === 403) {
+                    logout();
+                    return
+                  }
                 const errorResponse = await response.json(); // Parse error details from response
                 console.log(errorResponse.errors)
                 setError(errorResponse.errors);
@@ -146,7 +150,7 @@ const UploadMovie = () => {
                 </div>
                 <div>
                     <label>Select from existing Categories:</label>
-                    <CategoryList setCategory ={setCategory}/>
+                    <CategoryList setCategory ={setCategory} logout={logout}/>
                 </div>
 
                 <div>
