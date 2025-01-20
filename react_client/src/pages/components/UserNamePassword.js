@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../SignUp/SignUp.css';
 
 
 
 const UserNamePassword = ({ user, password, setUser, setPassword }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+
   return (
     <div>
       <div>
@@ -17,11 +20,19 @@ const UserNamePassword = ({ user, password, setUser, setPassword }) => {
       <div>
         <label class='text'>Password:</label>
         <input
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+                <button
+          type="button"
+          onClick={() => {
+            setShowPassword((prevShowPassword) => !prevShowPassword);
+          }}
+        >
+          {showPassword ? '🙈' : '👁️'} {/* Replace with an icon library if desired */}
+        </button>
       </div>
     </div>
   );

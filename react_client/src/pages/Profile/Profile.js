@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SaveImage from '../components/SaveImage';
 
-const Profile = ({ currentUser,logout }) => {
+const Profile = ({ currentUser, logout }) => {
+    const [showPassword, setShowPassword] = useState(false);
     const [user, setUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);  // State to toggle form visibility
     const [displayName, setDisplayName] = useState('');
@@ -28,7 +29,7 @@ const Profile = ({ currentUser,logout }) => {
                         if (response.status === 403) {
                             logout();
                             return
-                          }
+                        }
                         throw new Error('Failed to fetch user details');
                     }
 
@@ -65,7 +66,7 @@ const Profile = ({ currentUser,logout }) => {
                 if (response.status === 403) {
                     logout();
                     return
-                  }
+                }
                 throw new Error('Failed to update user details');
             }
 
@@ -115,7 +116,7 @@ const Profile = ({ currentUser,logout }) => {
             {isEditing && (
                 <form onSubmit={handleFormSubmit}>
                     <div>
-                        <label className="signup-fields" >User Name: </label>
+                        <label className="signup-fields" >Display Name: </label>
                         <input
                             type="text"
                             id="displayName"
@@ -128,13 +129,22 @@ const Profile = ({ currentUser,logout }) => {
                     <div>
                         <label className="signup-fields">Password: </label>
                         <input
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter your password"
                         />
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setShowPassword((prevShowPassword) => !prevShowPassword);
+                            }}
+                        >
+                            {showPassword ? '🙈' : '👁️'} {/* Replace with an icon library if desired */}
+                        </button>
                     </div>
+
                     <div>
                         <label className="signup-fields">Image: </label>
                         {<SaveImage setImage={setImage} />}
