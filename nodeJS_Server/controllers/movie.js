@@ -50,7 +50,7 @@ const updateMovie = async (req, res) => {
     {
         return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
-    const updatedMovie = await movieService.updateMovie(req.params.id, req.body.name, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
+    const updatedMovie = await movieService.updateMovie(req.params.id, req.body.name, req.body.pathToMovie, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
     if (!updatedMovie) {
         return res.status(404).json({ errors: ['Movie not found or invalid ID'] });
     }

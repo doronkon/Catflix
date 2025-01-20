@@ -5,12 +5,19 @@ import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import CppRecommend from '../components/CppRecommend/CppRecommend';
 import DeleteMovie from '../components/DeleteMovie/DeleteMovie';
 import NavBar from '../NavBar/NavBar';
+import { useNavigate } from 'react-router-dom';
+
+
+
+
 
 
 const MovieDetail = ({currentUser,isAdmin,logout}) => {
   const { id } = useParams(); // Get the movie ID from the URL
   const [movie, setMovie] = useState(null);
   const [category, setCategory] = useState(null);
+  const navigate = useNavigate();
+  
 
   // Fetching movie details
   useEffect(() => {
@@ -77,6 +84,9 @@ const MovieDetail = ({currentUser,isAdmin,logout}) => {
   if (!movie) {
     return <p>Loading...</p>;
   }
+  const handleEditClick = (movieId, oldName) => {
+    navigate(`/editMovie/${movieId}`, { state: { oldName } });
+  };
 
   return (
     <div className="movie-detail">
@@ -92,6 +102,11 @@ const MovieDetail = ({currentUser,isAdmin,logout}) => {
       <p>Minimal age: {movie.minimalAge}</p>
       <CppRecommend logout={logout} currentUser={currentUser}/>
       {!isAdmin && <DeleteMovie logout={logout}/>}
+      {!isAdmin && (
+        <button onClick={() => handleEditClick(movie._id, movie.name)}>
+          Edit Movie
+        </button>
+      )}
     </div>
   );
 };

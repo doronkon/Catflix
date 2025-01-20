@@ -154,7 +154,7 @@ const deleteFictive = async (currentUser) => {
     await modelCategory.deleteOne({ name: newCategoryName });
 }
 
-const updateMovie = async (id, name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
+const updateMovie = async (id, name, pathToMovie, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
     const updatedMovie = await getMovieById(id);
     if (!updatedMovie) {
         return null;
@@ -179,6 +179,15 @@ const updateMovie = async (id, name, category, date, actors, director, thumbnail
         updatedMovie.category = category;
         await categoryObject.save();
     }
+    if (pathToMovie) {
+        const fileName = write64File(id, pathToMovie, "actualMovies", "mp4")
+        if (fileName) {
+            updatedMovie.pathToMovie = fileName;
+        }
+        else {
+            return null;
+        }
+    }
     if (catflixOriginal != null) {
         updatedMovie.catflixOriginal = catflixOriginal;
     }
@@ -192,7 +201,8 @@ const updateMovie = async (id, name, category, date, actors, director, thumbnail
         updatedMovie.director = director;
     }
     if (thumbnail) {
-        updatedMovie.thumbnail = thumbnail;
+        const fileName = write64File(id, thumbnail, "movieThumbnails", "png")
+        updatedMovie.thumbnail = fileName;
     }
     if (length) {
         updatedMovie.length = length;
