@@ -10,6 +10,7 @@ import SaveImage from './pages/components/SaveImage';
 import SaveMovie from './pages/components/SaveMovie';
 import Error404 from './pages/Error404/Error404';
 import CategoryList from './pages/components/CategoryList';
+import Search from './pages/Search/Search';
 
 
 
@@ -34,7 +35,7 @@ function App() {
                     <Route path="/" element={ currentUser ? <HomeScreen currentUser = {currentUser}/> : <SignUp />} />
                     <Route path="/movie/:id" element={currentUser ?<MovieDetail /> : <Error404/>}  />
                     <Route path='/login' element={currentUser ? <Error404/> : <Login setIsAdmin = {setIsAdmin} setCurrentUser = {setCurrentUser} />} />
-
+                    <Route path='/search' element={ currentUser ? <Search currentUser = {currentUser}/> : <SignUp />}/>
                     <Route path='/uploadMovie' element={ isAdmin ?  <UploadMovie/>:<Error404/>} />
 
                 </Routes>

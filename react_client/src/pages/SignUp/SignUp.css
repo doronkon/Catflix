@@ -68,6 +68,7 @@
     .signup-info {
         margin-top: 20px; /* Adjust spacing below the logo */
         background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+        border: 2px solid rgba(255, 255, 255, 0.8); /* White border with some transparency */
         padding: 20px; /* Add padding for a cleaner look */
         border-radius: 10px; /* Rounded corners */
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
@@ -75,13 +76,14 @@
     
     .text {
         font-size: 1.8rem; /* Slightly larger font size */
-        font-weight: 500;  /* Add a slight weight for emphasis */
+        font-weight: 400;  /* Add a slight weight for emphasis */
         color: #e6e6e6;    /* Softer white for less strain on the eyes */
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add subtle shadow for depth */
     }
 
     input {
-        font-size: 1rem;
+        font-size: 14px;
+        font-weight: 500;
         padding: 10px;
         border: 2px solid rgba(255, 255, 255, 0.8); /* White border with some transparency */
         border-radius: 15px;
@@ -104,29 +106,31 @@
         box-shadow: 0 0 5px rgba(255, 153, 0, 0.5); 
     }
     
-    button {
-        background-color: #ff3300; /* Bright, eye-catching button */
-        color: white;
+    #login, #signup {
+        font-family: 'catfont';
+        background-color: #ec1e1e; /* Bright, eye-catching button */
+        color: rgb(238, 235, 235);
         margin-top: 10px;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
-        font-size: 1rem;
+        font-size: 1.3rem;
+        font-weight: 900;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
     
-    button:hover {
-        background-color: #a80d08; /* Darker shade on hover */
+    #login:hover, #signup:hover {
+        background-color: #9b1f1f; /* Darker shade on hover */
     }
-
+ 
         @font-face {
         font-family: 'catfont';
-        src: url('../../../public/assets/fonts/catflix.otf') format('opentype');
+        src: url('../../../public/assets/fonts/bebas.ttf') format('opentype');
         font-weight: 900;
         font-style: normal; 
      }
 
     body, .signup-container {
         font-family: 'catfont';
-    }
+    } 

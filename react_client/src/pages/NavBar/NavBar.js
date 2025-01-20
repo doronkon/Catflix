@@ -1,17 +1,54 @@
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; 
 import './NavBar.css';
+import '../Search/Search'
 
-function NavBar() {
+function NavBar({ doSearch, showSearch, setShowSearch }) {
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+
+    const handleSearchToggle = () => {
+        if (!showSearch) {
+            setShowSearch(true);
+            navigate('/search');
+        } else {
+            setShowSearch(false);
+            setSearchQuery('');
+        }
+    };
+
+    const handleSearchInput = (e) => {
+        const query = e.target.value;
+        setSearchQuery(query);
+        doSearch(query);
+    };
+
     return (
         <header>
-            <img className="logo" src="http://localhost:8080/media/userLogos/Catflix.jpg" alt="Catflix Logo" />
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/profile">Profile</Link>
-                <Link to="/search">Search</Link>
-                {<Link to="/UploadMovie">Upload just test all hard coded</Link>}
-
-            </nav>
+            <div className="bar-container">
+                <nav>
+                    <div id="nav-logo">
+                        <a href="/">
+                            <img src="/assets/img/catflix-logo.png" alt="logo" />
+                        </a>
+                    </div>
+                    <Link to="/">Home</Link>
+                    <Link to="/profile">Profile</Link>
+                    <Link to="/UploadMovie">Upload</Link>
+                    <button className="search-button" onClick={handleSearchToggle}>
+                        Search
+                    </button>
+                    {showSearch && (
+                        <input
+                            type="text"
+                            className="search-input"
+                            placeholder="Search..."
+                            value={searchQuery}
+                            onChange={handleSearchInput}
+                        />
+                    )}
+                </nav>
+            </div>
         </header>
     );
 }

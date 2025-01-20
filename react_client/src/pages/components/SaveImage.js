@@ -1,3 +1,5 @@
+import React from 'react';
+
 const SaveImage = ({setImage}) => {
 
     const handleFileSelect = (e) => {

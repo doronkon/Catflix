@@ -115,9 +115,9 @@ const SignUp = () => {
                     </div>
                     <div class='buttons-container'>
 
-                    <button type='button' onClick={()=>{navigate('/login');}}>Login</button>
+                    <button id='login' type='button' onClick={()=>{navigate('/login');}}>Login</button>
 
-                    <button type="submit">Sign Up</button>
+                    <button id='signup' type="submit">Sign Up</button>
                     </div>
                 </form>
                 {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}

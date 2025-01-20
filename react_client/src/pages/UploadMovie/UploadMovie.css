@@ -1,0 +1,87 @@
+.upload {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #141414;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#upload-input-container {
+    max-width: 500px; /* Reduced from 600px */
+    width: 100%;
+    margin-top: 60px;
+    padding: 1rem; /* Reduced padding */
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.input-group {
+    margin-bottom: 0.75rem; /* Reduced margin */
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-text {
+    font-size: 0.9rem; /* Slightly smaller text */
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+input, textarea {
+    font-size: 0.9rem; /* Slightly smaller input text */
+    padding: 8px; /* Reduced padding */
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px; /* Slightly smaller radius */
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.radio-options {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+select {
+    font-size: 0.9rem;
+    padding: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.file-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem; /* Reduced gap */
+}
+
+button {
+    padding: 8px 12px; /* Reduced button padding */
+    font-size: 0.9rem; /* Slightly smaller button text */
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 8px; /* Smaller radius */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #f40612;
+}

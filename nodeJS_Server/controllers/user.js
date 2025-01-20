@@ -48,7 +48,7 @@ const updateUser = async (req,res) => {
     {
         return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
     }
-    const updatedUser = await userService.updateUser(req.params.id, req.body.name, req.body.password, req.body.email, req.body.image, req.body.movie);
+    const updatedUser = await userService.updateUser(req.params.id, req.body.name, req.body.password, req.body.email, req.body.image, req.body.movie, req.body.admin);
     if(!updatedUser){
         return res.status(404).json({ errors: ['User not found or Movie not found'] });
     }

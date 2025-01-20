@@ -1,24 +1,58 @@
-/* Logo */
-header img.logo {
-    height: 40px;
-    margin-right: 20px;
-  }
-  
-  /* Navigation styles */
-  header nav {
+ 
+ 
+ header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0; /* Reset any unwanted margins */
+  padding: 0; /* Reset any unwanted padding */
+  z-index: 100; /* Ensures the header stays above other elements */
+} 
+ 
+ header nav {
     display: flex;
     align-items: center;
+    justify-content: start;
     gap: 20px;
+    padding: 10px;
+    background-color: #060606;
   }
   
   /* Navigation link styles */
   header nav a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: large;
     transition: color 0.3s;
   }
+
   
   header nav a:hover {
     color: #e50914; /* Netflix red */
   }
+
+  #nav-logo img {
+    position: relative;
+    height: 100px;
+    margin: 0 auto;
+    opacity: 0.85;
+  }
+
+
+.search-input {
+    background-color: #333;
+    border: 1px solid #555;
+    color: white;
+    padding: 5px 10px;
+    font-size: medium;
+    margin-left: 10px;
+    border-radius: 4px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.search-input:focus {
+    border-color: #e50914;
+}
+

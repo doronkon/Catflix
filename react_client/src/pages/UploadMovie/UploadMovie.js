@@ -3,6 +3,7 @@ import SaveImage from '../components/SaveImage';  // Import the new component
 import SaveMovie from '../components/SaveMovie';  // Import the new component
 import NavBar from '../NavBar/NavBar';
 import CategoryList from '../components/CategoryList';
+import './UploadMovie.css'
 
 
 
@@ -76,90 +77,93 @@ const UploadMovie = () => {
     if (loading) return <p>Loading...</p>;
 
     return (
-        <div>
-            <NavBar/>
-            {/*                      name,
-                    category:'67881611dc9bf54c07843cd4',
-                    pathToMovie: video,
-                    director,actors,description,minimalAge,catflixOriginal, */}
+        <div className="upload">
+            <NavBar />
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>name:</label>
-                    <input
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
+                <div className="input-container" id="upload-input-container">
+                    <div className="input-group">
+                        <label className="upload-text">Name:</label>
+                        <input
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label className="upload-text">Director:</label>
+                        <input
+                            value={director}
+                            onChange={(e) => setDirector(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label className="upload-text">Actors:</label>
+                        <input
+                            value={actors}
+                            onChange={(e) => setActors(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label className="upload-text">Description:</label>
+                        <input
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label className="upload-text">Minimal Age:</label>
+                        <input
+                            type="number"
+                            value={minimalAge}
+                            onChange={(e) => setMinimalAge(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="input-group radio-group">
+                        <label className="upload-text">Catflix Original:</label>
+                        <div className="radio-options">
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="catflixOriginal"
+                                    value="true"
+                                    onChange={() => setCatflixOriginal(true)}
+                                />
+                                True
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="catflixOriginal"
+                                    value="false"
+                                    onChange={() => setCatflixOriginal(false)}
+                                />
+                                False
+                            </label>
+                        </div>
+                    </div>
+                    <div className="input-group">
+                        <label className="upload-text">Category:</label>
+                        <CategoryList setCategory={setCategory} />
+                    </div>
+                    <div className="input-group file-group">
+                        <div>
+                            <label className="upload-text">Video:</label>
+                            <SaveMovie setVideo={setVideo} />
+                        </div>
+                        <div>
+                            <label className="upload-text">Image:</label>
+                            <SaveImage setImage={setImage} />
+                        </div>
+                    </div>
+                    <button type="submit">Upload</button>
                 </div>
-                <div>
-                    <label>Director:</label>
-                    <input
-                        value={director}
-                        onChange={(e) => setDirector(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Actors:</label>
-                    <input
-                        value={actors}
-                        onChange={(e) => setActors(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Description:</label>
-                    <input
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Minimal Age:</label>
-                    <input
-                        value={minimalAge}
-                        onChange={(e) => setMinimalAge(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Catflix Original:</label>
-                    <input
-                    type="radio"
-                    name="catflixOriginal"
-                    value="true"
-                    onChange={() => setCatflixOriginal(true)}
-                    />
-                    <label>True</label>
-                    <input
-                    type="radio"
-                    name="catflixOriginal"
-                    value="false"
-                    onChange={() => setCatflixOriginal(false)}
-                    />
-                    <label>False</label>
-                </div>
-                <div>
-                    <label>Category:</label>
-                    <CategoryList setCategory ={setCategory}/>
-                </div>
-
-                <div>
-                    <label>video:</label>
-                    <SaveMovie setVideo ={setVideo}/>
-                </div>
-                <div>
-                    <label>image:</label>
-                    <SaveImage setImage ={setImage}/>
-                </div>
-
-                <button type="submit">Login</button>
             </form>
             {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}
-
         </div>
-
     );
 };
 

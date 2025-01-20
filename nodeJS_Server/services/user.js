@@ -62,7 +62,7 @@ const getUserById = async (id) => {
 
 const getUsers = async () => {return await User.find({});};
 
-const updateUser = async(id, name, password, email, image, movie) => {
+const updateUser = async(id, name, password, email, image, movie, admin) => {
     const user = await getUserById(id);
     if(!user){
         return null;
@@ -87,6 +87,9 @@ const updateUser = async(id, name, password, email, image, movie) => {
             return null
         }
         user.moviesWatched.push(movie);
+    }
+    if (admin) {
+        user.admin = admin;
     }
     await user.save();
     return user;
