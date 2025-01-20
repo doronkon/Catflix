@@ -1,0 +1,64 @@
+.slideshow-search {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 20px;
+    padding: 20px;
+    min-height: 100vh;
+    margin-left: 40px;
+    width: 95vw; 
+    background-color: #141414;
+}
+
+.slideshow-search img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Gradient overlay */
+  .slideshow-search .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
+  }
+  
+  /* Content positioning inside the slideshow-search */
+  .slideshow-search .content {
+    display: flex;
+    flex-wrap: wrap;
+    bottom: 20px;
+    left: 20px;
+    z-index: 2;
+  }
+  
+  .slideshow-search .content h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #ffffff;
+  }
+  
+  .slideshow-search .content p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #e0e0e0;
+  }
+  
+  .slideshow-search .slide {
+    display: flex;
+    flex: 0 0 100%;
+    flex-wrap: wrap;
+  }
+  
+  /* Movie image styling (ensure image fits within the block) */
+  .slideshow-search .movieItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  

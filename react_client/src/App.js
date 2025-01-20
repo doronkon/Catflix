@@ -17,7 +17,8 @@ import UploadCategoryPage from './pages/UploadCategoryPage/UploadCategoryPage';
 import AdminTerminal from './pages/AdminTerminal/AdminTerminal';
 import NavBar from './pages/NavBar/NavBar';
 import UpdateCategory from './pages/UpdateCategory/UpdateCategory';
-import EditMoviePage from './pages/EditMoviePage/EditMoviePage';
+import EditMoviePage from './pages/EditMoviePage/EditMoviePage';import Search from './pages/Search/Search';
+
 
 
 
@@ -85,6 +86,7 @@ function App() {
                     <Route path='/deleteCategory' element={ !isAdmin ?  <DeleteCategory logout = {logout}/>:<Error404/>} />
                     <Route path='/Admin' element={!isAdmin ? <AdminTerminal logout={logout}/>:<Error404/>} />
                     <Route path='/UpdateCategory' element={!isAdmin ?<UpdateCategory logout={logout}/>:<Error404/>} />
+                    <Route path='/search' element={ currentUser ? <Search currentUser = {currentUser} logout = {logout} /> : <SignUp />}/>
                     <Route path="/editMovie/:id" element={currentUser ?<EditMoviePage logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin} /> : <Error404/>}  />
 
                 </Routes>

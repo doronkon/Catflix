@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useParams,useLocation } from 'react-router-dom';
 
 
+
 const VideoPlayer = ({logout}) => {
   const { id } = useParams(); // Get the movie ID from the URL
   const [showVideo, setShowVideo] = useState(false); // State to toggle video visibility

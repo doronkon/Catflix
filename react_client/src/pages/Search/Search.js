@@ -1,26 +1,74 @@
-import { useRef } from "react";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import NavBar from '../NavBar/NavBar';
+import MovieListResults from '../MovieListResults/MovieListResults';
+import './Search.css';
+import SlideshowSearch from '../SlideShowSearch/SlideShowSearch';
 
-function Search({doSearch}) {
+function Search({ currentUser, logout }) {
+    const [movieList, setMovieList] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setError] = useState('');
+    const [showSearch, setShowSearch] = useState(true); // Ensure the search box is open on load
+    const navigate = useNavigate();
 
-    const searchBox = useRef(null);
+    const doSearch = async (q) => {
+        try {
+            setLoading(true);
+            const response = await fetch('http://localhost:8080/api/movies/search/' + q, {
+                method: 'GET',
+                headers: {
+                    'user': localStorage.getItem('Token'),
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            if (!response.ok) {
+                if (response.status === 403) {
+                    logout();
+                    return
+                  }
+                throw new Error('Network response was not ok');
+            }
 
-    const search = function () {
-        if (searchBox.current && searchBox.current.value.trim() !== "") {
-          doSearch(searchBox.current.value);
+            const data = await response.json();
+            setMovieList(data.concat(data.concat(data)));
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
         }
-      };
+    };
+    
 
-    return(
-        <div className="row bg-white justify-content-center">
-            <div className="col-10">
-                <div className="input-group mb-3 p-2">
-                    <input ref={searchBox} onKeyUp={search} type="text" className="form-control" placeholder="Search" aria-label="Search"
-                    aria-describedby="button-addon2"></input>
-                    <button className="btn btn-outline-secondary" type="button" id="button-addon2">
-                        <i className="bi bi-search me-3"></i></button>
+    const handleMovieClick = (movieId, currentUser) => {
+        navigate(`/movie/${movieId}`, { state: { currentUser } });
+    };
+
+    useEffect(() => {
+        setShowSearch(true); // Ensure the search box is open on component load
+    }, []);
+
+    return (
+        <div className="home-container-search">
+            <div className="row bg-white justify-content-center">
+                <div className="moviesContainer">
+                    <header>
+                        <NavBar doSearch={doSearch} showSearch={showSearch} setShowSearch={setShowSearch} logout={logout} />
+                    </header>
+                        <div class='slideshow-search'>
+                            <SlideshowSearch
+                                currentUser={currentUser}
+                                movies={movieList}
+                                onMovieClick={handleMovieClick}
+                                />
+                        </div>
+                    </div>
+                        <footer>
+                            <p>&copy; 2025 Catflix, Inc. All Rights Reserved</p>
+                        </footer>
                 </div>
             </div>
-        </div>
     );
 }
 

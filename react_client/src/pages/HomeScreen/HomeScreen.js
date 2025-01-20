@@ -13,6 +13,7 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -53,20 +54,29 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
     fetchMovies();
   }, []);
 
+  console.log(localStorage.getItem('Token'))
+
   const handleMovieClick = (movieId, currentUser) => {
     navigate(`/movie/${movieId}`, { state: { currentUser } });
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p></p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="moviesContainer">
-      <header>
-        <NavBar logout={logout} isAdmin={isAdmin}/>
-      </header>
-
-      <section className="movieRow">
+<div className="home-container">
+  <div className="moviesContainer">
+    <header>
+    <NavBar
+      doSearch={() => {}}
+      showSearch={false}
+      setShowSearch={() => {}}
+      logout={logout} 
+      isAdmin={isAdmin}
+    />
+    </header>
+    <main className="content">
+      <section className="movieRow" id='video-banner'>
         {/* Display the video banner */}
         {randomMovieForBanner && (
           <VideoBanner
@@ -94,7 +104,7 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
 
       {/* Slideshow for already watched movies */}
       <section className="movieRow">
-        <h2>Watch again!</h2>
+        <h2 className="home-categories-container">Watch again!</h2>
         <div className="movieRow_posters">
           <Slideshow
             currentUser={currentUser}
@@ -103,11 +113,12 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
           />
         </div>
       </section>
-
-      <footer>
-        <p>&copy; 2025 Catflix, Inc. All Rights Reserved</p>
-      </footer>
-    </div>
+    </main>
+    <footer>
+      <p>&copy; 2025 Catflix, Inc. All Rights Reserved</p>
+    </footer>
+  </div>
+</div>
   );
 };
 

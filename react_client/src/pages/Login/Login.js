@@ -63,7 +63,14 @@ const Login = ({setIsAdmin,setCurrentUser}) => {
 
     return (
         <div className="login-container">
-            <div className="background"></div> {/* Add background div */}
+            <div className="background"></div>
+            <nav>
+                <div id="login-logo">
+                    <a href="/">
+                        <img src="/assets/img/catflix-logo.png" alt="logo" />
+                    </a>
+                </div>
+            </nav>
                 <div class='input-container'>
                     <form onSubmit={handleSubmit}>
                         <UserNamePassword
@@ -73,8 +80,8 @@ const Login = ({setIsAdmin,setCurrentUser}) => {
                             setPassword={setPassword}
                             />
                             <div class='buttons-container'>
-                                <button type="submit">Login</button>
-                                <button type='button' onClick={()=>{navigate('/');}}>SignUp</button>
+                                <button id='login' type="submit">Login</button>
+                                <button id='signup' type='button' onClick={()=>{navigate('/');}}>SignUp</button>
                             </div>
                     </form>
                 </div>

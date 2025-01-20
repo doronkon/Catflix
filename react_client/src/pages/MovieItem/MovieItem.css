@@ -1,16 +1,26 @@
-/* MovieItem.css */
-
 .movieItem {
   position: relative;
-  width: 200px; /* Fixed width for uniformity */
-  height: 300px; /* Fixed height for uniformity */
-  margin: 10px; /* Spacing between items */
-  overflow: hidden; /* Ensures content doesn't spill out */
-  border-radius: 10px; /* Optional: rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for effect */
-  cursor: pointer; /* Hand cursor on hover */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  width: calc(16.66% - 20px);
+  height: 350px;
+  margin: 10px;
+  margin-top: 0px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* flex: 0 1 calc(16.66% - 20px);
+max-width: calc(16.66% - 20px);
+width: auto;
+height: 200px;
+margin: 10px;
+overflow: hidden;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+cursor: pointer;
+transition: transform 0.3s ease, box-shadow 0.3s ease; */
 
 .movieItem:hover {
   transform: scale(1.05); /* Slightly zoom in on hover */
@@ -18,6 +28,7 @@
 }
 
 .movieItem_contents {
+  display: flex;
   position: absolute;
   top: 0;
   left: 0;
@@ -25,18 +36,17 @@
   height: 100%;
   background-size: cover; /* Cover the entire div */
   background-position: center; /* Center the image */
-  display: flex;
-  align-items: flex-end; /* Align content to the bottom */
-  padding: 10px; /* Padding for the text */
   color: white; /* Text color */
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* Text shadow for readability */
   background-blend-mode: darken; /* Darkens the background */
 }
 
 .movieTitle {
-  font-size: 16px; /* Title size */
+  align-self: flex-end; /* Push the text to the bottom */
+  font-size: 14px; /* Slightly smaller text */
   font-weight: bold; /* Bold text */
-  text-align: left; /* Align text to the left */
+  text-align: center; /* Center the text */
   width: 100%; /* Ensure text spans the container */
+  padding: 5px; /* Add spacing for better readability */
   word-wrap: break-word; /* Wrap long movie names */
 }

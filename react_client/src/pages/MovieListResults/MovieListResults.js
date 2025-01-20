@@ -1,4 +1,6 @@
 import MovieItem from "../MovieItem/MovieItem";
+import React from 'react';
+import './MovieListResults'
 
 function MovieListResults({ movies, onMovieClick }) {
     const movieList = Array.isArray(movies) 
@@ -8,8 +10,7 @@ function MovieListResults({ movies, onMovieClick }) {
         : <p>No movies available</p>;
 
     return (
-        <div className="row gx-3">
-            <p>a movie is here</p>
+        <div id='movielist-container'>
             {movieList}
         </div>
     );

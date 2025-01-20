@@ -1,6 +1,6 @@
 /* Slideshow styles */
 .slideshow {
-  margin: 20px 0;
+  margin-left: 40px;
   position: relative;
   width: 95vw; /* Full width of the viewport */
   height: 300px; /* Set a fixed height for the slideshow */
@@ -48,33 +48,32 @@
 .slideshow button {
   padding: 10px 20px;
   border: none;
-  background-color: #e50914;
   color: white;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 40px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.slideshow button:hover {
-  background-color: #f40612;
+.slideshow button.prev:hover,
+.slideshow button.next:hover {
+  color: #f40612;
 }
 
 /* Slideshow container */
 .slideshow .slides {
   display: flex;
+  flex: start;
   transition: transform 0.5s ease-in-out;
-  width: 100%; /* Full width of the slideshow container */
-  height: 100%; /* Full height of the slideshow container */
+  width: 100%;
+  height: 100%;
 }
 
-/* Individual slide */
 .slideshow .slide {
   display: flex;
-  flex: 0 0 100%; /* Each slide takes up the full width of the container */
-  justify-content: space-between; /* Space movies evenly within a slide */
-  align-items: center; /* Vertically align content */
-  gap: 10px; /* Spacing between movies */
+  flex: 0 0 100%;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /* Movie item styling */
@@ -103,7 +102,7 @@
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  color:	#831010;
   border: none;
   border-radius: 50%;
   width: 40px;
