@@ -1,14 +1,26 @@
 .movieItem {
   position: relative;
-  width: 150px; /* Increase width to make the items more visible */
-  height: 200px; /* Adjust height for better proportion */
-  margin: 10px; /* Reduce spacing to fit more items on the row */
-  overflow: hidden; /* Ensures content doesn't spill out */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for effect */
-  cursor: pointer; /* Hand cursor on hover */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  width: calc(16.66% - 20px);
+  height: 350px;
+  margin: 10px;
+  margin-top: 0px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* flex: 0 1 calc(16.66% - 20px);
+max-width: calc(16.66% - 20px);
+width: auto;
+height: 200px;
+margin: 10px;
+overflow: hidden;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+cursor: pointer;
+transition: transform 0.3s ease, box-shadow 0.3s ease; */
 
 .movieItem:hover {
   transform: scale(1.05); /* Slightly zoom in on hover */

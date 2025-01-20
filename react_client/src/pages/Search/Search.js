@@ -28,7 +28,7 @@ function Search({ currentUser }) {
             }
 
             const data = await response.json();
-            setMovieList(data.concat(data));
+            setMovieList(data.concat(data.concat(data)));
         } catch (error) {
             setError(error.message);
         } finally {
@@ -59,6 +59,9 @@ function Search({ currentUser }) {
                                 />
                         </div>
                     </div>
+                        <footer>
+                            <p>&copy; 2025 Catflix, Inc. All Rights Reserved</p>
+                        </footer>
                 </div>
             </div>
     );
