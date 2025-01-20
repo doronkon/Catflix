@@ -89,7 +89,7 @@ const UploadMovie = ({logout}) => {
 
     return (
         <div>
-            <NavBar/>
+            <NavBar logout={logout}/>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>name:</label>

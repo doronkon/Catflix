@@ -8,7 +8,7 @@ function UploadCategoryPage({logout}) {
 
     return (
         <div >
-            <NavBar/>
+            <NavBar logout={logout}/>
             <UploadCategory logout={logout}/>
         </div>);
 }

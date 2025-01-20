@@ -63,7 +63,7 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
   return (
     <div className="moviesContainer">
       <header>
-        <NavBar isAdmin={isAdmin}/>
+        <NavBar logout={logout} isAdmin={isAdmin}/>
       </header>
 
       <section className="movieRow">

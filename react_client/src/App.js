@@ -73,8 +73,6 @@ function App() {
 
     return (
         <div className="App">
-            <button onClick={logout}>logout</button>
-
             <Router>
                 <Routes>
                     <Route path="/" element={ currentUser ? <HomeScreen logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin}/> : <SignUp />} />

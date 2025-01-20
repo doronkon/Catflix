@@ -15,7 +15,6 @@ const UserNamePassword = ({ user, password, setUser, setPassword }) => {
         />
       </div>
       <div>
-
         <label class='text'>Password:</label>
         <input
           type="password"

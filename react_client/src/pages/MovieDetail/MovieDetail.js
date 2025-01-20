@@ -80,7 +80,7 @@ const MovieDetail = ({currentUser,isAdmin,logout}) => {
 
   return (
     <div className="movie-detail">
-      <NavBar/>
+      <NavBar logout={logout}/>
       <h1>{movie.name}</h1>
       <VideoPlayer logout={logout} />
       <img src={`http://localhost:8080/media/movieThumbnails/${movie.thumbnail}`} alt={movie.name} />

@@ -62,7 +62,7 @@ const UpdateCategory = ({logout}) => {
 
     return (
         <div>
-            <NavBar />
+            <NavBar logout={logout} />
             <form onSubmit={handleSubmit}>
                 <div>
                 <CategoryList setCategory ={setCategory}/>

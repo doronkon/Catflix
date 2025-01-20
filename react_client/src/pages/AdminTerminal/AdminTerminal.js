@@ -5,7 +5,7 @@ import './AdminTerminal.css'; // Import the CSS file for styling
 function AdminTerminal({logout}) {
     return (
         <div className="admin-terminal">
-            <NavBar />
+            <NavBar logout={logout}/>
             <div className="admin-content">
                 <h1>Admin Terminal</h1>
                 <p>Welcome to the admin dashboard. Manage your categories and movies easily using the links below.</p>
