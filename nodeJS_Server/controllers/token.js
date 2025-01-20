@@ -9,4 +9,17 @@ const validateUser = async (req, res) => {
     res.json(user);
 };
 
-module.exports = {validateUser}
+const validateToken = async (req, res) => {
+
+    if(!req.headers['token'])
+    {
+        return res.status(400).json('No token');
+    }
+    const user = await tokenService.validateToken(req.headers['token']);
+    if (!user)
+    {
+        return res.status(403).json('invalid Token');
+    }
+    res.json(user);
+};
+module.exports = {validateUser,validateToken}

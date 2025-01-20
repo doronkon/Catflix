@@ -109,27 +109,22 @@ const promotedCategories = async (watchedMovies) => {
 };
 
 const userMovies = async (currentUser, watchedMovies) => {
-    const newCategoryName = "categoryFor-" + currentUser;
-
-    // Assuming createCategory is an asynchronous function, await it
-    const userCategory = await Category.createCategory(newCategoryName, false);
-
-    // Loop through watchedMovies and add each movie to the new category
+    try{
     const lastTwenty = watchedMovies.slice(-20); // Get the last 20 movies
-    for (const movie of lastTwenty) {
-        userCategory.movies.push(movie);
-    }
 
+    //make an array of mongo Items wit Movie model (watched movies is an array of Mongo IDs)
+    const itemsArray = await Movie.find({ _id: { $in: lastTwenty } });
+    
     // Shuffle the movies
-    userCategory.movies.sort(() => Math.random() - 0.5);
-
-    // Save the category
-    await userCategory.save();
+    itemsArray.sort(() => Math.random() - 0.5);
 
     // Populate the movies field to return the movie details
-    const populatedCategory = await modelCategory.findById(userCategory._id).populate('movies');
 
-    return populatedCategory.movies; // Return the populated movies array
+    return itemsArray; // Return the populated movies array
+    }
+    catch(error){
+        return [];
+    }
 };
 
 const getMovies = async (currentUser) => {
@@ -159,7 +154,7 @@ const deleteFictive = async (currentUser) => {
     await modelCategory.deleteOne({ name: newCategoryName });
 }
 
-const updateMovie = async (id, name, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
+const updateMovie = async (id, name, pathToMovie, category, date, actors, director, thumbnail, length, description, catflixOriginal, minimalAge) => {
     const updatedMovie = await getMovieById(id);
     if (!updatedMovie) {
         return null;
@@ -184,6 +179,15 @@ const updateMovie = async (id, name, category, date, actors, director, thumbnail
         updatedMovie.category = category;
         await categoryObject.save();
     }
+    if (pathToMovie) {
+        const fileName = write64File(id, pathToMovie, "actualMovies", "mp4")
+        if (fileName) {
+            updatedMovie.pathToMovie = fileName;
+        }
+        else {
+            return null;
+        }
+    }
     if (catflixOriginal != null) {
         updatedMovie.catflixOriginal = catflixOriginal;
     }
@@ -197,7 +201,8 @@ const updateMovie = async (id, name, category, date, actors, director, thumbnail
         updatedMovie.director = director;
     }
     if (thumbnail) {
-        updatedMovie.thumbnail = thumbnail;
+        const fileName = write64File(id, thumbnail, "movieThumbnails", "png")
+        updatedMovie.thumbnail = fileName;
     }
     if (length) {
         updatedMovie.length = length;

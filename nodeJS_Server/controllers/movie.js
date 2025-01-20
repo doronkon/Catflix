@@ -6,7 +6,7 @@ const createMovie = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     if (!req.body.name || !req.body.category)
     {
@@ -24,7 +24,7 @@ const getMovies = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const movies = await movieService.getMovies(headersUser._id);
     if(!movies){
@@ -48,9 +48,9 @@ const updateMovie = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
-    const updatedMovie = await movieService.updateMovie(req.params.id, req.body.name, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
+    const updatedMovie = await movieService.updateMovie(req.params.id, req.body.name, req.body.pathToMovie, req.body.category, req.body.date, req.body.actors, req.body.director, req.body.thumbnail, req.body.length, req.body.description, req.body.catflixOriginal, req.body.minimalAge);
     if (!updatedMovie) {
         return res.status(404).json({ errors: ['Movie not found or invalid ID'] });
     }
@@ -61,7 +61,7 @@ const deleteMovie = async (req, res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     const deletedMovie = await movieService.deleteMovie(req.params.id);
     if (!deletedMovie) {
@@ -74,7 +74,7 @@ const putMovie = async(req,res) => {
     const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
     if (!headersUser)
     {
-        return res.status(400).json({ errors: ['Header User doesn\'t exist'] });
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
     }
     if(!req.body.name)
     {

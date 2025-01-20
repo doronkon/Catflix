@@ -62,13 +62,16 @@ const getUserById = async (id) => {
 
 const getUsers = async () => {return await User.find({});};
 
-const updateUser = async(id, name, password, email, image, movie, admin) => {
+const updateUser = async(id, name, displayName, password, email, image, movie,admin) => {
     const user = await getUserById(id);
     if(!user){
         return null;
     }
     if(name){
         user.name = name;
+    }
+    if(displayName){
+        user.displayName = displayName;
     }
     if(password){
         user.password = password;
@@ -77,7 +80,15 @@ const updateUser = async(id, name, password, email, image, movie, admin) => {
         user.email = email;
     }
     if(image){
-        user.image = image;
+        const fileName = write64File(id,image,"userLogos","png")
+        if(fileName)
+        {
+            user.image = fileName;
+        }
+        else
+        {
+            return null;
+        }
     }
     if(movie && !user.moviesWatched.includes(movie)) {
         //making sure the movie is in the data base
@@ -88,7 +99,8 @@ const updateUser = async(id, name, password, email, image, movie, admin) => {
         }
         user.moviesWatched.push(movie);
     }
-    if (admin) {
+    if(admin)
+    {
         user.admin = admin;
     }
     await user.save();

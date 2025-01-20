@@ -1,13 +1,14 @@
 .movie-detail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #141414;
-    color: white;
-    padding: 50px;
-    height: 100vh;
-    overflow: hidden;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #141414;
+  color: white;
+  padding: 50px;
+  min-height: 100vh; /* Changed from height to min-height */
+  overflow: auto; /* Allow scrolling if content exceeds the viewport height */
+}
+
   
   .movie-detail h1 {
     font-size: 3em;

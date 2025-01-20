@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Import useLocation
 import './VideoBanner.css'; // Import external CSS file for styling
 
-const VideoBanner = ({ randomMovie, handleMovieClick, currentUser }) => {
+const VideoBanner = ({ randomMovie, handleMovieClick, currentUser,logout }) => {
   const [movieData, setMovieData] = useState(null); // State to store movie data
 
   const id = randomMovie._id;
@@ -10,7 +10,7 @@ const VideoBanner = ({ randomMovie, handleMovieClick, currentUser }) => {
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/movies/677a61885943c0925fe7d24c`, {
+        const response = await fetch(`http://localhost:8080/api/movies/`+id, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json', // Set the correct content type header
@@ -19,6 +19,10 @@ const VideoBanner = ({ randomMovie, handleMovieClick, currentUser }) => {
         });
 
         if (!response.ok) {
+          if (response.status === 403) {
+            logout();
+            return
+          }
           throw new Error('Failed to fetch movie data');
         }
 
@@ -40,7 +44,7 @@ const VideoBanner = ({ randomMovie, handleMovieClick, currentUser }) => {
   return (
     <div className="video-banner-container">
       <video
-        src={`http://localhost:8080/api/videoPlayer/677a61885943c0925fe7d24c`}
+        src={`http://localhost:8080/api/videoPlayer/`+id}
         autoPlay
         muted
         loop

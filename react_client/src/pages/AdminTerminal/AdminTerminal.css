@@ -1,0 +1,59 @@
+/* Admin Terminal Specific Styles */
+.admin-terminal-container {
+    padding: 2rem 5%;
+    border-bottom: 8px solid #222;
+    color: #fff;
+    text-align: center;
+}
+
+.admin-terminal-container h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.admin-terminal-container .lead {
+    font-size: 1.7rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+/* Links styled as buttons */
+.admin-link {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0.5rem auto;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #e50914;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.admin-link .arrow {
+    margin-left: 0.5rem;
+}
+
+.admin-link:hover {
+    background-color: #b20710;
+    text-decoration: none;
+}
+
+.admin-link .arrow {
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 0.3rem;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+}
+
+.admin-link:hover .arrow {
+    transform: rotate(-45deg) translateX(5px);
+}

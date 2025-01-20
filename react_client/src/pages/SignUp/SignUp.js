@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import UserNamePassword from '../components/UserNamePassword';  // Import the new component
 import SaveImage from '../components/SaveImage';  // Import the new component
 import { useNavigate } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
 
 
 
 const SignUp = () => {
+    const [showPassword, setShowPassword] = useState(false);
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -86,12 +86,20 @@ const SignUp = () => {
                     <div>
                         <label class='text'>Confirm Password:</label>
                         <input className='signup-fields'
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                         />
                     </div>
+                    <button
+          type="button"
+          onClick={() => {
+            setShowPassword((prevShowPassword) => !prevShowPassword);
+          }}
+        >
+          {showPassword ? '🙈' : '👁️'} {/* Replace with an icon library if desired */}
+        </button>
                     <div>
                         <label class='text'>Display Name: </label>
                         <input className='signup-fields'

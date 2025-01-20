@@ -3,12 +3,16 @@ import SaveImage from '../components/SaveImage';  // Import the new component
 import SaveMovie from '../components/SaveMovie';  // Import the new component
 import NavBar from '../NavBar/NavBar';
 import CategoryList from '../components/CategoryList';
+import UploadCategory from '../components/UploadCategory/UploadCategory';
+import { useNavigate } from 'react-router-dom';
+
+
 import './UploadMovie.css'
 
 
 
 
-const UploadMovie = () => {
+const UploadMovie = ({logout}) => {
     const [name, setName] = useState('');
     const [director, setDirector] = useState('');
     const [actors, setActors] = useState('');
@@ -18,6 +22,10 @@ const UploadMovie = () => {
     const [catflixOriginal, setCatflixOriginal] = useState(false);
     const [image, setImage] = useState('');
     const [video, setVideo] = useState('');
+    const navigate = useNavigate(); // Hook for navigation
+
+
+
 
 
     const [loading, setLoading] = useState(false);
@@ -57,6 +65,10 @@ const UploadMovie = () => {
             });
 
             if (!response.ok) {
+                if (response.status === 403) {
+                    logout();
+                    return
+                  }
                 const errorResponse = await response.json(); // Parse error details from response
                 console.log(errorResponse.errors)
                 setError(errorResponse.errors);
@@ -78,7 +90,7 @@ const UploadMovie = () => {
 
     return (
         <div className="upload">
-            <NavBar />
+            <NavBar logout={logout}/>
             <form onSubmit={handleSubmit}>
                 <div className="input-container" id="upload-input-container">
                     <div className="input-group">
@@ -146,8 +158,11 @@ const UploadMovie = () => {
                         </div>
                     </div>
                     <div className="input-group">
-                        <label className="upload-text">Category:</label>
-                        <CategoryList setCategory={setCategory} />
+                        <label className="upload-text">Select from existing Categories:</label>
+                    <CategoryList setCategory ={setCategory} logout={logout}/>
+                        </div>
+                    <div>
+                    <button type='button' onClick={() => navigate('/uploadCategory')}>Add a new Category:</button>
                     </div>
                     <div className="input-group file-group">
                         <div>
@@ -162,6 +177,7 @@ const UploadMovie = () => {
                     <button type="submit">Upload</button>
                 </div>
             </form>
+
             {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}
         </div>
     );

@@ -5,8 +5,8 @@ import Slideshow from '../SlideShow/SlidShow';
 import NavBar from '../NavBar/NavBar';
 import VideoBanner from '../VideoBanner/VideoBanner';
 
-const Movies = ({ currentUser }) => {
-  const [recommendedMovies, setMovies] = useState([]);
+const Movies = ({ currentUser, isAdmin, logout }) => {
+  const [promotedMovies, setPromotedMovies] = useState([]); // Store categories with movies
   const [alreadyWatchedMovies, setAlreadyWatchedMovies] = useState([]);
   const [randomMovieForBanner, setRandomMovieForBanner] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -24,22 +24,26 @@ const Movies = ({ currentUser }) => {
             'Content-Type': 'application/json',
           },
         });
+
         if (!response.ok) {
+          if (response.status === 403) {
+            logout();
+            return
+          }
           console.log(response);
           throw new Error('Network response was not ok');
         }
 
         const data = await response.json();
-        const flattenedMovies = data.promotedMovies.flatMap(
+        setPromotedMovies(data.promotedMovies); // Store all categories and their movies
+        setAlreadyWatchedMovies(data.alreadyWatched);
+
+        // Calculate a random movie from the flattened list of all promoted movies
+        const allMovies = data.promotedMovies.flatMap(
           (category) => category.movies
         );
-        setMovies(flattenedMovies);
-
-        // Calculate the random movie AFTER movies are set
-        const randomNum = Math.floor(Math.random() * flattenedMovies.length);
-        setRandomMovieForBanner(flattenedMovies[randomNum]);
-
-        setAlreadyWatchedMovies(data.alreadyWatched);
+        const randomNum = Math.floor(Math.random() * allMovies.length);
+        setRandomMovieForBanner(allMovies[randomNum]);
       } catch (error) {
         setError(error);
       } finally {
@@ -53,7 +57,7 @@ const Movies = ({ currentUser }) => {
   console.log(localStorage.getItem('Token'))
 
   const handleMovieClick = (movieId, currentUser) => {
-    navigate(`/movie/${movieId}`, { state: { currentUser } }); // Navigate to the movie detail page
+    navigate(`/movie/${movieId}`, { state: { currentUser } });
   };
 
   if (loading) return <p></p>;
@@ -67,29 +71,38 @@ const Movies = ({ currentUser }) => {
       doSearch={() => {}}
       showSearch={false}
       setShowSearch={() => {}}
+      logout={logout} 
+      isAdmin={isAdmin}
     />
     </header>
     <main className="content">
       <section className="movieRow">
-        {/*recommendedMovies && (
+        {/* Display the video banner */}
+        {randomMovieForBanner && (
           <VideoBanner
+            logout={logout}
             randomMovie={randomMovieForBanner}
             handleMovieClick={handleMovieClick}
             currentUser={currentUser}
           />
-        )*/}
-        <h2 className="home-categories-container">
-          We recommend
-        </h2>
-        <div className="movieRow_posters">
-          <Slideshow
-            currentUser={currentUser}
-            movies={recommendedMovies}
-            onMovieClick={handleMovieClick}
-          />
-        </div>
+        )}
       </section>
 
+      {/* Slideshow for each category in promotedMovies */}
+      {promotedMovies.map((category, index) => (
+        <section key={index} className="movieRow">
+          <h2>{category.categoryName}</h2>
+          <div className="movieRow_posters">
+            <Slideshow
+              currentUser={currentUser}
+              movies={category.movies}
+              onMovieClick={handleMovieClick}
+            />
+          </div>
+        </section>
+      ))}
+
+      {/* Slideshow for already watched movies */}
       <section className="movieRow">
         <h2 className="home-categories-container">Watch again!</h2>
         <div className="movieRow_posters">

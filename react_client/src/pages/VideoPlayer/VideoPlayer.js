@@ -3,7 +3,7 @@ import { useParams,useLocation } from 'react-router-dom';
 
 
 
-const VideoPlayer = () => {
+const VideoPlayer = ({logout}) => {
   const { id } = useParams(); // Get the movie ID from the URL
   const [showVideo, setShowVideo] = useState(false); // State to toggle video visibility
   const videoRef = useRef(null); // Reference to the video element
@@ -12,6 +12,8 @@ const VideoPlayer = () => {
 
   const handlePlayClick = async () => {
     setShowVideo(true); // Show the video
+
+    
 
     try {
       const response = await fetch('http://localhost:8080/api/users/'+currentUser, {
@@ -27,11 +29,39 @@ const VideoPlayer = () => {
       });
 
       if (!response.ok) {
+        if (response.status === 403) {
+          logout();
+        }
+
           return;
       }
     }catch (error) {
+
       throw new Error("Server not running!")
   } 
+
+  try {
+    const response = await fetch('http://localhost:8080/api/movies/'+id+'/recommend', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',  // Set the correct content type header
+            'user': localStorage.getItem('Token'), 
+
+          },
+    });
+    if (!response.ok) {
+      if (response.status === 403) {
+        logout();
+        return
+      }
+        
+        return;
+    }
+  }catch (error) {
+    throw new Error("Server not running!")
+} 
+
+
 
 
 

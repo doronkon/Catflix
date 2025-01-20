@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 import '../Search/Search'
 
-function NavBar({ doSearch, showSearch, setShowSearch }) {
+function NavBar({ doSearch, showSearch, setShowSearch, isAdmin, logout}) {
     const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
 
@@ -27,6 +27,7 @@ function NavBar({ doSearch, showSearch, setShowSearch }) {
         <header>
             <div className="bar-container">
                 <nav>
+                <button onClick={logout}>logout</button>
                     <div id="nav-logo">
                         <a href="/">
                             <img src="/assets/img/catflix-logo.png" alt="logo" />
@@ -34,7 +35,7 @@ function NavBar({ doSearch, showSearch, setShowSearch }) {
                     </div>
                     <Link to="/">Home</Link>
                     <Link to="/profile">Profile</Link>
-                    <Link to="/UploadMovie">Upload</Link>
+                    {!isAdmin && <Link to ="/Admin">Admin</Link>}
                     <button className="search-button" onClick={handleSearchToggle}>
                         Search
                     </button>

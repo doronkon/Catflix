@@ -85,10 +85,16 @@ const getRecommendation = async (currUser,currMovie) => {
     }
     const userId = user.userId;
     const movieId = movie.movieId;
+    console.log("USERID: "+userId)
+    console.log("MOVIEID:"+movieId)
+    console.log("1")
     const response =  await sendToServer('GET ' + userId + ' ' + movieId + '\n');
+    console.log("response: "+response)
     if(response[0] == '4'){
+        console.log("2")
         return response;
     }
+    console.log("3")
     return splitString(response);
     }
     catch
