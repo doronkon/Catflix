@@ -5,7 +5,7 @@ import NavBar from '../NavBar/NavBar';
 import CategoryList from '../components/CategoryList';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
-const EditMoviePage = ({ logout }) => {
+const EditMoviePage = ({ logout,isAdmin }) => {
     const { id } = useParams(); // Get the movie ID from the URL
     const location = useLocation();
     const { oldName } = location.state || {};
@@ -26,6 +26,12 @@ const EditMoviePage = ({ logout }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
+        if(catflixOriginal===null)
+            {
+                setError('pick catflix Original');
+                return;
+    
+            }
         setError('');
         setSuccessMessage(''); // Reset success message
         setLoading(true); // Show loading state
@@ -76,7 +82,7 @@ const EditMoviePage = ({ logout }) => {
 
     return (
         <div>
-            <NavBar logout={logout} />
+            <NavBar logout={logout} isAdmin={isAdmin} />
             <h2>You are editing {oldName}</h2>
             <form onSubmit={handleSubmit}>
                 {/* Form fields */}

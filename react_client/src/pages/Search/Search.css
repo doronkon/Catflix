@@ -5,3 +5,20 @@
     background-color: #141414;
     font-family: 'Courier New', Courier, monospace;
 }
+
+
+.search-input {
+    background-color: #333;
+    border: 1px solid #555;
+    color: white;
+    padding: 5px 10px;
+    font-size: medium;
+    margin-left: 10px;
+    border-radius: 4px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.search-input:focus {
+    border-color: #e50914;
+}

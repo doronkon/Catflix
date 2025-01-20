@@ -4,11 +4,11 @@ import NavBar from "../NavBar/NavBar";
 
 
 
-function UploadCategoryPage({logout}) {
+function UploadCategoryPage({logout,isAdmin}) {
 
     return (
         <div >
-            <NavBar logout={logout}/>
+            <NavBar isAdmin={isAdmin} logout={logout}/>
             <UploadCategory logout={logout}/>
         </div>);
 }

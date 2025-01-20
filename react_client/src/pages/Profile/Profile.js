@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SaveImage from '../components/SaveImage';
+import NavBar from '../NavBar/NavBar';
 
-const Profile = ({ currentUser, logout }) => {
+const Profile = ({ currentUser, logout,isAdmin }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [user, setUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false);  // State to toggle form visibility
@@ -99,6 +100,8 @@ const Profile = ({ currentUser, logout }) => {
 
     return (
         <div>
+        <header><NavBar isAdmin={isAdmin} logout={logout}/></header>
+
             <h1>Hi there {user.displayName}!</h1>
             <img
                 src={`http://localhost:8080/media/userLogos/${realProfileImage}`}

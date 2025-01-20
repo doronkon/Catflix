@@ -12,14 +12,14 @@ import './UploadMovie.css'
 
 
 
-const UploadMovie = ({logout}) => {
+const UploadMovie = ({isAdmin,logout}) => {
     const [name, setName] = useState('');
     const [director, setDirector] = useState('');
     const [actors, setActors] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [minimalAge, setMinimalAge] = useState('');
-    const [catflixOriginal, setCatflixOriginal] = useState(false);
+    const [catflixOriginal, setCatflixOriginal] = useState(null);
     const [image, setImage] = useState('');
     const [video, setVideo] = useState('');
     const navigate = useNavigate(); // Hook for navigation
@@ -34,6 +34,12 @@ const UploadMovie = ({logout}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent form default submission
+        if(catflixOriginal===null)
+            {
+                setError('pick catflix original');
+                return;
+    
+            }
         setError('');
         setLoading(true); // Show loading state
         if(!image)
@@ -90,7 +96,7 @@ const UploadMovie = ({logout}) => {
 
     return (
         <div className="upload">
-            <NavBar logout={logout}/>
+            <NavBar isAdmin={isAdmin} logout={logout}/>
             <form onSubmit={handleSubmit}>
                 <div className="input-container" id="upload-input-container">
                     <div className="input-group">

@@ -79,14 +79,14 @@ function App() {
                 <Routes>
                     <Route path="/" element={ currentUser ? <HomeScreen logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin}/> : <SignUp />} />
                     <Route path="/movie/:id" element={currentUser ?<MovieDetail logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin} /> : <Error404/>}  />
-                    <Route path="/profile" element={currentUser ?<Profile logout = {logout} currentUser = {currentUser}/> : <Error404/>}  />
+                    <Route path="/profile" element={currentUser ?<Profile isAdmin={isAdmin} logout = {logout} currentUser = {currentUser}/> : <Error404/>}  />
                     <Route path='/login' element={currentUser ? <Error404/> : <Login setIsAdmin = {setIsAdmin} setCurrentUser = {setCurrentUser} />} />
-                    <Route path='/uploadMovie' element={ !isAdmin ?  <UploadMovie logout = {logout}/>:<Error404/>} />
-                    <Route path='/uploadCategory' element={ !isAdmin ?  <UploadCategoryPage logout = {logout}/>:<Error404/>} />
-                    <Route path='/deleteCategory' element={ !isAdmin ?  <DeleteCategory logout = {logout}/>:<Error404/>} />
-                    <Route path='/Admin' element={!isAdmin ? <AdminTerminal logout={logout}/>:<Error404/>} />
-                    <Route path='/UpdateCategory' element={!isAdmin ?<UpdateCategory logout={logout}/>:<Error404/>} />
-                    <Route path='/search' element={ currentUser ? <Search currentUser = {currentUser} logout = {logout} /> : <SignUp />}/>
+                    <Route path='/uploadMovie' element={ !isAdmin ?  <UploadMovie isAdmin={isAdmin} logout = {logout}/>:<Error404/>} />
+                    <Route path='/uploadCategory' element={ !isAdmin ?  <UploadCategoryPage isAdmin={isAdmin} logout = {logout}/>:<Error404/>} />
+                    <Route path='/deleteCategory' element={ !isAdmin ?  <DeleteCategory isAdmin={isAdmin} logout = {logout}/>:<Error404/>} />
+                    <Route path='/Admin' element={!isAdmin ? <AdminTerminal isAdmin={isAdmin} logout={logout}/>:<Error404/>} />
+                    <Route path='/UpdateCategory' element={!isAdmin ?<UpdateCategory isAdmin={isAdmin} logout={logout}/>:<Error404/>} />
+                    <Route path='/search' element={ currentUser ? <Search isAdmin={isAdmin} currentUser = {currentUser} logout = {logout} /> : <SignUp />}/>
                     <Route path="/editMovie/:id" element={currentUser ?<EditMoviePage logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin} /> : <Error404/>}  />
 
                 </Routes>

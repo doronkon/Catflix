@@ -5,16 +5,15 @@ import MovieListResults from '../MovieListResults/MovieListResults';
 import './Search.css';
 import SlideshowSearch from '../SlideShowSearch/SlideShowSearch';
 
-function Search({ currentUser, logout }) {
+function Search({ currentUser, logout,isAdmin }) {
     const [movieList, setMovieList] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [errorMessage, setError] = useState('');
-    const [showSearch, setShowSearch] = useState(true); // Ensure the search box is open on load
+    const [searchQuery, setSearchQuery] = useState('');
+
     const navigate = useNavigate();
 
     const doSearch = async (q) => {
+        setSearchQuery(q)
         try {
-            setLoading(true);
             const response = await fetch('http://localhost:8080/api/movies/search/' + q, {
                 method: 'GET',
                 headers: {
@@ -34,9 +33,7 @@ function Search({ currentUser, logout }) {
             const data = await response.json();
             setMovieList(data.concat(data.concat(data)));
         } catch (error) {
-            setError(error.message);
-        } finally {
-            setLoading(false);
+            console.log(error.message);
         }
     };
     
@@ -45,16 +42,22 @@ function Search({ currentUser, logout }) {
         navigate(`/movie/${movieId}`, { state: { currentUser } });
     };
 
-    useEffect(() => {
-        setShowSearch(true); // Ensure the search box is open on component load
-    }, []);
 
     return (
         <div className="home-container-search">
             <div className="row bg-white justify-content-center">
                 <div className="moviesContainer">
                     <header>
-                        <NavBar doSearch={doSearch} showSearch={showSearch} setShowSearch={setShowSearch} logout={logout} />
+                        <NavBar isAdmin={isAdmin} currentUser = {currentUser} logout={logout} />
+                        
+                        <input
+                            type="text"
+                            className="search-input"
+                            placeholder="Search..."
+                            value={searchQuery}
+                            onChange={(e) => doSearch(e.target.value)}
+                        />
+                
                     </header>
                         <div class='slideshow-search'>
                             <SlideshowSearch
