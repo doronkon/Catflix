@@ -76,7 +76,7 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
     />
     </header>
     <main className="content">
-      <section className="movieRow">
+      <section className="movieRow" id='video-banner'>
         {/* Display the video banner */}
         {randomMovieForBanner && (
           <VideoBanner

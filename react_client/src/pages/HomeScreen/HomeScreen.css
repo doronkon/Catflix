@@ -43,3 +43,7 @@ footer {
     background-color: #141414;
     color: white;
 }
+
+#video-banner {
+    z-index: 9;
+}

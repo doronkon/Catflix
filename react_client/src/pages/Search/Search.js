@@ -5,7 +5,7 @@ import MovieListResults from '../MovieListResults/MovieListResults';
 import './Search.css';
 import SlideshowSearch from '../SlideShowSearch/SlideShowSearch';
 
-function Search({ currentUser }) {
+function Search({ currentUser, logout }) {
     const [movieList, setMovieList] = useState([]);
     const [loading, setLoading] = useState(false);
     const [errorMessage, setError] = useState('');
@@ -22,8 +22,12 @@ function Search({ currentUser }) {
                     'Content-Type': 'application/json',
                 },
             });
-
+            
             if (!response.ok) {
+                if (response.status === 403) {
+                    logout();
+                    return
+                  }
                 throw new Error('Network response was not ok');
             }
 
@@ -35,6 +39,7 @@ function Search({ currentUser }) {
             setLoading(false);
         }
     };
+    
 
     const handleMovieClick = (movieId, currentUser) => {
         navigate(`/movie/${movieId}`, { state: { currentUser } });
@@ -49,7 +54,7 @@ function Search({ currentUser }) {
             <div className="row bg-white justify-content-center">
                 <div className="moviesContainer">
                     <header>
-                        <NavBar doSearch={doSearch} showSearch={showSearch} setShowSearch={setShowSearch} />
+                        <NavBar doSearch={doSearch} showSearch={showSearch} setShowSearch={setShowSearch} logout={logout} />
                     </header>
                         <div class='slideshow-search'>
                             <SlideshowSearch
