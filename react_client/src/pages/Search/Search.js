@@ -13,6 +13,11 @@ function Search({ currentUser, logout,isAdmin }) {
 
     const doSearch = async (q) => {
         setSearchQuery(q)
+        if(q==="")
+        {
+            setMovieList([])
+            return
+        }
         try {
             const response = await fetch('http://localhost:8080/api/movies/search/' + q, {
                 method: 'GET',

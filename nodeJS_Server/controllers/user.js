@@ -64,5 +64,13 @@ const deleteUser = async (req, res) => {
     res.json({ message: 'User deleted successfully', user: deletedUser });
 };
 
+const index = async(req, res) => {
+    const allUsers = await userService.index();
+    if(!allUsers){
+        return res.status(404).json({ errors: ['server failed'] });
+    }
+    res.json(allUsers);
+};
 
-module.exports = { createUser, getUsers, getUser, updateUser, deleteUser }
+
+module.exports = { createUser, getUsers, getUser, updateUser, deleteUser ,index}

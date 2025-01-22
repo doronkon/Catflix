@@ -26,12 +26,6 @@ const EditMoviePage = ({ logout,isAdmin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
-        if(catflixOriginal===null)
-            {
-                setError('pick catflix Original');
-                return;
-    
-            }
         setError('');
         setSuccessMessage(''); // Reset success message
         setLoading(true); // Show loading state

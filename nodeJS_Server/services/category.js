@@ -62,6 +62,9 @@ const deleteCategory = async (id) => {
     await deletedCategory.deleteOne();
     return deletedCategory;
 };
+const index = async() =>{
+    return await Category.find({});
+};
 
 
-module.exports = { createCategory, getCategories, getCategoryById, updateCategory, deleteCategory };
+module.exports = { createCategory, getCategories, getCategoryById, updateCategory, deleteCategory,index };

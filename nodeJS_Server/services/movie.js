@@ -310,5 +310,8 @@ const putMovie = async (id, name, category, date, actors, director, thumbnail, l
     }
     return await movie.save();
 }
+const index = async() =>{
+    return await Movie.find({});
+};
 
-module.exports = { createMovie, getMovieById, updateMovie, getMovies, deleteMovie, putMovie, deleteFictive };
+module.exports = { createMovie, getMovieById, updateMovie, getMovies, deleteMovie, putMovie, deleteFictive,index };
