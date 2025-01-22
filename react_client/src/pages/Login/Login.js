@@ -63,6 +63,7 @@ const Login = ({setIsAdmin,setCurrentUser}) => {
 
     return (
         <div className="login-container">
+            <title>Catflix</title>
             <div className="background"></div>
             <nav>
                 <div id="login-logo">

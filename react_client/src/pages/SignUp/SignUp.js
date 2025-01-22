@@ -65,6 +65,12 @@ const SignUp = () => {
     if (loading) return <p>Loading...</p>;
 
     return (
+        <div>
+            <head>
+                <link rel="icon" href="/assets/img/catflix-logo.png" type="image/x-icon" />
+                <title>Catflix</title>
+            </head>
+
     <div className="signup-container">
         <div class='background'></div>
          <nav>
@@ -82,31 +88,34 @@ const SignUp = () => {
                         password={password}
                         setUser={setUser}
                         setPassword={setPassword}
-                    />
-                    <div>
-                        <label class='text'>Confirm Password:</label>
-                        <input className='signup-fields'
+                        />
+                    <label class='text'>Confirm Password:</label>
+                    <div className="password-container">
+                        <input
+                            className="signup-fields"
                             type={showPassword ? 'text' : 'password'}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
-                        />
-                    </div>
-                    <button
-          type="button"
-          onClick={() => {
-            setShowPassword((prevShowPassword) => !prevShowPassword);
-          }}
-        >
-          {showPassword ? '🙈' : '👁️'} {/* Replace with an icon library if desired */}
-        </button>
+                            />
+                        <button
+                            type="button"
+                            className="show-password"
+                            id='show-confirm-password'
+                            onClick={() => {
+                                setShowPassword((prevShowPassword) => !prevShowPassword);
+                            }}
+                            >
+                            {showPassword ? '🙈' : '👁️'}
+                        </button>
+                        </div>
                     <div>
                         <label class='text'>Display Name: </label>
                         <input className='signup-fields'
                             value={dispalyName}
                             onChange={(e) => setDisplayName(e.target.value)}
                             required
-                        />
+                            />
                     </div>
                     <div>
                         <label class='text'>Email:</label>
@@ -115,7 +124,7 @@ const SignUp = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                        />
+                            />
                     </div>
                     <div>
                         <label className='signup-fields' class='text'>Image: </label>
@@ -134,6 +143,7 @@ const SignUp = () => {
             </div>
         </div>
     </div>
+                             </div>
     );
 };
 

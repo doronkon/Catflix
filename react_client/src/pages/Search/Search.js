@@ -51,6 +51,7 @@ function Search({ currentUser, logout }) {
 
     return (
         <div className="home-container-search">
+            <title>Catflix</title>
             <div className="row bg-white justify-content-center">
                 <div className="moviesContainer">
                     <header>

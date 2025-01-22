@@ -1,4 +1,4 @@
-.upload-category-container {
+.update-category-container {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centers the form horizontally */
@@ -8,7 +8,7 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
-.upload-category-input-container {
+.update-category-input-container {
     max-width: 500px; /* Reduced from 600px */
     width: 100%;
     padding: 1rem; /* Reduced padding */
@@ -38,7 +38,7 @@
     margin-right: 40px;
 }
 
-#upload-category-button {
+#update-category-button{
     padding: 8px 12px;
     font-size: 0.9rem;
     background-color: #e50914;
@@ -49,6 +49,6 @@
     transition: background-color 0.3s;
 }
 
-#upload-category-button:hover {
+#update-category-button:hover{
     background-color: #941b21;
 }

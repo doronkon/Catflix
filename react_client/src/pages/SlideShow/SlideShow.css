@@ -6,6 +6,7 @@
   height: 300px; /* Set a fixed height for the slideshow */
   overflow: hidden;
   background-color: black; /* Optional: background color for the slideshow */
+  opacity: 0.3;
 }
 
 .slideshow img {

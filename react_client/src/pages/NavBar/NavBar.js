@@ -5,6 +5,7 @@ import '../Search/Search'
 
 function NavBar({ doSearch, showSearch, setShowSearch, isAdmin, logout}) {
     const [searchQuery, setSearchQuery] = useState('');
+    const [showDropdown, setShowDropdown] = useState(false);
     const navigate = useNavigate();
 
     const handleSearchToggle = () => {
@@ -17,6 +18,10 @@ function NavBar({ doSearch, showSearch, setShowSearch, isAdmin, logout}) {
         }
     };
 
+    const toggleDropdown = () => {
+        setShowDropdown((prevState) => !prevState);
+      };
+
     const handleSearchInput = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
@@ -27,7 +32,6 @@ function NavBar({ doSearch, showSearch, setShowSearch, isAdmin, logout}) {
         <header>
             <div className="bar-container">
                 <nav>
-                <button onClick={logout}>logout</button>
                     <div id="nav-logo">
                         <a href="/">
                             <img src="/assets/img/catflix-logo.png" alt="logo" />
@@ -35,8 +39,22 @@ function NavBar({ doSearch, showSearch, setShowSearch, isAdmin, logout}) {
                     </div>
                     <Link to="/">Home</Link>
                     <Link to="/profile">Profile</Link>
-                    {!isAdmin && <Link to ="/Admin">Admin</Link>}
-                    <button className="search-button" onClick={handleSearchToggle}>
+                    {(
+                        <div className="admin-dropdown">
+                            <button id='admin-button' onClick={toggleDropdown} className="dropdown-button">
+                            Admin
+                            </button>
+                            {showDropdown && (
+                            <div className="dropdown-menu">
+                                <Link to="/UploadMovie" class='admin-text'>Upload Movie</Link>
+                                <Link to="/UploadCategory" class='admin-text'>Upload Category</Link>
+                                <Link to="/UpdateCategory"class='admin-text'>Update Category</Link>
+                                <Link to="/DeleteCategory" class='admin-text'>Delete Category</Link>
+                            </div>
+                            )}
+                        </div>
+                        )}
+                    <button id='search-button' class='buttons-container' onClick={handleSearchToggle}>
                         Search
                     </button>
                     {showSearch && (
@@ -48,6 +66,7 @@ function NavBar({ doSearch, showSearch, setShowSearch, isAdmin, logout}) {
                             onChange={handleSearchInput}
                         />
                     )}
+                    <button onClick={logout} id='logout-button' class='buttons-container'>logout</button>
                 </nav>
             </div>
         </header>

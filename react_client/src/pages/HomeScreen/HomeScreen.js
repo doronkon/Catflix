@@ -65,6 +65,7 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
 
   return (
 <div className="home-container">
+<title>Catflix</title>
   <div className="moviesContainer">
     <header>
     <NavBar

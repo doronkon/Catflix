@@ -18,7 +18,7 @@ const UserNamePassword = ({ user, password, setUser, setPassword }) => {
           required
         />
       </div>
-      <div>
+      <div className="password-container">
         <label class='text'>Password:</label>
         <input
           type={showPassword ? 'text' : 'password'}
@@ -27,7 +27,7 @@ const UserNamePassword = ({ user, password, setUser, setPassword }) => {
           required
         />
                 <button
-          type="button"
+          type="button" class="show-password" id='reveal-password'
           onClick={() => {
             setShowPassword((prevShowPassword) => !prevShowPassword);
           }}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CategoryList from '../components/CategoryList';
 import NavBar from '../NavBar/NavBar';
+import './UpdateCategory.css'
 
 const UpdateCategory = ({logout}) => {
     const [name, setName] = useState('');
@@ -62,41 +63,45 @@ const UpdateCategory = ({logout}) => {
 
     return (
         <div>
-            <NavBar logout={logout} />
+
             <form onSubmit={handleSubmit}>
-                <div>
-                <CategoryList setCategory ={setCategory}/>
-                    <label>name:</label>
+                <NavBar logout={logout} />
+                <div className="update-category-container">
+                <div className="update-category-input-container">
+                <CategoryList setCategory={setCategory} />
+                    <label>Name:</label>
+                    <br></br>
                     <input
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        placeholder='Name'
                         required
-                    />
+                        />
+                    <div className="input-group radio-group">
+                        <div className="radio-options">
+                            <label>Promoted:</label>
+                            <input
+                                type="radio"
+                                name="Promoted"
+                                value="true"
+                                onChange={() => setPromoted(true)}
+                                />
+                            <label className="bool">True</label>
+                            <input
+                                type="radio"
+                                name="Promoted"
+                                value="false"
+                                onChange={() => setPromoted(false)}
+                                />
+                            <label className="bool">False</label>
+                        </div>
+                    </div>
+                    <button id="update-category-button" type="submit">Update Category</button>
                 </div>
-                <div>
-                    <label>Promoted:</label>
-                    <input
-                    type="radio"
-                    name="Promoted"
-                    value="true"
-                    onChange={() => setPromoted(true)}
-                    />
-                    <label>True</label>
-                    <input
-                    type="radio"
-                    name="Promoted"
-                    value="false"
-                    onChange={() => setPromoted(false)}
-                    />
-                    <label>False</label>
-                </div>
-
-                <button type="submit">Update Category</button>
+        </div>
             </form>
             {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}
-
-        </div>
-
+                                </div>
     );
 };
 

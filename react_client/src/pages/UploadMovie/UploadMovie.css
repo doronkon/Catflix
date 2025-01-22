@@ -71,17 +71,17 @@ select {
     gap: 0.5rem; /* Reduced gap */
 }
 
-button {
-    padding: 8px 12px; /* Reduced button padding */
-    font-size: 0.9rem; /* Slightly smaller button text */
+/* button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
     background-color: #e50914;
     color: white;
     border: none;
-    border-radius: 8px; /* Smaller radius */
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #f40612;
-}
+} */

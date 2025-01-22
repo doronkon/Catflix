@@ -90,6 +90,7 @@ const UploadMovie = ({logout}) => {
 
     return (
         <div className="upload">
+            <title>Catflix</title>
             <NavBar logout={logout}/>
             <form onSubmit={handleSubmit}>
                 <div className="input-container" id="upload-input-container">
@@ -158,7 +159,7 @@ const UploadMovie = ({logout}) => {
                         </div>
                     </div>
                     <div className="input-group">
-                        <label className="upload-text">Select from existing Categories:</label>
+                        <label className="upload-text"></label>
                     <CategoryList setCategory ={setCategory} logout={logout}/>
                         </div>
                     <div>
