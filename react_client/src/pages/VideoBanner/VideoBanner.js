@@ -55,10 +55,11 @@ const VideoBanner = ({ randomMovie, handleMovieClick, currentUser,logout }) => {
         <h2 className="movie-title">{movieData.name}</h2>
         <h3 className="movie-description">{movieData.description}</h3>
         <button
-          onClick={() => handleMovieClick(movieData._id, currentUser)} // Pass currentUser from location.state
+          onClick={() => handleMovieClick(movieData._id, currentUser)}
           className="play-button"
         >
           Play Now
+          <img src="/assets/img/play-button-arrowhead.png" alt="Play Arrow" />
         </button>
       </div>
     </div>

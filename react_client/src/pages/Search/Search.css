@@ -1,7 +1,22 @@
-.home-container-search {
+#screen-page {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #141414;
+    background-image: url('../../../public/assets/img/catflix-main-background.webp');
+    background-size: cover;
+    background-position: center;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.home-container-search {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: rgba(14, 14, 14, 0.6);
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+#search-footer {
+    margin-top: 86vh;
 }

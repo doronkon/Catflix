@@ -1,14 +1,6 @@
-.slideshow-search {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    gap: 20px;
-    padding: 20px;
-    min-height: 100vh;
-    margin-left: 40px;
-    width: 95vw; 
-    background-color: #141414;
-}
+/* .slideshow-search {
+  padding: 10px;
+} */
 
 .slideshow-search img {
     width: 100%;

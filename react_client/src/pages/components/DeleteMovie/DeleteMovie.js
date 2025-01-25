@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams,useNavigate } from 'react-router-dom';
+import './DeleteMovie.css'
 
 const DeleteMovie = ({logout}) => {
     const { id } = useParams(); // Get the movie ID from the URL
@@ -47,7 +48,7 @@ const DeleteMovie = ({logout}) => {
         <div>
 
             <form onSubmit={handleSubmit}>
-               <button type="submit">Delete Movie</button>
+               <button id='delete-button' type="submit">Delete Movie</button>
             </form>
             {errorMessage && <p style={{ color: 'red' }}>Error: {errorMessage}</p>}
 

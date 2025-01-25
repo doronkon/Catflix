@@ -50,6 +50,7 @@ function Search({ currentUser, logout }) {
     }, []);
 
     return (
+    <div id='screen-page'>
         <div className="home-container-search">
             <title>Catflix</title>
             <div className="row bg-white justify-content-center">
@@ -65,11 +66,14 @@ function Search({ currentUser, logout }) {
                                 />
                         </div>
                     </div>
-                        <footer>
-                            <p>&copy; 2025 Catflix, Inc. All Rights Reserved</p>
-                        </footer>
+                        <div id='search-footer'>
+                            <footer>
+                                <p>&copy; 2025 Catflix, Inc. All Rights Reserved</p>
+                            </footer>
+                        </div>
                 </div>
             </div>
+        </div>
     );
 }
 

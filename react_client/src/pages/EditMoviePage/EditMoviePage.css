@@ -70,18 +70,3 @@ select {
     justify-content: space-between;
     gap: 0.5rem; /* Reduced gap */
 }
-
-/* button {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    background-color: #e50914;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #f40612;
-} */

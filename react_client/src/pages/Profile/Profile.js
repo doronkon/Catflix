@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SaveImage from '../components/SaveImage';
+import './Profile.css';
+import NavBar from '../NavBar/NavBar';
 
 const Profile = ({ currentUser, logout }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [user, setUser] = useState(null);
-    const [isEditing, setIsEditing] = useState(false);  // State to toggle form visibility
+    const [isEditing, setIsEditing] = useState(false); // State to toggle input visibility
     const [displayName, setDisplayName] = useState('');
-    const [password, setPassword] = useState('');  // State for password
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [image, setImage] = useState('');
 
-    const navigate = useNavigate(); // Initialize navigate hook
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (currentUser) {
@@ -28,7 +30,7 @@ const Profile = ({ currentUser, logout }) => {
                     if (!response.ok) {
                         if (response.status === 403) {
                             logout();
-                            return
+                            return;
                         }
                         throw new Error('Failed to fetch user details');
                     }
@@ -37,7 +39,6 @@ const Profile = ({ currentUser, logout }) => {
                     setUser(data);
                     setDisplayName(data.displayName);
                 } catch (error) {
-                    console.error(error);
                     setError(error.message || 'An error occurred while fetching user details.');
                 }
             };
@@ -46,7 +47,6 @@ const Profile = ({ currentUser, logout }) => {
         }
     }, [currentUser]);
 
-    // Function to update user details
     const updateUserDetails = async () => {
         try {
             const response = await fetch(`http://localhost:8080/api/users/${currentUser}`, {
@@ -65,21 +65,20 @@ const Profile = ({ currentUser, logout }) => {
             if (!response.ok) {
                 if (response.status === 403) {
                     logout();
-                    return
+                    return;
                 }
                 throw new Error('Failed to update user details');
             }
 
             const data = await response.json();
-            setUser(data); // Update state with the new user data
-            setDisplayName(data.displayName); // Update displayName state
-            setPassword(''); // Clear the password field after update
-            setIsEditing(false); // Close the form after submitting
+            setUser(data);
+            setDisplayName(data.displayName);
+            setPassword('');
+            setIsEditing(false);
             setError('');
-            navigate('/'); // Redirect to the home screen
+            navigate('/');
         } catch (error) {
-            console.error(error);
-            setError('Password should have: one Upper case letter, one lower case letter, one digit and a special char - @$!%*?& and length 8 or more ');
+            setError('Password should have: one uppercase letter, one lowercase letter, one digit, one special character @$!%*?&, and a length of 8 or more.');
         }
     };
 
@@ -88,9 +87,7 @@ const Profile = ({ currentUser, logout }) => {
         updateUserDetails();
     };
 
-    if (!user) {
-        return <div>Loading...</div>;
-    }
+    if (!user) return <div>Loading...</div>;
 
     let realProfileImage = user.image;
     if (realProfileImage?.[0] === '.') {
@@ -99,62 +96,63 @@ const Profile = ({ currentUser, logout }) => {
 
     return (
         <div>
-            <h1>Hi there {user.displayName}!</h1>
-            <img
-                src={`http://localhost:8080/media/userLogos/${realProfileImage}`}
-                alt={user.image}
-                className="profile-image"
-                style={{ width: '150px', height: '150px' }} // Example size
-            />
-
-            {/* Button to toggle the form */}
-            <button onClick={() => setIsEditing(!isEditing)}>
-                {isEditing ? 'Cancel' : 'Edit Profile'}
-            </button>
-
-            {/* Form to update user details */}
-            {isEditing && (
-                <form onSubmit={handleFormSubmit}>
-                    <div>
-                        <label className="signup-fields" >Display Name: </label>
-                        <input
-                            type="text"
-                            id="displayName"
-                            value={displayName}
-                            onChange={(e) => setDisplayName(e.target.value)}
-                            placeholder="Enter your name"
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label className="signup-fields">Password: </label>
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter your password"
-                        />
-                        <button
-                            type="button"
-                            onClick={() => {
-                                setShowPassword((prevShowPassword) => !prevShowPassword);
-                            }}
-                        >
-                            {showPassword ? '🙈' : '👁️'} {/* Replace with an icon library if desired */}
+            <NavBar logout={logout} />
+            <div className="profile-container">
+                <div className="profile-background" />
+                <h1 className="profile-welcome">Hey {user.displayName}!</h1>
+                <img
+                    src={`http://localhost:8080/media/userLogos/${realProfileImage}`}
+                    alt={user.image}
+                    className="profile-image"
+                />
+                <button id='cancel-button'
+                    className="profile-edit-button"
+                    onClick={() => setIsEditing(!isEditing)}
+                >
+                    {isEditing ? 'Cancel' : 'Edit Profile'}
+                </button>
+                {isEditing && (
+                    <form className="profile-form" onSubmit={handleFormSubmit}>
+                        <div className="input-group">
+                            <label htmlFor="displayName">Display Name:</label>
+                            <input
+                                type="text"
+                                id="displayName"
+                                value={displayName}
+                                onChange={(e) => setDisplayName(e.target.value)}
+                                placeholder="Enter your name"
+                                required
+                            />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="password">Password:</label>
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                id="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Enter your password"
+                            />
+                            <button
+                                type="button"
+                                className="show-password"
+                                id='show-password-profile'
+                                onClick={() => setShowPassword((prev) => !prev)}
+                            >
+                                {showPassword ? '🙈' : '👁️'}
+                            </button>
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="image">Profile Image:</label>
+                            <SaveImage setImage={setImage} />
+                        </div>
+                        <button type="submit" className="profile-save-button">
+                            Save Changes
                         </button>
-                    </div>
-
-                    <div>
-                        <label className="signup-fields">Image: </label>
-                        {<SaveImage setImage={setImage} />}
-                    </div>
-                    <button type="submit">Save Changes</button>
-                </form>
-            )}
-
-            {/* Display error message if any */}
-            {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+                    </form>
+                )}
+                {error && <p className="profile-error">{error}</p>}
+            </div>
         </div>
     );
 };

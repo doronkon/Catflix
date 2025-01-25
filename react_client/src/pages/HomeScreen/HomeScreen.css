@@ -2,14 +2,18 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #141414;
+    background-image: url('../../../public/assets/img/catflix-main-background.webp'); /* URL of the image */
+    background-size: cover; /* Ensures the image covers the whole screen */
+    background-position: center; /* Centers the image */
     font-family: 'Courier New', Courier, monospace;
 }
-
 .moviesContainer {
     display: flex;
     flex-direction: column;
     flex: 1;
+    background-color: rgba(14, 14, 14, 0.6);
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
 }
 
 header {
@@ -42,8 +46,19 @@ footer {
     justify-content: center;
     background-color: #141414;
     color: white;
+    margin-top: 20px;
 }
 
 #video-banner {
+    margin-top: -10px;
     z-index: 9;
+}
+
+#categories {
+    font-family: 'catfont';
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 20px;
+    margin-left: 40px;
 }

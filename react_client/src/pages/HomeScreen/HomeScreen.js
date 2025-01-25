@@ -92,7 +92,7 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
       {/* Slideshow for each category in promotedMovies */}
       {promotedMovies.map((category, index) => (
         <section key={index} className="movieRow">
-          <h2>{category.categoryName}</h2>
+          <h2 id='categories'>{category.categoryName}</h2>
           <div className="movieRow_posters">
             <Slideshow
               currentUser={currentUser}
@@ -105,7 +105,7 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
 
       {/* Slideshow for already watched movies */}
       <section className="movieRow">
-        <h2 className="home-categories-container">Watch again!</h2>
+        <h2 id='categories' className="home-categories-container">Watch again!</h2>
         <div className="movieRow_posters">
           <Slideshow
             currentUser={currentUser}
