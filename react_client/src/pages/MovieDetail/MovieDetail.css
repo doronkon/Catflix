@@ -9,6 +9,11 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+body.light .movie-detail {
+  background-color: rgb(223, 213, 213);
+  color: #e7a1a1;
+}
+
   
   .movie-detail h1 {
     font-size: 3em;

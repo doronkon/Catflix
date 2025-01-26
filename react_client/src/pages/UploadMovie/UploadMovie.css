@@ -6,6 +6,11 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+body.light .upload {
+    background-color: rgb(223, 213, 213);
+    color: #e7a1a1;
+  }
+
 #upload-input-container {
     max-width: 500px; /* Reduced from 600px */
     width: 100%;
@@ -71,17 +76,18 @@ select {
     gap: 0.5rem; /* Reduced gap */
 }
 
-/* button {
+ .upload-buttons {
     padding: 8px 12px;
     font-size: 0.9rem;
     background-color: #e50914;
     color: white;
     border: none;
     border-radius: 8px;
+    margin: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #f40612;
-} */
+.upload-buttons:hover {
+    background-color: #9c0810;
+}

@@ -163,7 +163,7 @@ const UploadMovie = ({logout}) => {
                     <CategoryList setCategory ={setCategory} logout={logout}/>
                         </div>
                     <div>
-                    <button type='button' onClick={() => navigate('/uploadCategory')}>Add a new Category:</button>
+                    <button class='upload-buttons' type='button' onClick={() => navigate('/uploadCategory')}>Add a new Category:</button>
                     </div>
                     <div className="input-group file-group">
                         <div>
@@ -175,7 +175,7 @@ const UploadMovie = ({logout}) => {
                             <SaveImage setImage={setImage} />
                         </div>
                     </div>
-                    <button type="submit">Upload</button>
+                    <button class='upload-buttons' type="submit">Upload</button>
                 </div>
             </form>
 

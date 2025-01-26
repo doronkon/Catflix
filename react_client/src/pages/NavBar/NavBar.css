@@ -1,6 +1,4 @@
- 
- 
- header {
+header {
   font-family: 'Courier New', Courier, monospace;
   position: fixed;
   top: 0;
@@ -9,59 +7,78 @@
   margin: 0; /* Reset any unwanted margins */
   padding: 0; /* Reset any unwanted padding */
   z-index: 100; /* Ensures the header stays above other elements */
-} 
- 
- header nav {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: 20px;
-    padding: 10px;
-    background-color: #060606;
-  }
-  
-  /* Navigation link styles */
-  header nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: large;
-    transition: color 0.3s;
-  }
+}
 
-  
-  header nav a:hover {
-    color: #e50914; /* Netflix red */
-  }
+/* Dark mode styles for the header */
+.dark header nav {
+  background-color: #080808;
+}
 
-  #nav-logo img {
-    position: relative;
-    height: 60px;
-    margin: 0 auto;
-    opacity: 0.85;
-  }
+/* Light mode styles for the header */
+.light header nav {
+  background-color: #ffffff;
+}
 
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+/* Navigation link styles */
+header nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: large;
+  transition: color 0.3s;
+}
+
+/* Light mode link styles */
+.light header nav a {
+  color: #060606;
+}
+
+header nav a:hover {
+  color: #e50914; /* Netflix red */
+}
+
+#nav-logo img {
+  position: relative;
+  height: 60px;
+  margin: 0 auto;
+  opacity: 0.85;
+}
 
 .search-input {
-    background-color: #333;
-    border: 1px solid #555;
-    color: white;
-    padding: 5px 10px;
-    font-size: medium;
-    margin-left: 10px;
-    border-radius: 4px;
-    outline: none;
-    transition: border 0.3s;
+  background-color: #333;
+  border: 1px solid #555;
+  color: white;
+  padding: 5px 10px;
+  font-size: medium;
+  margin-left: 10px;
+  border-radius: 4px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+/* Light mode search input styles */
+.light .search-input {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  color: #060606;
 }
 
 .search-input:focus {
-    border-color: #e50914;
+  border-color: #e50914;
 }
 
 #logout-button {
-  position: absolute; /* Absolute positioning */       
-  right: 20px;       
-} 
-
+  position: absolute; /* Absolute positioning */
+  right: 20px;
+}
 
 #logout-button, #search-button {
   font-family: 'catfont';
@@ -113,6 +130,11 @@
   border-radius: 5px;
 }
 
+/* Light mode dropdown menu styles */
+.light .dropdown-menu {
+  background-color: #f1f1f1;
+}
+
 .dropdown-menu a {
   display: block;
   padding: 10px 15px;
@@ -120,6 +142,11 @@
   text-decoration: none;
   font-size: 14px;
   transition: background-color 0.3s;
+}
+
+/* Light mode dropdown link styles */
+.light .dropdown-menu a {
+  color: #060606;
 }
 
 .dropdown-menu a:hover {
@@ -133,7 +160,12 @@
   text-decoration: none;
   font-size: large;
   transition: color 0.3s;
-  font-family: 'Courier New', Courier, monospace
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Light mode admin button styles */
+.light #admin-button {
+  color: #060606;
 }
 
 #admin-button:hover {
@@ -142,4 +174,50 @@
 
 .admin-text:hover {
   color: #060606;
+}
+
+.toggle-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark mode button styles */
+.dark .toggle-button {
+  background-color: white;
+  color: black;
+}
+
+/* Light mode button styles */
+.light .toggle-button {
+  background-color: #080808;
+  color: white;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+  background-color: rgba(14, 14, 14, 0);
+}
+
+/* NavBar specific styling */
+header {
+  background-color: inherit;
+  transition: background-color 0.3s ease;
+}
+
+header.dark {
+  background-color: #333;
+}
+
+header.light {
+  background-color: #f8f8f8;
 }

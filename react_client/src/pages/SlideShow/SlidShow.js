@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './SlideShow.css';
 import MovieItem from '../MovieItem/MovieItem'; // Import your MovieItem component
 
-function Slideshow({ currentUser,movies, moviesPerSlide = 7, onMovieClick }) {
+function Slideshow({ currentUser, movies, moviesPerSlide = 5, onMovieClick }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Group movies into slides based on `moviesPerSlide`
@@ -26,19 +26,26 @@ function Slideshow({ currentUser,movies, moviesPerSlide = 7, onMovieClick }) {
       <button className="prev" onClick={prevSlide}>
         &#8249;
       </button>
-      <div className="slides" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-        {slides.map((slide, index) => (
-          <div className="slide" key={index}>
-            {slide.map((movie, idx) => (
-              <MovieItem
-              currentUser = {currentUser}
-                key={idx}
-                {...movie}
-                onClick={onMovieClick}
-              />
-            ))}
-          </div>
-        ))}
+      <div className="slides-container">
+        <div
+          className="slides"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`, // Moves to the correct slide
+          }}
+        >
+          {slides.map((slide, index) => (
+            <div className="slide" key={index}>
+              {slide.map((movie, idx) => (
+                <MovieItem
+                  currentUser={currentUser}
+                  key={idx}
+                  {...movie}
+                  onClick={onMovieClick}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
       <button className="next" onClick={nextSlide}>
         &#8250;

@@ -70,9 +70,7 @@ const VideoPlayer = ({ logout, onPlay }) => {
   return (
     <div className="video-container">
       {!isVideoVisible && (
-        <button id="play-button" onClick={handlePlayClick}>
-          Play
-        </button>
+        <button id="play-button" onClick={handlePlayClick}></button>
       )}
       {isVideoVisible && (
         <video

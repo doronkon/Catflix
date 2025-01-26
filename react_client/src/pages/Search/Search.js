@@ -32,7 +32,7 @@ function Search({ currentUser, logout }) {
             }
 
             const data = await response.json();
-            setMovieList(data.concat(data.concat(data)));
+            setMovieList(data);
         } catch (error) {
             setError(error.message);
         } finally {

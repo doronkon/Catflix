@@ -17,6 +17,10 @@
     color: white;
 }
 
+body.light .home-container-search {
+    background-color: rgba(14, 14, 14, 0);
+  }
+
 #search-footer {
     margin-top: 86vh;
 }

@@ -16,6 +16,10 @@
     color: white;
 }
 
+body.light .moviesContainer {
+    background-color: rgba(14, 14, 14, 0);
+}
+
 header {
     position: sticky; /* Ensures the NavBar stays at the top */
     top: 0;

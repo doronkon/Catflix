@@ -96,7 +96,9 @@ const Profile = ({ currentUser, logout }) => {
 
     return (
         <div>
-            <NavBar logout={logout} />
+            <div class='nav'>
+                <NavBar logout={logout} />
+            </div>
             <div className="profile-container">
                 <div className="profile-background" />
                 <h1 className="profile-welcome">Hey {user.displayName}!</h1>
