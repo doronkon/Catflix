@@ -15,4 +15,8 @@ router.route('/:id')
     .delete(userController.deleteUser)
     .patch(userController.updateUser);
 
+//for android
+router.route('/index/all')
+    .get(userController.index)
+
 module.exports = router;

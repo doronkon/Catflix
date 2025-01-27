@@ -89,7 +89,7 @@ const MovieDetail = ({ currentUser, isAdmin, logout }) => {
   return (
     <div className="movie-detail">
       <header>
-        <NavBar logout={logout} />
+        <NavBar isAdmin={isAdmin} logout={logout} />
       </header>
       <h1 id='movie-name'>{movie.name}</h1>
       {!isPlaying && (

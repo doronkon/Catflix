@@ -6,12 +6,17 @@ import './DeleteCategory.css';
 
 const DeleteCategory = ({ logout }) => {
     const [category, setCategory] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
     const navigate = useNavigate(); // Hook for navigation
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent form default submission
-        setLoading(true); // Show loading state
+        if(!category)
+        {
+            setError("please choose a category")
+            return;
+        }
+        setError(''); // Show loading state
 
         try {
             const response = await fetch('http://localhost:8080/api/categories/' + category, {
@@ -29,14 +34,12 @@ const DeleteCategory = ({ logout }) => {
                 }
                 return;
             }
-            setLoading(false);
-            navigate('/');
+            navigate('/')
             // Additional logic after successful login can be added here
         } catch (error) {
             throw new Error('Server not running!');
         }
     };
-    if (loading) return <p>Loading...</p>;
 
     return (
         <div>
@@ -48,6 +51,7 @@ const DeleteCategory = ({ logout }) => {
                         <button id="delete-category-button" type="submit">
                             Delete Category
                         </button>
+                        {error && <p style={{ color: 'red' }}>Error: {error}</p>}
                     </div>
                 </form>
             </div>

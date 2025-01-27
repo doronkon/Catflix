@@ -79,7 +79,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={ currentUser ? <HomeScreen logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin}/> : <SignUp />} />
                     <Route path="/movie/:id" element={currentUser ?<MovieDetail logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin} /> : <Error404/>}  />
-                    <Route path="/profile" element={currentUser ?<Profile logout = {logout} currentUser = {currentUser}/> : <Error404/>}  />
+                    <Route path="/profile" element={currentUser ?<Profile isAdmin={isAdmin} logout = {logout} currentUser = {currentUser}/> : <Error404/>}  />
                     <Route path='/login' element={currentUser ? <Error404/> : <Login setIsAdmin = {setIsAdmin} setCurrentUser = {setCurrentUser} />} />
                     <Route path='/uploadMovie' element={ !isAdmin ?  <UploadMovie logout = {logout}/>:<Error404/>} />
                     <Route path='/uploadCategory' element={ !isAdmin ?  <UploadCategoryPage logout = {logout}/>:<Error404/>} />

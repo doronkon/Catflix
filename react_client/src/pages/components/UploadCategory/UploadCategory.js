@@ -3,12 +3,18 @@ import './UploadCategory.css';
 
 const UploadCategory = ({ logout }) => {
     const [name, setName] = useState('');
-    const [promoted, setPromoted] = useState(false);
+    const [promoted, setPromoted] = useState(null);
     const [loading, setLoading] = useState(false);
     const [errorMessage, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent form default submission
+        if(promoted===null)
+        {
+            setError('pick promoted');
+            return;
+
+        }
         setError('');
         setLoading(true); // Show loading state
 

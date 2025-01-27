@@ -115,5 +115,8 @@ const deleteUser = async(id) => {
     await user.deleteOne();
     return user;
 }
+const index = async() =>{
+    return await User.find({});
+};
 
-module.exports = {createUser, getUserById, getUsers, updateUser, deleteUser,verifyPassword}
+module.exports = {createUser, getUserById, getUsers, updateUser, deleteUser,verifyPassword,index}

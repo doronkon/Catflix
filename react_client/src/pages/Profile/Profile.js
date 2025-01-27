@@ -4,7 +4,7 @@ import SaveImage from '../components/SaveImage';
 import './Profile.css';
 import NavBar from '../NavBar/NavBar';
 
-const Profile = ({ currentUser, logout }) => {
+const Profile = ({ currentUser, logout,isAdmin }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [user, setUser] = useState(null);
     const [isEditing, setIsEditing] = useState(false); // State to toggle input visibility
@@ -97,7 +97,7 @@ const Profile = ({ currentUser, logout }) => {
     return (
         <div>
             <div class='nav'>
-                <NavBar logout={logout} />
+                <NavBar isAdmin={isAdmin} logout={logout} />
             </div>
             <div className="profile-container">
                 <div className="profile-background" />

@@ -3,9 +3,9 @@ import CategoryList from '../components/CategoryList';
 import NavBar from '../NavBar/NavBar';
 import './UpdateCategory.css'
 
-const UpdateCategory = ({logout}) => {
+const UpdateCategory = ({logout,isAdmin}) => {
     const [name, setName] = useState('');
-    const [promoted, setPromoted] = useState(false);
+    const [promoted, setPromoted] = useState(null);
     const [category, setCategory] = useState('');
 
     const [loading, setLoading] = useState(false);
@@ -14,6 +14,11 @@ const UpdateCategory = ({logout}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent form default submission
+        if(promoted===null)
+        {
+            setError('pick promoted');
+            return;
+        }
         if(!category)
         {
             setError('Choose a category');
@@ -63,8 +68,12 @@ const UpdateCategory = ({logout}) => {
 
     return (
         <div>
+            <NavBar isAdmin={isAdmin} logout={logout} />
 
             <form onSubmit={handleSubmit}>
+                <div>
+                <CategoryList logout={logout} setCategory ={setCategory}/>
+                    <label>name:</label>
                 <NavBar logout={logout} />
                 <div className="update-category-container">
                 <div className="update-category-input-container">

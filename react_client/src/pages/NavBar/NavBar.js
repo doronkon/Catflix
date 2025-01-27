@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 
-function NavBar({ doSearch, showSearch, setShowSearch, isAdmin, logout }) {
+function NavBar({ isAdmin, logout }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('Mode') === 'dark');
@@ -74,18 +74,10 @@ function NavBar({ doSearch, showSearch, setShowSearch, isAdmin, logout }) {
               )}
             </div>
           )}
-          <button id="search-button" className="buttons-container" onClick={handleSearchToggle}>
+          {/* <button id="search-button" className="buttons-container" onClick={handleSearchToggle}>
             Search
-          </button>
-          {showSearch && (
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={handleSearchInput}
-            />
-          )}
+          </button> */}
+          <Link to="/search">Search</Link>
           <button onClick={toggleTheme} className="toggle-button">
             {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           </button>

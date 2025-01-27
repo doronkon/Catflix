@@ -54,7 +54,6 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
     fetchMovies();
   }, []);
 
-  console.log(localStorage.getItem('Token'))
 
   const handleMovieClick = (movieId, currentUser) => {
     navigate(`/movie/${movieId}`, { state: { currentUser } });

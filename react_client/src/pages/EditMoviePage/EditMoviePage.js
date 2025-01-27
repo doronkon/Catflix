@@ -6,20 +6,20 @@ import CategoryList from '../components/CategoryList';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import './EditMoviePage.css'; // Use the same CSS file as UploadMovie
 
-const EditMoviePage = ({ logout }) => {
-  const { id } = useParams(); // Get the movie ID from the URL
-  const location = useLocation();
-  const { oldName } = location.state || {};
-  const [name, setName] = useState('');
-  const [director, setDirector] = useState('');
-  const [actors, setActors] = useState('');
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
-  const [minimalAge, setMinimalAge] = useState('');
-  const [catflixOriginal, setCatflixOriginal] = useState(null);
-  const [image, setImage] = useState('');
-  const [video, setVideo] = useState('');
-  const navigate = useNavigate(); // Hook for navigation
+const EditMoviePage = ({ logout,isAdmin }) => {
+    const { id } = useParams(); // Get the movie ID from the URL
+    const location = useLocation();
+    const { oldName } = location.state || {};
+    const [name, setName] = useState('');
+    const [director, setDirector] = useState('');
+    const [actors, setActors] = useState('');
+    const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
+    const [minimalAge, setMinimalAge] = useState('');
+    const [catflixOriginal, setCatflixOriginal] = useState(null);
+    const [image, setImage] = useState('');
+    const [video, setVideo] = useState('');
+    const navigate = useNavigate(); // Hook for navigation
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setError] = useState('');
@@ -76,7 +76,7 @@ const EditMoviePage = ({ logout }) => {
 
   return (
     <div className="upload"> {/* Use the same CSS structure */}
-      <NavBar logout={logout} />
+      <NavBar logout={logout} isAdmin={isAdmin} />
       <form onSubmit={handleSubmit}>
         <div className="input-container" id="upload-input-container">
           <h2 className="upload-text">You are editing {oldName}</h2>

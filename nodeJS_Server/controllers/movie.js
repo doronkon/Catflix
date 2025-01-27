@@ -86,5 +86,12 @@ const putMovie = async(req,res) => {
     }
     res.json(movie);
 }
+const index = async(req, res) => {
+    const allMovies = await movieService.index();
+    if(!allMovies){
+        return res.status(404).json({ errors: ['server failed'] });
+    }
+    res.json(allMovies);
+};
 
-module.exports = { createMovie, getMovies, getMovie, updateMovie, deleteMovie, putMovie };
+module.exports = { createMovie, getMovies, getMovie, updateMovie, deleteMovie, putMovie,index };

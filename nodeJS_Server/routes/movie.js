@@ -32,5 +32,9 @@ router.route('/search/:query')
     //current user
     .get(searchController.search)
 
+//for android
+router.route('/index/all')
+    .get(movieController.index)
+
 
 module.exports = router;

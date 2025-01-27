@@ -59,5 +59,12 @@ const deleteCategory = async(req, res) => {
     }
     res.json(deletedCategory);
 };
+const index = async(req, res) => {
+    const allCategories = await categoryService.index();
+    if(!allCategories){
+        return res.status(404).json({ errors: ['server failed'] });
+    }
+    res.json(allCategories);
+};
 
-module.exports = { createCategory, getCategories, getCategory, updateCategory, deleteCategory };
+module.exports = { createCategory, getCategories, getCategory, updateCategory, deleteCategory,index };

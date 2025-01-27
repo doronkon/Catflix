@@ -12,5 +12,9 @@ router.route('/:id')
     //admin
     .patch(categoryController.updateCategory)
     .delete(categoryController.deleteCategory);
+
+//for android
+router.route('/index/all')
+    .get(categoryController.index)
     
 module.exports = router;
