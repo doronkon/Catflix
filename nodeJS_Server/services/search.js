@@ -31,11 +31,6 @@ const getSearchResult = async(query) => {
     {
         insertMovies(current,MoviesResult)
     }
-    current = await searchForCategory(query);
-    if(current)
-    {
-        insertMovies(current,MoviesResult)
-    }
     current = await searchForActors(query);
     if(current)
     {

@@ -13,12 +13,6 @@ const UpdateCategory = ({logout,isAdmin}) => {
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent form default submission
-        if(promoted===null)
-        {
-            setError('pick promoted');
-            return;
-        }
         if(!category)
         {
             setError('Choose a category');
@@ -71,20 +65,15 @@ const UpdateCategory = ({logout,isAdmin}) => {
             <NavBar isAdmin={isAdmin} logout={logout} />
 
             <form onSubmit={handleSubmit}>
-                <div>
-                <CategoryList logout={logout} setCategory ={setCategory}/>
-                    <label>name:</label>
-                <NavBar logout={logout} />
                 <div className="update-category-container">
                 <div className="update-category-input-container">
-                <CategoryList setCategory={setCategory} />
+                <CategoryList logout={logout} setCategory={setCategory} />
                     <label>Name:</label>
                     <br></br>
                     <input
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder='Name'
-                        required
                         />
                     <div className="input-group radio-group">
                         <div className="radio-options">

@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 
 function NavBar({ isAdmin, logout }) {
-  const [searchQuery, setSearchQuery] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('Mode') === 'dark');
   const navigate = useNavigate();
@@ -28,25 +27,11 @@ function NavBar({ isAdmin, logout }) {
   };
   
 
-  const handleSearchToggle = () => {
-    if (!showSearch) {
-      setShowSearch(true);
-      navigate('/search');
-    } else {
-      setShowSearch(false);
-      setSearchQuery('');
-    }
-  };
 
   const toggleDropdown = () => {
     setShowDropdown((prevState) => !prevState);
   };
 
-  const handleSearchInput = (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-    doSearch(query);
-  };
 
   return (
     <header className={isDarkMode ? 'dark' : 'light'}>
@@ -59,7 +44,7 @@ function NavBar({ isAdmin, logout }) {
           </div>
           <Link to="/">Home</Link>
           <Link to="/profile">Profile</Link>
-          {isAdmin && (
+          {!isAdmin && (
             <div className="admin-dropdown">
               <button id="admin-button" onClick={toggleDropdown} className="dropdown-button">
                 Admin
