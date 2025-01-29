@@ -36,11 +36,6 @@ const getSearchResult = async(query) => {
     {
         insertMovies(current,MoviesResult)
     }
-    current = await searchForThumbnail(query);
-    if(current)
-    {
-        insertMovies(current,MoviesResult)
-    }
     current = await searchForLength(query);
     if(current)
     {
