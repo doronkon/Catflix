@@ -17,6 +17,7 @@ import UploadCategoryPage from './pages/UploadCategoryPage/UploadCategoryPage';
 import NavBar from './pages/NavBar/NavBar';
 import UpdateCategory from './pages/UpdateCategory/UpdateCategory';
 import EditMoviePage from './pages/EditMoviePage/EditMoviePage';import Search from './pages/Search/Search';
+import CategoryMovies from './pages/CategoryMovies/CategoryMovies';
 
 
 
@@ -87,6 +88,7 @@ function App() {
                     <Route path='/UpdateCategory' element={!isAdmin ?<UpdateCategory logout={logout}/>:<Error404/>} />
                     <Route path='/search' element={ currentUser ? <Search currentUser = {currentUser} logout = {logout} /> : <SignUp />}/>
                     <Route path="/editMovie/:id" element={currentUser ?<EditMoviePage logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin} /> : <Error404/>}  />
+                    <Route path="/category/:id" element={currentUser ?<CategoryMovies logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin} /> : <Error404/>}  />
 
                 </Routes>
             </Router>

@@ -67,4 +67,14 @@ const index = async(req, res) => {
     res.json(allCategories);
 };
 
-module.exports = { createCategory, getCategories, getCategory, updateCategory, deleteCategory,index };
+const getCategoryMovies = async(req,res) => {
+    const headersUser = await tokenService.validateHeadersUser(req.headers['user']);
+    if (!headersUser)
+    {
+        return res.status(403).json({ errors: ['Invalid Token in Header'] });
+    }
+    const returnedMovies = await categoryService.getCategoryMovies(req.params.id);
+    res.json(returnedMovies);
+}
+
+module.exports = { createCategory, getCategories, getCategory, updateCategory, deleteCategory,index, getCategoryMovies };

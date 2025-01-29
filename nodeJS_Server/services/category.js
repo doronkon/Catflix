@@ -66,5 +66,9 @@ const index = async() =>{
     return await Category.find({});
 };
 
+const getCategoryMovies = async (id) => {
+    const wantedCategory = await Category.findById(id).populate('movies');
+    return wantedCategory ? wantedCategory.movies : [];
+};
 
-module.exports = { createCategory, getCategories, getCategoryById, updateCategory, deleteCategory,index };
+module.exports = { createCategory, getCategories, getCategoryById, updateCategory, deleteCategory, index, getCategoryMovies };

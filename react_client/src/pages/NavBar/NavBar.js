@@ -3,13 +3,39 @@ import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 
 function NavBar({ isAdmin, logout }) {
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [showAdminDropdown, setShowAdminDropdown] = useState(false);
+  const [showCategoriesDropdown, setShowCategoriesDropdown] = useState(false);
+  const [categories, setCategories] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('Mode') === 'dark');
   const navigate = useNavigate();
 
-  // Apply the initial theme based on localStorage
   useEffect(() => {
-    const mode = localStorage.getItem('Mode') || 'dark'; // Default to dark
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/categories`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            user: localStorage.getItem('Token'),
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch categories');
+        }
+
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    const mode = localStorage.getItem('Mode') || 'dark';
     document.querySelector('header')?.classList.add(mode);
   }, []);
 
@@ -17,21 +43,22 @@ function NavBar({ isAdmin, logout }) {
     const currentMode = localStorage.getItem('Mode');
     const newMode = currentMode === 'dark' ? 'light' : 'dark';
     localStorage.setItem('Mode', newMode);
-  
-    // Apply the class to the root element (body)
-    const root = document.body;
-    root.classList.remove('dark', 'light'); // Remove existing theme classes
-    root.classList.add(newMode); // Add the new theme class
-  
-    setIsDarkMode(newMode === 'dark'); // Update state for button text
-  };
-  
 
+    document.body.classList.remove('dark', 'light');
+    document.body.classList.add(newMode);
 
-  const toggleDropdown = () => {
-    setShowDropdown((prevState) => !prevState);
+    setIsDarkMode(newMode === 'dark');
   };
 
+  const toggleAdminDropdown = () => {
+    setShowAdminDropdown((prev) => !prev);
+    setShowCategoriesDropdown(false); // Close categories dropdown
+  };
+
+  const toggleCategoriesDropdown = () => {
+    setShowCategoriesDropdown((prev) => !prev);
+    setShowAdminDropdown(false); // Close admin dropdown
+  };
 
   return (
     <header className={isDarkMode ? 'dark' : 'light'}>
@@ -44,12 +71,33 @@ function NavBar({ isAdmin, logout }) {
           </div>
           <Link to="/">Home</Link>
           <Link to="/profile">Profile</Link>
+
+          {/* Categories Dropdown */}
+          <div className="admin-dropdown">
+            <button id="admin-button" className="dropdown-button" onClick={toggleCategoriesDropdown}>
+              Categories
+            </button>
+            {showCategoriesDropdown && (
+              <div className="dropdown-menu">
+                {categories.length > 0 ? (
+                  categories.map((category) => (
+                    <Link key={category._id} to={`/category/${category._id}`} className="category-item">
+                      {category.name}
+                    </Link>
+                  ))
+                ) : (
+                  <p className="category-item">No categories available</p>
+                )}
+              </div>
+            )}
+          </div>
+
           {!isAdmin && (
             <div className="admin-dropdown">
-              <button id="admin-button" onClick={toggleDropdown} className="dropdown-button">
+              <button id="admin-button" onClick={toggleAdminDropdown} className="dropdown-button">
                 Admin
               </button>
-              {showDropdown && (
+              {showAdminDropdown && (
                 <div className="dropdown-menu">
                   <Link to="/UploadMovie" className="admin-text">Upload Movie</Link>
                   <Link to="/UploadCategory" className="admin-text">Upload Category</Link>
@@ -59,9 +107,7 @@ function NavBar({ isAdmin, logout }) {
               )}
             </div>
           )}
-          {/* <button id="search-button" className="buttons-container" onClick={handleSearchToggle}>
-            Search
-          </button> */}
+
           <Link to="/search">Search</Link>
           <button onClick={toggleTheme} className="toggle-button">
             {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
