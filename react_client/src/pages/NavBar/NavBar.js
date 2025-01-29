@@ -52,12 +52,12 @@ function NavBar({ isAdmin, logout }) {
 
   const toggleAdminDropdown = () => {
     setShowAdminDropdown((prev) => !prev);
-    setShowCategoriesDropdown(false); // Close categories dropdown
+    setShowCategoriesDropdown(false);
   };
 
   const toggleCategoriesDropdown = () => {
     setShowCategoriesDropdown((prev) => !prev);
-    setShowAdminDropdown(false); // Close admin dropdown
+    setShowAdminDropdown(false);
   };
 
   return (
@@ -81,7 +81,12 @@ function NavBar({ isAdmin, logout }) {
               <div className="dropdown-menu">
                 {categories.length > 0 ? (
                   categories.map((category) => (
-                    <Link key={category._id} to={`/category/${category._id}`} className="category-item">
+                    <Link
+                      key={category._id}
+                      to={`/category/${category._id}`}
+                      state={{ categoryName: category.name }}
+                      className="category-item"
+                    >
                       {category.name}
                     </Link>
                   ))

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import SlideshowSearch from '../SlideShowSearch/SlideShowSearch';
 
@@ -7,6 +7,8 @@ function CategoryMovies({ currentUser, logout, isAdmin }) {
     const [movieList, setMovieList] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
+    const categoryName = location.state?.categoryName || "Category";
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -50,6 +52,7 @@ function CategoryMovies({ currentUser, logout, isAdmin }) {
                         <header>
                             <NavBar isAdmin={isAdmin} currentUser={currentUser} logout={logout} />
                         </header>
+                        <h2>{categoryName}:</h2>
                         <div className="slideshow-search">
                             <SlideshowSearch
                                 currentUser={currentUser}
