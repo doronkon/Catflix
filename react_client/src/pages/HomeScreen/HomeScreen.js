@@ -67,15 +67,13 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
     <div className="home-container">
       <title>Catflix</title>
       <div className="moviesContainer">
-        <header>
-          <NavBar
-            doSearch={() => { }}
-            showSearch={false}
-            setShowSearch={() => { }}
-            logout={logout}
-            isAdmin={isAdmin}
-          />
-        </header>
+            <NavBar
+              doSearch={() => { }}
+              showSearch={false}
+              setShowSearch={() => { }}
+              logout={logout}
+              isAdmin={isAdmin}
+              />
         <main className="content">
           <section className="movieRow" id='video-banner'>
             {/* Display the video banner */}

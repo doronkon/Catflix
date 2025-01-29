@@ -53,16 +53,24 @@ header nav a:hover {
 }
 
 .search-input {
+  width: 150px; /* Adjust as needed */
   background-color: #333;
   border: 1px solid #555;
   color: white;
   padding: 5px 10px;
   font-size: medium;
-  margin-left: 10px;
   border-radius: 4px;
   outline: none;
-  transition: border 0.3s;
+  transition: width 0.3s ease, border 0.3s;
+  margin-left: 7vw;
 }
+
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds spacing between "Search" link and input */
+}
+
 
 /* Light mode search input styles */
 .light .search-input {
@@ -72,8 +80,10 @@ header nav a:hover {
 }
 
 .search-input:focus {
+  width: 200px; /* Expands when clicked */
   border-color: #e50914;
 }
+
 
 #logout-button {
   position: absolute; /* Absolute positioning */
@@ -215,7 +225,7 @@ header {
 }
 
 header.dark {
-  background-color: #333;
+  background-color: #090808;
 }
 
 header.light {

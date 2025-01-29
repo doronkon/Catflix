@@ -9,9 +9,9 @@
 }
 .moviesContainer {
     display: flex;
+    background-color: rgba(14, 14, 14, 0.6);
     flex-direction: column;
     flex: 1;
-    background-color: rgba(14, 14, 14, 0.6);
     font-family: 'Courier New', Courier, monospace;
     color: white;
 }

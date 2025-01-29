@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 
-function NavBar({ isAdmin, logout }) {
+function NavBar({ isAdmin, logout, searchInput }) {
   const [showAdminDropdown, setShowAdminDropdown] = useState(false);
   const [showCategoriesDropdown, setShowCategoriesDropdown] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -37,6 +37,12 @@ function NavBar({ isAdmin, logout }) {
 
     fetchCategories();
   }, []);
+
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const toggleSearchBox = () => {
+    setIsSearchOpen((prev) => !prev);
+  };
 
   useEffect(() => {
     const mode = localStorage.getItem('Mode') || 'dark';

@@ -49,9 +49,7 @@ function CategoryMovies({ currentUser, logout, isAdmin }) {
                 <title>Catflix</title>
                 <div className="row bg-white justify-content-center">
                     <div className="moviesContainer">
-                        <header>
                             <NavBar isAdmin={isAdmin} currentUser={currentUser} logout={logout} />
-                        </header>
                         <h2>{categoryName}:</h2>
                         <div className="slideshow-search">
                             <SlideshowSearch

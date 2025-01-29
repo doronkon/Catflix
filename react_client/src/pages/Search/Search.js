@@ -54,7 +54,7 @@ function Search({ currentUser, logout,isAdmin }) {
             <title>Catflix</title>
             <div className="row bg-white justify-content-center">
                 <div className="moviesContainer">
-                    <header>
+                    <div id='search-nav'>
                         <NavBar isAdmin={isAdmin} currentUser = {currentUser} logout={logout} />
                         
                         <input
@@ -65,7 +65,7 @@ function Search({ currentUser, logout,isAdmin }) {
                             onChange={(e) => doSearch(e.target.value)}
                         />
                 
-                    </header>
+                    </div>
                         <div class='slideshow-search'>
                             <SlideshowSearch
                                 currentUser={currentUser}
