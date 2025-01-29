@@ -108,7 +108,7 @@ function NavBar({ isAdmin, logout }) {
                   <Link to="/UploadCategory" className="admin-text">Upload Category</Link>
                   <Link to="/UpdateCategory" className="admin-text">Update Category</Link>
                   <Link to="/DeleteCategory" className="admin-text">Delete Category</Link>
-                  <Link to="/deleteMovie" className="admin-text">Delete Movie</Link>
+                  <Link to="/deleteMovie" className="admin-text">Delete/Edit Movie</Link>
                 </div>
               )}
             </div>

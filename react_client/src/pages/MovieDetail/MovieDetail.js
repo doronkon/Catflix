@@ -109,12 +109,6 @@ const MovieDetail = ({ currentUser, isAdmin, logout }) => {
           <p>Duration: {movie.length} mins</p>
           <p>Minimal age: {movie.minimalAge}</p>
         </div>
-        {!isAdmin && <DeleteMovie logout={logout} />}
-        {!isAdmin && (
-          <button id="edit-button" onClick={() => handleEditClick(movie._id, movie.name)}>
-            Edit Movie
-          </button>
-        )}
       </div>
       <CppRecommend logout={logout} currentUser={currentUser} />
     </div>

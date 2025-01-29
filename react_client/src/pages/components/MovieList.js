@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const MovieList = ({ setMovie, logout }) => {
+const MovieList = ({ setMovie, logout, setName }) => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState('');
   const [mapMovie, setMapMovie] = useState({}); // Fixed variable name
@@ -56,6 +56,7 @@ const MovieList = ({ setMovie, logout }) => {
   const handleMovieChange = (e) => {
     const selectedName = e.target.value;
     setSelectedMovie(selectedName);
+    setName(selectedName);
     setMovie(mapMovie[selectedName]);
   };
 

@@ -26,7 +26,6 @@ const EditMoviePage = ({ logout,isAdmin }) => {
   const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
     setError('');
     setSuccessMessage(''); // Reset success message
     setLoading(true); // Show loading state
@@ -82,23 +81,23 @@ const EditMoviePage = ({ logout,isAdmin }) => {
           <h2 className="upload-text">You are editing {oldName}</h2>
           <div className="input-group">
             <label className="upload-text">Name:</label>
-            <input value={name} onChange={(e) => setName(e.target.value)} required />
+            <input value={name} onChange={(e) => setName(e.target.value)}  />
           </div>
           <div className="input-group">
             <label className="upload-text">Director:</label>
-            <input value={director} onChange={(e) => setDirector(e.target.value)} required />
+            <input value={director} onChange={(e) => setDirector(e.target.value)}  />
           </div>
           <div className="input-group">
             <label className="upload-text">Actors:</label>
-            <input value={actors} onChange={(e) => setActors(e.target.value)} required />
+            <input value={actors} onChange={(e) => setActors(e.target.value)}  />
           </div>
           <div className="input-group">
             <label className="upload-text">Description:</label>
-            <input value={description} onChange={(e) => setDescription(e.target.value)} required />
+            <input value={description} onChange={(e) => setDescription(e.target.value)}  />
           </div>
           <div className="input-group">
             <label className="upload-text">Minimal Age:</label>
-            <input type="number" value={minimalAge} onChange={(e) => setMinimalAge(e.target.value)} required />
+            <input type="number" value={minimalAge} onChange={(e) => setMinimalAge(e.target.value)}  />
           </div>
           <div className="input-group radio-group">
             <label className="upload-text">Catflix Original:</label>
