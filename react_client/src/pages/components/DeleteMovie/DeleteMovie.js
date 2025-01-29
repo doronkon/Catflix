@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams,useNavigate } from 'react-router-dom';
 import './DeleteMovie.css'
+import Loading from '../Loading';
 
 const DeleteMovie = ({logout}) => {
     const { id } = useParams(); // Get the movie ID from the URL
@@ -42,7 +43,7 @@ const DeleteMovie = ({logout}) => {
             throw new Error("Server not running!")
         } 
     };
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loading/>;
 
     return (
         <div>

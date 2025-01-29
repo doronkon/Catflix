@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Slideshow from '../SlideShow/SlidShow';
 import NavBar from '../NavBar/NavBar';
 import VideoBanner from '../VideoBanner/VideoBanner';
+import Loading from '../components/Loading';
 
 const Movies = ({ currentUser, isAdmin, logout }) => {
   const [promotedMovies, setPromotedMovies] = useState([]); // Store categories with movies
@@ -59,66 +60,66 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
     navigate(`/movie/${movieId}`, { state: { currentUser } });
   };
 
-  if (loading) return <p></p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-<div className="home-container">
-<title>Catflix</title>
-  <div className="moviesContainer">
-    <header>
-    <NavBar
-      doSearch={() => {}}
-      showSearch={false}
-      setShowSearch={() => {}}
-      logout={logout} 
-      isAdmin={isAdmin}
-    />
-    </header>
-    <main className="content">
-      <section className="movieRow" id='video-banner'>
-        {/* Display the video banner */}
-        {randomMovieForBanner && (
-          <VideoBanner
+    <div className="home-container">
+      <title>Catflix</title>
+      <div className="moviesContainer">
+        <header>
+          <NavBar
+            doSearch={() => { }}
+            showSearch={false}
+            setShowSearch={() => { }}
             logout={logout}
-            randomMovie={randomMovieForBanner}
-            handleMovieClick={handleMovieClick}
-            currentUser={currentUser}
+            isAdmin={isAdmin}
           />
-        )}
-      </section>
+        </header>
+        <main className="content">
+          <section className="movieRow" id='video-banner'>
+            {/* Display the video banner */}
+            {randomMovieForBanner && (
+              <VideoBanner
+                logout={logout}
+                randomMovie={randomMovieForBanner}
+                handleMovieClick={handleMovieClick}
+                currentUser={currentUser}
+              />
+            )}
+          </section>
 
-      {/* Slideshow for each category in promotedMovies */}
-      {promotedMovies.map((category, index) => (
-        <section key={index} className="movieRow">
-          <h2 id='categories'>{category.categoryName}</h2>
-          <div className="movieRow_posters">
-            <Slideshow
-              currentUser={currentUser}
-              movies={category.movies}
-              onMovieClick={handleMovieClick}
-            />
-          </div>
-        </section>
-      ))}
+          {/* Slideshow for each category in promotedMovies */}
+          {promotedMovies.map((category, index) => (
+            <section key={index} className="movieRow">
+              <h2 id='categories'>{category.categoryName}</h2>
+              <div className="movieRow_posters">
+                <Slideshow
+                  currentUser={currentUser}
+                  movies={category.movies}
+                  onMovieClick={handleMovieClick}
+                />
+              </div>
+            </section>
+          ))}
 
-      {/* Slideshow for already watched movies */}
-      <section className="movieRow">
-        <h2 id='categories' className="home-categories-container">Watch again!</h2>
-        <div className="movieRow_posters">
-          <Slideshow
-            currentUser={currentUser}
-            movies={alreadyWatchedMovies}
-            onMovieClick={handleMovieClick}
-          />
-        </div>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2025 Catflix, Inc. All Rights Reserved</p>
-    </footer>
-  </div>
-</div>
+          {/* Slideshow for already watched movies */}
+          <section className="movieRow">
+            <h2 id='categories' className="home-categories-container">Watch again!</h2>
+            <div className="movieRow_posters">
+              <Slideshow
+                currentUser={currentUser}
+                movies={alreadyWatchedMovies}
+                onMovieClick={handleMovieClick}
+              />
+            </div>
+          </section>
+        </main>
+        <footer>
+          <p>&copy; 2025 Catflix, Inc. All Rights Reserved</p>
+        </footer>
+      </div>
+    </div>
   );
 };
 

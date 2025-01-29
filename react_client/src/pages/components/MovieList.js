@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Loading from './Loading';
 
 const MovieList = ({ setMovie, logout, setName }) => {
   const [movies, setMovies] = useState([]);
@@ -47,7 +48,7 @@ const MovieList = ({ setMovie, logout, setName }) => {
   }, []);
 
   if (loading) {
-    return <div>Loading movies...</div>;
+    return <Loading/>;
   }
   if (error) {
     return <div>Error: {error.message}</div>; // Fixed error display

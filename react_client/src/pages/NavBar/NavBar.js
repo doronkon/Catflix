@@ -21,6 +21,10 @@ function NavBar({ isAdmin, logout }) {
         });
 
         if (!response.ok) {
+          if (response.status === 403) {
+            logout();
+            return
+          }
           throw new Error('Failed to fetch categories');
         }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loading from './Loading';
 
 
 const CategoryList = ({setCategory,logout}) => {
@@ -51,7 +52,7 @@ const CategoryList = ({setCategory,logout}) => {
         fetchCategories();
       }, []);
       if (loading) {
-        return <div>Loading categories...</div>;
+        return <Loading/>;
       }
       if (error) {
         return <div>Error: {error}</div>;

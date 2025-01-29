@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import UserNamePassword from '../components/UserNamePassword';  // Import the new component
 import SaveImage from '../components/SaveImage';  // Import the new component
 import { useNavigate } from 'react-router-dom';
+import Loading from '../components/Loading';
 
 
 
@@ -62,7 +63,7 @@ const SignUp = () => {
         }
     };
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loading/>;
 
     return (
         <div>

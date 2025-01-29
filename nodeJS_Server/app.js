@@ -2,8 +2,8 @@ const express = require('express');
 var app = express();
 app.use("/media", express.static("./public"));
 const bodyParser = require('body-parser');
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(express.json({ limit: '250mb' }));
+app.use(express.urlencoded({ limit: '250mb', extended: true }));
 
 const cors = require('cors');
 app.use(cors());
@@ -12,7 +12,7 @@ app.use(cors());
 // customEnv.env(process.env.NODE_ENV,'./config');
 process.env.CONNECTION_STRING =  "mongodb://mongodb:27017"
 process.env.PORT=8080
-process.env.SECRET_KEY="nod-im-sod-homo"
+process.env.SECRET_KEY="nod-im-sod"
 
 console.log(process.env.CONNECTION_STRING);
 console.log(process.env.PORT);

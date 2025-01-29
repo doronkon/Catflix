@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CategoryList from '../components/CategoryList';
 import NavBar from '../NavBar/NavBar';
 import './UpdateCategory.css'
+import Loading from '../components/Loading';
 
 const UpdateCategory = ({logout,isAdmin}) => {
     const [name, setName] = useState('');
@@ -58,7 +59,7 @@ const UpdateCategory = ({logout,isAdmin}) => {
             setLoading(false); // Reset loading state
         }
     };
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loading/>;
 
     return (
         <div>

@@ -3,6 +3,7 @@ import UserNamePassword from '../components/UserNamePassword';  // Import the ne
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import './Login.css';
+import Loading from '../components/Loading';
 
 
 
@@ -59,7 +60,7 @@ const Login = ({setIsAdmin,setCurrentUser}) => {
             setLoading(false); // Reset loading state
         }
     };
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loading/>;
 
     return (
         <div className="login-container">

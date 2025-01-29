@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import SaveImage from '../components/SaveImage';
 import './Profile.css';
 import NavBar from '../NavBar/NavBar';
+import Loading from '../components/Loading';
 
 const Profile = ({ currentUser, logout,isAdmin }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -87,7 +88,7 @@ const Profile = ({ currentUser, logout,isAdmin }) => {
         updateUserDetails();
     };
 
-    if (!user) return <div>Loading...</div>;
+    if (!user) return <Loading/>;
 
     let realProfileImage = user.image;
     if (realProfileImage?.[0] === '.') {

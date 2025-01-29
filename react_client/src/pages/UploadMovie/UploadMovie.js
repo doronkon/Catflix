@@ -5,6 +5,7 @@ import NavBar from '../NavBar/NavBar';
 import CategoryList from '../components/CategoryList';
 import UploadCategory from '../components/UploadCategory/UploadCategory';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../components/Loading';
 
 
 import './UploadMovie.css'
@@ -92,7 +93,7 @@ const UploadMovie = ({isAdmin,logout}) => {
             setLoading(false); // Reset loading state
         }
     };
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loading/>;
 
     return (
         <div className="upload">

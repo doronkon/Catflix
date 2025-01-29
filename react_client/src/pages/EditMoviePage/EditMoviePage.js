@@ -5,6 +5,7 @@ import NavBar from '../NavBar/NavBar';
 import CategoryList from '../components/CategoryList';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import './EditMoviePage.css'; // Use the same CSS file as UploadMovie
+import Loading from '../components/Loading';
 
 const EditMoviePage = ({ logout,isAdmin }) => {
     const { id } = useParams(); // Get the movie ID from the URL
@@ -71,7 +72,7 @@ const EditMoviePage = ({ logout,isAdmin }) => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading/>;
 
   return (
     <div className="upload"> {/* Use the same CSS structure */}

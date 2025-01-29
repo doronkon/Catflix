@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './UploadCategory.css';
+import Loading from '../Loading';
 
 const UploadCategory = ({ logout }) => {
     const [name, setName] = useState('');
@@ -53,7 +54,7 @@ const UploadCategory = ({ logout }) => {
         }
     };
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loading/>;
 
     return (
         <div>
