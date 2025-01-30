@@ -38,6 +38,12 @@ function NavBar({ isAdmin, logout,currentUser }) {
     fetchCategories();
   }, []);
 
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const toggleSearchBox = () => {
+    setIsSearchOpen((prev) => !prev);
+  };
+
   useEffect(() => {
     const mode = localStorage.getItem('Mode') || 'dark';
     document.querySelector('header')?.classList.add(mode);

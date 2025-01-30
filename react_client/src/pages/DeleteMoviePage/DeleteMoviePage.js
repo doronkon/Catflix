@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import '../DeletCategory/DeleteCategory.css';
+import './DeleteMoviePage.css'
 
 const DeleteMoviePage = ({ logout,currentUser }) => {
     const [movie, setMovie] = useState('');
@@ -52,12 +53,14 @@ const DeleteMoviePage = ({ logout,currentUser }) => {
                 <form onSubmit={handleSubmit}>
                     <div className="delete-category-input-container">
                         <MovieList setMovie={setMovie} logout={logout} setName={setName}/>
-                        <button id="delete-category-button" type="submit">
-                            Delete Movie
-                        </button>
-                        <button type="button" id="edit-button" onClick={() => handleEditClick(movie, name)}>
-                            Edit Movie
-                        </button>
+                        <div class='delete-movie-buttons'>
+                            <button id="delete-category-button" type="submit">
+                                Delete Movie
+                            </button>
+                            <button type="button" id="edit-button" onClick={() => handleEditClick(movie, name)}>
+                                Edit Movie
+                            </button>
+                        </div>
                         {error && <p style={{ color: 'red' }}>Error: {error}</p>}
                     </div>
                 </form>
