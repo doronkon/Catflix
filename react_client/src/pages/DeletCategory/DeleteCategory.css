@@ -56,3 +56,8 @@
 #delete-category-button:hover {
     background-color: #941b21;
 }
+
+body.light .delete-category-container {
+    background-color: rgb(223, 213, 213);
+    color: #e7a1a1;
+}
