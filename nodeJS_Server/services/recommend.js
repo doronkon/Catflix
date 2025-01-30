@@ -10,28 +10,27 @@ const sendToServer = (message) => {
 
         const client = new net.Socket();
 
-        const connectWithRetry = () => {
-            client.connect(destPort, destIp, () => {
-                client.write(message);
-            });
-        };
-
-        client.on('connect', () => {
-            client.write(message); // Send the message
+        // Connecting to the server
+        client.connect(destPort, destIp, () => {
+            client.write(message);  // Send the message once connected
         });
 
+        // Handle data reception from server
         client.on('data', (data) => {
             resolve(data.toString());
-            client.end();
+            client.end();  // End the connection after receiving data
         });
 
+        // Handle errors (e.g., connection errors)
         client.on('error', (err) => {
-            console.error('Connection error:', err);
-            // Retry after a delay
-            setTimeout(connectWithRetry, 1000);
+            reject(err);
+            client.end();  // End the connection on error
         });
 
-        connectWithRetry(); // initial connection attempt
+        // Handle close event (when connection is closed)
+        client.on('close', () => {
+            console.log('Connection closed');
+        });
     });
 };
 
