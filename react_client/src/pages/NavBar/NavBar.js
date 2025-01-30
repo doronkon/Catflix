@@ -80,10 +80,7 @@ function NavBar({ isAdmin, logout,currentUser }) {
             </a>
           </div>
           <Link to="/">Home</Link>
-          <Link to="/profile"><img
-                    src={`http://localhost:8080/media/userLogos/${currentUser}.png`}
-                    className="profile-image"
-                /></Link>
+
 
           {/* Categories Dropdown */}
           <div className="admin-dropdown">
@@ -134,6 +131,10 @@ function NavBar({ isAdmin, logout,currentUser }) {
           <button onClick={logout} id="logout-button" className="buttons-container">
             Logout
           </button>
+          <Link id='pfp' to="/profile"><img
+                    src={`http://localhost:8080/media/userLogos/${currentUser}.png`}
+                    className="profile-image2"
+                /></Link>
         </nav>
       </div>
     </header>

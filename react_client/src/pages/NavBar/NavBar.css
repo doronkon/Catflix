@@ -231,3 +231,20 @@ header.dark {
 header.light {
   background-color: #f8f8f8;
 }
+#pfp {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto; /* Pushes the profile picture to the right */
+  margin-right: 149px; /* Adjust spacing */
+}
+
+.profile-image2 {
+  width: 66px; /* Adjust size */
+  height: 66px;
+  border-radius: 50%; /* Ensures a circular border */
+  object-fit: cover; /* Prevents stretching */
+  border: 2px solid white; /* Adds a border */
+}
