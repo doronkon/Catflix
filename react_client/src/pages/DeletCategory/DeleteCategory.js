@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import './DeleteCategory.css';
 
-const DeleteCategory = ({ logout }) => {
+const DeleteCategory = ({ logout,currentUser }) => {
     const [category, setCategory] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate(); // Hook for navigation
@@ -43,7 +43,7 @@ const DeleteCategory = ({ logout }) => {
 
     return (
         <div>
-            <NavBar logout={logout} />
+            <NavBar currentUser={currentUser} logout={logout} />
             <div className="delete-category-container">
                 <form onSubmit={handleSubmit}>
                     <div className="delete-category-input-container">

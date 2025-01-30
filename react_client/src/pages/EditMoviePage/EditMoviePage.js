@@ -7,7 +7,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import './EditMoviePage.css'; // Use the same CSS file as UploadMovie
 import Loading from '../components/Loading';
 
-const EditMoviePage = ({ logout,isAdmin }) => {
+const EditMoviePage = ({ logout,isAdmin,currentUser }) => {
     const { id } = useParams(); // Get the movie ID from the URL
     const location = useLocation();
     const { oldName } = location.state || {};
@@ -76,7 +76,7 @@ const EditMoviePage = ({ logout,isAdmin }) => {
 
   return (
     <div className="upload"> {/* Use the same CSS structure */}
-      <NavBar logout={logout} isAdmin={isAdmin} />
+      <NavBar currentUser={currentUser} logout={logout} isAdmin={isAdmin} />
       <form onSubmit={handleSubmit}>
         <div className="input-container" id="upload-input-container">
           <h2 className="upload-text">You are editing {oldName}</h2>

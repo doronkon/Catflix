@@ -69,9 +69,7 @@ const Movies = ({ currentUser, isAdmin, logout }) => {
       <div className="moviesContainer">
         <header>
           <NavBar
-            doSearch={() => { }}
-            showSearch={false}
-            setShowSearch={() => { }}
+          currentUser={currentUser}
             logout={logout}
             isAdmin={isAdmin}
           />

@@ -13,7 +13,7 @@ import './UploadMovie.css'
 
 
 
-const UploadMovie = ({isAdmin,logout}) => {
+const UploadMovie = ({isAdmin,logout,currentUser}) => {
     const [name, setName] = useState('');
     const [director, setDirector] = useState('');
     const [actors, setActors] = useState('');
@@ -98,7 +98,7 @@ const UploadMovie = ({isAdmin,logout}) => {
     return (
         <div className="upload">
             <title>Catflix</title>
-            <NavBar isAdmin={isAdmin} logout={logout}/>
+            <NavBar currentUser={currentUser} isAdmin={isAdmin} logout={logout}/>
             <form onSubmit={handleSubmit}>
                 <div className="input-container" id="upload-input-container">
                     <div className="input-group">

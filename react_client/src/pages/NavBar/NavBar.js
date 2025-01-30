@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css';
 
-function NavBar({ isAdmin, logout }) {
+function NavBar({ isAdmin, logout,currentUser }) {
   const [showAdminDropdown, setShowAdminDropdown] = useState(false);
   const [showCategoriesDropdown, setShowCategoriesDropdown] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -74,7 +74,10 @@ function NavBar({ isAdmin, logout }) {
             </a>
           </div>
           <Link to="/">Home</Link>
-          <Link to="/profile">Profile</Link>
+          <Link to="/profile"><img
+                    src={`http://localhost:8080/media/userLogos/${currentUser}.png`}
+                    className="profile-image"
+                /></Link>
 
           {/* Categories Dropdown */}
           <div className="admin-dropdown">

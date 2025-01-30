@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import '../DeletCategory/DeleteCategory.css';
 
-const DeleteMoviePage = ({ logout }) => {
+const DeleteMoviePage = ({ logout,currentUser }) => {
     const [movie, setMovie] = useState('');
     const [error, setError] = useState('');
     const [name, setName] = useState('');
@@ -47,7 +47,7 @@ const DeleteMoviePage = ({ logout }) => {
 
     return (
         <div>
-            <NavBar logout={logout} />
+            <NavBar currentUser={currentUser} logout={logout} />
             <div className="delete-category-container">
                 <form onSubmit={handleSubmit}>
                     <div className="delete-category-input-container">

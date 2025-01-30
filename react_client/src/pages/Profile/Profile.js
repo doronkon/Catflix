@@ -98,7 +98,7 @@ const Profile = ({ currentUser, logout,isAdmin }) => {
     return (
         <div>
             <div class='nav'>
-                <NavBar isAdmin={isAdmin} logout={logout} />
+                <NavBar currentUser={currentUser} isAdmin={isAdmin} logout={logout} />
             </div>
             <div className="profile-container">
                 <div className="profile-background" />

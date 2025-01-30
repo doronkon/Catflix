@@ -83,11 +83,11 @@ function App() {
                     <Route path="/movie/:id" element={currentUser ?<MovieDetail logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin} /> : <Error404/>}  />
                     <Route path="/profile" element={currentUser ?<Profile isAdmin={isAdmin} logout = {logout} currentUser = {currentUser}/> : <Error404/>}  />
                     <Route path='/login' element={currentUser ? <Error404/> : <Login setIsAdmin = {setIsAdmin} setCurrentUser = {setCurrentUser} />} />
-                    <Route path='/uploadMovie' element={ !isAdmin ?  <UploadMovie logout = {logout}/>:<Error404/>} />
-                    <Route path='/uploadCategory' element={ !isAdmin ?  <UploadCategoryPage logout = {logout}/>:<Error404/>} />
-                    <Route path='/deleteCategory' element={ !isAdmin ?  <DeleteCategory logout = {logout}/>:<Error404/>} />
-                    <Route path='/UpdateCategory' element={!isAdmin ?<UpdateCategory logout={logout}/>:<Error404/>} />
-                    <Route path='/deleteMovie' element={!isAdmin ?<DeleteMoviePage logout={logout}/>:<Error404/>} />
+                    <Route path='/uploadMovie' element={ !isAdmin ?  <UploadMovie currentUser={currentUser} logout = {logout}/>:<Error404/>} />
+                    <Route path='/uploadCategory' element={ !isAdmin ?  <UploadCategoryPage currentUser={currentUser} logout = {logout}/>:<Error404/>} />
+                    <Route path='/deleteCategory' element={ !isAdmin ?  <DeleteCategory currentUser={currentUser} logout = {logout}/>:<Error404/>} />
+                    <Route path='/UpdateCategory' element={!isAdmin ?<UpdateCategory currentUser={currentUser} logout={logout}/>:<Error404/>} />
+                    <Route path='/deleteMovie' element={!isAdmin ?<DeleteMoviePage currentUser={currentUser} logout={logout}/>:<Error404/>} />
                     <Route path='/search' element={ currentUser ? <Search currentUser = {currentUser} logout = {logout} /> : <SignUp />}/>
                     <Route path="/editMovie/:id" element={currentUser ?<EditMoviePage logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin} /> : <Error404/>}  />
                     <Route path="/category/:id" element={currentUser ?<CategoryMovies logout = {logout} currentUser = {currentUser} isAdmin = {isAdmin} /> : <Error404/>}  />

@@ -4,7 +4,7 @@ import NavBar from '../NavBar/NavBar';
 import './UpdateCategory.css'
 import Loading from '../components/Loading';
 
-const UpdateCategory = ({logout,isAdmin}) => {
+const UpdateCategory = ({logout,isAdmin,currentUser}) => {
     const [name, setName] = useState('');
     const [promoted, setPromoted] = useState(null);
     const [category, setCategory] = useState('');
@@ -63,7 +63,7 @@ const UpdateCategory = ({logout,isAdmin}) => {
 
     return (
         <div>
-            <NavBar isAdmin={isAdmin} logout={logout} />
+            <NavBar currentUser={currentUser} isAdmin={isAdmin} logout={logout} />
 
             <form onSubmit={handleSubmit}>
                 <div className="update-category-container">
