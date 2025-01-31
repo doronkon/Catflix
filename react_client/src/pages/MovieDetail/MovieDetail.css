@@ -21,7 +21,7 @@ body.light .movie-detail {
     margin: 20px 0;
   }
   
-  .movie-detail img {
+  .movie-detail .movie-thumbnail {
     width: 100%;
     max-width: 500px;
     height: auto;
