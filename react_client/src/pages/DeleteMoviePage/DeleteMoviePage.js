@@ -5,7 +5,7 @@ import NavBar from '../NavBar/NavBar';
 import '../DeletCategory/DeleteCategory.css';
 import './DeleteMoviePage.css'
 
-const DeleteMoviePage = ({ logout,currentUser }) => {
+const DeleteMoviePage = ({ logout,currentUser, isAdmin }) => {
     const [movie, setMovie] = useState('');
     const [error, setError] = useState('');
     const [name, setName] = useState('');
@@ -48,7 +48,7 @@ const DeleteMoviePage = ({ logout,currentUser }) => {
 
     return (
         <div>
-            <NavBar currentUser={currentUser} logout={logout} />
+            <NavBar currentUser={currentUser} logout={logout} isAdmin={isAdmin} />
             <div className="delete-category-container">
                 <form onSubmit={handleSubmit}>
                     <div className="delete-category-input-container">
