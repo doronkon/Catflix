@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.UploadCategoryActivity"
+    android:background="?attr/android:windowBackground">
+
+    <!-- Header Container -->
+    <FrameLayout
+        android:id="@+id/header_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- EditText -->
+    <EditText
+        android:id="@+id/newCategoryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Enter new category name"
+        android:inputType="text"
+        android:padding="16dp"
+        android:textColorHint="?attr/colorSecondary"/>
+
+    <!-- Dropdown (Spinner) -->
+
+    <!-- Edit Button -->
+    <Spinner
+        android:id="@+id/movieDropdown"
+        android:layout_width="379dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/spinner_background"
+        android:dropDownHorizontalOffset="5dp"
+        android:dropDownVerticalOffset="70dp"
+        android:fontFamily="sans-serif"
+        android:padding="12dp"
+        android:popupBackground="#1E1E1E"
+        android:spinnerMode="dropdown"
+        android:textColorHint="?attr/colorSecondary" />
+
+    <Button
+        android:id="@+id/editSelectedCategoryBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload"
+        android:layout_margin="16dp"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>
