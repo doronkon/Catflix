@@ -9,23 +9,15 @@
     android:background="?attr/android:windowBackground"
     tools:context=".Activities.SignUpActivity">
 
-    <!-- Header Container -->
-
-    <!-- Logo -->
-
-    <!-- Profile Picture Section -->
-
-    <!-- Choose Image Button -->
-
     <RelativeLayout
         android:id="@+id/header_container"
-        android:layout_width="408dp"
-        android:layout_height="123dp"
+        android:layout_width="409dp"
+        android:layout_height="229dp"
         android:background="?attr/android:windowBackground"
         android:padding="16dp"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="2dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="2dp">
 
         <!-- Home Link -->
         <TextView
@@ -93,7 +85,7 @@
         android:id="@+id/imgSelected"
         android:layout_width="109dp"
         android:layout_height="108dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="408dp"
         android:background="@color/gray"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
@@ -140,7 +132,7 @@
         android:hint="@string/displayName"
         android:inputType="text"
         android:padding="16dp"
-        android:textColor="@color/white"
+        android:textColor="?attr/android:textColor"
         android:textColorHint="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

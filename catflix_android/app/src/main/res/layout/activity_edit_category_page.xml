@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:text="Category Name"
         android:textSize="18sp"
-        android:textColor="#FFFFFF"
+        android:textColor="?attr/android:textColor"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp" />
 
@@ -86,9 +86,9 @@
         android:hint="Enter new category name"
         android:inputType="text"
         android:padding="16dp"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="?attr/android:textColor"
         android:backgroundTint="#1E1E1E"
-        android:textColor="#FFFFFF"/>
+        android:textColor="?attr/android:textColor"/>
 
     <!-- Dropdown Spinner -->
     <Spinner
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:backgroundTint="#1E1E1E"
-        android:popupBackground="#1E1E1E"
+        android:popupBackground="@color/cetflixblack"
         android:textColor="#FFFFFF"
         android:fontFamily="sans-serif"/>
 
