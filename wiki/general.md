@@ -75,6 +75,7 @@ You'll notice that **all merges were performed using Nadav's user account**.
 https://github.com/doronkon/Catflix.git
 The android section of part 4 was done in this git repository - 
 https://github.com/doronkon/catflix_android.git
+3. for more info about the website and app go to react.md / android.md.
 
 Thank you for reviewing our project! 🚀  
 
