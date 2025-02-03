@@ -107,7 +107,7 @@ function NavBar({ isAdmin, logout,currentUser }) {
             )}
           </div>
 
-          {!isAdmin && (
+          {isAdmin && (
             <div className="admin-dropdown">
               <button id="admin-button" onClick={toggleAdminDropdown} className="dropdown-button">
                 Admin

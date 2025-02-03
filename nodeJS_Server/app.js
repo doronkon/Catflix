@@ -4,6 +4,7 @@ app.use("/media", express.static("./public"));
 const bodyParser = require('body-parser');
 app.use(express.json({ limit: '250mb' }));
 app.use(express.urlencoded({ limit: '250mb', extended: true }));
+const path = require("path");
 
 const cors = require('cors');
 app.use(cors());
@@ -39,5 +40,9 @@ app.use('/api/tokens',tokens);
 const videoPlayer = require('./routes/videoPlayer');
 app.use('/api/videoPlayer',videoPlayer);
 
+app.use("/", express.static("./build"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/build/index.html"));
+});
 
 app.listen(process.env.PORT);

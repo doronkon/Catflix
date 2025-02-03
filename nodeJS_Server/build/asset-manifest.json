@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cce55533.css",
+    "main.js": "/static/js/main.66890b17.js",
+    "static/media/catflix-bg-hero.webp": "/static/media/catflix-bg-hero.8895e5c497af907586fb.webp",
+    "static/media/profile-background-hero.webp": "/static/media/profile-background-hero.64b75a6fc26dcbb36f42.webp",
+    "static/media/login-hero.webp": "/static/media/login-hero.f5af06b8d68c958f9900.webp",
+    "static/media/catflix-main-background.webp": "/static/media/catflix-main-background.53dab0e3ba719f7f513e.webp",
+    "static/media/red_play_button3.png": "/static/media/red_play_button3.3425b324be105cfe32ea.png",
+    "static/media/bebas.ttf": "/static/media/bebas.c501e16fa3f0781f9d73.ttf",
+    "index.html": "/index.html",
+    "main.cce55533.css.map": "/static/css/main.cce55533.css.map",
+    "main.66890b17.js.map": "/static/js/main.66890b17.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cce55533.css",
+    "static/js/main.66890b17.js"
+  ]
+}

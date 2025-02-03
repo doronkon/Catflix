@@ -14,30 +14,23 @@ const getRecommendation = async (req,res) => {
     }
     const UserID = headersUser._id.toString()
     const MovieID = req.params.id
-    console.log(UserID)
-    console.log(MovieID)
     if (!UserID || !MovieID) {
         // no such user
         return res.status(400).json({ errors: ['Bad request no Movie ID'] });
     }
     const response = await recommendService.getRecommendation(UserID,MovieID)
-    console.log("came back from the service")
     if(!response || response === null || response === undefined)
     {
         return res.status(404).json({ errors: ['Movie not found'] });
     }
-    console.log("Response type:", typeof response);
-    console.log("Response value:", response);
     if(response[0]=='4')
     {
-        console.log("hey")
         return res.status(400).json({ errors: ['Not published Movie for this User'] });
     }
     if(response.length === 0 || Object.keys(response).length === 0)
     {
         return res.status(204).json()
     }
-    console.log("cntorller response: "+response)
     return res.status(200).json(response)
 }
 const addMovie = async (req,res) => {
