@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="cetflixblack">#141414</color>
+    <color name="gray">#808080</color>
+    <color name="red">#D32F2F</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="app_name">catflix_android</string>
+    <string name="chooseImage">gallery image</string>
+    <string name="displayName">displayName</string>
+    <string name="displayname">displayName</string>
+    <string name="email">Email</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="movie_description">Movie Description</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="name">name</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="select_option">select option</string>
+    <string name="sign_up">sign up</string>
+    <string name="take_photo">take photo</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="watch_again">Watch again!</string>
+    <string name="watch_movie">Watch Movie</string>
+    <string name="welcome">"Welcome !"</string>
+    <style name="Base.Theme.Catflix_android" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#838080</item>
+        <item name="colorOnPrimary">#141414</item>
+        <item name="colorAccent">#D32F2F</item>
+        <item name="colorSecondary">#C3B7B7</item>
+        <item name="android:windowBackground">#EBEBEB</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+    <style name="RoundImage">round
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="SpinnerItemStyle">
+        <item name="android:textColor">#FFFFFF</item> 
+        <item name="android:textSize">16sp</item> 
+        <item name="android:fontFamily">sans-serif</item> 
+        <item name="android:padding">10dp</item>
+    </style>
+    <style name="Theme.Catflix_android" parent="Base.Theme.Catflix_android"/>
+</resources>

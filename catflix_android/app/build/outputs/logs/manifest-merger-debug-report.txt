@@ -1,0 +1,450 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:2:1-89:12
+INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:2:1-89:12
+INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:2:1-89:12
+INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:2:1-89:12
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5a0c079d90fd78b37a6322be3b1fe2ec\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\nadav\.gradle\caches\8.9\transforms\0649676ac405ca5c737764eabe7e8b58\transformed\constraintlayout-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\nadav\.gradle\caches\8.9\transforms\b43002043656719700a0bb7059568e73\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\nadav\.gradle\caches\8.9\transforms\a4d2e0550f568ff50faef7346012f816\transformed\appcompat-1.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\nadav\.gradle\caches\8.9\transforms\ea28f3531f6d715e30a496515c52dba0\transformed\glide-4.16.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\55bf1cc9c4b4e1ad8ab562190ba4f72c\transformed\viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\nadav\.gradle\caches\8.9\transforms\15740532be60c15803a943c1ab0f98a4\transformed\fragment-1.5.4\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.10.0] C:\Users\nadav\.gradle\caches\8.9\transforms\ea0f13e24473b6139479bf84e608f94b\transformed\activity-1.10.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\nadav\.gradle\caches\8.9\transforms\d16e9653e8e8d1817ea80fdc8bcf2ae4\transformed\room-runtime-2.6.1\AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\nadav\.gradle\caches\8.9\transforms\7bc417275f665e254dffce8ac1e71181\transformed\savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\556c5a7704c2daad323dcb83aa195d1d\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\nadav\.gradle\caches\8.9\transforms\ad6e8218e8fb9f04442dd01f79c42618\transformed\transition-1.5.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\f52f0b7bfc536d11e267a7d13c729339\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5fd81894f236d4e730e056b71dccc916\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\567ed746229befdcc500cbcfc554bcb9\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7140c41fab18c173213b6d176b4f74c4\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\0c03e43e815469f27d79754de252f0ce\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7d1b463e108d12c40fbe57e7d82b3e05\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\fce3adc0a9b097597e1bb83b4d97331e\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\01ba1c2ffd06dac934ccd9e8b15cd9d3\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\9ef10ba0d03ae11e771e4ba4a557ddf7\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\e2d067d459d396301ef9e76e1321e5a9\transformed\core-ktx-1.13.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\7dc056d6a26dc97566bcbf82215830d0\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\152b2eefc2349a7afb1691b1eb20697c\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\9ae21e0779cc8eead7279e7b73c6e195\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\bcb071fe9c25d70ad7b30a835dc7fcee\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\c8f0ef2c9713a8dae61f5e25ad992d64\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\231d1a531d98c11b7118b88c478ba2ad\transformed\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\0b3eae3674d7bc76b272e243676dfab4\transformed\customview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\b1829da4e78c4d3b733d2245ef20d3b0\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\f9a31509f318abcbf7ecff097c824872\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\f6a1c7a5271a8f121f07f5d2aa0c903a\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfefb7ab27d881b1c22f974f2cbb1382\transformed\tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\nadav\.gradle\caches\8.9\transforms\dcdc1c2432668c25936474614dcf446b\transformed\gifdecoder-4.16.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\nadav\.gradle\caches\8.9\transforms\db7ac4de436c19b5fdb8ea00a8b5175c\transformed\exifinterface-1.3.6\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\nadav\.gradle\caches\8.9\transforms\9b80671860e96cb486671d8556154b8e\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\66a1081d2edb1154c9790c39763b2d4c\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\775041a35f98f743cfdfcbddab605e38\transformed\sqlite-2.4.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\4b9a3c1f21c2f9b48e5472e1c8fce00f\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\4c05d04b91e8c3913566cfba463a2ca2\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5316067bc5be23c15195e45362b4999f\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\6bf06f422e95eb0003dc9838d9b04653\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\25582129e1217712c5bcc5e05c6a914b\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\9c877cdfa81c69986993d14e34bcf79f\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
+	package
+		INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:2:11-69
+uses-feature#android.hardware.camera
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:5:5-7:36
+	android:required
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:7:9-33
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:6:9-47
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:9:5-67
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:9:22-64
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:10:5-12:38
+	android:maxSdkVersion
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:12:9-35
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:11:9-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:13:5-15:38
+	android:maxSdkVersion
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:15:9-35
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:14:9-65
+application
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:17:5-87:19
+INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:17:5-87:19
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5a0c079d90fd78b37a6322be3b1fe2ec\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5a0c079d90fd78b37a6322be3b1fe2ec\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\nadav\.gradle\caches\8.9\transforms\0649676ac405ca5c737764eabe7e8b58\transformed\constraintlayout-2.2.0\AndroidManifest.xml:7:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\nadav\.gradle\caches\8.9\transforms\0649676ac405ca5c737764eabe7e8b58\transformed\constraintlayout-2.2.0\AndroidManifest.xml:7:5-20
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\nadav\.gradle\caches\8.9\transforms\d16e9653e8e8d1817ea80fdc8bcf2ae4\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\nadav\.gradle\caches\8.9\transforms\d16e9653e8e8d1817ea80fdc8bcf2ae4\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7d1b463e108d12c40fbe57e7d82b3e05\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7d1b463e108d12c40fbe57e7d82b3e05\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\f6a1c7a5271a8f121f07f5d2aa0c903a\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\f6a1c7a5271a8f121f07f5d2aa0c903a\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\4c05d04b91e8c3913566cfba463a2ca2\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\4c05d04b91e8c3913566cfba463a2ca2\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:25:9-35
+	android:label
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:22:9-41
+	android:fullBackupContent
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:20:9-54
+	android:roundIcon
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:24:9-54
+	tools:targetApi
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:27:9-29
+	android:icon
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:21:9-43
+	android:allowBackup
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:18:9-35
+	android:theme
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:26:9-53
+	android:networkSecurityConfig
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:23:9-69
+	android:dataExtractionRules
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:19:9-65
+activity#com.example.catflix_android.Activities.EditProfileActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:28:9-30:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:29:13-59
+activity#com.example.catflix_android.Activities.CategoryMoviesActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:31:9-33:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:33:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:32:13-62
+activity#com.example.catflix_android.Activities.UploadCategoryActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:34:9-36:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:36:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:35:13-62
+activity#com.example.catflix_android.Activities.EditCategoryPageActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:37:9-39:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:38:13-64
+activity#com.example.catflix_android.Activities.EditAndDeleteCategory
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:40:9-42:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:42:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:41:13-61
+activity#com.example.catflix_android.Activities.UpdateMovieActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:43:9-45:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:45:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:44:13-59
+activity#com.example.catflix_android.Activities.CategoryActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:46:9-48:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:48:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:47:13-56
+activity#com.example.catflix_android.Activities.DeleteMovieActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:49:9-51:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:51:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:50:13-59
+activity#com.example.catflix_android.Activities.AdminPageActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:52:9-54:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:54:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:53:13-57
+activity#com.example.catflix_android.Activities.WatchMovieActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:55:9-57:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:57:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:56:13-58
+activity#com.example.catflix_android.Activities.MovieDetailsActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:58:9-60:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:60:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:59:13-60
+activity#com.example.catflix_android.Activities.ProfileActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:61:9-63:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:63:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:62:13-55
+activity#com.example.catflix_android.Activities.HomePageActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:64:9-67:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:67:13-37
+	android:theme
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:66:13-57
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:65:13-56
+activity#com.example.catflix_android.Activities.SignUpActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:68:9-70:40
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:70:13-37
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:69:13-54
+activity#com.example.catflix_android.Activities.LoginActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:71:9-73:39
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:73:13-36
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:72:13-53
+activity#com.example.catflix_android.Activities.SearchActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:74:9-76:39
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:76:13-36
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:75:13-54
+activity#com.example.catflix_android.Activities.MainActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:77:9-85:20
+	android:exported
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:79:13-36
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:78:13-52
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:80:13-84:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:81:17-69
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:81:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:83:17-77
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:83:27-74
+activity#com.example.catflix_android.Activities.UploadMovieActivity
+ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:86:9-68
+	android:name
+		ADDED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml:86:19-65
+uses-sdk
+INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5a0c079d90fd78b37a6322be3b1fe2ec\transformed\material-1.12.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5a0c079d90fd78b37a6322be3b1fe2ec\transformed\material-1.12.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\nadav\.gradle\caches\8.9\transforms\0649676ac405ca5c737764eabe7e8b58\transformed\constraintlayout-2.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\nadav\.gradle\caches\8.9\transforms\0649676ac405ca5c737764eabe7e8b58\transformed\constraintlayout-2.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\nadav\.gradle\caches\8.9\transforms\b43002043656719700a0bb7059568e73\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\nadav\.gradle\caches\8.9\transforms\b43002043656719700a0bb7059568e73\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\nadav\.gradle\caches\8.9\transforms\a4d2e0550f568ff50faef7346012f816\transformed\appcompat-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\nadav\.gradle\caches\8.9\transforms\a4d2e0550f568ff50faef7346012f816\transformed\appcompat-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\nadav\.gradle\caches\8.9\transforms\ea28f3531f6d715e30a496515c52dba0\transformed\glide-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\nadav\.gradle\caches\8.9\transforms\ea28f3531f6d715e30a496515c52dba0\transformed\glide-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\55bf1cc9c4b4e1ad8ab562190ba4f72c\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\55bf1cc9c4b4e1ad8ab562190ba4f72c\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\nadav\.gradle\caches\8.9\transforms\15740532be60c15803a943c1ab0f98a4\transformed\fragment-1.5.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\nadav\.gradle\caches\8.9\transforms\15740532be60c15803a943c1ab0f98a4\transformed\fragment-1.5.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.10.0] C:\Users\nadav\.gradle\caches\8.9\transforms\ea0f13e24473b6139479bf84e608f94b\transformed\activity-1.10.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.10.0] C:\Users\nadav\.gradle\caches\8.9\transforms\ea0f13e24473b6139479bf84e608f94b\transformed\activity-1.10.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\nadav\.gradle\caches\8.9\transforms\d16e9653e8e8d1817ea80fdc8bcf2ae4\transformed\room-runtime-2.6.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\nadav\.gradle\caches\8.9\transforms\d16e9653e8e8d1817ea80fdc8bcf2ae4\transformed\room-runtime-2.6.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\nadav\.gradle\caches\8.9\transforms\7bc417275f665e254dffce8ac1e71181\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\nadav\.gradle\caches\8.9\transforms\7bc417275f665e254dffce8ac1e71181\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\556c5a7704c2daad323dcb83aa195d1d\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\556c5a7704c2daad323dcb83aa195d1d\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\nadav\.gradle\caches\8.9\transforms\ad6e8218e8fb9f04442dd01f79c42618\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\nadav\.gradle\caches\8.9\transforms\ad6e8218e8fb9f04442dd01f79c42618\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\f52f0b7bfc536d11e267a7d13c729339\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\f52f0b7bfc536d11e267a7d13c729339\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5fd81894f236d4e730e056b71dccc916\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5fd81894f236d4e730e056b71dccc916\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\567ed746229befdcc500cbcfc554bcb9\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\567ed746229befdcc500cbcfc554bcb9\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7140c41fab18c173213b6d176b4f74c4\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7140c41fab18c173213b6d176b4f74c4\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\0c03e43e815469f27d79754de252f0ce\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\0c03e43e815469f27d79754de252f0ce\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7d1b463e108d12c40fbe57e7d82b3e05\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7d1b463e108d12c40fbe57e7d82b3e05\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\fce3adc0a9b097597e1bb83b4d97331e\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\fce3adc0a9b097597e1bb83b4d97331e\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\01ba1c2ffd06dac934ccd9e8b15cd9d3\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\01ba1c2ffd06dac934ccd9e8b15cd9d3\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\9ef10ba0d03ae11e771e4ba4a557ddf7\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\9ef10ba0d03ae11e771e4ba4a557ddf7\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\e2d067d459d396301ef9e76e1321e5a9\transformed\core-ktx-1.13.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\e2d067d459d396301ef9e76e1321e5a9\transformed\core-ktx-1.13.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\7dc056d6a26dc97566bcbf82215830d0\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\7dc056d6a26dc97566bcbf82215830d0\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\152b2eefc2349a7afb1691b1eb20697c\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\152b2eefc2349a7afb1691b1eb20697c\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\9ae21e0779cc8eead7279e7b73c6e195\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\9ae21e0779cc8eead7279e7b73c6e195\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\bcb071fe9c25d70ad7b30a835dc7fcee\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\bcb071fe9c25d70ad7b30a835dc7fcee\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\c8f0ef2c9713a8dae61f5e25ad992d64\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\c8f0ef2c9713a8dae61f5e25ad992d64\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\231d1a531d98c11b7118b88c478ba2ad\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\231d1a531d98c11b7118b88c478ba2ad\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\0b3eae3674d7bc76b272e243676dfab4\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\nadav\.gradle\caches\8.9\transforms\0b3eae3674d7bc76b272e243676dfab4\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\b1829da4e78c4d3b733d2245ef20d3b0\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\b1829da4e78c4d3b733d2245ef20d3b0\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\f9a31509f318abcbf7ecff097c824872\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\f9a31509f318abcbf7ecff097c824872\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\f6a1c7a5271a8f121f07f5d2aa0c903a\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\f6a1c7a5271a8f121f07f5d2aa0c903a\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfefb7ab27d881b1c22f974f2cbb1382\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfefb7ab27d881b1c22f974f2cbb1382\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\nadav\.gradle\caches\8.9\transforms\dcdc1c2432668c25936474614dcf446b\transformed\gifdecoder-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\nadav\.gradle\caches\8.9\transforms\dcdc1c2432668c25936474614dcf446b\transformed\gifdecoder-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\nadav\.gradle\caches\8.9\transforms\db7ac4de436c19b5fdb8ea00a8b5175c\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\nadav\.gradle\caches\8.9\transforms\db7ac4de436c19b5fdb8ea00a8b5175c\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\nadav\.gradle\caches\8.9\transforms\9b80671860e96cb486671d8556154b8e\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\nadav\.gradle\caches\8.9\transforms\9b80671860e96cb486671d8556154b8e\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\66a1081d2edb1154c9790c39763b2d4c\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\66a1081d2edb1154c9790c39763b2d4c\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\775041a35f98f743cfdfcbddab605e38\transformed\sqlite-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\775041a35f98f743cfdfcbddab605e38\transformed\sqlite-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\4b9a3c1f21c2f9b48e5472e1c8fce00f\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\4b9a3c1f21c2f9b48e5472e1c8fce00f\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\4c05d04b91e8c3913566cfba463a2ca2\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\4c05d04b91e8c3913566cfba463a2ca2\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5316067bc5be23c15195e45362b4999f\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\5316067bc5be23c15195e45362b4999f\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\6bf06f422e95eb0003dc9838d9b04653\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\6bf06f422e95eb0003dc9838d9b04653\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\25582129e1217712c5bcc5e05c6a914b\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\nadav\.gradle\caches\8.9\transforms\25582129e1217712c5bcc5e05c6a914b\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\9c877cdfa81c69986993d14e34bcf79f\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\9c877cdfa81c69986993d14e34bcf79f\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+	android:targetSdkVersion
+		INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\nadav\Documents\Mitkadem\fianle\Catflix\catflix_android\app\src\main\AndroidManifest.xml
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\nadav\.gradle\caches\8.9\transforms\d16e9653e8e8d1817ea80fdc8bcf2ae4\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\nadav\.gradle\caches\8.9\transforms\d16e9653e8e8d1817ea80fdc8bcf2ae4\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\nadav\.gradle\caches\8.9\transforms\d16e9653e8e8d1817ea80fdc8bcf2ae4\transformed\room-runtime-2.6.1\AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\nadav\.gradle\caches\8.9\transforms\d16e9653e8e8d1817ea80fdc8bcf2ae4\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\nadav\.gradle\caches\8.9\transforms\d16e9653e8e8d1817ea80fdc8bcf2ae4\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7d1b463e108d12c40fbe57e7d82b3e05\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7d1b463e108d12c40fbe57e7d82b3e05\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\f6a1c7a5271a8f121f07f5d2aa0c903a\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\nadav\.gradle\caches\8.9\transforms\f6a1c7a5271a8f121f07f5d2aa0c903a\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\nadav\.gradle\caches\8.9\transforms\19bf857dc584067925aea46c5b2a6685\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7d1b463e108d12c40fbe57e7d82b3e05\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7d1b463e108d12c40fbe57e7d82b3e05\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\nadav\.gradle\caches\8.9\transforms\7d1b463e108d12c40fbe57e7d82b3e05\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+permission#com.example.catflix_android.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+uses-permission#com.example.catflix_android.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.0] C:\Users\nadav\.gradle\caches\8.9\transforms\72f3a44477f02e0159ae9310878686cb\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\nadav\.gradle\caches\8.9\transforms\cfa1ee7c397f440a6b99ea7f39921c62\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92

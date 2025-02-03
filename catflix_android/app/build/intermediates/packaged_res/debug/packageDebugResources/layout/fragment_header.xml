@@ -1,0 +1,107 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="?attr/colorPrimary">
+
+    <!-- Header Container -->
+
+    <!-- Spinner -->
+
+    <LinearLayout
+        android:id="@+id/header_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <!-- Home Link -->
+        <TextView
+            android:id="@+id/home_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Home"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="18sp" />
+
+        <!-- Admin Link -->
+        <TextView
+            android:id="@+id/admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Admin"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="18sp" />
+
+        <!-- Profile Image -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView2"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile_placeholder" />
+
+        <!-- Spacer to push the logout button to the right -->
+
+
+        <!-- Logout Button -->
+        <Button
+            android:id="@+id/themeToggleBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:text="☀️"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:text="🔍"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="18sp" />
+
+        <ImageButton
+            android:id="@+id/logoutBtn"
+            android:layout_width="91dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Logout"
+            android:src="@android:drawable/ic_lock_power_off" />
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/dropdownList"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_container"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/spinner_background"
+        android:dropDownHorizontalOffset="5dp"
+        android:dropDownVerticalOffset="70dp"
+        android:fontFamily="sans-serif"
+        android:padding="8dp"
+        android:popupBackground="?attr/colorPrimary"
+        android:spinnerMode="dropdown"
+        android:text="Categories"
+        android:textColorHint="?attr/android:textColor" />
+</RelativeLayout>
